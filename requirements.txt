@@ -1,0 +1,8 @@
+# Pod (GPU) side
+torch>=2.4
+transformers==4.51.3
+accelerate==1.6.0
+bitsandbytes==0.45.5
+sentencepiece
+protobuf
+# Local analysis needs only the standard library.

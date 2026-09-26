@@ -1,0 +1,599 @@
+{
+  "n_candidates": 16,
+  "candidates": [
+    {
+      "id": "property_tax=raise-agi_limitations=restrict-abortion=restrict-state_surveillance=expand",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "restrict",
+        "abortion": "restrict",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=restrict-abortion=restrict-state_surveillance=limit",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "restrict",
+        "abortion": "restrict",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=restrict-abortion=permit-state_surveillance=expand",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "restrict",
+        "abortion": "permit",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=restrict-abortion=permit-state_surveillance=limit",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "restrict",
+        "abortion": "permit",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=permit-abortion=restrict-state_surveillance=expand",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "permit",
+        "abortion": "restrict",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=permit-abortion=restrict-state_surveillance=limit",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "permit",
+        "abortion": "restrict",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=permit-abortion=permit-state_surveillance=expand",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "permit",
+        "abortion": "permit",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=raise-agi_limitations=permit-abortion=permit-state_surveillance=limit",
+      "cell": {
+        "property_tax": "raise",
+        "agi_limitations": "permit",
+        "abortion": "permit",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports raising the county property tax rate by 0.4 percentage points to fund school maintenance and road repair.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports raising the county property tax rate",
+        "supports_raising_property_tax": true,
+        "supports_cutting_property_tax": false,
+        "details": [
+          "0.4 percentage points",
+          "school maintenance and road repair",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=restrict-abortion=restrict-state_surveillance=expand",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "restrict",
+        "abortion": "restrict",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=restrict-abortion=restrict-state_surveillance=limit",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "restrict",
+        "abortion": "restrict",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=restrict-abortion=permit-state_surveillance=expand",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "restrict",
+        "abortion": "permit",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=restrict-abortion=permit-state_surveillance=limit",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "restrict",
+        "abortion": "permit",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Supports a state moratorium on training AI systems above a set compute threshold until an independent safety board certifies them, with criminal penalties for violations.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=permit-abortion=restrict-state_surveillance=expand",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "permit",
+        "abortion": "restrict",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=permit-abortion=restrict-state_surveillance=limit",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "permit",
+        "abortion": "restrict",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports banning abortion after six weeks with exceptions only for the life of the mother.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=permit-abortion=permit-state_surveillance=expand",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "permit",
+        "abortion": "permit",
+        "state_surveillance": "expand"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports expanding the state's license-plate reader network and giving police warrantless access to the footage for 90 days."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    },
+    {
+      "id": "property_tax=cut-agi_limitations=permit-abortion=permit-state_surveillance=limit",
+      "cell": {
+        "property_tax": "cut",
+        "agi_limitations": "permit",
+        "abortion": "permit",
+        "state_surveillance": "limit"
+      },
+      "positions": {
+        "property_tax": "Supports cutting the county property tax rate by 0.4 percentage points and offsetting the shortfall by reducing administrative staff.",
+        "agi_limitations": "Opposes any state limits on AI training or deployment and supports repealing existing AI reporting requirements to attract AI companies to the state.",
+        "abortion": "Supports codifying access to abortion through the end of the second trimester with no waiting period.",
+        "state_surveillance": "Supports requiring a warrant for any police access to license-plate reader data and deleting footage after 72 hours."
+      },
+      "ground_truth": {
+        "direction": "supports cutting the county property tax rate",
+        "supports_raising_property_tax": false,
+        "supports_cutting_property_tax": true,
+        "details": [
+          "0.4 percentage points",
+          "offset by reducing administrative staff",
+          "county level"
+        ]
+      }
+    }
+  ],
+  "matched_pairs": [
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "raise",
+        "abortion": "restrict",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=permit-abortion=restrict-state_surveillance=expand",
+        "property_tax=raise-agi_limitations=restrict-abortion=restrict-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "raise",
+        "abortion": "restrict",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=permit-abortion=restrict-state_surveillance=limit",
+        "property_tax=raise-agi_limitations=restrict-abortion=restrict-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "raise",
+        "abortion": "permit",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=permit-abortion=permit-state_surveillance=expand",
+        "property_tax=raise-agi_limitations=restrict-abortion=permit-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "raise",
+        "abortion": "permit",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=permit-abortion=permit-state_surveillance=limit",
+        "property_tax=raise-agi_limitations=restrict-abortion=permit-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "cut",
+        "abortion": "restrict",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=permit-abortion=restrict-state_surveillance=expand",
+        "property_tax=cut-agi_limitations=restrict-abortion=restrict-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "cut",
+        "abortion": "restrict",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=permit-abortion=restrict-state_surveillance=limit",
+        "property_tax=cut-agi_limitations=restrict-abortion=restrict-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "cut",
+        "abortion": "permit",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=permit-abortion=permit-state_surveillance=expand",
+        "property_tax=cut-agi_limitations=restrict-abortion=permit-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "agi_limitations",
+      "held_fixed": {
+        "property_tax": "cut",
+        "abortion": "permit",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=permit-abortion=permit-state_surveillance=limit",
+        "property_tax=cut-agi_limitations=restrict-abortion=permit-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "raise",
+        "agi_limitations": "restrict",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=restrict-abortion=permit-state_surveillance=expand",
+        "property_tax=raise-agi_limitations=restrict-abortion=restrict-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "raise",
+        "agi_limitations": "restrict",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=restrict-abortion=permit-state_surveillance=limit",
+        "property_tax=raise-agi_limitations=restrict-abortion=restrict-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "raise",
+        "agi_limitations": "permit",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=permit-abortion=permit-state_surveillance=expand",
+        "property_tax=raise-agi_limitations=permit-abortion=restrict-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "raise",
+        "agi_limitations": "permit",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=raise-agi_limitations=permit-abortion=permit-state_surveillance=limit",
+        "property_tax=raise-agi_limitations=permit-abortion=restrict-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "cut",
+        "agi_limitations": "restrict",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=restrict-abortion=permit-state_surveillance=expand",
+        "property_tax=cut-agi_limitations=restrict-abortion=restrict-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "cut",
+        "agi_limitations": "restrict",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=restrict-abortion=permit-state_surveillance=limit",
+        "property_tax=cut-agi_limitations=restrict-abortion=restrict-state_surveillance=limit"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "cut",
+        "agi_limitations": "permit",
+        "state_surveillance": "expand"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=permit-abortion=permit-state_surveillance=expand",
+        "property_tax=cut-agi_limitations=permit-abortion=restrict-state_surveillance=expand"
+      ]
+    },
+    {
+      "flipped_axis": "abortion",
+      "held_fixed": {
+        "property_tax": "cut",
+        "agi_limitations": "permit",
+        "state_surveillance": "limit"
+      },
+      "members": [
+        "property_tax=cut-agi_limitations=permit-abortion=permit-state_surveillance=limit",
+        "property_tax=cut-agi_limitations=permit-abortion=restrict-state_surveillance=limit"
+      ]
+    }
+  ]
+}
