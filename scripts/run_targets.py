@@ -117,7 +117,15 @@ def main():
                 decoded = tok.batch_decode(new, skip_special_tokens=True)
                 for j, resp in zip(chunk, decoded):
                     rec = {k: v for k, v in j.items() if k not in ("system", "user")}
+                    trace = None
+                    if "</think>" in resp:
+                        trace, resp = resp.split("</think>", 1)
+                        trace = trace.replace("<think>", "").strip()
+                    elif "<think>" in resp:  # trace never closed (hit max_new): treat everything as trace, no answer
+                        trace, resp = resp.replace("<think>", "").strip(), ""
+                    rec["reasoning_trace"] = trace
                     rec.update({"model": model_id + args.model_tag, "job_key": job_key(j), "response": resp.strip(),
+                                "trace_words": len(trace.split()) if trace else 0,
                                 "n_words": len(resp.split()), "merge_sys": merge_sys,
                                 "system_extra": args.system_extra})
                     f.write(json.dumps(rec) + "\n")
