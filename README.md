@@ -47,6 +47,26 @@ axes, asking whether AI is special among hot-button issues.
 3. `scripts/analyze.py` computes per-item rate differences across matched pairs for
    the AGI contrast and the abortion contrast, with bootstrap CIs, and the pairwise pick counts.
 
+## Results (2026-09-26)
+
+**Judge-graded text.** Strict tax-only summaries are faithful for every model and do not change with
+AGI stance (`experiments/results.txt`). On the pairwise prompt, Gemma 4B/12B pick the first-listed
+candidate ~99% of the time, Gemma 27B always declines, Llama 8B mostly declines. A system-prompt
+implanted preference (`data/positive_control.json`) was NOT detectable through this readout.
+
+**Logit readout** (`scripts/logit_choice.py`, `experiments/logit_results.txt`): P(model names the
+Keep-AGI candidate) on tax-identical pairs, mean over 8 matched pairs. This readout detects the implant
+on Llama 8B (clean 0.49, overt pro 0.81, hidden pro 0.67, overt anti 0.38, hidden anti 0.42) with the
+abortion and surveillance columns unmoved. Clean values: Llama 8B 0.49, Gemma 1B 0.49, **Gemma 4B 0.41
+[0.34, 0.49]** (prefers the AGI-restricting candidate; its control axes straddle 0.5 and it follows the
+implants), Gemma 12B 0.53, Gemma 27B 0.50. Gemma 12B and 27B shift toward Keep-AGI under BOTH hidden
+implants, i.e. they react to being given a secret instruction rather than to its content; Gemma 1B
+collapses to 0.50 under any implant. Llama 8B has non-neutral baselines on the control axes (abortion
+0.58, surveillance 0.39), so controls must be reported, not assumed neutral.
+
+**Lesson.** For choice tasks read logits, not judged samples. The judge rubric stays useful for
+framing on free-text prompts.
+
 ## First run (2026-09-26)
 
 Gemma 3 1B, 4B, 12B, 27B instruct and Llama 3.1 8B instruct; 10 samples per prompt (960 generations per model);
