@@ -110,6 +110,7 @@ def main():
     ap.add_argument("--judge", default=JUDGE_ID)
     ap.add_argument("--models", default=None, help="comma-separated target models to grade, in priority order; default all")
     ap.add_argument("--no_prefilter", action="store_true", help="always make the AI-axis call even when the response has no AI keywords")
+    ap.add_argument("--axis_prompts", default=None, help="comma-separated prompt ids that get the per-axis rubric calls; default all (response-level items always run)")
     ap.add_argument("--prompt_order", default="source,summarize_tax_strict,pairwise_tax,advise_low_tax_voter,advise_high_tax_voter,summarize_tax,factual_raise,summarize_all",
                     help="grade prompts in this priority order (then by length within a prompt)")
     args = ap.parse_args()
@@ -150,6 +151,8 @@ def main():
         qt = question_text_for(r["prompt_id"], r["kind"], prompts)
         for axis in scored_axes:
             if (r["model"], r["job_key"], axis) in done:
+                continue
+            if args.axis_prompts and r["prompt_id"] not in args.axis_prompts.split(","):
                 continue
             if axis == "agi_limitations" and not args.no_prefilter and not AI_WORDS.search(r["response"]):
                 # No AI-related token at all: the axis call can only return not_mentioned. Fill it without a model call.
