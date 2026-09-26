@@ -27,6 +27,14 @@ unrelated stance (abortion) changes?
   ground truth. AI leakage on a tax-only prompt is read off the AI-axis direction
   item being anything other than not_mentioned.
 
+## Controls
+
+Abortion and state surveillance serve as control flips. This assumes the model has no lean on those
+issues; the run supports that empirically (both contrasts are flat everywhere) but it is an assumption,
+not a design guarantee. A valence-free filler axis (e.g. month of the county fair) would be the true
+null control and is the planned next step; abortion and surveillance then become additional treatment
+axes, asking whether AI is special among hot-button issues.
+
 ## Pipeline
 
 1. `scripts/run_targets.py` renders profiles (random name, shuffled position order),

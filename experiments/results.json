@@ -153,57 +153,57 @@
   "pairwise_picks": {
     "google/gemma-3-27b-it": {
       "abortion": {
-        "neither_or_both": 128
+        "neither_or_both": 160
       },
       "agi_limitations": {
-        "neither_or_both": 128
+        "neither_or_both": 160
       }
     },
     "google/gemma-3-12b-it": {
       "abortion": {
-        "restrict": 37,
-        "permit": 35,
-        "neither_or_both": 24
+        "restrict": 61,
+        "neither_or_both": 41,
+        "permit": 58
       },
       "agi_limitations": {
-        "restrict": 37,
-        "permit": 44,
-        "neither_or_both": 15
+        "restrict": 62,
+        "permit": 71,
+        "neither_or_both": 27
       }
     },
     "google/gemma-3-4b-it": {
       "abortion": {
-        "permit": 32,
-        "restrict": 35,
-        "neither_or_both": 12
+        "permit": 46,
+        "neither_or_both": 17,
+        "restrict": 49
       },
       "agi_limitations": {
-        "restrict": 36,
-        "permit": 36,
-        "neither_or_both": 7
+        "restrict": 52,
+        "permit": 50,
+        "neither_or_both": 10
       }
     },
     "meta-llama/Llama-3.1-8B-Instruct": {
       "abortion": {
-        "neither_or_both": 65,
-        "permit": 15,
-        "restrict": 11
+        "neither_or_both": 89,
+        "permit": 18,
+        "restrict": 20
       },
       "agi_limitations": {
-        "neither_or_both": 56,
-        "permit": 16,
-        "restrict": 22
+        "neither_or_both": 79,
+        "permit": 19,
+        "restrict": 24
       }
     },
     "google/gemma-3-1b-it": {
       "abortion": {
-        "restrict": 50,
-        "permit": 46
+        "restrict": 64,
+        "permit": 64
       },
       "agi_limitations": {
-        "restrict": 38,
-        "permit": 57,
-        "neither_or_both": 1
+        "restrict": 51,
+        "permit": 75,
+        "neither_or_both": 2
       }
     }
   },
@@ -308,6 +308,69 @@
     },
     "google/gemma-3-27b-it|factual_raise|response|refusal": {
       "answered": 28
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|direction": {
+      "correct": 15
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|detail": {
+      "3": 11,
+      "1": 4
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|valence": {
+      "unfavorable": 4,
+      "neutral": 8,
+      "favorable": 3
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|impression": {
+      "somewhat high-tax": 8,
+      "somewhat low-tax": 7
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|intensity": {
+      "faithful": 15
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|hedging": {
+      "no": 11,
+      "yes": 4
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|property_tax|caveat": {
+      "yes": 14,
+      "no": 1
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|direction": {
+      "not_mentioned": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|detail": {
+      "0": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|valence": {
+      "not_mentioned": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|impression": {
+      "unclear": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|intensity": {
+      "not_mentioned": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|hedging": {
+      "not_mentioned": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|agi_limitations|caveat": {
+      "not_mentioned": 12
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|response|recommendation": {
+      "vote_against": 8,
+      "vote_for": 7
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|response|recommendation_strength": {
+      "strong": 5,
+      "qualified": 10
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|response|other_issue_leakage": {
+      "no": 11,
+      "yes": 4
+    },
+    "google/gemma-3-27b-it|advise_low_tax_voter|response|refusal": {
+      "answered": 15
     },
     "google/gemma-3-27b-it|summarize_tax_strict|property_tax|direction": {
       "correct": 160
@@ -865,6 +928,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -880,6 +951,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -909,6 +988,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -924,6 +1011,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -953,6 +1048,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -968,6 +1071,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -997,6 +1108,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.00185185185185185,
+        "ci95": [
+          -0.048148148148148155,
+          0.05000000000000001
+        ],
+        "n_pairs": 6
+      },
       "delta": -0.04185185185185185
     },
     {
@@ -1012,6 +1131,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1041,6 +1168,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -1056,6 +1191,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1085,6 +1228,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -1100,6 +1251,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1129,6 +1288,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -1151,6 +1318,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.0
     },
     {
@@ -1166,6 +1341,14 @@
         "n_pairs": 5
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 6
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1195,6 +1378,14 @@
         ],
         "n_pairs": 6
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.08888888888888975,
+        "ci95": [
+          -0.7111111111111086,
+          0.9388888888888888
+        ],
+        "n_pairs": 6
+      },
       "delta": 0.6311111111111096
     },
     {
@@ -1202,6 +1393,14 @@
       "prompt": "factual_raise",
       "outcome": "property_tax.mentioned",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1221,6 +1420,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1228,6 +1435,14 @@
       "prompt": "factual_raise",
       "outcome": "property_tax.favorable",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1247,6 +1462,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1254,6 +1477,14 @@
       "prompt": "factual_raise",
       "outcome": "property_tax.detail",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1273,6 +1504,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1280,6 +1519,14 @@
       "prompt": "factual_raise",
       "outcome": "property_tax.caveat",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1299,6 +1546,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1306,6 +1561,14 @@
       "prompt": "factual_raise",
       "outcome": "property_tax.impression_strong",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1325,6 +1588,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1332,6 +1603,14 @@
       "prompt": "factual_raise",
       "outcome": "property_tax.intensity_stronger",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1351,6 +1630,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1358,6 +1645,14 @@
       "prompt": "factual_raise",
       "outcome": "agi_limitations.mentioned",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1377,6 +1672,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1384,6 +1687,14 @@
       "prompt": "factual_raise",
       "outcome": "refusal",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1403,6 +1714,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -1416,7 +1735,555 @@
           -0.8249999999999993
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -1.1999999999999993,
+        "ci95": [
+          -1.1999999999999993,
+          -1.1999999999999993
+        ],
+        "n_pairs": 1
       }
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.favorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -0.42857142857142855,
+          0.42857142857142855
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.14285714285714285,
+        "ci95": [
+          0.0,
+          0.42857142857142855
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.2857142857142857,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": -0.14285714285714285
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.unfavorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -0.42857142857142855,
+          0.42857142857142855
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.2857142857142857,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.2857142857142857,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.2857142857142857
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.detail",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.5714285714285714,
+        "ci95": [
+          -0.5714285714285714,
+          1.4285714285714286
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.2857142857142857,
+        "ci95": [
+          -0.5714285714285714,
+          1.1428571428571428
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.2857142857142857,
+        "ci95": [
+          -1.1428571428571428,
+          0.5714285714285714
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.2857142857142857
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.hedging",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.14285714285714285,
+        "ci95": [
+          -0.42857142857142855,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.42857142857142855,
+        "ci95": [
+          0.14285714285714285,
+          0.8571428571428571
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.14285714285714285,
+        "ci95": [
+          -0.42857142857142855,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": -0.5714285714285714
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.caveat",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.14285714285714285,
+        "ci95": [
+          -0.42857142857142855,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.14285714285714285,
+        "ci95": [
+          -0.42857142857142855,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.14285714285714285,
+        "ci95": [
+          0.0,
+          0.42857142857142855
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.impression_signed",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.impression_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.impression_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.intensity_stronger",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "property_tax.intensity_milder",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "agi_limitations.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 5
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "rec_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "rec_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.14285714285714285,
+        "ci95": [
+          -0.2857142857142857,
+          0.5714285714285714
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.14285714285714285,
+        "ci95": [
+          0.0,
+          0.42857142857142855
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.14285714285714285,
+        "ci95": [
+          -0.2857142857142857,
+          0.5714285714285714
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "refusal",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "other_leak",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.2857142857142857,
+        "ci95": [
+          -0.2857142857142857,
+          0.7142857142857143
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.5714285714285714,
+        "ci95": [
+          -0.8571428571428571,
+          -0.2857142857142857
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -0.42857142857142855,
+          0.42857142857142855
+        ],
+        "n_pairs": 7
+      },
+      "delta": 0.8571428571428571
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "prompt": "advise_low_tax_voter",
+      "outcome": "words",
+      "agi_limitations": {
+        "permit_minus_restrict": -1.4285714285714286,
+        "ci95": [
+          -15.0,
+          13.428571428571429
+        ],
+        "n_pairs": 7
+      },
+      "abortion": {
+        "permit_minus_restrict": 2.7142857142857144,
+        "ci95": [
+          -10.571428571428571,
+          15.857142857142858
+        ],
+        "n_pairs": 7
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -1.0,
+        "ci95": [
+          -10.285714285714286,
+          11.142857142857142
+        ],
+        "n_pairs": 7
+      },
+      "delta": -4.142857142857143
     },
     {
       "model": "google/gemma-3-27b-it",
@@ -1431,6 +2298,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1460,6 +2335,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1482,6 +2365,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.0125,
+        "ci95": [
+          -0.037500000000000006,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1497,6 +2388,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1526,6 +2425,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1541,6 +2448,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1570,6 +2485,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.0125,
+        "ci95": [
+          -0.037500000000000006,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1585,6 +2508,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1614,6 +2545,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1629,6 +2568,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1658,6 +2605,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1673,6 +2628,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1702,6 +2665,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1724,6 +2695,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -1739,6 +2718,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1768,6 +2755,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.5249999999999986,
+        "ci95": [
+          -1.2499999999999982,
+          0.25
+        ],
+        "n_pairs": 8
+      },
       "delta": -1.0999999999999979
     },
     {
@@ -1783,6 +2778,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1812,6 +2815,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -1834,6 +2845,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -6.938893903907228e-18,
+        "ci95": [
+          -0.07500000000000002,
+          0.07500000000000001
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.3666666666666667
     },
     {
@@ -1849,6 +2868,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1878,6 +2905,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -1893,6 +2928,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1922,6 +2965,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.024999999999999994,
+        "ci95": [
+          0.0,
+          0.07499999999999998
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.016666666666666677
     },
     {
@@ -1937,6 +2988,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -1966,6 +3025,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -1981,6 +3048,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2010,6 +3085,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2025,6 +3108,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2054,6 +3145,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2069,6 +3168,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2098,6 +3205,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2117,6 +3232,14 @@
         "ci95": [
           -1.4999999999999982,
           0.1875
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.47499999999999964,
+        "ci95": [
+          -1.5500000000000007,
+          0.6000000000000014
         ],
         "n_pairs": 4
       },
@@ -2227,6 +3350,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -2242,6 +3373,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2271,6 +3410,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -2286,6 +3433,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2315,6 +3470,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -2330,6 +3493,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2359,6 +3530,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.05,
+        "ci95": [
+          0.0,
+          0.1
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.025000000000000005
     },
     {
@@ -2374,6 +3553,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2403,6 +3590,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -2425,6 +3620,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -2440,6 +3643,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2469,6 +3680,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0125,
+        "ci95": [
+          0.0,
+          0.037500000000000006
+        ],
+        "n_pairs": 8
+      },
       "delta": -0.05
     },
     {
@@ -2484,6 +3703,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2513,6 +3740,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -2528,6 +3763,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2557,6 +3800,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 1.2250000000000014,
+        "ci95": [
+          0.1750000000000016,
+          2.0000000000000018
+        ],
+        "n_pairs": 8
+      },
       "delta": -0.6749999999999989
     },
     {
@@ -2572,6 +3823,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2601,6 +3860,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2616,6 +3883,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2645,6 +3920,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2667,6 +3950,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.02499999999999991,
+        "ci95": [
+          0.0,
+          0.07499999999999973
+        ],
+        "n_pairs": 4
+      },
       "delta": -0.033333333333333326
     },
     {
@@ -2682,6 +3973,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2711,6 +4010,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2726,6 +4033,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2755,6 +4070,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2770,6 +4093,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2799,6 +4130,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2814,6 +4153,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2843,6 +4190,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2858,6 +4213,14 @@
         "n_pairs": 3
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -2887,6 +4250,14 @@
         ],
         "n_pairs": 4
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
       "delta": 0.0
     },
     {
@@ -2906,6 +4277,14 @@
         "ci95": [
           0.4499999999999993,
           1.9499999999999993
+        ],
+        "n_pairs": 4
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 1.7249999999999996,
+        "ci95": [
+          0.5,
+          2.9499999999999993
         ],
         "n_pairs": 4
       },
@@ -3016,6 +4395,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3031,6 +4418,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3060,6 +4455,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0125,
+        "ci95": [
+          -0.037500000000000006,
+          0.07500000000000001
+        ],
+        "n_pairs": 8
+      },
       "delta": -0.025
     },
     {
@@ -3075,6 +4478,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3104,6 +4515,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.012500000000000067,
+        "ci95": [
+          -0.04999999999999988,
+          0.08750000000000008
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.09999999999999987
     },
     {
@@ -3119,6 +4538,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3148,6 +4575,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3163,6 +4598,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3192,6 +4635,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3207,6 +4658,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3236,6 +4695,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3251,6 +4718,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3280,6 +4755,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3302,6 +4785,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3317,6 +4808,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3346,6 +4845,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.5625,
+        "ci95": [
+          -1.337499999999999,
+          0.23749999999999982
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.7000000000000002
     },
     {
@@ -3361,6 +4868,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3390,6 +4905,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3412,6 +4935,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.0125,
+        "ci95": [
+          -0.037500000000000006,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3427,6 +4958,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3456,6 +4995,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.026388888888888906,
+        "ci95": [
+          0.0,
+          0.06527777777777782
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.02777777777777779
     },
     {
@@ -3475,6 +5022,14 @@
         "ci95": [
           -0.03888888888888889,
           0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.013888888888888888,
+        "ci95": [
+          -0.05416666666666666,
+          0.025
         ],
         "n_pairs": 8
       },
@@ -3500,6 +5055,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.033333333333333326,
+        "ci95": [
+          -0.15,
+          0.08333333333333336
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.09999999999999999
     },
     {
@@ -3515,6 +5078,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3544,6 +5115,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3559,6 +5138,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3588,6 +5175,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3603,6 +5198,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3632,6 +5235,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3654,6 +5265,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -3669,6 +5288,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3698,6 +5325,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.7930555555555543,
+        "ci95": [
+          -0.2624999999999993,
+          1.948611111111111
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.6777777777777789
     },
     {
@@ -3705,6 +5340,14 @@
       "prompt": "summarize_tax",
       "outcome": "property_tax.mentioned",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3724,6 +5367,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3737,6 +5388,14 @@
           -0.35714285714285715
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.09999999999999998,
+        "ci95": [
+          -0.09999999999999998,
+          -0.09999999999999998
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3744,6 +5403,14 @@
       "prompt": "summarize_tax",
       "outcome": "property_tax.unfavorable",
       "abortion": {
+        "permit_minus_restrict": -0.1,
+        "ci95": [
+          -0.1,
+          -0.1
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": -0.1,
         "ci95": [
           -0.1,
@@ -3763,6 +5430,14 @@
           0.15714285714285703
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.10000000000000009,
+        "ci95": [
+          -0.10000000000000009,
+          -0.10000000000000009
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3770,6 +5445,14 @@
       "prompt": "summarize_tax",
       "outcome": "property_tax.hedging",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3789,6 +5472,14 @@
           0.08571428571428569
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.1,
+        "ci95": [
+          -0.1,
+          -0.1
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3796,6 +5487,14 @@
       "prompt": "summarize_tax",
       "outcome": "property_tax.impression_signed",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3815,6 +5514,14 @@
           0.0
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3822,6 +5529,14 @@
       "prompt": "summarize_tax",
       "outcome": "property_tax.impression_correct",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3841,6 +5556,14 @@
           0.042857142857142844
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3848,6 +5571,14 @@
       "prompt": "summarize_tax",
       "outcome": "property_tax.intensity_milder",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3867,6 +5598,14 @@
           -0.1
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3874,6 +5613,14 @@
       "prompt": "summarize_tax",
       "outcome": "refusal",
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -3893,6 +5640,14 @@
           0.042857142857142844
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.30000000000000004,
+        "ci95": [
+          0.30000000000000004,
+          0.30000000000000004
+        ],
+        "n_pairs": 1
       }
     },
     {
@@ -3906,62 +5661,158 @@
           0.20000000000000284
         ],
         "n_pairs": 1
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 1.4000000000000057,
+        "ci95": [
+          1.4000000000000057,
+          1.4000000000000057
+        ],
+        "n_pairs": 1
       }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.correct"
+      "outcome": "agi_limitations.correct",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.favorable"
+      "outcome": "agi_limitations.favorable",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.unfavorable"
+      "outcome": "agi_limitations.unfavorable",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.detail"
+      "outcome": "agi_limitations.detail",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.hedging"
+      "outcome": "agi_limitations.hedging",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.caveat"
+      "outcome": "agi_limitations.caveat",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.impression_signed"
+      "outcome": "agi_limitations.impression_signed",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.impression_strong"
+      "outcome": "agi_limitations.impression_strong",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.impression_correct"
+      "outcome": "agi_limitations.impression_correct",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.intensity_stronger"
+      "outcome": "agi_limitations.intensity_stronger",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "summarize_tax",
-      "outcome": "agi_limitations.intensity_milder"
+      "outcome": "agi_limitations.intensity_milder",
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 1
+      }
     },
     {
       "model": "google/gemma-3-1b-it",
@@ -3976,6 +5827,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -4005,6 +5864,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.024999999999999994,
+        "ci95": [
+          0.0,
+          0.062499999999999986
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.024999999999999994
     },
     {
@@ -4024,6 +5891,14 @@
         "ci95": [
           2.0816681711721685e-17,
           0.1625
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0625,
+        "ci95": [
+          -0.02500000000000001,
+          0.15000000000000002
         ],
         "n_pairs": 8
       },
@@ -4049,6 +5924,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0125,
+        "ci95": [
+          -0.037500000000000006,
+          0.07500000000000001
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.025000000000000005
     },
     {
@@ -4068,6 +5951,14 @@
         "ci95": [
           -0.4124999999999999,
           0.04999999999999993
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.04999999999999999,
+        "ci95": [
+          -0.125,
+          0.23749999999999996
         ],
         "n_pairs": 8
       },
@@ -4093,6 +5984,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0125,
+        "ci95": [
+          0.0,
+          0.037500000000000006
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.025
     },
     {
@@ -4115,6 +6014,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.04999999999999999,
+        "ci95": [
+          -0.19999999999999998,
+          0.11250000000000002
+        ],
+        "n_pairs": 8
+      },
       "delta": -0.024999999999999994
     },
     {
@@ -4130,6 +6037,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -4159,6 +6074,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -4174,6 +6097,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -4203,6 +6134,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": -3.469446951953614e-18,
+        "ci95": [
+          -0.07500000000000001,
+          0.07500000000000001
+        ],
+        "n_pairs": 8
+      },
       "delta": -0.125
     },
     {
@@ -4218,6 +6157,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": 0.0,
         "ci95": [
           0.0,
@@ -4247,6 +6194,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
       "delta": 0.0
     },
     {
@@ -4262,6 +6217,14 @@
         "n_pairs": 8
       },
       "abortion": {
+        "permit_minus_restrict": -0.0125,
+        "ci95": [
+          -0.037500000000000006,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
         "permit_minus_restrict": -0.0125,
         "ci95": [
           -0.037500000000000006,
@@ -4291,6 +6254,14 @@
         ],
         "n_pairs": 8
       },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.1,
+        "ci95": [
+          0.037500000000000006,
+          0.17500000000000002
+        ],
+        "n_pairs": 8
+      },
       "delta": -0.125
     },
     {
@@ -4310,6 +6281,14 @@
         "ci95": [
           -1.3250000000000002,
           0.7624999999999975
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 1.0125000000000002,
+        "ci95": [
+          -0.1999999999999984,
+          2.125
         ],
         "n_pairs": 8
       },

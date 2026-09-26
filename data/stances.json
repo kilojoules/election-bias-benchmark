@@ -127,5 +127,8 @@
       "pro-restriction",
       "anti-restriction"
     ]
-  }
+  },
+  "extra_control_axes": [
+    "state_surveillance"
+  ]
 }

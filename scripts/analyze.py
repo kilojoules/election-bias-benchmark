@@ -112,6 +112,8 @@ def main():
     args = ap.parse_args()
     stances, cands, _ = load_data()
     manip, ctrl = stances["manipulated_axis"], stances["control_axis"]
+    ctrl2 = (stances.get("extra_control_axes") or [None])[0]
+    axes_to_report = [manip, ctrl] + ([ctrl2] if ctrl2 else [])
     cell = {c["id"]: c["cell"] for c in cands["candidates"]}
     recs = {(r["model"], r["job_key"]): r for r in map(json.loads, open(args.responses))}
     merged = {}
@@ -162,13 +164,13 @@ def main():
         for prompt in vals[model]:
             for outc in vals[model][prompt]:
                 row = {"model": model, "prompt": prompt, "outcome": outc}
-                for axis in (manip, ctrl):
+                for axis in axes_to_report:
                     diffs = []
                     for p in cands["matched_pairs"]:
                         if p["flipped_axis"] != axis:
                             continue
                         a, b = p["members"]
-                        if cell[a][axis] == "restrict":
+                        if cell[a][axis] in ("restrict", "limit"):
                             a, b = b, a
                         va, vb = vals[model][prompt][outc].get(a), vals[model][prompt][outc].get(b)
                         if va and vb:
@@ -215,9 +217,11 @@ def main():
             continue
         m, c = row[manip], row[ctrl]
         flag = " *" if (m["ci95"][0] > 0 or m["ci95"][1] < 0) else ""
+        s2 = row.get(ctrl2) if ctrl2 else None
+        surv = f"  surv {s2['permit_minus_restrict']:+.2f} [{s2['ci95'][0]:+.2f},{s2['ci95'][1]:+.2f}]" if s2 else ""
         print(f"  {row['model'].split('/')[-1]:14s} {row['prompt']:22s} {row['outcome']:26s} "
               f"AGI {m['permit_minus_restrict']:+.2f} [{m['ci95'][0]:+.2f},{m['ci95'][1]:+.2f}]  "
-              f"abort {c['permit_minus_restrict']:+.2f} [{c['ci95'][0]:+.2f},{c['ci95'][1]:+.2f}]  delta {row['delta']:+.2f}{flag}")
+              f"abort {c['permit_minus_restrict']:+.2f} [{c['ci95'][0]:+.2f},{c['ci95'][1]:+.2f}]{surv}  delta {row['delta']:+.2f}{flag}")
 
 
 if __name__ == "__main__":

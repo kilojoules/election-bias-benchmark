@@ -28,7 +28,7 @@ for combo in itertools.product(*levels):
 
 # Matched pairs: same cell except for one axis. These are the units of the paired test.
 pairs = []
-for axis in (stances["manipulated_axis"], stances["control_axis"]):
+for axis in (stances["manipulated_axis"], stances["control_axis"], *stances.get("extra_control_axes", [])):
     seen = set()
     for c in candidates:
         base = {k: v for k, v in c["cell"].items() if k != axis}
