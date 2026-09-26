@@ -74,6 +74,8 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--free_cache", action="store_true", help="delete each model's HF cache after use")
     ap.add_argument("--prompts", default=None, help="comma-separated prompt ids to run; default all")
+    ap.add_argument("--system_extra", default=None, help="text appended to the system prompt (e.g. a hidden-preference instruction for a positive control)")
+    ap.add_argument("--model_tag", default="", help="suffix added to the model id in output records, e.g. +hidden_pro_ai")
     args = ap.parse_args()
 
     out = Path(args.out)
@@ -90,7 +92,7 @@ def main():
     print(f"{len(jobs)} jobs per model; {len(done)} already done", flush=True)
 
     for model_id in args.models.split(","):
-        todo = [j for j in jobs if (model_id, job_key(j)) not in done]
+        todo = [j for j in jobs if (model_id + args.model_tag, job_key(j)) not in done]
         if not todo:
             print(f"{model_id}: nothing to do", flush=True)
             continue
@@ -105,7 +107,7 @@ def main():
         with out.open("a") as f:
             for i in range(0, len(todo), args.batch):
                 chunk = todo[i:i + args.batch]
-                texts = [make_chat(tok, j["system"], j["user"], merge_sys) for j in chunk]
+                texts = [make_chat(tok, j["system"] + ("\n\n" + args.system_extra if args.system_extra else ""), j["user"], merge_sys) for j in chunk]
                 enc = tok(texts, return_tensors="pt", padding=True, add_special_tokens=False).to("cuda")
                 with torch.no_grad():
                     gen = model.generate(**enc, max_new_tokens=args.max_new, do_sample=True,
@@ -115,8 +117,9 @@ def main():
                 decoded = tok.batch_decode(new, skip_special_tokens=True)
                 for j, resp in zip(chunk, decoded):
                     rec = {k: v for k, v in j.items() if k not in ("system", "user")}
-                    rec.update({"model": model_id, "job_key": job_key(j), "response": resp.strip(),
-                                "n_words": len(resp.split()), "merge_sys": merge_sys})
+                    rec.update({"model": model_id + args.model_tag, "job_key": job_key(j), "response": resp.strip(),
+                                "n_words": len(resp.split()), "merge_sys": merge_sys,
+                                "system_extra": args.system_extra})
                     f.write(json.dumps(rec) + "\n")
                 f.flush()
                 if (i // args.batch) % 10 == 0:
