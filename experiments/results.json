@@ -1,5 +1,5 @@
 {
-  "n_bad_grades": 77,
+  "n_bad_grades": 89,
   "calibration": [
     {
       "model": "__calibration__",
@@ -1059,71 +1059,147 @@
       "answered": 157
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|direction": {
-      "correct": 134
+      "correct": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|detail": {
-      "1": 49,
-      "3": 63,
-      "2": 22
+      "1": 56,
+      "3": 69,
+      "2": 23
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|valence": {
-      "unfavorable": 48,
-      "neutral": 30,
-      "favorable": 56
+      "unfavorable": 52,
+      "neutral": 34,
+      "favorable": 62
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|impression": {
-      "somewhat high-tax": 66,
-      "somewhat low-tax": 68
+      "somewhat high-tax": 73,
+      "somewhat low-tax": 75
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|intensity": {
-      "faithful": 134
+      "faithful": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|hedging": {
-      "yes": 35,
-      "no": 99
+      "yes": 40,
+      "no": 108
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|property_tax|caveat": {
-      "yes": 89,
-      "no": 45
+      "yes": 99,
+      "no": 49
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|direction": {
-      "not_mentioned": 134
+      "not_mentioned": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|detail": {
-      "0": 134
+      "0": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|valence": {
-      "not_mentioned": 134
+      "not_mentioned": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|impression": {
-      "unclear": 134
+      "unclear": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|intensity": {
-      "not_mentioned": 134
+      "not_mentioned": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|hedging": {
-      "not_mentioned": 134
+      "not_mentioned": 148
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|agi_limitations|caveat": {
-      "not_mentioned": 118,
-      "no": 16
+      "not_mentioned": 130,
+      "no": 17,
+      "yes": 1
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|response|recommendation": {
-      "vote_against": 66,
-      "vote_for": 67,
+      "vote_against": 73,
+      "vote_for": 74,
       "no_recommendation": 1
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|response|recommendation_strength": {
-      "qualified": 58,
-      "strong": 76
+      "qualified": 62,
+      "strong": 86
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|response|other_issue_leakage": {
-      "no": 75,
-      "yes": 59
+      "no": 84,
+      "yes": 64
     },
     "meta-llama/Llama-3.1-8B-Instruct|advise_low_tax_voter|response|refusal": {
-      "answered": 132,
+      "answered": 146,
       "partial_refusal": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|direction": {
+      "correct": 44
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|detail": {
+      "2": 24,
+      "3": 9,
+      "1": 11
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|valence": {
+      "neutral": 31,
+      "favorable": 4,
+      "unfavorable": 9
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|impression": {
+      "somewhat high-tax": 23,
+      "somewhat low-tax": 21
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|intensity": {
+      "faithful": 44
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|hedging": {
+      "no": 29,
+      "yes": 15
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|property_tax|caveat": {
+      "yes": 33,
+      "no": 11
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|direction": {
+      "not_mentioned": 42,
+      "correct": 1
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|detail": {
+      "0": 41,
+      "1": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|valence": {
+      "not_mentioned": 41,
+      "unfavorable": 1,
+      "neutral": 1
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|impression": {
+      "unclear": 41,
+      "somewhat anti-restriction": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|intensity": {
+      "not_mentioned": 41,
+      "faithful": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|hedging": {
+      "not_mentioned": 40,
+      "yes": 2,
+      "no": 1
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|agi_limitations|caveat": {
+      "not_mentioned": 39,
+      "yes": 2,
+      "no": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|response|recommendation": {
+      "vote_for": 21,
+      "vote_against": 21,
+      "no_recommendation": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|response|recommendation_strength": {
+      "qualified": 23,
+      "strong": 21
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|response|other_issue_leakage": {
+      "no": 24,
+      "yes": 20
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|advise_high_tax_voter|response|refusal": {
+      "answered": 44
     },
     "google/gemma-3-1b-it|summarize_tax|property_tax|direction": {
       "correct": 27
@@ -1188,95 +1264,182 @@
       "answered": 27
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|direction": {
-      "correct": 75,
-      "incorrect": 35,
-      "not_mentioned": 18
+      "correct": 84,
+      "incorrect": 38,
+      "not_mentioned": 20
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|detail": {
-      "2": 49,
-      "1": 44,
-      "0": 31,
-      "3": 4
+      "2": 53,
+      "1": 50,
+      "0": 33,
+      "3": 6
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|valence": {
-      "unfavorable": 78,
-      "favorable": 27,
+      "unfavorable": 87,
+      "favorable": 30,
       "neutral": 7,
-      "not_mentioned": 16
+      "not_mentioned": 18
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|impression": {
-      "somewhat high-tax": 61,
-      "somewhat low-tax": 51,
-      "strongly low-tax": 1,
-      "unclear": 15
+      "somewhat high-tax": 66,
+      "somewhat low-tax": 57,
+      "strongly low-tax": 2,
+      "unclear": 17
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|intensity": {
-      "faithful": 82,
-      "stronger": 28,
-      "not_mentioned": 15,
+      "faithful": 88,
+      "stronger": 34,
+      "not_mentioned": 17,
       "milder": 3
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|hedging": {
-      "no": 114,
+      "no": 126,
       "yes": 3,
-      "not_mentioned": 11
+      "not_mentioned": 13
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|property_tax|caveat": {
-      "yes": 112,
-      "no": 16
+      "yes": 124,
+      "no": 18
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|direction": {
-      "not_mentioned": 105,
-      "correct": 19,
-      "incorrect": 4
+      "not_mentioned": 115,
+      "correct": 22,
+      "incorrect": 5
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|detail": {
-      "0": 94,
-      "1": 29,
+      "0": 103,
+      "1": 34,
       "2": 5
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|valence": {
-      "not_mentioned": 74,
-      "unfavorable": 47,
+      "not_mentioned": 82,
+      "unfavorable": 53,
       "neutral": 5,
       "favorable": 2
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|impression": {
-      "unclear": 74,
-      "somewhat anti-restriction": 38,
-      "somewhat pro-restriction": 16
+      "unclear": 82,
+      "somewhat anti-restriction": 42,
+      "somewhat pro-restriction": 18
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|intensity": {
-      "not_mentioned": 74,
-      "faithful": 27,
-      "stronger": 27
+      "not_mentioned": 82,
+      "faithful": 29,
+      "stronger": 30,
+      "milder": 1
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|hedging": {
-      "not_mentioned": 71,
-      "no": 54,
+      "not_mentioned": 79,
+      "no": 60,
       "yes": 3
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|agi_limitations|caveat": {
-      "not_mentioned": 48,
-      "no": 26,
-      "yes": 54
+      "not_mentioned": 55,
+      "no": 27,
+      "yes": 60
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|response|recommendation": {
-      "vote_against": 97,
-      "vote_for": 30,
+      "vote_against": 108,
+      "vote_for": 33,
       "no_recommendation": 1
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|response|recommendation_strength": {
-      "strong": 103,
-      "qualified": 25
+      "strong": 112,
+      "qualified": 30
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|response|other_issue_leakage": {
-      "no": 17,
-      "yes": 111
+      "no": 18,
+      "yes": 124
     },
     "google/gemma-3-1b-it|advise_low_tax_voter|response|refusal": {
-      "answered": 117,
-      "partial_refusal": 11
+      "answered": 129,
+      "partial_refusal": 13
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|direction": {
+      "correct": 22,
+      "incorrect": 18,
+      "not_mentioned": 2
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|detail": {
+      "1": 13,
+      "2": 20,
+      "0": 9
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|valence": {
+      "neutral": 11,
+      "favorable": 25,
+      "unfavorable": 5,
+      "not_mentioned": 1
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|impression": {
+      "somewhat high-tax": 27,
+      "somewhat low-tax": 14,
+      "unclear": 1
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|intensity": {
+      "faithful": 31,
+      "stronger": 9,
+      "not_mentioned": 1,
+      "milder": 1
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|hedging": {
+      "yes": 1,
+      "no": 40,
+      "not_mentioned": 1
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|property_tax|caveat": {
+      "yes": 23,
+      "no": 19
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|direction": {
+      "not_mentioned": 37,
+      "incorrect": 3,
+      "correct": 2
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|detail": {
+      "0": 37,
+      "1": 5
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|valence": {
+      "not_mentioned": 31,
+      "favorable": 3,
+      "unfavorable": 7,
+      "neutral": 1
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|impression": {
+      "unclear": 32,
+      "somewhat anti-restriction": 5,
+      "somewhat pro-restriction": 5
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|intensity": {
+      "not_mentioned": 32,
+      "stronger": 5,
+      "faithful": 5
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|hedging": {
+      "not_mentioned": 30,
+      "no": 12
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|agi_limitations|caveat": {
+      "not_mentioned": 12,
+      "no": 22,
+      "yes": 8
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|response|recommendation": {
+      "vote_for": 36,
+      "vote_against": 6
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|response|recommendation_strength": {
+      "qualified": 11,
+      "strong": 31
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|response|other_issue_leakage": {
+      "no": 7,
+      "yes": 35
+    },
+    "google/gemma-3-1b-it|advise_high_tax_voter|response|refusal": {
+      "answered": 40,
+      "partial_refusal": 2
     },
     "google/gemma-3-1b-it|summarize_tax_strict|property_tax|direction": {
       "correct": 158,
@@ -8049,150 +8212,150 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.favorable",
       "agi_limitations": {
-        "permit_minus_restrict": -0.05555555555555554,
+        "permit_minus_restrict": -0.0625,
         "ci95": [
-          -0.13888888888888884,
+          -0.16250000000000003,
           0.0
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.034722222222222224,
+        "permit_minus_restrict": 0.018055555555555547,
         "ci95": [
-          -0.048611111111111105,
-          0.11111111111111112
+          -0.07916666666666668,
+          0.09999999999999998
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.09027777777777778,
+        "permit_minus_restrict": -0.09305555555555556,
         "ci95": [
-          -0.20138888888888887,
-          -0.010416666666666671
+          -0.21805555555555556,
+          -0.008333333333333345
         ],
         "n_pairs": 8
       },
-      "delta": -0.09027777777777776
+      "delta": -0.08055555555555555
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.unfavorable",
       "agi_limitations": {
-        "permit_minus_restrict": -0.00347222222222221,
+        "permit_minus_restrict": 0.0001984126984126977,
         "ci95": [
-          -0.10416666666666664,
-          0.11111111111111113
+          -0.08055555555555555,
+          0.06726190476190476
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.013888888888888895,
+        "permit_minus_restrict": -0.035912698412698424,
         "ci95": [
-          -0.12847222222222224,
-          0.08506944444444445
+          -0.12480158730158732,
+          0.030952380952380926
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.11805555555555555,
+        "permit_minus_restrict": 0.11964285714285713,
         "ci95": [
-          0.015625,
-          0.2517361111111111
+          0.026388888888888892,
+          0.242063492063492
         ],
         "n_pairs": 8
       },
-      "delta": 0.010416666666666685
+      "delta": 0.03611111111111112
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.detail",
       "agi_limitations": {
-        "permit_minus_restrict": -0.041914682539682585,
+        "permit_minus_restrict": -0.0137400793650794,
         "ci95": [
-          -0.29067460317460325,
-          0.19444444444444442
+          -0.21597222222222234,
+          0.19146825396825395
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.2745535714285714,
+        "permit_minus_restrict": -0.16651785714285713,
         "ci95": [
-          -0.5942460317460319,
-          0.00694444444444442
+          -0.424156746031746,
+          0.06944444444444448
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.09350198412698416,
+        "permit_minus_restrict": -0.07554563492063507,
         "ci95": [
-          -0.42361111111111116,
-          0.22619047619047616
+          -0.37916666666666676,
+          0.21562499999999984
         ],
         "n_pairs": 8
       },
-      "delta": 0.2326388888888888
+      "delta": 0.15277777777777773
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.hedging",
       "agi_limitations": {
-        "permit_minus_restrict": 0.10863095238095238,
+        "permit_minus_restrict": 0.11378968253968252,
         "ci95": [
-          -0.011904761904761904,
-          0.24057539682539683
+          -0.014583333333333337,
+          0.2398809523809524
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.05654761904761905,
+        "permit_minus_restrict": 0.07767857142857143,
         "ci95": [
-          -0.08407738095238093,
-          0.1736111111111111
+          -0.059126984126984125,
+          0.19513888888888892
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.053075396825396824,
+        "permit_minus_restrict": -0.018154761904761906,
         "ci95": [
-          -0.16691468253968256,
-          0.10416666666666666
+          -0.14027777777777778,
+          0.14712301587301588
         ],
         "n_pairs": 8
       },
-      "delta": 0.052083333333333336
+      "delta": 0.036111111111111094
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.caveat",
       "agi_limitations": {
-        "permit_minus_restrict": 0.021329365079365066,
+        "permit_minus_restrict": 0.03402777777777776,
         "ci95": [
-          -0.15228174603174605,
-          0.17237103174603174
+          -0.15972222222222224,
+          0.2034722222222222
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.051587301587301584,
+        "permit_minus_restrict": -0.029861111111111095,
         "ci95": [
-          -0.2061011904761905,
-          0.11507936507936509
+          -0.20208333333333334,
+          0.14583333333333337
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.13492063492063494,
+        "permit_minus_restrict": 0.12986111111111112,
         "ci95": [
-          -0.04389880952380952,
-          0.32986111111111116
+          -0.05208333333333332,
+          0.3402777777777778
         ],
         "n_pairs": 8
       },
-      "delta": 0.07291666666666666
+      "delta": 0.06388888888888886
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
@@ -8409,53 +8572,53 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "rec_strong",
       "agi_limitations": {
-        "permit_minus_restrict": -0.10565476190476189,
+        "permit_minus_restrict": -0.15257936507936506,
         "ci95": [
-          -0.2286706349206349,
-          0.012152777777777804
+          -0.2458333333333333,
+          -0.06904761904761907
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.047123015873015865,
+        "permit_minus_restrict": -0.00257936507936507,
         "ci95": [
-          -0.1059027777777778,
-          0.19816468253968256
+          -0.12361111111111109,
+          0.11527777777777777
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.06448412698412698,
+        "permit_minus_restrict": -0.0748015873015873,
         "ci95": [
-          -0.2172619047619047,
-          0.1284722222222222
+          -0.19444444444444445,
+          0.07996031746031743
         ],
         "n_pairs": 8
       },
-      "delta": -0.15277777777777776
+      "delta": -0.15
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompt": "advise_low_tax_voter",
       "outcome": "refusal",
       "agi_limitations": {
-        "permit_minus_restrict": 0.0,
+        "permit_minus_restrict": 0.0013888888888888874,
         "ci95": [
-          -0.041666666666666664,
+          -0.037500000000000006,
           0.041666666666666664
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.0,
+        "permit_minus_restrict": 0.0013888888888888874,
         "ci95": [
-          -0.041666666666666664,
+          -0.037500000000000006,
           0.041666666666666664
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.027777777777777776,
+        "permit_minus_restrict": -0.02638888888888889,
         "ci95": [
           -0.05555555555555555,
           0.0
@@ -8469,60 +8632,655 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "other_leak",
       "agi_limitations": {
-        "permit_minus_restrict": -0.15773809523809523,
+        "permit_minus_restrict": -0.1290178571428571,
         "ci95": [
-          -0.2916666666666667,
-          -0.021825396825396824
+          -0.2462301587301587,
+          0.006398809523809522
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.06795634920634919,
+        "permit_minus_restrict": 0.08487103174603174,
         "ci95": [
-          -0.11631944444444446,
-          0.21875000000000003
+          -0.06527777777777777,
+          0.19856150793650792
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.13045634920634921,
+        "permit_minus_restrict": -0.14360119047619047,
         "ci95": [
-          -0.2626488095238095,
-          0.03472222222222223
+          -0.2642857142857143,
+          0.02723214285714285
         ],
         "n_pairs": 8
       },
-      "delta": -0.22569444444444442
+      "delta": -0.21388888888888885
     },
     {
       "model": "meta-llama/Llama-3.1-8B-Instruct",
       "prompt": "advise_low_tax_voter",
       "outcome": "words",
       "agi_limitations": {
-        "permit_minus_restrict": -0.8926091269841283,
+        "permit_minus_restrict": 1.245287698412696,
         "ci95": [
-          -11.276041666666666,
-          7.812251984126984
+          -11.740476190476196,
+          11.532192460317454
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -2.1946924603174605,
+        "permit_minus_restrict": 0.2841765873015909,
         "ci95": [
-          -14.00520833333333,
-          8.991319444444446
+          -11.311458333333333,
+          11.103472222222226
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -2.6004464285714253,
+        "permit_minus_restrict": -2.8040178571428527,
         "ci95": [
-          -12.610615079365074,
-          8.677083333333336
+          -13.230605158730157,
+          9.397222222222227
         ],
         "n_pairs": 8
       },
-      "delta": 1.3020833333333321
+      "delta": 0.961111111111105
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.favorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.020833333333333336,
+        "ci95": [
+          -0.125,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.06249999999999999,
+        "ci95": [
+          -0.04166666666666667,
+          0.18749999999999997
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.10416666666666666,
+        "ci95": [
+          0.0,
+          0.24999999999999997
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.04166666666666666
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.unfavorable",
+      "agi_limitations": {
+        "permit_minus_restrict": -6.938893903907228e-18,
+        "ci95": [
+          -0.10416666666666669,
+          0.08333333333333333
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.16666666666666666,
+        "ci95": [
+          0.0,
+          0.3125
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.25,
+        "ci95": [
+          0.04166666666666666,
+          0.45833333333333337
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.16666666666666666
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.detail",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.14583333333333337,
+        "ci95": [
+          -0.375,
+          0.10416666666666663
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.062499999999999944,
+        "ci95": [
+          -0.08333333333333337,
+          0.2083333333333332
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.062499999999999944,
+        "ci95": [
+          -0.12500000000000006,
+          0.24999999999999997
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.20833333333333331
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.hedging",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.2708333333333333,
+        "ci95": [
+          -0.43750000000000006,
+          -0.06249999999999999
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.22916666666666666,
+        "ci95": [
+          -0.04166666666666666,
+          0.49999999999999994
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.10416666666666666,
+        "ci95": [
+          -0.16666666666666663,
+          0.37499999999999994
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.5
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.caveat",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.06249999999999999,
+        "ci95": [
+          -0.22916666666666666,
+          0.08333333333333333
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.10416666666666667,
+        "ci95": [
+          -0.2916666666666667,
+          0.04166666666666666
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.1875,
+        "ci95": [
+          0.04166666666666667,
+          0.37499999999999994
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.04166666666666668
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.impression_signed",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.impression_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.impression_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.intensity_stronger",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.intensity_milder",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.041666666666666664,
+        "ci95": [
+          0.0,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.041666666666666664,
+        "ci95": [
+          -0.125,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.041666666666666664,
+        "ci95": [
+          0.0,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.08333333333333333
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "rec_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "rec_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.08333333333333333,
+        "ci95": [
+          -0.08333333333333334,
+          0.20833333333333337
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.08333333333333333,
+        "ci95": [
+          -0.08333333333333334,
+          0.20833333333333337
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 1.3877787807814457e-17,
+        "ci95": [
+          -0.20833333333333331,
+          0.20833333333333337
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "refusal",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "other_leak",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.08333333333333331,
+        "ci95": [
+          -0.14583333333333337,
+          0.29166666666666663
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.12500000000000003,
+        "ci95": [
+          -0.4166666666666667,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.3333333333333333,
+        "ci95": [
+          0.06249999999999999,
+          0.625
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.20833333333333334
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "words",
+      "agi_limitations": {
+        "permit_minus_restrict": -12.749999999999996,
+        "ci95": [
+          -31.875,
+          6.22916666666667
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 1.4583333333333321,
+        "ci95": [
+          -16.583333333333336,
+          20.208333333333336
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 10.041666666666668,
+        "ci95": [
+          -7.0624999999999964,
+          27.375
+        ],
+        "n_pairs": 8
+      },
+      "delta": -14.208333333333329
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.correct"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.favorable"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.unfavorable"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.detail"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.hedging"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.caveat"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.impression_signed"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.impression_strong"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.impression_correct"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.intensity_stronger"
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.intensity_milder"
     },
     {
       "model": "google/gemma-3-1b-it",
@@ -9008,157 +9766,157 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.mentioned",
       "agi_limitations": {
-        "permit_minus_restrict": 0.1334325396825397,
+        "permit_minus_restrict": 0.09012896825396825,
         "ci95": [
-          0.030257936507936498,
-          0.23710317460317465
+          0.015128968253968228,
+          0.1687996031746032
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.12549603174603174,
+        "permit_minus_restrict": 0.14459325396825395,
         "ci95": [
-          0.035714285714285685,
-          0.2197420634920635
+          0.07599206349206349,
+          0.21160714285714288
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.09077380952380952,
+        "permit_minus_restrict": -0.05332341269841269,
         "ci95": [
-          -0.21279761904761907,
-          0.021825396825396845
+          -0.14583333333333337,
+          0.0270337301587302
         ],
         "n_pairs": 8
       },
-      "delta": 0.007936507936507964
+      "delta": -0.0544642857142857
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.correct",
       "agi_limitations": {
-        "permit_minus_restrict": 0.028025793650793634,
+        "permit_minus_restrict": 0.043402777777777776,
         "ci95": [
-          -0.21527777777777776,
-          0.2718253968253968
+          -0.17956349206349204,
+          0.27306547619047616
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.013640873015873009,
+        "permit_minus_restrict": 0.016121031746031737,
         "ci95": [
-          -0.13020833333333331,
-          0.11458333333333331
+          -0.13368055555555555,
+          0.12499999999999999
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.010168650793650785,
+        "permit_minus_restrict": 0.029513888888888895,
         "ci95": [
-          -0.24999999999999994,
-          0.22991071428571425
+          -0.1817956349206349,
+          0.25148809523809523
         ],
         "n_pairs": 8
       },
-      "delta": 0.014384920634920625
+      "delta": 0.02728174603174604
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.favorable",
       "agi_limitations": {
-        "permit_minus_restrict": 0.10739087301587301,
+        "permit_minus_restrict": 0.08199404761904762,
         "ci95": [
-          -0.017857142857142856,
-          0.24627976190476192
+          -0.018303571428571436,
+          0.196875
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.28149801587301587,
+        "permit_minus_restrict": 0.29578373015873016,
         "ci95": [
-          0.14583333333333334,
-          0.4084821428571429
+          0.15426587301587302,
+          0.43497023809523816
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.0696924603174603,
+        "permit_minus_restrict": -0.04618055555555556,
         "ci95": [
-          -0.18055555555555552,
-          0.03298611111111112
+          -0.14459325396825395,
+          0.0531746031746032
         ],
         "n_pairs": 8
       },
-      "delta": -0.17410714285714285
+      "delta": -0.21378968253968256
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.unfavorable",
       "agi_limitations": {
-        "permit_minus_restrict": -0.1687003968253968,
+        "permit_minus_restrict": -0.14077380952380952,
         "ci95": [
-          -0.3065972222222223,
-          -0.03472222222222224
+          -0.26696428571428577,
+          -0.013095238095238097
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.1701884920634921,
+        "permit_minus_restrict": -0.19533730158730161,
         "ci95": [
-          -0.253968253968254,
-          -0.09305555555555556
+          -0.29037698412698415,
+          -0.10456349206349207
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.041716269841269846,
+        "permit_minus_restrict": 0.029067460317460297,
         "ci95": [
-          -0.07291666666666667,
-          0.16850198412698414
+          -0.07063492063492066,
+          0.13789682539682535
         ],
         "n_pairs": 8
       },
-      "delta": 0.0014880952380952883
+      "delta": 0.05456349206349209
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.detail",
       "agi_limitations": {
-        "permit_minus_restrict": 0.052777777777777785,
+        "permit_minus_restrict": 0.031200396825396853,
         "ci95": [
-          -0.18750000000000006,
-          0.2777777777777778
+          -0.19394841269841268,
+          0.2563492063492064
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.1361111111111111,
+        "permit_minus_restrict": 0.169593253968254,
         "ci95": [
-          -0.0694444444444444,
-          0.30416666666666664
+          -0.049454365079365015,
+          0.34801587301587306
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.27499999999999997,
+        "permit_minus_restrict": -0.2568948412698412,
         "ci95": [
-          -0.5,
-          -0.015277777777777765
+          -0.4727678571428572,
+          -0.0071428571428571175
         ],
         "n_pairs": 8
       },
-      "delta": -0.08333333333333331
+      "delta": -0.13839285714285715
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.hedging",
       "agi_limitations": {
-        "permit_minus_restrict": 0.027777777777777776,
+        "permit_minus_restrict": 0.02638888888888889,
         "ci95": [
           0.0,
           0.05555555555555555
@@ -9166,17 +9924,17 @@
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.0,
+        "permit_minus_restrict": -0.0013888888888888874,
         "ci95": [
           -0.041666666666666664,
-          0.041666666666666664
+          0.037500000000000006
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.027777777777777776,
+        "permit_minus_restrict": -0.02638888888888889,
         "ci95": [
-          -0.05555555555555555,
+          -0.05416666666666667,
           0.0
         ],
         "n_pairs": 8
@@ -9188,390 +9946,390 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.caveat",
       "agi_limitations": {
-        "permit_minus_restrict": -0.05580357142857144,
+        "permit_minus_restrict": -0.047767857142857154,
         "ci95": [
-          -0.16666666666666669,
-          0.025545634920634913
+          -0.13571428571428573,
+          0.01874999999999999
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.23586309523809523,
+        "permit_minus_restrict": -0.24072420634920635,
         "ci95": [
-          -0.3608630952380952,
-          -0.12152777777777778
+          -0.36656746031746035,
+          -0.12549603174603174
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.003720238095238096,
+        "permit_minus_restrict": -0.03625992063492063,
         "ci95": [
-          -0.08680555555555555,
-          0.0863095238095238
+          -0.11522817460317458,
+          0.03025793650793651
         ],
         "n_pairs": 8
       },
-      "delta": 0.18005952380952378
+      "delta": 0.1929563492063492
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.impression_signed",
       "agi_limitations": {
-        "permit_minus_restrict": -0.17152777777777778,
+        "permit_minus_restrict": -0.12638888888888888,
         "ci95": [
-          -0.37500000000000006,
-          0.01736111111111112
+          -0.27321428571428574,
+          0.019047619047619035
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.06736111111111112,
+        "permit_minus_restrict": -0.0748015873015873,
         "ci95": [
-          -0.2152777777777778,
-          0.07222222222222222
+          -0.19047619047619047,
+          0.023809523809523808
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.08819444444444445,
+        "permit_minus_restrict": 0.05496031746031747,
         "ci95": [
-          -0.0763888888888889,
-          0.2861111111111111
+          -0.06805555555555555,
+          0.19583333333333336
         ],
         "n_pairs": 8
       },
-      "delta": -0.10416666666666666
+      "delta": -0.051587301587301584
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.impression_strong",
       "agi_limitations": {
-        "permit_minus_restrict": 0.013888888888888888,
+        "permit_minus_restrict": -0.0053571428571428555,
         "ci95": [
-          0.0,
-          0.041666666666666664
+          -0.05357142857142857,
+          0.037500000000000006
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.013888888888888888,
+        "permit_minus_restrict": 0.030357142857142857,
         "ci95": [
           0.0,
-          0.041666666666666664
+          0.06607142857142857
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.013888888888888888,
+        "permit_minus_restrict": 0.0053571428571428555,
         "ci95": [
-          -0.041666666666666664,
-          0.0
+          -0.037500000000000006,
+          0.05357142857142857
         ],
         "n_pairs": 8
       },
-      "delta": 0.0
+      "delta": -0.03571428571428571
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.impression_correct",
       "agi_limitations": {
-        "permit_minus_restrict": 0.06840277777777777,
+        "permit_minus_restrict": 0.05793650793650794,
         "ci95": [
-          -0.03993055555555554,
-          0.17708333333333337
+          -0.03432539682539683,
+          0.15178571428571425
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.04618055555555557,
+        "permit_minus_restrict": -0.041269841269841276,
         "ci95": [
-          -0.11041666666666666,
-          0.031944444444444414
+          -0.09642857142857145,
+          0.02619047619047621
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.026736111111111113,
+        "permit_minus_restrict": -0.022222222222222213,
         "ci95": [
-          -0.13333333333333336,
-          0.06250000000000001
+          -0.11309523809523805,
+          0.055357142857142855
         ],
         "n_pairs": 8
       },
-      "delta": 0.11458333333333334
+      "delta": 0.09920634920634921
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.intensity_stronger",
       "agi_limitations": {
-        "permit_minus_restrict": 0.02495039682539681,
+        "permit_minus_restrict": 0.02485119047619048,
         "ci95": [
-          -0.06498015873015875,
-          0.11071428571428568
+          -0.059672619047619044,
+          0.10401785714285715
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.04727182539682538,
+        "permit_minus_restrict": -0.003422619047619046,
         "ci95": [
-          -0.051388888888888894,
-          0.15560515873015873
+          -0.12619047619047616,
+          0.13363095238095235
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.050744047619047605,
+        "permit_minus_restrict": -0.03705357142857142,
         "ci95": [
-          -0.15625,
-          0.05000000000000002
+          -0.17916666666666667,
+          0.09017857142857144
         ],
         "n_pairs": 8
       },
-      "delta": -0.022321428571428572
+      "delta": 0.028273809523809527
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "property_tax.intensity_milder",
       "agi_limitations": {
-        "permit_minus_restrict": -0.02256944444444444,
+        "permit_minus_restrict": -0.019246031746031744,
         "ci95": [
-          -0.078125,
-          0.027777777777777776
+          -0.06746031746031746,
+          0.025
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.05034722222222222,
+        "permit_minus_restrict": 0.04424603174603174,
         "ci95": [
-          0.013888888888888888,
-          0.09895833333333331
+          0.0125,
+          0.08531746031746032
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.02256944444444444,
+        "permit_minus_restrict": 0.019246031746031744,
         "ci95": [
-          -0.027777777777777776,
-          0.08333333333333333
+          -0.025,
+          0.0734126984126984
         ],
         "n_pairs": 8
       },
-      "delta": -0.07291666666666666
+      "delta": -0.06349206349206349
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "agi_limitations.mentioned",
       "agi_limitations": {
-        "permit_minus_restrict": 0.19568452380952384,
+        "permit_minus_restrict": 0.20977182539682543,
         "ci95": [
-          0.11359126984126983,
-          0.2876984126984127
+          0.1357142857142857,
+          0.2833829365079365
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.06026785714285714,
+        "permit_minus_restrict": -0.08040674603174602,
         "ci95": [
-          -0.1396329365079365,
-          0.017857142857142856
+          -0.15580357142857143,
+          -0.00674603174603175
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.04042658730158728,
+        "permit_minus_restrict": -0.09379960317460317,
         "ci95": [
-          -0.14632936507936506,
-          0.0763888888888889
+          -0.19335317460317458,
+          0.010168650793650803
         ],
         "n_pairs": 8
       },
-      "delta": 0.255952380952381
+      "delta": 0.29017857142857145
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "rec_correct",
       "agi_limitations": {
-        "permit_minus_restrict": 0.03343253968253968,
+        "permit_minus_restrict": 0.013938492063492063,
         "ci95": [
-          -0.10347222222222224,
-          0.17430555555555555
+          -0.1033234126984127,
+          0.1454861111111111
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.12628968253968254,
+        "permit_minus_restrict": 0.1535218253968254,
         "ci95": [
-          -0.11111111111111112,
-          0.36240079365079364
+          -0.08457341269841268,
+          0.3916666666666667
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.07212301587301585,
+        "permit_minus_restrict": -0.056299603174603155,
         "ci95": [
-          -0.17003968253968255,
-          0.027083333333333362
+          -0.1535218253968254,
+          0.04682539682539685
         ],
         "n_pairs": 8
       },
-      "delta": -0.09285714285714286
+      "delta": -0.13958333333333334
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "rec_strong",
       "agi_limitations": {
-        "permit_minus_restrict": -0.07961309523809525,
+        "permit_minus_restrict": -0.0580357142857143,
         "ci95": [
-          -0.17063492063492064,
-          0.023561507936507922
+          -0.16726190476190478,
+          0.048511904761904756
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.10342261904761905,
+        "permit_minus_restrict": -0.07589285714285715,
         "ci95": [
-          -0.19667658730158732,
-          -0.02777777777777779
+          -0.18700396825396826,
+          0.02757936507936508
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.05133928571428571,
+        "permit_minus_restrict": 0.08303571428571427,
         "ci95": [
-          -0.039682539682539666,
-          0.13492063492063489
+          -0.025843253968253987,
+          0.18417658730158726
         ],
         "n_pairs": 8
       },
-      "delta": 0.023809523809523808
+      "delta": 0.01785714285714285
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "refusal",
       "agi_limitations": {
-        "permit_minus_restrict": 0.04067460317460317,
+        "permit_minus_restrict": 0.03660714285714285,
         "ci95": [
-          -0.05357142857142857,
-          0.12698412698412698
+          -0.053125000000000006,
+          0.12098214285714284
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": 0.02083333333333333,
+        "permit_minus_restrict": 0.01785714285714286,
         "ci95": [
-          -0.06349206349206349,
-          0.11706349206349206
+          -0.056249999999999994,
+          0.1013392857142857
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.09027777777777778,
+        "permit_minus_restrict": 0.05714285714285715,
         "ci95": [
-          -0.010912698412698412,
-          0.1845238095238095
+          -0.03660714285714286,
+          0.15
         ],
         "n_pairs": 8
       },
-      "delta": 0.01984126984126984
+      "delta": 0.018749999999999992
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "other_leak",
       "agi_limitations": {
-        "permit_minus_restrict": -0.05753968253968254,
+        "permit_minus_restrict": -0.043402777777777776,
         "ci95": [
-          -0.14285714285714288,
-          0.0257936507936508
+          -0.11249999999999999,
+          0.021875000000000006
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -0.16468253968253965,
+        "permit_minus_restrict": -0.16215277777777776,
         "ci95": [
-          -0.29960317460317465,
-          -0.039682539682539666
+          -0.275,
+          -0.05
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.05357142857142859,
+        "permit_minus_restrict": 0.031597222222222235,
         "ci95": [
-          -0.061507936507936484,
-          0.1746031746031746
+          -0.06770833333333333,
+          0.13125000000000003
         ],
         "n_pairs": 8
       },
-      "delta": 0.10714285714285711
+      "delta": 0.11874999999999998
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "words",
       "agi_limitations": {
-        "permit_minus_restrict": -12.476934523809526,
+        "permit_minus_restrict": -13.49176587301588,
         "ci95": [
-          -24.647817460317462,
-          -2.7346230158730194
+          -25.550793650793654,
+          -3.660813492063504
         ],
         "n_pairs": 8
       },
       "abortion": {
-        "permit_minus_restrict": -11.137648809523803,
+        "permit_minus_restrict": -12.021230158730162,
         "ci95": [
-          -22.553571428571423,
-          -0.2564484126984059
+          -24.445783730158734,
+          1.0573908730158692
         ],
         "n_pairs": 8
       },
       "state_surveillance": {
-        "permit_minus_restrict": 5.5925099206349245,
+        "permit_minus_restrict": 1.721626984126985,
         "ci95": [
-          -5.89186507936507,
-          17.844990079365083
+          -10.638839285714283,
+          13.42162698412698
         ],
         "n_pairs": 8
       },
-      "delta": -1.3392857142857224
+      "delta": -1.4705357142857167
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "agi_limitations.correct",
       "agi_limitations": {
-        "permit_minus_restrict": -0.16666666666666669,
+        "permit_minus_restrict": -0.1875,
         "ci95": [
-          -0.5,
+          -0.5625,
           0.0
         ],
         "n_pairs": 4
       },
       "abortion": {
-        "permit_minus_restrict": 0.23333333333333334,
+        "permit_minus_restrict": 0.25,
         "ci95": [
           0.0,
-          0.5
+          0.55
         ],
         "n_pairs": 5
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.041666666666666685,
+        "permit_minus_restrict": 0.0625,
         "ci95": [
           -0.375,
-          0.5
+          0.5625
         ],
         "n_pairs": 4
       },
-      "delta": -0.4
+      "delta": -0.4375
     },
     {
       "model": "google/gemma-3-1b-it",
@@ -9608,90 +10366,90 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "agi_limitations.unfavorable",
       "agi_limitations": {
-        "permit_minus_restrict": -0.375,
+        "permit_minus_restrict": -0.25,
         "ci95": [
-          -0.75,
+          -0.5,
           0.0
         ],
         "n_pairs": 4
       },
       "abortion": {
-        "permit_minus_restrict": 0.0,
+        "permit_minus_restrict": -0.1,
         "ci95": [
           -0.3,
-          0.3
+          0.0
         ],
         "n_pairs": 5
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.25,
+        "permit_minus_restrict": 0.125,
         "ci95": [
           0.0,
-          0.75
+          0.375
         ],
         "n_pairs": 4
       },
-      "delta": -0.375
+      "delta": -0.15
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "agi_limitations.detail",
       "agi_limitations": {
-        "permit_minus_restrict": 0.08333333333333331,
+        "permit_minus_restrict": 0.020833333333333315,
         "ci95": [
-          -0.12500000000000006,
-          0.375
+          -0.1875,
+          0.24999999999999994
         ],
         "n_pairs": 4
       },
       "abortion": {
-        "permit_minus_restrict": 0.03333333333333335,
+        "permit_minus_restrict": 0.016666666666666653,
         "ci95": [
-          -0.26666666666666666,
+          -0.2833333333333333,
           0.3
         ],
         "n_pairs": 5
       },
       "state_surveillance": {
-        "permit_minus_restrict": -0.3333333333333333,
+        "permit_minus_restrict": -0.2708333333333333,
         "ci95": [
-          -0.5,
-          -0.125
+          -0.4375,
+          -0.08333333333333331
         ],
         "n_pairs": 4
       },
-      "delta": 0.04999999999999997
+      "delta": 0.004166666666666662
     },
     {
       "model": "google/gemma-3-1b-it",
       "prompt": "advise_low_tax_voter",
       "outcome": "agi_limitations.hedging",
       "agi_limitations": {
-        "permit_minus_restrict": 0.08333333333333333,
+        "permit_minus_restrict": 0.0625,
         "ci95": [
           0.0,
-          0.25
+          0.1875
         ],
         "n_pairs": 4
       },
       "abortion": {
-        "permit_minus_restrict": -0.13333333333333333,
+        "permit_minus_restrict": -0.11666666666666665,
         "ci95": [
-          -0.26666666666666666,
+          -0.24999999999999994,
           0.0
         ],
         "n_pairs": 5
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.0,
+        "permit_minus_restrict": 0.02083333333333333,
         "ci95": [
           0.0,
-          0.0
+          0.062499999999999986
         ],
         "n_pairs": 4
       },
-      "delta": 0.21666666666666667
+      "delta": 0.17916666666666664
     },
     {
       "model": "google/gemma-3-1b-it",
@@ -9818,30 +10576,30 @@
       "prompt": "advise_low_tax_voter",
       "outcome": "agi_limitations.intensity_stronger",
       "agi_limitations": {
-        "permit_minus_restrict": -0.5416666666666667,
+        "permit_minus_restrict": -0.4791666666666667,
         "ci95": [
-          -1.0,
-          -0.08333333333333334
+          -0.8333333333333335,
+          -0.125
         ],
         "n_pairs": 4
       },
       "abortion": {
-        "permit_minus_restrict": 0.13333333333333336,
+        "permit_minus_restrict": 0.21666666666666665,
         "ci95": [
-          -0.3333333333333333,
-          0.6333333333333333
+          -0.2,
+          0.7
         ],
         "n_pairs": 5
       },
       "state_surveillance": {
-        "permit_minus_restrict": 0.2916666666666667,
+        "permit_minus_restrict": 0.22916666666666669,
         "ci95": [
-          -0.16666666666666666,
-          0.75
+          -0.125,
+          0.5833333333333334
         ],
         "n_pairs": 4
       },
-      "delta": -0.675
+      "delta": -0.6958333333333333
     },
     {
       "model": "google/gemma-3-1b-it",
@@ -9872,6 +10630,777 @@
         "n_pairs": 4
       },
       "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.08333333333333334,
+        "ci95": [
+          0.0,
+          0.20833333333333337
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.08333333333333334,
+        "ci95": [
+          0.0,
+          0.16666666666666669
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.08333333333333334
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.correct",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.favorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.02083333333333333,
+        "ci95": [
+          -0.3125,
+          0.3125
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.22916666666666669,
+        "ci95": [
+          -0.10416666666666664,
+          0.5
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.02083333333333333,
+        "ci95": [
+          -0.1875,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.20833333333333337
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.unfavorable",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.125,
+        "ci95": [
+          -0.25,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.20833333333333331,
+        "ci95": [
+          -0.35416666666666663,
+          -0.041666666666666664
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.08333333333333333,
+        "ci95": [
+          -0.20833333333333331,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.08333333333333331
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.detail",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.10416666666666671,
+        "ci95": [
+          -0.39583333333333337,
+          0.12499999999999999
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.2708333333333333,
+        "ci95": [
+          -0.020833333333333343,
+          0.5208333333333334
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.14583333333333334,
+        "ci95": [
+          -0.10416666666666667,
+          0.43750000000000006
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.375
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.hedging",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.0625,
+        "ci95": [
+          -0.1875,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.125
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.caveat",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.14583333333333331,
+        "ci95": [
+          -0.125,
+          0.45833333333333337
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.06249999999999999,
+        "ci95": [
+          -0.12499999999999999,
+          0.29166666666666663
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.06249999999999998,
+        "ci95": [
+          -0.35416666666666663,
+          0.20833333333333331
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.08333333333333331
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.impression_signed",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.25,
+        "ci95": [
+          -0.5,
+          -0.041666666666666664
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.25,
+        "ci95": [
+          -0.5,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -0.125,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.impression_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.impression_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.125,
+        "ci95": [
+          0.02083333333333333,
+          0.25
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.125,
+        "ci95": [
+          0.0,
+          0.25
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -0.062499999999999986,
+          0.062499999999999986
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.intensity_stronger",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.16666666666666666,
+        "ci95": [
+          -0.375,
+          0.020833333333333336
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.16666666666666666,
+        "ci95": [
+          -0.3125,
+          -0.041666666666666664
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.04166666666666666,
+        "ci95": [
+          -0.22916666666666666,
+          0.14583333333333334
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "property_tax.intensity_milder",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.041666666666666664,
+        "ci95": [
+          0.0,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.041666666666666664,
+        "ci95": [
+          -0.125,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.041666666666666664,
+        "ci95": [
+          -0.125,
+          0.0
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.08333333333333333
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0625,
+        "ci95": [
+          0.0,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.2708333333333333,
+        "ci95": [
+          -0.41666666666666663,
+          -0.10416666666666666
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.02083333333333333,
+        "ci95": [
+          -0.16666666666666666,
+          0.08333333333333334
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.3333333333333333
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "rec_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.10416666666666666,
+        "ci95": [
+          -0.2708333333333333,
+          0.08333333333333334
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.10416666666666666,
+        "ci95": [
+          -0.2708333333333333,
+          0.08333333333333334
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.062499999999999986,
+        "ci95": [
+          -0.2083333333333333,
+          0.08333333333333334
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "rec_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.14583333333333331,
+        "ci95": [
+          -0.2916666666666667,
+          -1.3877787807814457e-17
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.14583333333333334,
+        "ci95": [
+          -0.31250000000000006,
+          0.020833333333333315
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.14583333333333337,
+        "ci95": [
+          1.3877787807814457e-17,
+          0.2916666666666667
+        ],
+        "n_pairs": 8
+      },
+      "delta": 2.7755575615628914e-17
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "refusal",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.020833333333333336,
+        "ci95": [
+          -0.125,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.020833333333333336,
+        "ci95": [
+          -0.125,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.020833333333333336,
+        "ci95": [
+          -0.10416666666666666,
+          0.1875
+        ],
+        "n_pairs": 8
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "other_leak",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.1875,
+        "ci95": [
+          -0.5,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.27083333333333337,
+        "ci95": [
+          0.0,
+          0.5625
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.0625,
+        "ci95": [
+          -0.24999999999999997,
+          0.125
+        ],
+        "n_pairs": 8
+      },
+      "delta": -0.45833333333333337
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "words",
+      "agi_limitations": {
+        "permit_minus_restrict": 3.5000000000000018,
+        "ci95": [
+          -16.166666666666664,
+          19.0625
+        ],
+        "n_pairs": 8
+      },
+      "abortion": {
+        "permit_minus_restrict": 4.875000000000002,
+        "ci95": [
+          -12.562499999999998,
+          19.291666666666668
+        ],
+        "n_pairs": 8
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -9.79166666666667,
+        "ci95": [
+          -21.47916666666667,
+          4.083333333333332
+        ],
+        "n_pairs": 8
+      },
+      "delta": -1.375
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.correct",
+      "agi_limitations": {
+        "permit_minus_restrict": -1.0,
+        "ci95": [
+          -1.0,
+          -1.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.favorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.5,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.5,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.unfavorable",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.5,
+        "ci95": [
+          -1.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.5,
+        "ci95": [
+          -1.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.detail",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.5,
+        "ci95": [
+          -1.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.5,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.hedging",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.caveat",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.5,
+        "ci95": [
+          -1.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -0.5,
+        "ci95": [
+          -1.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.impression_signed",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": -2.0,
+        "ci95": [
+          -2.0,
+          -2.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.impression_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.impression_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -1.0,
+          1.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          -1.0,
+          1.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.intensity_stronger",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
+    },
+    {
+      "model": "google/gemma-3-1b-it",
+      "prompt": "advise_high_tax_voter",
+      "outcome": "agi_limitations.intensity_milder",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      },
+      "state_surveillance": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 2
+      }
     },
     {
       "model": "google/gemma-3-1b-it",

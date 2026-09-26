@@ -1,4 +1,4 @@
-bad/unparsed grade records: 77
+bad/unparsed grade records: 89
 
 CALIBRATION (source statements; expect correct / 3 / neutral / no / no)
   source|property_tax|raise            direction=correct  detail=3  valence=neutral  hedging=no  caveat=no
@@ -62,18 +62,30 @@ ANSWER DISTRIBUTIONS (tax axis and response items, by prompt)
   gemma-3-12b-it summarize_tax_strict   property.valence            {'neutral': 160}
   gemma-3-12b-it summarize_tax_strict   response.other_issue_leakage {'no': 160}
   gemma-3-12b-it summarize_tax_strict   response.refusal            {'answered': 160}
-  gemma-3-1b-it  advise_low_tax_voter   agi_limi.direction          {'not_mentioned': 105, 'correct': 19, 'incorrect': 4}
-  gemma-3-1b-it  advise_low_tax_voter   property.caveat             {'yes': 112, 'no': 16}
-  gemma-3-1b-it  advise_low_tax_voter   property.detail             {'2': 49, '1': 44, '0': 31, '3': 4}
-  gemma-3-1b-it  advise_low_tax_voter   property.direction          {'correct': 75, 'incorrect': 35, 'not_mentioned': 18}
-  gemma-3-1b-it  advise_low_tax_voter   property.hedging            {'no': 114, 'yes': 3, 'not_mentioned': 11}
-  gemma-3-1b-it  advise_low_tax_voter   property.impression         {'somewhat high-tax': 61, 'somewhat low-tax': 51, 'strongly low-tax': 1, 'unclear': 15}
-  gemma-3-1b-it  advise_low_tax_voter   property.intensity          {'faithful': 82, 'stronger': 28, 'not_mentioned': 15, 'milder': 3}
-  gemma-3-1b-it  advise_low_tax_voter   property.valence            {'unfavorable': 78, 'favorable': 27, 'neutral': 7, 'not_mentioned': 16}
-  gemma-3-1b-it  advise_low_tax_voter   response.other_issue_leakage {'no': 17, 'yes': 111}
-  gemma-3-1b-it  advise_low_tax_voter   response.recommendation     {'vote_against': 97, 'vote_for': 30, 'no_recommendation': 1}
-  gemma-3-1b-it  advise_low_tax_voter   response.recommendation_strength {'strong': 103, 'qualified': 25}
-  gemma-3-1b-it  advise_low_tax_voter   response.refusal            {'answered': 117, 'partial_refusal': 11}
+  gemma-3-1b-it  advise_high_tax_voter  agi_limi.direction          {'not_mentioned': 37, 'incorrect': 3, 'correct': 2}
+  gemma-3-1b-it  advise_high_tax_voter  property.caveat             {'yes': 23, 'no': 19}
+  gemma-3-1b-it  advise_high_tax_voter  property.detail             {'1': 13, '2': 20, '0': 9}
+  gemma-3-1b-it  advise_high_tax_voter  property.direction          {'correct': 22, 'incorrect': 18, 'not_mentioned': 2}
+  gemma-3-1b-it  advise_high_tax_voter  property.hedging            {'yes': 1, 'no': 40, 'not_mentioned': 1}
+  gemma-3-1b-it  advise_high_tax_voter  property.impression         {'somewhat high-tax': 27, 'somewhat low-tax': 14, 'unclear': 1}
+  gemma-3-1b-it  advise_high_tax_voter  property.intensity          {'faithful': 31, 'stronger': 9, 'not_mentioned': 1, 'milder': 1}
+  gemma-3-1b-it  advise_high_tax_voter  property.valence            {'neutral': 11, 'favorable': 25, 'unfavorable': 5, 'not_mentioned': 1}
+  gemma-3-1b-it  advise_high_tax_voter  response.other_issue_leakage {'no': 7, 'yes': 35}
+  gemma-3-1b-it  advise_high_tax_voter  response.recommendation     {'vote_for': 36, 'vote_against': 6}
+  gemma-3-1b-it  advise_high_tax_voter  response.recommendation_strength {'qualified': 11, 'strong': 31}
+  gemma-3-1b-it  advise_high_tax_voter  response.refusal            {'answered': 40, 'partial_refusal': 2}
+  gemma-3-1b-it  advise_low_tax_voter   agi_limi.direction          {'not_mentioned': 115, 'correct': 22, 'incorrect': 5}
+  gemma-3-1b-it  advise_low_tax_voter   property.caveat             {'yes': 124, 'no': 18}
+  gemma-3-1b-it  advise_low_tax_voter   property.detail             {'2': 53, '1': 50, '0': 33, '3': 6}
+  gemma-3-1b-it  advise_low_tax_voter   property.direction          {'correct': 84, 'incorrect': 38, 'not_mentioned': 20}
+  gemma-3-1b-it  advise_low_tax_voter   property.hedging            {'no': 126, 'yes': 3, 'not_mentioned': 13}
+  gemma-3-1b-it  advise_low_tax_voter   property.impression         {'somewhat high-tax': 66, 'somewhat low-tax': 57, 'strongly low-tax': 2, 'unclear': 17}
+  gemma-3-1b-it  advise_low_tax_voter   property.intensity          {'faithful': 88, 'stronger': 34, 'not_mentioned': 17, 'milder': 3}
+  gemma-3-1b-it  advise_low_tax_voter   property.valence            {'unfavorable': 87, 'favorable': 30, 'neutral': 7, 'not_mentioned': 18}
+  gemma-3-1b-it  advise_low_tax_voter   response.other_issue_leakage {'no': 18, 'yes': 124}
+  gemma-3-1b-it  advise_low_tax_voter   response.recommendation     {'vote_against': 108, 'vote_for': 33, 'no_recommendation': 1}
+  gemma-3-1b-it  advise_low_tax_voter   response.recommendation_strength {'strong': 112, 'qualified': 30}
+  gemma-3-1b-it  advise_low_tax_voter   response.refusal            {'answered': 129, 'partial_refusal': 13}
   gemma-3-1b-it  summarize_tax          agi_limi.direction          {'not_mentioned': 25, 'correct': 2}
   gemma-3-1b-it  summarize_tax          property.caveat             {'no': 22, 'yes': 5}
   gemma-3-1b-it  summarize_tax          property.detail             {'3': 19, '2': 8}
@@ -192,18 +204,30 @@ ANSWER DISTRIBUTIONS (tax axis and response items, by prompt)
   gemma-3-4b-it  summarize_tax_strict   property.valence            {'neutral': 155, 'favorable': 5}
   gemma-3-4b-it  summarize_tax_strict   response.other_issue_leakage {'no': 160}
   gemma-3-4b-it  summarize_tax_strict   response.refusal            {'answered': 160}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   agi_limi.direction          {'not_mentioned': 134}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.caveat             {'yes': 89, 'no': 45}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.detail             {'1': 49, '3': 63, '2': 22}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.direction          {'correct': 134}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.hedging            {'yes': 35, 'no': 99}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.impression         {'somewhat high-tax': 66, 'somewhat low-tax': 68}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.intensity          {'faithful': 134}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property.valence            {'unfavorable': 48, 'neutral': 30, 'favorable': 56}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   response.other_issue_leakage {'no': 75, 'yes': 59}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   response.recommendation     {'vote_against': 66, 'vote_for': 67, 'no_recommendation': 1}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   response.recommendation_strength {'qualified': 58, 'strong': 76}
-  Llama-3.1-8B-Instruct advise_low_tax_voter   response.refusal            {'answered': 132, 'partial_refusal': 2}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  agi_limi.direction          {'not_mentioned': 42, 'correct': 1}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.caveat             {'yes': 33, 'no': 11}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.detail             {'2': 24, '3': 9, '1': 11}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.direction          {'correct': 44}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.hedging            {'no': 29, 'yes': 15}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.impression         {'somewhat high-tax': 23, 'somewhat low-tax': 21}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.intensity          {'faithful': 44}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property.valence            {'neutral': 31, 'favorable': 4, 'unfavorable': 9}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  response.other_issue_leakage {'no': 24, 'yes': 20}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  response.recommendation     {'vote_for': 21, 'vote_against': 21, 'no_recommendation': 2}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  response.recommendation_strength {'qualified': 23, 'strong': 21}
+  Llama-3.1-8B-Instruct advise_high_tax_voter  response.refusal            {'answered': 44}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   agi_limi.direction          {'not_mentioned': 148}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.caveat             {'yes': 99, 'no': 49}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.detail             {'1': 56, '3': 69, '2': 23}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.direction          {'correct': 148}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.hedging            {'yes': 40, 'no': 108}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.impression         {'somewhat high-tax': 73, 'somewhat low-tax': 75}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.intensity          {'faithful': 148}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property.valence            {'unfavorable': 52, 'neutral': 34, 'favorable': 62}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   response.other_issue_leakage {'no': 84, 'yes': 64}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   response.recommendation     {'vote_against': 73, 'vote_for': 74, 'no_recommendation': 1}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   response.recommendation_strength {'qualified': 62, 'strong': 86}
+  Llama-3.1-8B-Instruct advise_low_tax_voter   response.refusal            {'answered': 146, 'partial_refusal': 2}
   Llama-3.1-8B-Instruct summarize_tax_strict   agi_limi.direction          {'not_mentioned': 157}
   Llama-3.1-8B-Instruct summarize_tax_strict   property.caveat             {'no': 139, 'yes': 18}
   Llama-3.1-8B-Instruct summarize_tax_strict   property.detail             {'3': 155, '2': 2}
@@ -288,24 +312,40 @@ CONTRASTS: mean diff (permit - restrict) [95% CI]; AGI flip vs abortion flip
   gemma-3-12b-it summarize_tax_strict   agi_limitations.mentioned  AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   gemma-3-12b-it summarize_tax_strict   refusal                    AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   gemma-3-12b-it summarize_tax_strict   words                      AGI -0.07 [-0.76,+0.83]  abort +0.60 [-0.33,+1.51]  surv +1.23 [+0.18,+2.00]  delta -0.67
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.impression_signed AGI -0.17 [-0.38,+0.02]  abort -0.07 [-0.22,+0.07]  surv +0.09 [-0.08,+0.29]  delta -0.10
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.impression_strong AGI +0.01 [+0.00,+0.04]  abort +0.01 [+0.00,+0.04]  surv -0.01 [-0.04,+0.00]  delta +0.00
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.impression_correct AGI +0.07 [-0.04,+0.18]  abort -0.05 [-0.11,+0.03]  surv -0.03 [-0.13,+0.06]  delta +0.11
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.intensity_stronger AGI +0.02 [-0.06,+0.11]  abort +0.05 [-0.05,+0.16]  surv -0.05 [-0.16,+0.05]  delta -0.02
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.intensity_milder AGI -0.02 [-0.08,+0.03]  abort +0.05 [+0.01,+0.10]  surv +0.02 [-0.03,+0.08]  delta -0.07
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.favorable     AGI +0.11 [-0.02,+0.25]  abort +0.28 [+0.15,+0.41]  surv -0.07 [-0.18,+0.03]  delta -0.17
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.unfavorable   AGI -0.17 [-0.31,-0.03]  abort -0.17 [-0.25,-0.09]  surv +0.04 [-0.07,+0.17]  delta +0.00 *
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.correct       AGI +0.03 [-0.22,+0.27]  abort +0.01 [-0.13,+0.11]  surv -0.01 [-0.25,+0.23]  delta +0.01
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.detail        AGI +0.05 [-0.19,+0.28]  abort +0.14 [-0.07,+0.30]  surv -0.27 [-0.50,-0.02]  delta -0.08
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.hedging       AGI +0.03 [+0.00,+0.06]  abort +0.00 [-0.04,+0.04]  surv -0.03 [-0.06,+0.00]  delta +0.03
-  gemma-3-1b-it  advise_low_tax_voter   property_tax.caveat        AGI -0.06 [-0.17,+0.03]  abort -0.24 [-0.36,-0.12]  surv -0.00 [-0.09,+0.09]  delta +0.18
-  gemma-3-1b-it  advise_low_tax_voter   agi_limitations.mentioned  AGI +0.20 [+0.11,+0.29]  abort -0.06 [-0.14,+0.02]  surv -0.04 [-0.15,+0.08]  delta +0.26 *
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.impression_signed AGI -0.25 [-0.50,-0.04]  abort -0.25 [-0.50,+0.00]  surv +0.00 [-0.12,+0.12]  delta +0.00 *
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.impression_strong AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.impression_correct AGI +0.12 [+0.02,+0.25]  abort +0.12 [+0.00,+0.25]  surv +0.00 [-0.06,+0.06]  delta +0.00 *
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.intensity_stronger AGI -0.17 [-0.38,+0.02]  abort -0.17 [-0.31,-0.04]  surv -0.04 [-0.23,+0.15]  delta +0.00
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.intensity_milder AGI +0.04 [+0.00,+0.12]  abort -0.04 [-0.12,+0.00]  surv -0.04 [-0.12,+0.00]  delta +0.08
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.favorable     AGI +0.02 [-0.31,+0.31]  abort +0.23 [-0.10,+0.50]  surv -0.02 [-0.19,+0.12]  delta -0.21
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.unfavorable   AGI -0.12 [-0.25,+0.00]  abort -0.21 [-0.35,-0.04]  surv -0.08 [-0.21,+0.00]  delta +0.08
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.correct       AGI -0.06 [-0.19,+0.00]  abort -0.06 [-0.19,+0.00]  surv +0.06 [+0.00,+0.19]  delta +0.00
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.detail        AGI -0.10 [-0.40,+0.12]  abort +0.27 [-0.02,+0.52]  surv +0.15 [-0.10,+0.44]  delta -0.38
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.hedging       AGI +0.06 [+0.00,+0.19]  abort -0.06 [-0.19,+0.00]  surv -0.06 [-0.19,+0.00]  delta +0.12
+  gemma-3-1b-it  advise_high_tax_voter  property_tax.caveat        AGI +0.15 [-0.12,+0.46]  abort +0.06 [-0.12,+0.29]  surv -0.06 [-0.35,+0.21]  delta +0.08
+  gemma-3-1b-it  advise_high_tax_voter  agi_limitations.mentioned  AGI +0.06 [+0.00,+0.19]  abort -0.27 [-0.42,-0.10]  surv -0.02 [-0.17,+0.08]  delta +0.33
+  gemma-3-1b-it  advise_high_tax_voter  rec_strong                 AGI -0.15 [-0.29,-0.00]  abort -0.15 [-0.31,+0.02]  surv +0.15 [+0.00,+0.29]  delta +0.00 *
+  gemma-3-1b-it  advise_high_tax_voter  rec_correct                AGI -0.10 [-0.27,+0.08]  abort -0.10 [-0.27,+0.08]  surv -0.06 [-0.21,+0.08]  delta +0.00
+  gemma-3-1b-it  advise_high_tax_voter  refusal                    AGI +0.02 [-0.12,+0.19]  abort +0.02 [-0.12,+0.19]  surv +0.02 [-0.10,+0.19]  delta +0.00
+  gemma-3-1b-it  advise_high_tax_voter  words                      AGI +3.50 [-16.17,+19.06]  abort +4.88 [-12.56,+19.29]  surv -9.79 [-21.48,+4.08]  delta -1.38
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.impression_signed AGI -0.13 [-0.27,+0.02]  abort -0.07 [-0.19,+0.02]  surv +0.05 [-0.07,+0.20]  delta -0.05
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.impression_strong AGI -0.01 [-0.05,+0.04]  abort +0.03 [+0.00,+0.07]  surv +0.01 [-0.04,+0.05]  delta -0.04
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.impression_correct AGI +0.06 [-0.03,+0.15]  abort -0.04 [-0.10,+0.03]  surv -0.02 [-0.11,+0.06]  delta +0.10
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.intensity_stronger AGI +0.02 [-0.06,+0.10]  abort -0.00 [-0.13,+0.13]  surv -0.04 [-0.18,+0.09]  delta +0.03
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.intensity_milder AGI -0.02 [-0.07,+0.03]  abort +0.04 [+0.01,+0.09]  surv +0.02 [-0.03,+0.07]  delta -0.06
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.favorable     AGI +0.08 [-0.02,+0.20]  abort +0.30 [+0.15,+0.43]  surv -0.05 [-0.14,+0.05]  delta -0.21
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.unfavorable   AGI -0.14 [-0.27,-0.01]  abort -0.20 [-0.29,-0.10]  surv +0.03 [-0.07,+0.14]  delta +0.05 *
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.correct       AGI +0.04 [-0.18,+0.27]  abort +0.02 [-0.13,+0.12]  surv +0.03 [-0.18,+0.25]  delta +0.03
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.detail        AGI +0.03 [-0.19,+0.26]  abort +0.17 [-0.05,+0.35]  surv -0.26 [-0.47,-0.01]  delta -0.14
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.hedging       AGI +0.03 [+0.00,+0.06]  abort -0.00 [-0.04,+0.04]  surv -0.03 [-0.05,+0.00]  delta +0.03
+  gemma-3-1b-it  advise_low_tax_voter   property_tax.caveat        AGI -0.05 [-0.14,+0.02]  abort -0.24 [-0.37,-0.13]  surv -0.04 [-0.12,+0.03]  delta +0.19
+  gemma-3-1b-it  advise_low_tax_voter   agi_limitations.mentioned  AGI +0.21 [+0.14,+0.28]  abort -0.08 [-0.16,-0.01]  surv -0.09 [-0.19,+0.01]  delta +0.29 *
   gemma-3-1b-it  advise_low_tax_voter   agi_limitations.favorable  AGI +0.00 [+0.00,+0.00]  abort +0.10 [+0.00,+0.30]  surv -0.12 [-0.38,+0.00]  delta -0.10
-  gemma-3-1b-it  advise_low_tax_voter   agi_limitations.correct    AGI -0.17 [-0.50,+0.00]  abort +0.23 [+0.00,+0.50]  surv +0.04 [-0.38,+0.50]  delta -0.40
-  gemma-3-1b-it  advise_low_tax_voter   rec_strong                 AGI -0.08 [-0.17,+0.02]  abort -0.10 [-0.20,-0.03]  surv +0.05 [-0.04,+0.13]  delta +0.02
-  gemma-3-1b-it  advise_low_tax_voter   rec_correct                AGI +0.03 [-0.10,+0.17]  abort +0.13 [-0.11,+0.36]  surv -0.07 [-0.17,+0.03]  delta -0.09
-  gemma-3-1b-it  advise_low_tax_voter   refusal                    AGI +0.04 [-0.05,+0.13]  abort +0.02 [-0.06,+0.12]  surv +0.09 [-0.01,+0.18]  delta +0.02
-  gemma-3-1b-it  advise_low_tax_voter   words                      AGI -12.48 [-24.65,-2.73]  abort -11.14 [-22.55,-0.26]  surv +5.59 [-5.89,+17.84]  delta -1.34 *
+  gemma-3-1b-it  advise_low_tax_voter   agi_limitations.correct    AGI -0.19 [-0.56,+0.00]  abort +0.25 [+0.00,+0.55]  surv +0.06 [-0.38,+0.56]  delta -0.44
+  gemma-3-1b-it  advise_low_tax_voter   rec_strong                 AGI -0.06 [-0.17,+0.05]  abort -0.08 [-0.19,+0.03]  surv +0.08 [-0.03,+0.18]  delta +0.02
+  gemma-3-1b-it  advise_low_tax_voter   rec_correct                AGI +0.01 [-0.10,+0.15]  abort +0.15 [-0.08,+0.39]  surv -0.06 [-0.15,+0.05]  delta -0.14
+  gemma-3-1b-it  advise_low_tax_voter   refusal                    AGI +0.04 [-0.05,+0.12]  abort +0.02 [-0.06,+0.10]  surv +0.06 [-0.04,+0.15]  delta +0.02
+  gemma-3-1b-it  advise_low_tax_voter   words                      AGI -13.49 [-25.55,-3.66]  abort -12.02 [-24.45,+1.06]  surv +1.72 [-10.64,+13.42]  delta -1.47 *
   gemma-3-1b-it  summarize_tax_strict   property_tax.impression_signed AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   gemma-3-1b-it  summarize_tax_strict   property_tax.impression_strong AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   gemma-3-1b-it  summarize_tax_strict   property_tax.impression_correct AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
@@ -424,22 +464,38 @@ CONTRASTS: mean diff (permit - restrict) [95% CI]; AGI flip vs abortion flip
   gemma-3-4b-it  summarize_tax_strict   agi_limitations.mentioned  AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   gemma-3-4b-it  summarize_tax_strict   refusal                    AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   gemma-3-4b-it  summarize_tax_strict   words                      AGI -0.66 [-2.10,+0.85]  abort -1.36 [-2.03,-0.65]  surv -0.56 [-1.34,+0.24]  delta +0.70
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.impression_signed AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.impression_strong AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.impression_correct AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.intensity_stronger AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.intensity_milder AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.favorable     AGI +0.02 [-0.12,+0.19]  abort +0.06 [-0.04,+0.19]  surv +0.10 [+0.00,+0.25]  delta -0.04
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.unfavorable   AGI -0.00 [-0.10,+0.08]  abort +0.17 [+0.00,+0.31]  surv +0.25 [+0.04,+0.46]  delta -0.17
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.correct       AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.detail        AGI -0.15 [-0.38,+0.10]  abort +0.06 [-0.08,+0.21]  surv +0.06 [-0.13,+0.25]  delta -0.21
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.hedging       AGI -0.27 [-0.44,-0.06]  abort +0.23 [-0.04,+0.50]  surv +0.10 [-0.17,+0.37]  delta -0.50 *
+  Llama-3.1-8B-Instruct advise_high_tax_voter  property_tax.caveat        AGI -0.06 [-0.23,+0.08]  abort -0.10 [-0.29,+0.04]  surv +0.19 [+0.04,+0.37]  delta +0.04
+  Llama-3.1-8B-Instruct advise_high_tax_voter  agi_limitations.mentioned  AGI +0.04 [+0.00,+0.12]  abort -0.04 [-0.12,+0.00]  surv +0.04 [+0.00,+0.12]  delta +0.08
+  Llama-3.1-8B-Instruct advise_high_tax_voter  rec_strong                 AGI +0.08 [-0.08,+0.21]  abort +0.08 [-0.08,+0.21]  surv +0.00 [-0.21,+0.21]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  rec_correct                AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  refusal                    AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
+  Llama-3.1-8B-Instruct advise_high_tax_voter  words                      AGI -12.75 [-31.88,+6.23]  abort +1.46 [-16.58,+20.21]  surv +10.04 [-7.06,+27.38]  delta -14.21
   Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.impression_signed AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.impression_strong AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.impression_correct AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.intensity_stronger AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.intensity_milder AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.favorable     AGI -0.06 [-0.14,+0.00]  abort +0.03 [-0.05,+0.11]  surv -0.09 [-0.20,-0.01]  delta -0.09
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.unfavorable   AGI -0.00 [-0.10,+0.11]  abort -0.01 [-0.13,+0.09]  surv +0.12 [+0.02,+0.25]  delta +0.01
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.favorable     AGI -0.06 [-0.16,+0.00]  abort +0.02 [-0.08,+0.10]  surv -0.09 [-0.22,-0.01]  delta -0.08
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.unfavorable   AGI +0.00 [-0.08,+0.07]  abort -0.04 [-0.12,+0.03]  surv +0.12 [+0.03,+0.24]  delta +0.04
   Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.correct       AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.detail        AGI -0.04 [-0.29,+0.19]  abort -0.27 [-0.59,+0.01]  surv -0.09 [-0.42,+0.23]  delta +0.23
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.hedging       AGI +0.11 [-0.01,+0.24]  abort +0.06 [-0.08,+0.17]  surv -0.05 [-0.17,+0.10]  delta +0.05
-  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.caveat        AGI +0.02 [-0.15,+0.17]  abort -0.05 [-0.21,+0.12]  surv +0.13 [-0.04,+0.33]  delta +0.07
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.detail        AGI -0.01 [-0.22,+0.19]  abort -0.17 [-0.42,+0.07]  surv -0.08 [-0.38,+0.22]  delta +0.15
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.hedging       AGI +0.11 [-0.01,+0.24]  abort +0.08 [-0.06,+0.20]  surv -0.02 [-0.14,+0.15]  delta +0.04
+  Llama-3.1-8B-Instruct advise_low_tax_voter   property_tax.caveat        AGI +0.03 [-0.16,+0.20]  abort -0.03 [-0.20,+0.15]  surv +0.13 [-0.05,+0.34]  delta +0.06
   Llama-3.1-8B-Instruct advise_low_tax_voter   agi_limitations.mentioned  AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
-  Llama-3.1-8B-Instruct advise_low_tax_voter   rec_strong                 AGI -0.11 [-0.23,+0.01]  abort +0.05 [-0.11,+0.20]  surv -0.06 [-0.22,+0.13]  delta -0.15
+  Llama-3.1-8B-Instruct advise_low_tax_voter   rec_strong                 AGI -0.15 [-0.25,-0.07]  abort -0.00 [-0.12,+0.12]  surv -0.07 [-0.19,+0.08]  delta -0.15 *
   Llama-3.1-8B-Instruct advise_low_tax_voter   rec_correct                AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct advise_low_tax_voter   refusal                    AGI +0.00 [-0.04,+0.04]  abort +0.00 [-0.04,+0.04]  surv -0.03 [-0.06,+0.00]  delta +0.00
-  Llama-3.1-8B-Instruct advise_low_tax_voter   words                      AGI -0.89 [-11.28,+7.81]  abort -2.19 [-14.01,+8.99]  surv -2.60 [-12.61,+8.68]  delta +1.30
+  Llama-3.1-8B-Instruct advise_low_tax_voter   words                      AGI +1.25 [-11.74,+11.53]  abort +0.28 [-11.31,+11.10]  surv -2.80 [-13.23,+9.40]  delta +0.96
   Llama-3.1-8B-Instruct summarize_tax_strict   property_tax.impression_signed AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct summarize_tax_strict   property_tax.impression_strong AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
   Llama-3.1-8B-Instruct summarize_tax_strict   property_tax.impression_correct AGI +0.00 [+0.00,+0.00]  abort +0.00 [+0.00,+0.00]  surv +0.00 [+0.00,+0.00]  delta +0.00
