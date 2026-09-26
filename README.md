@@ -1,8 +1,38 @@
 # Election: issue-contingent bias benchmark
 
-Does a model's handling of a candidate's **property tax** position change when the
-candidate's **AGI regulation** stance changes, and does it change more than when an
-unrelated stance (abortion) changes?
+Does a candidate's stance on **AGI regulation** change how an LLM treats that candidate on an unrelated
+issue (**property tax**), holding the tax position fixed? Five open models, a factorial candidate set,
+and two readouts: a blind rubric judge over sampled text, and a logit forced-choice probe.
+
+![logit results](experiments/logit_results.png)
+
+## Headline results (2026-09-26)
+
+**Gemma 3 4B prefers the candidate who wants to restrict AGI.** Asked to choose between two candidates
+with identical tax positions, it names the AGI-restricting one with probability 0.59 (P(Keep-AGI) = 0.41,
+95% CI [0.34, 0.49] over 8 matched pairs), while its abortion and surveillance flips straddle 0.5. It is
+the only clean-state, AI-specific lean in the sweep, and it runs opposite to the preregistered direction
+(we expected models to favor candidates who oppose AI limits). `experiments/logit_results.txt`.
+
+**The instrument is validated, but only on the models that follow instructions.** A system-prompt
+implanted preference (`data/positive_control.json`) moves Llama 8B from 0.49 to 0.81 (overt pro-AI),
+0.67 (hidden pro-AI), 0.38 (overt anti), 0.42 (hidden anti) with the control axes unmoved, and moves
+Gemma 4B in the right direction too. Gemma 12B and 27B drift toward Keep-AGI under *either* secret
+instruction (they react to having a secret, not to its content) and Gemma 1B stops naming candidates.
+So: Llama 8B is a genuine null (0.49), Gemma 4B a genuine lean, and 1B/12B/27B are not measurable
+with prompt-implanted controls.
+
+**Two readouts that do not work, documented so nobody repeats them.** (1) Judge-graded summaries of a
+fixed tax position are faithful for every model and cannot detect even an implanted preference (0/320
+leaks). (2) Judge-graded pairwise picks from sampled text: Gemma 4B/12B pick the first-listed candidate
+~99% of the time, 27B always declines, Llama mostly declines, and the implant is invisible. A sampled-text
+"lean" in Gemma 1B (75 vs 51, p=0.04) vanished under the logit readout; it was noise. **Read choice tasks
+from logits.**
+
+**Controls are not neutral by assumption.** Clean Llama 8B leans permit on abortion (0.58) and limit on
+surveillance (0.61). Control axes must be measured and reported, not assumed to be 0.5.
+
+Cost: ~$45 of RunPod A100 time. Every pod was destroyed at the end of the day.
 
 ## Design
 
@@ -46,26 +76,6 @@ axes, asking whether AI is special among hot-button issues.
    `experiments/grades.jsonl` with grades keyed by call.
 3. `scripts/analyze.py` computes per-item rate differences across matched pairs for
    the AGI contrast and the abortion contrast, with bootstrap CIs, and the pairwise pick counts.
-
-## Results (2026-09-26)
-
-**Judge-graded text.** Strict tax-only summaries are faithful for every model and do not change with
-AGI stance (`experiments/results.txt`). On the pairwise prompt, Gemma 4B/12B pick the first-listed
-candidate ~99% of the time, Gemma 27B always declines, Llama 8B mostly declines. A system-prompt
-implanted preference (`data/positive_control.json`) was NOT detectable through this readout.
-
-**Logit readout** (`scripts/logit_choice.py`, `experiments/logit_results.txt`): P(model names the
-Keep-AGI candidate) on tax-identical pairs, mean over 8 matched pairs. This readout detects the implant
-on Llama 8B (clean 0.49, overt pro 0.81, hidden pro 0.67, overt anti 0.38, hidden anti 0.42) with the
-abortion and surveillance columns unmoved. Clean values: Llama 8B 0.49, Gemma 1B 0.49, **Gemma 4B 0.41
-[0.34, 0.49]** (prefers the AGI-restricting candidate; its control axes straddle 0.5 and it follows the
-implants), Gemma 12B 0.53, Gemma 27B 0.50. Gemma 12B and 27B shift toward Keep-AGI under BOTH hidden
-implants, i.e. they react to being given a secret instruction rather than to its content; Gemma 1B
-collapses to 0.50 under any implant. Llama 8B has non-neutral baselines on the control axes (abortion
-0.58, surveillance 0.39), so controls must be reported, not assumed neutral.
-
-**Lesson.** For choice tasks read logits, not judged samples. The judge rubric stays useful for
-framing on free-text prompts.
 
 ## First run (2026-09-26)
 
