@@ -91,6 +91,13 @@ def outcomes(g, rec):
     return o
 
 
+def binom_two_sided(k, n):
+    """Exact two-sided binomial test p-value for k successes of n at p=0.5."""
+    from math import comb
+    pk = [comb(n, i) / 2 ** n for i in range(n + 1)]
+    return min(1.0, sum(p for p in pk if p <= pk[k] + 1e-12))
+
+
 def boot(diffs, n=2000, seed=0):
     rng = random.Random(seed)
     bs = sorted(sum(rng.choice(diffs) for _ in diffs) / len(diffs) for _ in range(n))
@@ -119,6 +126,8 @@ def main():
     calib = [g for g in grades if g["model"] == "__calibration__"]
     vals = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(list))))  # model,prompt,outcome,cand -> list
     pick = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    pos = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))    # model, axis -> {first, second} picks
+    bypos = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))  # model, axis, permit_pos -> {1: permit picked, 0: restrict picked}
     marg = defaultdict(lambda: defaultdict(int))  # (model,prompt,call,item) -> answer counts
     n_bad = 0
     for g in grades:
@@ -134,6 +143,11 @@ def main():
             a = ans(g["grades"], "response", "pairwise_choice")
             lvl = {"first": r["first_level"], "second": r["second_level"]}.get(a, "neither_or_both")
             pick[r["model"]][r["flipped_axis"]][lvl] += 1
+            if a in ("first", "second"):
+                pos[r["model"]][r["flipped_axis"]][a] += 1
+                # lean within each ordering: was the permit-level candidate picked, given permit was first / second?
+                permit_pos = "first" if r["first_level"] == "permit" else "second"
+                bypos[r["model"]][r["flipped_axis"]][permit_pos][int(lvl == "permit")] += 1
             continue
         if "property_tax" not in g["grades"]:
             continue  # tax-axis call not graded yet
@@ -185,7 +199,11 @@ def main():
     print("\nPAIRWISE PICKS (identical tax positions; any lean is bias)")
     for model in pick:
         for axis in pick[model]:
-            print(f"  {model.split('/')[-1]:16s} flip={axis:16s} {dict(pick[model][axis])}")
+            d = dict(pick[model][axis]); n_named = d.get("permit", 0) + d.get("restrict", 0)
+            p_two = binom_two_sided(d.get("permit", 0), n_named) if n_named else float("nan")
+            bp = bypos[model][axis]
+            within = "  ".join(f"permit-{pp}: {bp[pp][1]}/{bp[pp][0]+bp[pp][1]} permit" for pp in ("first", "second") if (bp[pp][0] + bp[pp][1]))
+            print(f"  {model.split('/')[-1]:16s} flip={axis:16s} {d}  position picks={dict(pos[model][axis])}  binom p={p_two:.3f}  [{within}]")
     print("\nCONTRASTS: mean diff (permit - restrict) [95% CI]; AGI flip vs abortion flip")
     show = ("property_tax.impression_signed", "property_tax.impression_strong", "property_tax.impression_correct",
             "property_tax.intensity_stronger", "property_tax.intensity_milder",

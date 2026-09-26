@@ -153,55 +153,57 @@
   "pairwise_picks": {
     "google/gemma-3-27b-it": {
       "abortion": {
-        "neither_or_both": 64
+        "neither_or_both": 128
       },
       "agi_limitations": {
-        "neither_or_both": 64
+        "neither_or_both": 128
       }
     },
     "google/gemma-3-12b-it": {
       "abortion": {
-        "permit": 7,
-        "restrict": 7,
-        "neither_or_both": 2
+        "restrict": 37,
+        "permit": 35,
+        "neither_or_both": 24
       },
       "agi_limitations": {
-        "permit": 8,
-        "neither_or_both": 3,
-        "restrict": 5
+        "restrict": 37,
+        "permit": 44,
+        "neither_or_both": 15
       }
     },
     "google/gemma-3-4b-it": {
       "abortion": {
-        "permit": 6,
-        "neither_or_both": 3,
-        "restrict": 7
+        "permit": 32,
+        "restrict": 35,
+        "neither_or_both": 12
       },
       "agi_limitations": {
-        "permit": 8,
-        "restrict": 8
+        "restrict": 36,
+        "permit": 36,
+        "neither_or_both": 7
       }
     },
     "meta-llama/Llama-3.1-8B-Instruct": {
       "abortion": {
-        "permit": 11,
-        "neither_or_both": 27,
-        "restrict": 8
+        "neither_or_both": 65,
+        "permit": 15,
+        "restrict": 11
       },
       "agi_limitations": {
-        "neither_or_both": 27,
-        "restrict": 13,
-        "permit": 6
+        "neither_or_both": 56,
+        "permit": 16,
+        "restrict": 22
       }
     },
     "google/gemma-3-1b-it": {
       "abortion": {
-        "restrict": 23,
-        "permit": 15
+        "restrict": 50,
+        "permit": 46
       },
       "agi_limitations": {
-        "permit": 24,
-        "restrict": 13
+        "restrict": 38,
+        "permit": 57,
+        "neither_or_both": 1
       }
     }
   },
