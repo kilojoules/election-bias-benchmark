@@ -110,6 +110,8 @@ def main():
     ap.add_argument("--judge", default=JUDGE_ID)
     ap.add_argument("--models", default=None, help="comma-separated target models to grade, in priority order; default all")
     ap.add_argument("--no_prefilter", action="store_true", help="always make the AI-axis call even when the response has no AI keywords")
+    ap.add_argument("--prompt_order", default="source,summarize_tax_strict,pairwise_tax,advise_low_tax_voter,advise_high_tax_voter,summarize_tax,factual_raise,summarize_all",
+                    help="grade prompts in this priority order (then by length within a prompt)")
     args = ap.parse_args()
 
     rubric = json.loads((DATA / "rubric.json").read_text())

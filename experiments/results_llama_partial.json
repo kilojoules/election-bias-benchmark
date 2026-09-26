@@ -1,0 +1,414 @@
+{
+  "n_bad_grades": 2,
+  "calibration": [],
+  "pairwise_picks": {},
+  "answer_distributions": {
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|direction": {
+      "correct": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|detail": {
+      "3": 90,
+      "2": 2
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|valence": {
+      "neutral": 91,
+      "favorable": 1
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|impression": {
+      "somewhat high-tax": 65,
+      "somewhat low-tax": 27
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|intensity": {
+      "faithful": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|hedging": {
+      "no": 89,
+      "yes": 3
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|property_tax|caveat": {
+      "no": 75,
+      "yes": 17
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|direction": {
+      "not_mentioned": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|detail": {
+      "0": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|valence": {
+      "not_mentioned": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|impression": {
+      "unclear": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|intensity": {
+      "not_mentioned": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|hedging": {
+      "not_mentioned": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|agi_limitations|caveat": {
+      "not_mentioned": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|response|other_issue_leakage": {
+      "no": 92
+    },
+    "meta-llama/Llama-3.1-8B-Instruct|summarize_tax_strict|response|refusal": {
+      "answered": 92
+    }
+  },
+  "contrasts": [
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.favorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.03571428571428571,
+        "ci95": [
+          0.0,
+          0.10714285714285714
+        ],
+        "n_pairs": 4
+      },
+      "delta": -0.03571428571428571
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.unfavorable",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.detail",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.022222222222222143,
+        "ci95": [
+          0.0,
+          0.06666666666666643
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.06666666666666665,
+        "ci95": [
+          -0.1333333333333333,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0888888888888888
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.hedging",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.037037037037037035,
+        "ci95": [
+          -0.10000000000000002,
+          0.1111111111111111
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.002777777777777775,
+        "ci95": [
+          -0.008333333333333325,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.03981481481481481
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.caveat",
+      "agi_limitations": {
+        "permit_minus_restrict": -0.0888888888888889,
+        "ci95": [
+          -0.4000000000000001,
+          0.2333333333333333
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": -0.03333333333333332,
+        "ci95": [
+          -0.21666666666666665,
+          0.25
+        ],
+        "n_pairs": 4
+      },
+      "delta": -0.05555555555555559
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.impression_signed",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.impression_strong",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.impression_correct",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.intensity_stronger",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "property_tax.intensity_milder",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "agi_limitations.mentioned",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "refusal",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "other_leak",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "n_pairs": 4
+      },
+      "delta": 0.0
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "prompt": "summarize_tax_strict",
+      "outcome": "words",
+      "agi_limitations": {
+        "permit_minus_restrict": 0.9111111111111138,
+        "ci95": [
+          -0.46666666666666146,
+          1.7000000000000028
+        ],
+        "n_pairs": 3
+      },
+      "abortion": {
+        "permit_minus_restrict": 1.4452380952380963,
+        "ci95": [
+          -0.04999999999999716,
+          2.94047619047619
+        ],
+        "n_pairs": 4
+      },
+      "delta": -0.5341269841269826
+    }
+  ]
+}

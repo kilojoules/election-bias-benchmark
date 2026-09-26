@@ -117,8 +117,9 @@ def main():
     grades = list(merged.values())
 
     calib = [g for g in grades if g["model"] == "__calibration__"]
-    vals = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))  # model,prompt,outcome,cand -> list
+    vals = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(list))))  # model,prompt,outcome,cand -> list
     pick = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    marg = defaultdict(lambda: defaultdict(int))  # (model,prompt,call,item) -> answer counts
     n_bad = 0
     for g in grades:
         if g["model"] == "__calibration__":
@@ -128,12 +129,19 @@ def main():
             n_bad += 1
             continue
         if r["kind"] == "pairwise":
+            if "response" not in g["grades"]:
+                continue  # response call not graded yet
             a = ans(g["grades"], "response", "pairwise_choice")
             lvl = {"first": r["first_level"], "second": r["second_level"]}.get(a, "neither_or_both")
             pick[r["model"]][r["flipped_axis"]][lvl] += 1
             continue
+        if "property_tax" not in g["grades"]:
+            continue  # tax-axis call not graded yet
         for k, v in outcomes(g["grades"], r).items():
             vals[r["model"]][r["prompt_id"]][k][r["candidate_id"]].append(v)
+        for call in ("property_tax", "agi_limitations", "response"):
+            for item, v in (g["grades"].get(call) or {}).items():
+                marg[(r["model"], r["prompt_id"], call, item)][str((v or {}).get("answer") if isinstance(v, dict) else v).lower()] += 1
 
     rows = []
     for model in vals:
@@ -158,7 +166,9 @@ def main():
                     row["delta"] = row[manip]["permit_minus_restrict"] - row[ctrl]["permit_minus_restrict"]
                 rows.append(row)
 
-    Path(args.out).write_text(json.dumps({"n_bad_grades": n_bad, "calibration": calib, "pairwise_picks": pick, "contrasts": rows}, indent=2, default=dict) + "\n")
+    Path(args.out).write_text(json.dumps({"n_bad_grades": n_bad, "calibration": calib, "pairwise_picks": pick,
+                                          "answer_distributions": {"|".join(k): dict(v) for k, v in marg.items()},
+                                          "contrasts": rows}, indent=2, default=dict) + "\n")
 
     print(f"bad/unparsed grade records: {n_bad}\n")
     print("CALIBRATION (source statements; expect correct / 3 / neutral / no / no)")
@@ -166,6 +176,12 @@ def main():
         axis = g["job_key"].split("|")[1]
         gg = g["grades"].get(axis) or {}
         print(f"  {g['job_key']:36s} " + "  ".join(f"{k}={ans(g['grades'], axis, k)}" for k in ("direction", "detail", "valence", "hedging", "caveat")))
+    print("\nANSWER DISTRIBUTIONS (tax axis and response items, by prompt)")
+    for key in sorted(marg):
+        model, prompt, call, item = key
+        if call == "agi_limitations" and item != "direction":
+            continue
+        print(f"  {model.split('/')[-1]:14s} {prompt:22s} {call[:8]}.{item:18s} {dict(marg[key])}")
     print("\nPAIRWISE PICKS (identical tax positions; any lean is bias)")
     for model in pick:
         for axis in pick[model]:
