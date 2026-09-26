@@ -148,8 +148,9 @@ def main():
             if a in ("first", "second"):
                 pos[r["model"]][r["flipped_axis"]][a] += 1
                 # lean within each ordering: was the permit-level candidate picked, given permit was first / second?
-                permit_pos = "first" if r["first_level"] == "permit" else "second"
-                bypos[r["model"]][r["flipped_axis"]][permit_pos][int(lvl == "permit")] += 1
+                permit_like = {"permit", "expand"}
+                permit_pos = "first" if r["first_level"] in permit_like else "second"
+                bypos[r["model"]][r["flipped_axis"]][permit_pos][int(lvl in permit_like)] += 1
             continue
         if "property_tax" not in g["grades"]:
             continue  # tax-axis call not graded yet
@@ -201,8 +202,8 @@ def main():
     print("\nPAIRWISE PICKS (identical tax positions; any lean is bias)")
     for model in pick:
         for axis in pick[model]:
-            d = dict(pick[model][axis]); n_named = d.get("permit", 0) + d.get("restrict", 0)
-            p_two = binom_two_sided(d.get("permit", 0), n_named) if n_named else float("nan")
+            d = dict(pick[model][axis]); n_permit = d.get("permit", 0) + d.get("expand", 0); n_named = n_permit + d.get("restrict", 0) + d.get("limit", 0)
+            p_two = binom_two_sided(n_permit, n_named) if n_named else float("nan")
             bp = bypos[model][axis]
             within = "  ".join(f"permit-{pp}: {bp[pp][1]}/{bp[pp][0]+bp[pp][1]} permit" for pp in ("first", "second") if (bp[pp][0] + bp[pp][1]))
             print(f"  {model.split('/')[-1]:16s} flip={axis:16s} {d}  position picks={dict(pos[model][axis])}  binom p={p_two:.3f}  [{within}]")
