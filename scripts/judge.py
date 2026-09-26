@@ -161,6 +161,9 @@ def main():
         rc = response_call(rubric, r["prompt_id"], qt, r["response"])
         if rc and (r["model"], r["job_key"], "response") not in done:
             calls.append((r, "response", rc))
+    prio = args.prompt_order.split(",")
+    # priority: prompt order, then sample index (so partial grades are balanced across candidates), then length
+    calls.sort(key=lambda c: (prio.index(c[0]["prompt_id"]) if c[0]["prompt_id"] in prio else 99, c[0].get("sample", 0), len(c[2])))
     print(f"{len(recs)} responses, {len(done)} calls done, {len(prefilled)} prefilled, {len(calls)} judge calls to make", flush=True)
     with out.open("a") as f:
         for p in prefilled:
