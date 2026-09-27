@@ -3,3 +3,4 @@ __pycache__/
 experiments/*_partial.jsonl
 experiments/*.b64
 .DS_Store
+media/

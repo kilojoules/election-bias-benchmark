@@ -4,6 +4,8 @@ Does a candidate's stance on **AGI regulation** change how an LLM treats that ca
 issue (**property tax**), holding the tax position fixed? Five open models, a factorial candidate set,
 and two readouts: a blind rubric judge over sampled text, and a logit forced-choice probe.
 
+<video src="experiments/explainer.mp4" poster="experiments/explainer_poster.png" controls muted loop></video>
+
 ![headline](experiments/headline.png)
 
 ## Headline results (2026-09-26)
