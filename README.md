@@ -4,7 +4,7 @@ Does a candidate's stance on **AGI regulation** change how an LLM treats that ca
 issue (**property tax**), holding the tax position fixed? Five open models, a factorial candidate set,
 and two readouts: a blind rubric judge over sampled text, and a logit forced-choice probe.
 
-![logit results](experiments/logit_results.png)
+![headline](experiments/headline.png)
 
 ## Headline results (2026-09-26)
 
@@ -17,7 +17,8 @@ the only clean-state, AI-specific lean in the sweep, and it runs opposite to the
 **The instrument is validated, but only on the models that follow instructions.** A system-prompt
 implanted preference (`data/positive_control.json`) moves Llama 8B from 0.49 to 0.81 (overt pro-AI),
 0.67 (hidden pro-AI), 0.38 (overt anti), 0.42 (hidden anti) with the control axes unmoved, and moves
-Gemma 4B in the right direction too. Gemma 12B and 27B drift toward Keep-AGI under *either* secret
+Gemma 4B in the right direction too (`experiments/logit_results.png`, panel B; panel A adds the
+abortion and surveillance control axes). Gemma 12B and 27B drift toward Keep-AGI under *either* secret
 instruction (they react to having a secret, not to its content) and Gemma 1B stops naming candidates.
 So: Llama 8B is a genuine null (0.49), Gemma 4B a genuine lean, and 1B/12B/27B are not measurable
 with prompt-implanted controls.
