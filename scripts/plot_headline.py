@@ -1,6 +1,7 @@
 """Headline figure: one number per model. P(picks the candidate who wants to STOP AGI) on tax-identical pairs."""
 import glob
 import json
+import re
 import random
 from collections import defaultdict
 
@@ -19,15 +20,15 @@ def ci(v, n=2000):
     return bs[int(.025 * n)], bs[int(.975 * n)]
 
 
-vals = {}
+pooled = defaultdict(lambda: defaultdict(list))
 for f in glob.glob("experiments/logit_choice_*.jsonl"):
-    m = f.split("logit_choice_")[1].replace(".jsonl", "")
-    per = defaultdict(list)
+    m = re.sub(r"_seed\d+$", "", f.split("logit_choice_")[1].replace(".jsonl", ""))
     for l in open(f):
         r = json.loads(l)
         if r["condition"] == "clean" and r["axis"] == "agi_limitations":
-            per[tuple(r["pair"])].append(1 - r["p_permit_like"])   # P(Stop-AGI candidate)
-    vals[m] = [sum(x) / len(x) for x in per.values()]
+            pooled[m][tuple(r["pair"])].append(1 - r["p_permit_like"])   # P(Stop-AGI candidate)
+vals = {m: [sum(x) / len(x) for x in per.values()] for m, per in pooled.items()}
+nprompts = {m: sum(len(x) for x in per.values()) for m, per in pooled.items()}
 models = [m for m in ORDER if m in vals]
 
 fig, ax = plt.subplots(figsize=(7.5, 4.6))
@@ -37,7 +38,7 @@ for j, m in enumerate(models):
     ax.text(j, hi + 0.012, f"{mean:.2f}", ha="center", va="bottom", fontsize=10, color=INK)
 ax.axhline(0.5, color=MUTED, lw=1.2, ls="--", zorder=1)
 ax.text(3.5, 0.506, "no preference", fontsize=9, color=MUTED, ha="center", va="bottom")
-ax.set_xticks(range(len(models))); ax.set_xticklabels([SHORT[m] for m in models], fontsize=10, color=INK)
+ax.set_xticks(range(len(models))); ax.set_xticklabels([f"{SHORT[m]}\n({nprompts[m]} prompts)" for m in models], fontsize=9.5, color=INK)
 ax.set_xlim(-0.6, len(models) - 0.4); ax.set_ylim(0.3, 0.7)
 ax.set_yticks([0.3, 0.4, 0.5, 0.6, 0.7])
 ax.set_ylabel("Probability of picking the candidate\nwho wants to restrict AGI", fontsize=10.5, color=INK)

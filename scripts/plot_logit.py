@@ -4,6 +4,7 @@ control axes. Right: instrument check - the same quantity under implanted prefer
 """
 import glob
 import json
+import re
 import random
 from collections import defaultdict
 
@@ -24,14 +25,13 @@ def ci(v, n=2000):
     return bs[int(.025 * n)], bs[int(.975 * n)]
 
 
-data = {}
+raw = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
 for f in glob.glob("experiments/logit_choice_*.jsonl"):
-    m = f.split("logit_choice_")[1].replace(".jsonl", "")
-    per = defaultdict(lambda: defaultdict(list))
+    m = re.sub(r"_seed\d+$", "", f.split("logit_choice_")[1].replace(".jsonl", ""))
     for l in open(f):
         r = json.loads(l)
-        per[(r["condition"], r["axis"])][tuple(r["pair"])].append(r["p_permit_like"])
-    data[m] = {k: [sum(x) / len(x) for x in v.values()] for k, v in per.items()}
+        raw[m][(r["condition"], r["axis"])][tuple(r["pair"])].append(r["p_permit_like"])
+data = {m: {k: [sum(x) / len(x) for x in v.values()] for k, v in per.items()} for m, per in raw.items()}
 models = [m for m in ORDER if m in data]
 
 fig, (ax, ax2) = plt.subplots(1, 2, figsize=(13.5, 5), gridspec_kw={"width_ratios": [1.25, 1]})

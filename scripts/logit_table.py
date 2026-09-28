@@ -1,6 +1,7 @@
 """Summarize logit_choice_*.jsonl files: P(permit-like candidate named), mean over matched pairs, 95% CI over pairs."""
 import glob
 import json
+import re
 import random
 import sys
 from collections import defaultdict
@@ -16,7 +17,7 @@ files = sys.argv[1:] or sorted(glob.glob("experiments/logit_choice_*.jsonl"))
 print("P(names the permit-like candidate) | 0.5 = no preference | mean over 8 pairs [95% CI]")
 print(f"{'model':16s} {'condition':15s} {'AGI: Keep-AGI':22s} {'abortion: Permit':22s} {'surveillance: Expand':22s}")
 for f in files:
-    model = f.split("logit_choice_")[1].replace(".jsonl", "")
+    model = re.sub(r"_seed\d+$", "", f.split("logit_choice_")[1].replace(".jsonl", ""))
     per = defaultdict(lambda: defaultdict(list))
     for l in open(f):
         r = json.loads(l)
