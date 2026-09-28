@@ -33,3 +33,23 @@ model×axis cell was selected from a 5-model sweep, so the pilot estimate may be
   (report per-pair rates alongside).
 - Order effect (P(open) by listing position) differing grossly between pilot and
    confirmation.
+
+## Outcome (2026-09-28, written after data collection)
+
+Primary: **rule met — lean confirmed.** Gemma 3 4B clean AGI win-rate 0.415,
+cluster-bootstrap 95% CI [0.391, 0.439], exact binomial p < 10⁻⁴ (422/1024 trials).
+Per-pair rates 0.36–0.46: no pair disagrees in direction enough to make pooling misleading.
+
+Secondary, as it turned out:
+- Llama 8B clean AGI 0.498 [0.482, 0.515] — null confirmed.
+- Implants: Llama overt 0.810 / hidden 0.680 (pilot: 0.81 / 0.67). Gemma overt 0.659,
+  hidden 0.486 (no move).
+- Control axes were NOT null: Gemma surveillance 0.402, Llama abortion 0.598 and
+  surveillance 0.397, all p < 10⁻³. The pilot's "AI-specific" framing is therefore
+  revised in the README: leans are axis-contingent and model-specific, not AI-special.
+- Order effect large and consistent with pilot direction (first-listed advantage).
+- Cost: $0.35 (RTX 3090, ~1.6 h) + $2.93 for an orphan pod from a failed create loop
+  (deleted on discovery).
+
+Run artifacts: `experiments/confirm_gemma-3-4b-it.jsonl`, `experiments/confirm_llama8b.jsonl`,
+analysis `scripts/logit_confirm_test.py`.

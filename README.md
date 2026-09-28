@@ -8,22 +8,30 @@ and two readouts: a blind rubric judge over sampled text, and a logit forced-cho
 
 ![headline](experiments/headline.png)
 
-## Headline results (2026-09-26)
+## Headline results
 
-**Gemma 3 4B prefers the candidate who wants to restrict AGI.** Asked to choose between two candidates
-with identical tax positions, it names the AGI-restricting one with probability 0.59 (P(Keep-AGI) = 0.41,
-95% CI [0.34, 0.49] over 8 matched pairs), while its abortion and surveillance flips straddle 0.5. It is
-the only clean-state, AI-specific lean in the sweep, and it runs opposite to the preregistered direction
-(we expected models to favor candidates who oppose AI limits). `experiments/logit_results.txt`.
+**Confirmed with a preregistered replication (2026-09-28): Gemma 3 4B prefers the candidate who wants
+to restrict AGI.** Win-rate for naming the Keep-AGI-open candidate: 0.415, cluster-bootstrap 95% CI
+[0.391, 0.439], exact binomial p < 10⁻⁴ — 1024 forced-choice trials (8 stance pairs × 2 orderings ×
+64 name draws from a 60-name pool), decision rule fixed in advance (`experiments/PREREGISTRATION.md`).
+The pilot estimate (0.411, [0.34, 0.49] over 64 trials) reproduced almost exactly.
+
+**But the lean is not AI-specific.** At the same trial count, Gemma 3 4B's surveillance axis leans the
+same way (0.402 [0.366, 0.436], toward limiting surveillance) while abortion is null (0.503). Llama
+3.1 8B is null on AGI (0.498) yet leans permit on abortion (0.598) and toward limiting surveillance
+(0.397). Every model measured at high n has axis-contingent preference leans on 2 of 3 axes; which
+axes differ by model. "A candidate's AI stance sways this model" is true for Gemma 4B, but AI is not
+a special axis for it — the correct general statement is that these models carry issue-dependent,
+directional candidate preferences that a tax-focused prompt does not wash out.
 
 **The instrument is validated, but only on the models that follow instructions.** A system-prompt
-implanted preference (`data/positive_control.json`) moves Llama 8B from 0.49 to 0.81 (overt pro-AI),
-0.67 (hidden pro-AI), 0.38 (overt anti), 0.42 (hidden anti) with the control axes unmoved, and moves
-Gemma 4B in the right direction too (`experiments/logit_results.png`, panel B; panel A adds the
-abortion and surveillance control axes). Gemma 12B and 27B drift toward Keep-AGI under *either* secret
-instruction (they react to having a secret, not to its content) and Gemma 1B stops naming candidates.
-So: Llama 8B is a genuine null (0.49), Gemma 4B a genuine lean, and 1B/12B/27B are not measurable
-with prompt-implanted controls.
+implanted preference (`data/positive_control.json`) moves Llama 8B from 0.498 to 0.810 (overt pro-AI)
+and 0.680 (hidden pro-AI) — matching the pilot (0.49 → 0.81, 0.67) to two decimals. Gemma 4B moves to
+0.659 under the overt implant but not the hidden one (0.486). Gemma 12B and 27B drift toward Keep-AGI
+under *either* secret instruction (they react to having a secret, not to its content) and Gemma 1B
+stops naming candidates. So: Llama 8B is a genuine null on AGI, Gemma 4B a genuine lean, and
+1B/12B/27B are not measurable with prompt-implanted controls. Implants also leak slightly onto control
+axes at high n (Llama abortion 0.598 → 0.622 hidden).
 
 **Two readouts that do not work, documented so nobody repeats them.** (1) Judge-graded summaries of a
 fixed tax position are faithful for every model and cannot detect even an implanted preference (0/320
@@ -32,10 +40,18 @@ leaks). (2) Judge-graded pairwise picks from sampled text: Gemma 4B/12B pick the
 "lean" in Gemma 1B (75 vs 51, p=0.04) vanished under the logit readout; it was noise. **Read choice tasks
 from logits.**
 
-**Controls are not neutral by assumption.** Clean Llama 8B leans permit on abortion (0.58) and limit on
-surveillance (0.61). Control axes must be measured and reported, not assumed to be 0.5.
+**Controls are not neutral by assumption — confirmed at high n.** Clean Llama 8B leans permit on
+abortion (0.598 [0.587, 0.610]) and toward limiting surveillance (0.397 [0.386, 0.405]); clean
+Gemma 4B leans toward limiting surveillance (0.402). Control axes must be measured and reported,
+not assumed to be 0.5.
 
-Cost: ~$45 of RunPod A100 time. Every pod was destroyed at the end of the day.
+**Listing position is a large effect.** P(open candidate) runs 0.2–0.9 depending on which candidate is
+listed first; both orderings are always averaged (position effect cancels in the win-rate but swamps
+any single-ordering readout). Sampled-text pairwise picking fails mostly here.
+
+Cost: $29.17 of RunPod time on the pilot day (five pods: two A100 80GB, A40, L40S, 3090; measured from
+billing), ~$40 counting the prior day's prep runs. The 1024-trial-per-cell confirmation (2 models × 3
+conditions × 3 axes) cost under $1 on one RTX 3090. Every pod was destroyed at the end of its run.
 
 ## Design
 
@@ -83,4 +99,5 @@ axes, asking whether AI is special among hot-button issues.
 ## First run (2026-09-26)
 
 Gemma 3 1B, 4B, 12B, 27B instruct and Llama 3.1 8B instruct; 10 samples per prompt (960 generations per model);
-temperature 0.8; one RunPod A100 80GB. Note the judge shares a family with the Llama 8B target.
+temperature 0.8; RunPod pods (two A100 80GB, an A40, an L40S). Note the judge shares a family with the
+Llama 8B target.

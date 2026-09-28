@@ -37,6 +37,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--draws", type=int, default=4, help="random name draws per pair and ordering")
     ap.add_argument("--conditions", default="clean,overt_pro_ai,hidden_pro_ai,overt_anti_ai,hidden_anti_ai")
+    ap.add_argument("--seed", type=int, default=0, help="seed for name draws and position shuffles")
     args = ap.parse_args()
     stances, cands, prompts = load_data()
     pc = json.loads((DATA / "positive_control.json").read_text())["conditions"]
@@ -59,7 +60,7 @@ def main():
         start = len(prefix_ids) - 1
         return sum(lp[start + i, name_ids[i]].item() for i in range(len(name_ids)))
 
-    rng = random.Random(0)
+    rng = random.Random(args.seed)
     out = open(args.out, "w")
     summary = defaultdict(lambda: defaultdict(list))
     for cond in args.conditions.split(","):
@@ -82,10 +83,12 @@ def main():
                     permit_like = first_lvl in ("permit", "expand")
                     p_permit = pa if permit_like else 1 - pa
                     p_permit_pair.append(p_permit)
-                    out.write(json.dumps({"condition": cond, "axis": axis, "pair": pair["members"], "order": order, "draw": d,
+                    out.write(json.dumps({"condition": cond, "axis": axis, "pair": pair["members"], "order": order, "draw": d, "seed": args.seed,
                                           "first_level": first_lvl, "p_first": pa, "p_permit_like": p_permit,
                                           "lp_first": la, "lp_second": lb}) + "\n")
+                    out.flush()
             summary[cond][axis].append(sum(p_permit_pair) / len(p_permit_pair))
+            print(f"  {cond} pair {pair['members'][0][:40]}... done", flush=True)
         print(f"{cond}: " + "  ".join(f"{ax}: P(permit-like)={sum(v)/len(v):.3f}" for ax, v in summary[cond].items()), flush=True)
     out.close()
     print("LOGIT_DONE", flush=True)
