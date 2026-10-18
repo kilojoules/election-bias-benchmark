@@ -100,6 +100,14 @@ placements with sign agreement 16/21 (economic) and 19/21 (social) — every dis
 same way, stated left but revealed centre/right (Gemma 3 12B: stated (−1.6, −1.8), revealed +1.0
 nats economic). Seventeen of the families here have no published stated-PCT coordinates at all.
 
+The follow-up (`experiments/pct/analysis/REPORT.md`) puts both readouts on the same 22 models: asked the
+PCT way without forcing, they put ~5% of probability on any answer label, yet 222 of 225 cells with a
+called revealed lean are issues the model refuses to state an opinion on; where both exist they correlate
+at +0.64 with the revealed position sitting to the right of the stated one; ten paraphrases of the voter's
+question move the revealed win-rate by ~0.05 versus 0.67 score units for the stated answers; and the
+restrict-AGI lean is AI-specific for Gemma 3 4B (a matched nuclear-moratorium control is null) and stronger
+when the restriction targets "models like this assistant", but generic for Ministral 3 14B.
+
 ## September 2026: pilot and preregistered confirmation
 
 **Confirmed with a preregistered replication (2026-09-28): Gemma 3 4B prefers the candidate who wants

@@ -24,7 +24,7 @@ grep -q SWEEP_DONE logs/pct_${TAG}.log || { echo "pct-conjoint FAILED"; tail -5 
 
 if [ "$GROUP" = "B" ]; then
   echo "=== variants $TAG $(date -u +%T)"
-  bash scripts/pct/run_variants.sh "$MODEL" "$TAG" > logs/variants_${TAG}.log 2>&1 || { echo "variants FAILED (best-effort)"; tail -5 logs/variants_${TAG}.log; }
+  MODEL="$MODEL" TAG="$TAG" PY="$PY" bash scripts/pct/run_variants.sh all > logs/variants_${TAG}.log 2>&1 || { echo "variants FAILED (best-effort)"; tail -5 logs/variants_${TAG}.log; }
 fi
 
 rm -rf /root/.cache/huggingface/hub /root/.cache/huggingface/xet
