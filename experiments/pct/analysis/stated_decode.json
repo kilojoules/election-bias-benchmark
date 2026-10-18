@@ -1,0 +1,486 @@
+{
+ "exaone-4.0-32b": {
+  "1": {
+   "n": 288,
+   "answer": 0.07291666666666667,
+   "refusal": 0.027777777777777776,
+   "other": 0.8993055555555556,
+   "vm_answer": 0.0005941380692835671,
+   "vm_refusal": 7.847726873693291e-07,
+   "option_agreement": 0.6666666666666666,
+   "n_agree": 21
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9999790054722667,
+   "vm_refusal": null,
+   "option_agreement": 0.9826388888888888,
+   "n_agree": 288
+  }
+ },
+ "gemma-3-12b-it": {
+  "1": {
+   "n": 288,
+   "answer": 0.0798611111111111,
+   "refusal": 0.2361111111111111,
+   "other": 0.6840277777777778,
+   "vm_answer": 0.02292611310485244,
+   "vm_refusal": 0.0004487960537530931,
+   "option_agreement": 0.5652173913043478,
+   "n_agree": 23
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9999858963586276,
+   "vm_refusal": null,
+   "option_agreement": 0.9965277777777778,
+   "n_agree": 288
+  }
+ },
+ "gemma-3-1b-it": {
+  "1": {
+   "n": 288,
+   "answer": 0.0,
+   "refusal": 0.010416666666666666,
+   "other": 0.9895833333333334,
+   "vm_answer": null,
+   "vm_refusal": 1.8182609893506333e-10,
+   "option_agreement": null,
+   "n_agree": 0
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9858963492223771,
+   "vm_refusal": null,
+   "option_agreement": 0.9652777777777778,
+   "n_agree": 288
+  }
+ },
+ "gemma-3-27b-it": {
+  "1": {
+   "n": 288,
+   "answer": 0.0625,
+   "refusal": 0.4965277777777778,
+   "other": 0.4409722222222222,
+   "vm_answer": 0.11622860581317523,
+   "vm_refusal": 6.866705639350376e-08,
+   "option_agreement": 0.7222222222222222,
+   "n_agree": 18
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9937160427218026,
+   "vm_refusal": null,
+   "option_agreement": 0.9965277777777778,
+   "n_agree": 288
+  }
+ },
+ "gemma-3-4b-it": {
+  "1": {
+   "n": 288,
+   "answer": 0.05555555555555555,
+   "refusal": 0.06597222222222222,
+   "other": 0.8784722222222222,
+   "vm_answer": 0.42087889816395485,
+   "vm_refusal": 2.132637886811061e-06,
+   "option_agreement": 1.0,
+   "n_agree": 16
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9955362962765604,
+   "vm_refusal": null,
+   "option_agreement": 0.9895833333333334,
+   "n_agree": 288
+  }
+ },
+ "gemma-4-E2B-it": {
+  "1": {
+   "n": 288,
+   "answer": 0.0,
+   "refusal": 0.4097222222222222,
+   "other": 0.5902777777777778,
+   "vm_answer": null,
+   "vm_refusal": 2.3162587426425315e-05,
+   "option_agreement": null,
+   "n_agree": 0
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.9930555555555556,
+   "refusal": 0.006944444444444444,
+   "other": 0.0,
+   "vm_answer": 0.9970072787461496,
+   "vm_refusal": 0.4942149725236634,
+   "option_agreement": 0.9895104895104895,
+   "n_agree": 286
+  }
+ },
+ "gemma-4-E4B-it": {
+  "1": {
+   "n": 288,
+   "answer": 0.0,
+   "refusal": 0.8020833333333334,
+   "other": 0.19791666666666666,
+   "vm_answer": null,
+   "vm_refusal": 0.00010003005281472433,
+   "option_agreement": null,
+   "n_agree": 0
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.7916666666666666,
+   "refusal": 0.20833333333333334,
+   "other": 0.0,
+   "vm_answer": 0.9037554071728037,
+   "vm_refusal": 0.1625829645862109,
+   "option_agreement": 0.9912280701754386,
+   "n_agree": 228
+  }
+ },
+ "glm-4.7-flash": {
+  "1": {
+   "n": 288,
+   "answer": 0.5520833333333334,
+   "refusal": 0.4340277777777778,
+   "other": 0.013888888888888888,
+   "vm_answer": 0.36348434887191405,
+   "vm_refusal": 0.06715505142907417,
+   "option_agreement": 0.5157232704402516,
+   "n_agree": 159
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9438157925138998,
+   "vm_refusal": null,
+   "option_agreement": 0.71875,
+   "n_agree": 288
+  }
+ },
+ "gpt-oss-20b": {
+  "1": {
+   "n": 288,
+   "answer": 0.4270833333333333,
+   "refusal": 0.04861111111111111,
+   "other": 0.5243055555555556,
+   "vm_answer": 0.021832772138614006,
+   "vm_refusal": 0.0018118082693665968,
+   "option_agreement": 0.5365853658536586,
+   "n_agree": 123
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9518761947657102,
+   "vm_refusal": null,
+   "option_agreement": 0.9479166666666666,
+   "n_agree": 288
+  }
+ },
+ "llama-3.2-3b": {
+  "1": {
+   "n": 288,
+   "answer": 0.03125,
+   "refusal": 0.9236111111111112,
+   "other": 0.04513888888888889,
+   "vm_answer": 0.003114794877767344,
+   "vm_refusal": 0.00038995786423726874,
+   "option_agreement": 0.5555555555555556,
+   "n_agree": 9
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.7743055555555556,
+   "refusal": 0.16666666666666666,
+   "other": 0.059027777777777776,
+   "vm_answer": 0.9598755357301136,
+   "vm_refusal": 0.13530190630870756,
+   "option_agreement": 1.0,
+   "n_agree": 223
+  }
+ },
+ "llama8b": {
+  "1": {
+   "n": 288,
+   "answer": 0.4236111111111111,
+   "refusal": 0.5659722222222222,
+   "other": 0.010416666666666666,
+   "vm_answer": 0.12823939945151153,
+   "vm_refusal": 0.06704421769567952,
+   "option_agreement": 0.7540983606557377,
+   "n_agree": 122
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9946665910975088,
+   "vm_refusal": null,
+   "option_agreement": 0.9722222222222222,
+   "n_agree": 288
+  }
+ },
+ "ministral-3-14b": {
+  "1": {
+   "n": 288,
+   "answer": 0.9409722222222222,
+   "refusal": 0.0,
+   "other": 0.059027777777777776,
+   "vm_answer": 0.18534182666153007,
+   "vm_refusal": null,
+   "option_agreement": 0.6642066420664207,
+   "n_agree": 271
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.42381497124815154,
+   "vm_refusal": null,
+   "option_agreement": 0.9305555555555556,
+   "n_agree": 288
+  }
+ },
+ "ministral-3-8b": {
+  "1": {
+   "n": 288,
+   "answer": 0.041666666666666664,
+   "refusal": 0.013888888888888888,
+   "other": 0.9444444444444444,
+   "vm_answer": 0.02259882972267777,
+   "vm_refusal": 0.0009627224712128182,
+   "option_agreement": 0.08333333333333333,
+   "n_agree": 12
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.9895833333333334,
+   "refusal": 0.0,
+   "other": 0.010416666666666666,
+   "vm_answer": 0.5531211253600335,
+   "vm_refusal": null,
+   "option_agreement": 0.9649122807017544,
+   "n_agree": 285
+  }
+ },
+ "olmo-3-7b": {
+  "1": {
+   "n": 288,
+   "answer": 0.003472222222222222,
+   "refusal": 0.9479166666666666,
+   "other": 0.04861111111111111,
+   "vm_answer": 0.0015541289307183315,
+   "vm_refusal": 0.00031100467261202644,
+   "option_agreement": 1.0,
+   "n_agree": 1
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9941468364058714,
+   "vm_refusal": null,
+   "option_agreement": 1.0,
+   "n_agree": 288
+  }
+ },
+ "olmo-3.1-32b": {
+  "1": {
+   "n": 288,
+   "answer": 0.0,
+   "refusal": 0.9791666666666666,
+   "other": 0.020833333333333332,
+   "vm_answer": null,
+   "vm_refusal": 0.0014000232157661,
+   "option_agreement": null,
+   "n_agree": 0
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.9375,
+   "refusal": 0.017361111111111112,
+   "other": 0.04513888888888889,
+   "vm_answer": 0.813879164919261,
+   "vm_refusal": 0.3435120625223241,
+   "option_agreement": 0.9925925925925926,
+   "n_agree": 270
+  }
+ },
+ "phi-4-mini": {
+  "1": {
+   "n": 288,
+   "answer": 0.5486111111111112,
+   "refusal": 0.375,
+   "other": 0.0763888888888889,
+   "vm_answer": 0.5354558451784844,
+   "vm_refusal": 0.17142689089796936,
+   "option_agreement": 0.7721518987341772,
+   "n_agree": 158
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.9618055555555556,
+   "refusal": 0.0,
+   "other": 0.03819444444444445,
+   "vm_answer": 0.8189323879034992,
+   "vm_refusal": null,
+   "option_agreement": 0.9783393501805054,
+   "n_agree": 277
+  }
+ },
+ "qwen2.5-7b": {
+  "1": {
+   "n": 288,
+   "answer": 0.14930555555555555,
+   "refusal": 0.5208333333333334,
+   "other": 0.3298611111111111,
+   "vm_answer": 0.35847577296423105,
+   "vm_refusal": 0.03135234203674917,
+   "option_agreement": 0.5348837209302325,
+   "n_agree": 43
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9601441947642151,
+   "vm_refusal": null,
+   "option_agreement": 0.9756944444444444,
+   "n_agree": 288
+  }
+ },
+ "qwen3-14b": {
+  "1": {
+   "n": 288,
+   "answer": 0.1423611111111111,
+   "refusal": 0.4479166666666667,
+   "other": 0.4097222222222222,
+   "vm_answer": 0.030159071145458217,
+   "vm_refusal": 0.0006983253860470021,
+   "option_agreement": 0.7560975609756098,
+   "n_agree": 41
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9915539851583601,
+   "vm_refusal": null,
+   "option_agreement": 0.9270833333333334,
+   "n_agree": 288
+  }
+ },
+ "qwen3-32b": {
+  "1": {
+   "n": 288,
+   "answer": 0.19444444444444445,
+   "refusal": 0.21875,
+   "other": 0.5868055555555556,
+   "vm_answer": 0.032415728582205774,
+   "vm_refusal": 0.02704932583050128,
+   "option_agreement": 0.3392857142857143,
+   "n_agree": 56
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.8321866832172222,
+   "vm_refusal": null,
+   "option_agreement": 0.875,
+   "n_agree": 288
+  }
+ },
+ "qwen3-8b": {
+  "1": {
+   "n": 288,
+   "answer": 0.11458333333333333,
+   "refusal": 0.2222222222222222,
+   "other": 0.6631944444444444,
+   "vm_answer": 0.11658694114287443,
+   "vm_refusal": 8.30797369351065e-05,
+   "option_agreement": 0.7272727272727273,
+   "n_agree": 33
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.9999998352215559,
+   "vm_refusal": null,
+   "option_agreement": 0.9895833333333334,
+   "n_agree": 288
+  }
+ },
+ "qwen3.5-9b": {
+  "1": {
+   "n": 288,
+   "answer": 0.3159722222222222,
+   "refusal": 0.6423611111111112,
+   "other": 0.041666666666666664,
+   "vm_answer": 0.24093350199069155,
+   "vm_refusal": 0.050477835002571025,
+   "option_agreement": 0.6593406593406593,
+   "n_agree": 91
+  },
+  "5": {
+   "n": 288,
+   "answer": 0.9236111111111112,
+   "refusal": 0.0763888888888889,
+   "other": 0.0,
+   "vm_answer": 0.9205480191475024,
+   "vm_refusal": 0.47641641690330727,
+   "option_agreement": 0.924812030075188,
+   "n_agree": 266
+  }
+ },
+ "smollm3-3b": {
+  "1": {
+   "n": 288,
+   "answer": 0.0,
+   "refusal": 0.010416666666666666,
+   "other": 0.9895833333333334,
+   "vm_answer": null,
+   "vm_refusal": 0.05661291870171343,
+   "option_agreement": null,
+   "n_agree": 0
+  },
+  "5": {
+   "n": 288,
+   "answer": 1.0,
+   "refusal": 0.0,
+   "other": 0.0,
+   "vm_answer": 0.7569673655948984,
+   "vm_refusal": null,
+   "option_agreement": 0.9618055555555556,
+   "n_agree": 288
+  }
+ }
+}

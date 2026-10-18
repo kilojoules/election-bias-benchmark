@@ -9,37 +9,43 @@ it names when one unasked issue differs. This is a candidate-conjoint experiment
 *revealed* preference — and the follow-ups below put the two readouts on the same models, the same
 items and the same prompts. Everything here is exploratory relative to `experiments/sweep/PLAN.md`.
 
-Data: the 46-model sweep (`experiments/sweep/`), plus 22 models ≤ 32B re-run with (i) a stated-opinion
+Data: the 46-model sweep (`experiments/sweep/`), plus 28 models — the 22 ≤ 32B and Llama 3.1/3.3 70B, Qwen2.5
+72B, Nemotron 70B, GLM-4.5-Air and Solar 100B (Qwen3.5-122B conjoint only) — re-run with (i) a stated-opinion
 readout — the paper's own PCT prompt, its 10 paraphrases and forcing levels 1/3/5, read from next-token
 log-probabilities over the four answer labels (`scripts/pct/stated_logit.py`) — on our 34 position
 statements and the 62 PCT propositions; (ii) the 62 PCT propositions rewritten as matched candidate
 stances and run through the conjoint (`data/pct_issues.json`); and (iii) on six models, the AGI stance
 in three wordings (AI in general / "models like this assistant" / a nuclear-reactor moratorium control),
 four implanted preferences, ten paraphrases of the voter's question and three offices
-(`scripts/pct/run_variants.sh`). Detailed tables: `stated_vs_revealed.md`, `variants.md`,
-`instability.md`, `literature_compare.md`.
+(`scripts/pct/run_variants.sh`); and (iv) both readouts checked against greedily decoded text
+(`scripts/pct/decode_check.py`, `scripts/pct/stated_decode.py`). Detailed tables: `stated_vs_revealed.md`,
+`variants.md`, `instability.md`, `literature_compare.md`, `decode_check.md`, `stated_decode.md`.
 
 ## 1. Models will not state the opinions they act on
 
-Asked the PCT way with no forcing, the 22 models put on average **5% of next-token probability on any
-of the four answer labels** — the "As an AI I have no opinions" refusal, reproduced as a number. Adding
-the paper's forcing suffix raises that to 88% at level 5 and moves the stated score by 0.89 points on
-the −2…+2 scale; the 10 paraphrases move it by 0.66 on average. Meanwhile **222 of the 225 (model,
-issue) cells with a called revealed lean are on issues the model refuses to state an opinion on**
-(valid mass < 0.3 unforced). The survey cannot see what the candidate choice measures.
+Asked the PCT way with no forcing, the 28 models put on average **4% of next-token probability on any
+of the four answer labels** (the six 70–100B models: 0.00–0.08) — the "As an AI I have no opinions" refusal, reproduced as a number. Adding
+the paper's forcing suffix raises that to 88% at level 5 and moves the stated score by 0.86 points on
+the −2…+2 scale; the 10 paraphrases move it by 0.63 on average. Decoded, the same prompts get an option in
+8% of answers unforced (41% explicit "as an AI" refusals, 44% discussion) and 100% forced, and answer-label
+mass is 0.57 on prompts answered in text against 0.08 on refusals, so the logit measure of refusal is the
+text's. Meanwhile **266 of the 269 (model, issue) cells with a called revealed lean are on issues the
+model refuses to state an opinion on** (valid mass < 0.3 unforced). The survey cannot see what the
+candidate choice measures.
 
 ## 2. Where both exist they agree — moderately, and with a systematic offset
 
-Across 374 model×issue pairs on our 17 political issues, stated and revealed leans correlate at
-Spearman **+0.64** (271/374 same sign); per model from +0.09 (Gemma 3 1B) to +0.91 (Llama 3.1 8B),
-with most instruct families ≥ +0.7 (`fig_issues_scatter.png`). On the PCT's own 62 propositions the
-agreement is weaker, **+0.36** (+0.46 within model), and 19 propositions flip sign for most models —
-"making peace with the establishment" (21/22), "protectionism is sometimes necessary" (20/22),
-"growth is detrimental to curbing global warming" (19/22): abstract creeds the models endorse when
-asked but do not act on when a candidate holds them.
+Across 476 model×issue pairs on our 17 political issues, stated and revealed leans correlate at
+Spearman **+0.65** (352/476 same sign); per model from +0.09 (Gemma 3 1B) to +0.91 (Llama 3.1 8B),
+with the 70B-class models among the tightest (+0.76 to +0.88) and most instruct families ≥ +0.7
+(`fig_issues_scatter.png`). On the PCT's own 62 propositions the agreement is weaker, **+0.38** (+0.47
+within model), and 18 propositions flip sign for most models — "protectionism is sometimes necessary"
+(25/28), "growth is detrimental to curbing global warming" (25/28), "making peace with the
+establishment": abstract creeds the models endorse when asked but do not act on when a candidate holds
+them.
 
-Placed on a compass, the revealed position sits **+0.55 nats to the right and +0.20 nats toward
-authoritarian** of the forced-choice stated position (20 of 22 models move right, 13 move
+Placed on a compass, the revealed position sits **+0.66 nats to the right and +0.31 nats toward
+authoritarian** of the forced-choice stated position (26 of 28 models move right, 19 move
 authoritarian). That is not the direction of the paper's open-ended shift (right *and* libertarian):
 the candidate-choice readout is its own measurement, not a proxy for free text.
 
@@ -47,8 +53,8 @@ the candidate-choice readout is its own measurement, not a proxy for free text.
 
 Ten rewordings of the voter's question move the revealed win-rate by **0.02–0.11** per issue (median
 0.05) with one sign flip in 30 model×issue cells, and changing the office (County Commissioner →
-School Board → State Senator) by less than that. The same models' stated answers move 0.67 score
-units across the paper's ten paraphrases (0.66). The instrument's own instability is the *focal framing*
+School Board → State Senator) by less than that. The same models' stated answers move 0.63 score
+units across the paper's ten paraphrases. The instrument's own instability is the *focal framing*
 (what the voter says they care about), not the wording: 23% of (model, issue) pairs change under a
 different focal issue, concentrated on minimum wage, guns and AI regulation; transgender athletes,
 drugs, voting access and surveillance hold direction in ≥ 80% of models (`instability.md`).
@@ -82,6 +88,28 @@ produce a called lean in 46 models.
 centre or right (Gemma 3 12B: stated (−1.6, −1.8), revealed +1.0 nats economic; Qwen3 8B/32B
 likewise). Seventeen of the families we measured (Gemma 4, Qwen3.5/3.8, GLM, EXAONE, OLMo 3,
 Nemotron 3, SmolLM3, Solar, Ministral 3, Phi-4) have no published stated-PCT coordinates at all.
+
+## 7. Both readouts are what the models write
+
+The objection to any first-token readout (Wang et al. 2024, cited by the paper) is that the probability
+of the first token need not match the answer the model would write. We checked both readouts against
+greedily decoded text. *Conjoint:* for 512 trials per model (eight flipped issues, property-tax focal)
+the answer was decoded for up to 128 tokens and the candidate it picks compared with the logit argmax,
+scoring on whichever path the sweep's own self-check selects for that run. Over 29 models the text names
+a candidate in a median 99% of trials (33% for Gemma 4 E4B, which mostly discusses both) and its pick
+matches the logit readout in 99.1% (median; minimum 94.3%, Gemma 3 27B). Two-thirds of the 223
+disagreements are the text naming the *second*-listed candidate after opening with "Both candidates
+support …", i.e. the written answer is slightly less listing-order-biased than the first token; per-issue
+win-rates computed from text and from logits agree within 0.01 on every issue (`decode_check.md`).
+*Stated:* decoding the paper's prompt (3 paraphrases × forcing 1 and 5 × 96 items) on the 22 models ≤ 32B
+gives a direct option in 8% of answers unforced and 100% forced; answer-label mass is 0.57 where the text
+answers and 0.08 where it refuses, and at forcing 5 the option named in text is the logit argmax 98% of
+the time (`stated_decode.md`). The leans and the refusals are in the text, not artefacts of the readout.
+
+*Hosts.* Two RunPod multi-GPU hosts silently corrupted GPU-to-GPU tensor copies (every model split across
+their GPUs produced zero or NaN logits with no error); `logit_sweep.guard_p2p` now tests each GPU pair at
+load, routes cross-GPU moves through host memory when needed and records the outcome in every meta file.
+All 70B+ results here were produced after that guard was in place.
 
 ## What this says about the paper's recommendations
 

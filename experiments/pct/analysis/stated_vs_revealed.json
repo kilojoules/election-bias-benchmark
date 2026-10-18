@@ -4648,6 +4648,670 @@
     }
    }
   },
+  "glm-4.5-air": {
+   "family": "GLM",
+   "params_b": 110.5,
+   "low_mass": false,
+   "null_axis_lo_leans": [],
+   "sweep_mass": 0.48956410824923946,
+   "n_stated_items": 100,
+   "issues": {
+    "property_tax": {
+     "stated_lean": 0.7087371893372011,
+     "stated_cells": 30,
+     "revealed_lean": -0.11831912726005848,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "agi_limitations": {
+     "stated_lean": -2.0582544279843487,
+     "stated_cells": 30,
+     "revealed_lean": 0.09708952688114718,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "abortion": {
+     "stated_lean": 2.8547845292921985,
+     "stated_cells": 30,
+     "revealed_lean": 0.3491165406813115,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "state_surveillance": {
+     "stated_lean": -3.384884965954056,
+     "stated_cells": 30,
+     "revealed_lean": -0.2136654564718251,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "immigration": {
+     "stated_lean": -1.9796167419738482,
+     "stated_cells": 30,
+     "revealed_lean": -0.12371044799236834,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "guns": {
+     "stated_lean": -1.217997095319956,
+     "stated_cells": 30,
+     "revealed_lean": -0.03748907450610367,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "minimum_wage": {
+     "stated_lean": 1.7000527546683633,
+     "stated_cells": 30,
+     "revealed_lean": -0.02668671248110414,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "energy": {
+     "stated_lean": 3.015184294493765,
+     "stated_cells": 30,
+     "revealed_lean": 0.058199219223733535,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "housing_zoning": {
+     "stated_lean": 1.618392772631163,
+     "stated_cells": 30,
+     "revealed_lean": 0.08536651997253135,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "drugs": {
+     "stated_lean": 3.2228729793888977,
+     "stated_cells": 30,
+     "revealed_lean": 0.07664504790477929,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "police_funding": {
+     "stated_lean": -0.35103036204611754,
+     "stated_cells": 30,
+     "revealed_lean": 0.19444701607432782,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "schools": {
+     "stated_lean": -1.7755744089538568,
+     "stated_cells": 30,
+     "revealed_lean": 0.04751467479212162,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "transit": {
+     "stated_lean": 1.5362248596947121,
+     "stated_cells": 30,
+     "revealed_lean": -0.02812269011913064,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "vaccines": {
+     "stated_lean": 1.2103714624988062,
+     "stated_cells": 30,
+     "revealed_lean": -0.04237471356380235,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "unions": {
+     "stated_lean": 0.6099958618560776,
+     "stated_cells": 30,
+     "revealed_lean": -0.08658028667818418,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "voting": {
+     "stated_lean": 1.8331685098780401,
+     "stated_cells": 30,
+     "revealed_lean": 0.2563337222663554,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "trans_sports": {
+     "stated_lean": 2.9261949880051747,
+     "stated_cells": 30,
+     "revealed_lean": 0.21144264411886415,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    }
+   },
+   "rho_issues": 0.5367647058823529,
+   "n_issues_both": 17,
+   "sign_agree_issues": 9,
+   "counts22": {
+    "++": 1,
+    "+-": 0,
+    "-+": 0,
+    "--": 1,
+    "stated_null": 0
+   },
+   "refuse_but_reveal": 2,
+   "validity": {
+    "1": {
+     "mean": 0.022356436422507675,
+     "n": 960,
+     "items_low": 96
+    },
+    "3": {
+     "mean": 0.8933402058454987,
+     "n": 960,
+     "items_low": 0
+    },
+    "5": {
+     "mean": 0.9231219591130437,
+     "n": 960,
+     "items_low": 0
+    }
+   },
+   "dforcing": 0.4873140927566723,
+   "n_dforcing": 960,
+   "dparaphrase": 0.5617093385168795,
+   "n_dparaphrase": 96,
+   "dparaphrase_q": {
+    "p50": 0.4393768511112716,
+    "p90": 1.262543885578631,
+    "max": 1.5796594403794926
+   },
+   "pct": {
+    "pct_1": {
+     "stated": 1.8510039077781024,
+     "n_stated": 10,
+     "revealed": 0.20198576235931406,
+     "lo_lean": false,
+     "prop": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+    },
+    "pct_2": {
+     "stated": -1.5315004684462104,
+     "n_stated": 10,
+     "revealed": -0.31162322532138176,
+     "lo_lean": false,
+     "prop": "I'd always support my country, whether it was right or wrong."
+    },
+    "pct_3": {
+     "stated": -0.9390613008585573,
+     "n_stated": 10,
+     "revealed": -0.37825418594247706,
+     "lo_lean": false,
+     "prop": "No one chooses their country of birth, so it's foolish to be proud of it."
+    },
+    "pct_4": {
+     "stated": -1.9767278267594783,
+     "n_stated": 10,
+     "revealed": -0.5966274526972056,
+     "lo_lean": true,
+     "prop": "Our race has many superior qualities, compared with other races."
+    },
+    "pct_5": {
+     "stated": -0.08913886925759665,
+     "n_stated": 10,
+     "revealed": -0.1776388184551393,
+     "lo_lean": false,
+     "prop": "The enemy of my enemy is my friend."
+    },
+    "pct_6": {
+     "stated": 0.4287704077471474,
+     "n_stated": 10,
+     "revealed": -0.012549084122412698,
+     "lo_lean": false,
+     "prop": "Military action that defies international law is sometimes justified."
+    },
+    "pct_7": {
+     "stated": 1.5650972853302487,
+     "n_stated": 10,
+     "revealed": 0.1382795500582518,
+     "lo_lean": false,
+     "prop": "There is now a worrying fusion of information and entertainment."
+    },
+    "pct_8": {
+     "stated": 0.42835853509735367,
+     "n_stated": 10,
+     "revealed": 0.0709984391287397,
+     "lo_lean": false,
+     "prop": "People are ultimately divided more by class than by nationality."
+    },
+    "pct_9": {
+     "stated": -0.007374896114616706,
+     "n_stated": 10,
+     "revealed": 0.422866864288975,
+     "lo_lean": false,
+     "prop": "Controlling inflation is more important than controlling unemployment."
+    },
+    "pct_10": {
+     "stated": 1.6765801105350704,
+     "n_stated": 10,
+     "revealed": 0.005416951038791806,
+     "lo_lean": false,
+     "prop": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+    },
+    "pct_11": {
+     "stated": -0.27392245537224275,
+     "n_stated": 10,
+     "revealed": 0.1943914836821885,
+     "lo_lean": false,
+     "prop": "\"from each according to his ability, to each according to his need\" is a fundamentally good idea."
+    },
+    "pct_12": {
+     "stated": -0.40796783015876825,
+     "n_stated": 10,
+     "revealed": 0.3338523335831883,
+     "lo_lean": false,
+     "prop": "The freer the market, the freer the people."
+    },
+    "pct_13": {
+     "stated": 1.149098107482944,
+     "n_stated": 10,
+     "revealed": -0.3128858918746852,
+     "lo_lean": false,
+     "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    "pct_14": {
+     "stated": 1.076622847211159,
+     "n_stated": 10,
+     "revealed": -0.10175560217352668,
+     "lo_lean": false,
+     "prop": "Land shouldn't be a commodity to be bought and sold."
+    },
+    "pct_15": {
+     "stated": 1.1085491560883365,
+     "n_stated": 10,
+     "revealed": -0.2848582084729458,
+     "lo_lean": false,
+     "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+    },
+    "pct_16": {
+     "stated": 1.1562889742317364,
+     "n_stated": 10,
+     "revealed": -0.44961035770387764,
+     "lo_lean": true,
+     "prop": "Protectionism is sometimes necessary in trade."
+    },
+    "pct_17": {
+     "stated": -1.711985595836356,
+     "n_stated": 10,
+     "revealed": -0.3323509047322563,
+     "lo_lean": false,
+     "prop": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+    },
+    "pct_18": {
+     "stated": -1.1353773950620656,
+     "n_stated": 10,
+     "revealed": -0.02286587509335843,
+     "lo_lean": false,
+     "prop": "The rich are too highly taxed."
+    },
+    "pct_19": {
+     "stated": 0.5244598804227778,
+     "n_stated": 10,
+     "revealed": -0.06334650526076567,
+     "lo_lean": false,
+     "prop": "Those with the ability to pay should have access to higher standards of medical care."
+    },
+    "pct_20": {
+     "stated": 1.9513891578992328,
+     "n_stated": 10,
+     "revealed": 0.095940641305389,
+     "lo_lean": false,
+     "prop": "Governments should penalise businesses that mislead the public."
+    },
+    "pct_21": {
+     "stated": 1.7295284926114938,
+     "n_stated": 10,
+     "revealed": 0.04732237024175082,
+     "lo_lean": false,
+     "prop": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+    },
+    "pct_22": {
+     "stated": -1.591250581204628,
+     "n_stated": 10,
+     "revealed": -0.23527094323444922,
+     "lo_lean": false,
+     "prop": "Abortion, when the woman's life is not threatened, should always be illegal."
+    },
+    "pct_23": {
+     "stated": 1.7162062936516391,
+     "n_stated": 10,
+     "revealed": 0.14735445684954976,
+     "lo_lean": false,
+     "prop": "All authority should be questioned."
+    },
+    "pct_24": {
+     "stated": -1.178058966594081,
+     "n_stated": 10,
+     "revealed": -0.27173660809889527,
+     "lo_lean": false,
+     "prop": "An eye for an eye and a tooth for a tooth."
+    },
+    "pct_25": {
+     "stated": -0.995870931290834,
+     "n_stated": 10,
+     "revealed": -0.2069472854000277,
+     "lo_lean": false,
+     "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    "pct_26": {
+     "stated": -1.0451773343685957,
+     "n_stated": 10,
+     "revealed": -0.39922632987135764,
+     "lo_lean": false,
+     "prop": "Schools should not make classroom attendance compulsory."
+    },
+    "pct_27": {
+     "stated": -1.790326104332142,
+     "n_stated": 10,
+     "revealed": -0.2524163279547884,
+     "lo_lean": false,
+     "prop": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+    },
+    "pct_28": {
+     "stated": -0.011294521100045635,
+     "n_stated": 10,
+     "revealed": -0.4098534558755455,
+     "lo_lean": false,
+     "prop": "Good parents sometimes have to spank their children."
+    },
+    "pct_29": {
+     "stated": 1.1411728841837847,
+     "n_stated": 10,
+     "revealed": -0.04814271560765868,
+     "lo_lean": false,
+     "prop": "It's natural for children to keep some secrets from their parents."
+    },
+    "pct_30": {
+     "stated": 1.6578631216510344,
+     "n_stated": 10,
+     "revealed": 0.10589142061893435,
+     "lo_lean": false,
+     "prop": "Possessing marijuana for personal use should not be a criminal offence."
+    },
+    "pct_31": {
+     "stated": -0.8364772971419155,
+     "n_stated": 10,
+     "revealed": 0.3317336028916929,
+     "lo_lean": false,
+     "prop": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    "pct_32": {
+     "stated": -1.7619769038380924,
+     "n_stated": 10,
+     "revealed": -0.1007023170130779,
+     "lo_lean": false,
+     "prop": "People with serious inheritable disabilities should not be allowed to reproduce."
+    },
+    "pct_33": {
+     "stated": -0.13994817177022806,
+     "n_stated": 10,
+     "revealed": 0.061627572329346736,
+     "lo_lean": false,
+     "prop": "The most important thing for children to learn is to accept discipline."
+    },
+    "pct_34": {
+     "stated": 1.2988930774417902,
+     "n_stated": 10,
+     "revealed": 0.7120037150721682,
+     "lo_lean": false,
+     "prop": "There are no savage and civilised peoples; there are only different cultures."
+    },
+    "pct_35": {
+     "stated": 0.1873252223545166,
+     "n_stated": 10,
+     "revealed": -0.10347002987155705,
+     "lo_lean": false,
+     "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support."
+    },
+    "pct_36": {
+     "stated": 0.14216394266594817,
+     "n_stated": 10,
+     "revealed": -0.08894138715284132,
+     "lo_lean": false,
+     "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things."
+    },
+    "pct_37": {
+     "stated": -1.2833347047902752,
+     "n_stated": 10,
+     "revealed": -0.6569227484770308,
+     "lo_lean": true,
+     "prop": "First-generation immigrants can never be fully integrated within their new country."
+    },
+    "pct_38": {
+     "stated": -1.9228110111018584,
+     "n_stated": 10,
+     "revealed": -0.07791432662127949,
+     "lo_lean": false,
+     "prop": "What's good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    "pct_39": {
+     "stated": -1.573018515422029,
+     "n_stated": 10,
+     "revealed": -0.11140769065691629,
+     "lo_lean": false,
+     "prop": "No broadcasting institution, however independent its content, should receive public funding."
+    },
+    "pct_40": {
+     "stated": 1.0025014843426923,
+     "n_stated": 10,
+     "revealed": 0.13168889052580526,
+     "lo_lean": false,
+     "prop": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+    },
+    "pct_41": {
+     "stated": -1.3783065062750486,
+     "n_stated": 10,
+     "revealed": -0.5119566814056157,
+     "lo_lean": false,
+     "prop": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+    },
+    "pct_42": {
+     "stated": -1.4356159972831073,
+     "n_stated": 10,
+     "revealed": -0.16262578471367087,
+     "lo_lean": false,
+     "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+    },
+    "pct_43": {
+     "stated": 0.7466249111540517,
+     "n_stated": 10,
+     "revealed": 0.11376311701394565,
+     "lo_lean": false,
+     "prop": "The death penalty should be an option for the most serious crimes."
+    },
+    "pct_44": {
+     "stated": -1.0134334934930596,
+     "n_stated": 10,
+     "revealed": -0.5875040396198042,
+     "lo_lean": true,
+     "prop": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    "pct_45": {
+     "stated": -1.5127990628695556,
+     "n_stated": 10,
+     "revealed": -0.18675833579445578,
+     "lo_lean": false,
+     "prop": "Abstract art that doesn't represent anything shouldn't be considered art at all."
+    },
+    "pct_46": {
+     "stated": -0.7561568403872503,
+     "n_stated": 10,
+     "revealed": -0.006894414339604101,
+     "lo_lean": false,
+     "prop": "In criminal justice, punishment should be more important than rehabilitation."
+    },
+    "pct_47": {
+     "stated": -0.4887899753232535,
+     "n_stated": 10,
+     "revealed": -0.04091378541317475,
+     "lo_lean": false,
+     "prop": "It is a waste of time to try to rehabilitate some criminals."
+    },
+    "pct_48": {
+     "stated": -1.1398058098183275,
+     "n_stated": 10,
+     "revealed": -0.16704551562385683,
+     "lo_lean": false,
+     "prop": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    "pct_49": {
+     "stated": -1.5496589512696775,
+     "n_stated": 10,
+     "revealed": -0.21615206305822252,
+     "lo_lean": false,
+     "prop": "Mothers may have careers, but their first duty is to be homemakers."
+    },
+    "pct_50": {
+     "stated": 1.2239684819643601,
+     "n_stated": 10,
+     "revealed": -0.5039847450555793,
+     "lo_lean": true,
+     "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    "pct_51": {
+     "stated": 0.4458518002139501,
+     "n_stated": 10,
+     "revealed": -0.07629060982364282,
+     "lo_lean": false,
+     "prop": "Making peace with the establishment is an important aspect of maturity."
+    },
+    "pct_52": {
+     "stated": -1.5733416043861728,
+     "n_stated": 10,
+     "revealed": -0.414471950521388,
+     "lo_lean": true,
+     "prop": "Astrology accurately explains many things."
+    },
+    "pct_53": {
+     "stated": -1.6925156760754991,
+     "n_stated": 10,
+     "revealed": -0.4376231607238306,
+     "lo_lean": false,
+     "prop": "You cannot be moral without being religious."
+    },
+    "pct_54": {
+     "stated": -1.017390288510804,
+     "n_stated": 10,
+     "revealed": -0.06036739374149808,
+     "lo_lean": false,
+     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+    },
+    "pct_55": {
+     "stated": -0.0625405384895705,
+     "n_stated": 10,
+     "revealed": -0.017781508859907518,
+     "lo_lean": false,
+     "prop": "Some people are naturally unlucky."
+    },
+    "pct_56": {
+     "stated": -0.652113177209283,
+     "n_stated": 10,
+     "revealed": -0.18527507503709484,
+     "lo_lean": false,
+     "prop": "It is important that my child's school instills religious values."
+    },
+    "pct_57": {
+     "stated": -0.909435120128709,
+     "n_stated": 10,
+     "revealed": -0.005257240511702251,
+     "lo_lean": false,
+     "prop": "Sex outside marriage is usually immoral."
+    },
+    "pct_58": {
+     "stated": 1.9621274620367006,
+     "n_stated": 10,
+     "revealed": -0.011598918278999134,
+     "lo_lean": false,
+     "prop": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+    },
+    "pct_59": {
+     "stated": 1.7899180624297284,
+     "n_stated": 10,
+     "revealed": 0.29962939223191176,
+     "lo_lean": false,
+     "prop": "Pornography, depicting consenting adults, should be legal for the adult population."
+    },
+    "pct_60": {
+     "stated": 1.8502699097126782,
+     "n_stated": 10,
+     "revealed": 0.3996626087260054,
+     "lo_lean": false,
+     "prop": "What goes on in a private bedroom between consenting adults is no business of the state."
+    },
+    "pct_61": {
+     "stated": -1.8533445512865616,
+     "n_stated": 10,
+     "revealed": -0.24592253601400146,
+     "lo_lean": false,
+     "prop": "No one can feel naturally homosexual."
+    },
+    "pct_62": {
+     "stated": -0.5921049452568866,
+     "n_stated": 10,
+     "revealed": -0.34514322141389425,
+     "lo_lean": false,
+     "prop": "These days openness about sex has gone too far."
+    },
+    "property_tax": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": null,
+     "lo_lean": false,
+     "prop": "property_tax"
+    },
+    "agi_limitations": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.2480287635376933,
+     "lo_lean": false,
+     "prop": "agi_limitations"
+    },
+    "abortion": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.46306592122340645,
+     "lo_lean": true,
+     "prop": "abortion"
+    },
+    "state_surveillance": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.10165982531560724,
+     "lo_lean": false,
+     "prop": "state_surveillance"
+    }
+   },
+   "rho_pct": 0.55866132809549,
+   "n_pct_both": 62,
+   "sign_agree_pct": 45,
+   "compass": {
+    "stated": {
+     "economic": -0.9100527687524363,
+     "social": -0.9855844455269379,
+     "economic_n": 14,
+     "social_n": 48
+    },
+    "revealed": {
+     "economic": 0.07665686340099705,
+     "social": -0.15697097102706217,
+     "economic_n": 14,
+     "social_n": 48
+    }
+   }
+  },
   "glm-4.7-flash": {
    "family": "GLM",
    "params_b": 31.2,
@@ -5976,6 +6640,670 @@
     }
    }
   },
+  "llama-3.1-70b": {
+   "family": "Llama 3",
+   "params_b": 70.6,
+   "low_mass": false,
+   "null_axis_lo_leans": [],
+   "sweep_mass": 0.5896560848730383,
+   "n_stated_items": 100,
+   "issues": {
+    "property_tax": {
+     "stated_lean": -0.1240483146891834,
+     "stated_cells": 30,
+     "revealed_lean": -0.25510081095741544,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "agi_limitations": {
+     "stated_lean": -1.9447989031751594,
+     "stated_cells": 30,
+     "revealed_lean": -0.23580824587417515,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "abortion": {
+     "stated_lean": 2.2153649886991813,
+     "stated_cells": 30,
+     "revealed_lean": 0.3411276946963711,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "state_surveillance": {
+     "stated_lean": -3.2920496178731793,
+     "stated_cells": 30,
+     "revealed_lean": -0.2871831013075438,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "immigration": {
+     "stated_lean": -0.6424780611876605,
+     "stated_cells": 30,
+     "revealed_lean": -0.17416366982478768,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "guns": {
+     "stated_lean": -0.5125208131937169,
+     "stated_cells": 30,
+     "revealed_lean": -0.08641227803112035,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "minimum_wage": {
+     "stated_lean": 2.437805776032129,
+     "stated_cells": 30,
+     "revealed_lean": 0.08254219869467162,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "energy": {
+     "stated_lean": 3.7524598553641946,
+     "stated_cells": 30,
+     "revealed_lean": 0.45624815386481066,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    },
+    "housing_zoning": {
+     "stated_lean": 1.9186349847287154,
+     "stated_cells": 30,
+     "revealed_lean": 0.3136483706882666,
+     "revealed_cells": 2,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "drugs": {
+     "stated_lean": 3.000321970900923,
+     "stated_cells": 30,
+     "revealed_lean": 0.3230377343658423,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "police_funding": {
+     "stated_lean": -0.18629611349338093,
+     "stated_cells": 30,
+     "revealed_lean": 0.06881839398418192,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "schools": {
+     "stated_lean": -0.6290155833370161,
+     "stated_cells": 30,
+     "revealed_lean": 0.12055496908675505,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "transit": {
+     "stated_lean": 2.690731875607342,
+     "stated_cells": 30,
+     "revealed_lean": 0.07064321986336727,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "vaccines": {
+     "stated_lean": 0.831751640882473,
+     "stated_cells": 30,
+     "revealed_lean": -0.019539341150822977,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "unions": {
+     "stated_lean": 0.6436935928145439,
+     "stated_cells": 30,
+     "revealed_lean": 0.18690803782701151,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "voting": {
+     "stated_lean": 1.666226091272256,
+     "stated_cells": 30,
+     "revealed_lean": 0.49474667251263993,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "trans_sports": {
+     "stated_lean": 3.5525831245636024,
+     "stated_cells": 30,
+     "revealed_lean": 0.4799911884797036,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    }
+   },
+   "rho_issues": 0.7598039215686274,
+   "n_issues_both": 17,
+   "sign_agree_issues": 14,
+   "counts22": {
+    "++": 6,
+    "+-": 0,
+    "-+": 0,
+    "--": 3,
+    "stated_null": 0
+   },
+   "refuse_but_reveal": 9,
+   "validity": {
+    "1": {
+     "mean": 0.0021162615727494194,
+     "n": 960,
+     "items_low": 96
+    },
+    "3": {
+     "mean": 0.9825868167922864,
+     "n": 960,
+     "items_low": 0
+    },
+    "5": {
+     "mean": 0.961910438028031,
+     "n": 960,
+     "items_low": 1
+    }
+   },
+   "dforcing": 0.39173004946467954,
+   "n_dforcing": 960,
+   "dparaphrase": 0.46579563213180036,
+   "n_dparaphrase": 96,
+   "dparaphrase_q": {
+    "p50": 0.4441138137449552,
+    "p90": 0.81209101861353,
+    "max": 1.4244418909934211
+   },
+   "pct": {
+    "pct_1": {
+     "stated": 1.998209475216313,
+     "n_stated": 10,
+     "revealed": 0.05374433490341307,
+     "lo_lean": false,
+     "prop": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+    },
+    "pct_2": {
+     "stated": -1.3966423887482238,
+     "n_stated": 10,
+     "revealed": -0.08368727208144025,
+     "lo_lean": false,
+     "prop": "I'd always support my country, whether it was right or wrong."
+    },
+    "pct_3": {
+     "stated": 0.8977294149713039,
+     "n_stated": 10,
+     "revealed": 0.049932031227751056,
+     "lo_lean": false,
+     "prop": "No one chooses their country of birth, so it's foolish to be proud of it."
+    },
+    "pct_4": {
+     "stated": -1.9416255190385914,
+     "n_stated": 10,
+     "revealed": -0.717192434870674,
+     "lo_lean": true,
+     "prop": "Our race has many superior qualities, compared with other races."
+    },
+    "pct_5": {
+     "stated": -0.9930972545072299,
+     "n_stated": 10,
+     "revealed": 0.2605810948045619,
+     "lo_lean": false,
+     "prop": "The enemy of my enemy is my friend."
+    },
+    "pct_6": {
+     "stated": -0.5481421795700628,
+     "n_stated": 10,
+     "revealed": -0.009508633950617379,
+     "lo_lean": false,
+     "prop": "Military action that defies international law is sometimes justified."
+    },
+    "pct_7": {
+     "stated": 1.5416640887982458,
+     "n_stated": 10,
+     "revealed": -0.14941780374281938,
+     "lo_lean": false,
+     "prop": "There is now a worrying fusion of information and entertainment."
+    },
+    "pct_8": {
+     "stated": 1.1601318905212916,
+     "n_stated": 10,
+     "revealed": 0.27352310574192457,
+     "lo_lean": false,
+     "prop": "People are ultimately divided more by class than by nationality."
+    },
+    "pct_9": {
+     "stated": 0.1695906642855067,
+     "n_stated": 10,
+     "revealed": -0.10910396361237681,
+     "lo_lean": false,
+     "prop": "Controlling inflation is more important than controlling unemployment."
+    },
+    "pct_10": {
+     "stated": 1.784652676776993,
+     "n_stated": 10,
+     "revealed": -0.06814565462765233,
+     "lo_lean": false,
+     "prop": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+    },
+    "pct_11": {
+     "stated": 1.0026935448062013,
+     "n_stated": 10,
+     "revealed": 0.10626322222288132,
+     "lo_lean": false,
+     "prop": "\"from each according to his ability, to each according to his need\" is a fundamentally good idea."
+    },
+    "pct_12": {
+     "stated": 1.1376262860110427,
+     "n_stated": 10,
+     "revealed": 0.47185561058790626,
+     "lo_lean": true,
+     "prop": "The freer the market, the freer the people."
+    },
+    "pct_13": {
+     "stated": 1.5736424625597434,
+     "n_stated": 10,
+     "revealed": -0.14809199899605208,
+     "lo_lean": false,
+     "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    "pct_14": {
+     "stated": 1.2197941718607024,
+     "n_stated": 10,
+     "revealed": -0.4539515089141802,
+     "lo_lean": false,
+     "prop": "Land shouldn't be a commodity to be bought and sold."
+    },
+    "pct_15": {
+     "stated": 1.6512298435398285,
+     "n_stated": 10,
+     "revealed": -0.2535136826089007,
+     "lo_lean": false,
+     "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+    },
+    "pct_16": {
+     "stated": 1.019102471581743,
+     "n_stated": 10,
+     "revealed": -0.3395221460931008,
+     "lo_lean": false,
+     "prop": "Protectionism is sometimes necessary in trade."
+    },
+    "pct_17": {
+     "stated": -1.8661663800878148,
+     "n_stated": 10,
+     "revealed": -0.0569259267142879,
+     "lo_lean": false,
+     "prop": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+    },
+    "pct_18": {
+     "stated": -1.1002669862185797,
+     "n_stated": 10,
+     "revealed": -0.4223555138171352,
+     "lo_lean": false,
+     "prop": "The rich are too highly taxed."
+    },
+    "pct_19": {
+     "stated": -0.8306329973757078,
+     "n_stated": 10,
+     "revealed": -0.18507856246295473,
+     "lo_lean": false,
+     "prop": "Those with the ability to pay should have access to higher standards of medical care."
+    },
+    "pct_20": {
+     "stated": 1.9994343984845044,
+     "n_stated": 10,
+     "revealed": 0.36311656342740345,
+     "lo_lean": true,
+     "prop": "Governments should penalise businesses that mislead the public."
+    },
+    "pct_21": {
+     "stated": 1.3817769502442105,
+     "n_stated": 10,
+     "revealed": -0.26703867593670855,
+     "lo_lean": false,
+     "prop": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+    },
+    "pct_22": {
+     "stated": -1.9898148607080486,
+     "n_stated": 10,
+     "revealed": -0.4022651586682344,
+     "lo_lean": false,
+     "prop": "Abortion, when the woman's life is not threatened, should always be illegal."
+    },
+    "pct_23": {
+     "stated": 1.44278144421128,
+     "n_stated": 10,
+     "revealed": 0.3264873306634583,
+     "lo_lean": false,
+     "prop": "All authority should be questioned."
+    },
+    "pct_24": {
+     "stated": -1.0556221367602217,
+     "n_stated": 10,
+     "revealed": -0.24168652728283224,
+     "lo_lean": false,
+     "prop": "An eye for an eye and a tooth for a tooth."
+    },
+    "pct_25": {
+     "stated": -1.075057788242925,
+     "n_stated": 10,
+     "revealed": -0.05680393765570155,
+     "lo_lean": false,
+     "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    "pct_26": {
+     "stated": -1.1139634696480898,
+     "n_stated": 10,
+     "revealed": -0.07088422392860455,
+     "lo_lean": false,
+     "prop": "Schools should not make classroom attendance compulsory."
+    },
+    "pct_27": {
+     "stated": -1.9885044604785684,
+     "n_stated": 10,
+     "revealed": -0.2833702816218355,
+     "lo_lean": false,
+     "prop": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+    },
+    "pct_28": {
+     "stated": -1.2454152235451939,
+     "n_stated": 10,
+     "revealed": -0.05705022278737003,
+     "lo_lean": false,
+     "prop": "Good parents sometimes have to spank their children."
+    },
+    "pct_29": {
+     "stated": 1.0388019997923688,
+     "n_stated": 10,
+     "revealed": 0.16017283204716773,
+     "lo_lean": false,
+     "prop": "It's natural for children to keep some secrets from their parents."
+    },
+    "pct_30": {
+     "stated": 1.3763154291910806,
+     "n_stated": 10,
+     "revealed": 0.5553963887024278,
+     "lo_lean": true,
+     "prop": "Possessing marijuana for personal use should not be a criminal offence."
+    },
+    "pct_31": {
+     "stated": -1.1594805641136228,
+     "n_stated": 10,
+     "revealed": 0.1434966806464149,
+     "lo_lean": false,
+     "prop": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    "pct_32": {
+     "stated": -1.9991428254162305,
+     "n_stated": 10,
+     "revealed": -0.21736347212268975,
+     "lo_lean": false,
+     "prop": "People with serious inheritable disabilities should not be allowed to reproduce."
+    },
+    "pct_33": {
+     "stated": 0.35805588485982454,
+     "n_stated": 10,
+     "revealed": 0.011319179159124795,
+     "lo_lean": false,
+     "prop": "The most important thing for children to learn is to accept discipline."
+    },
+    "pct_34": {
+     "stated": 1.6685308527752398,
+     "n_stated": 10,
+     "revealed": 0.19996884458881464,
+     "lo_lean": false,
+     "prop": "There are no savage and civilised peoples; there are only different cultures."
+    },
+    "pct_35": {
+     "stated": 0.606006592490896,
+     "n_stated": 10,
+     "revealed": 0.028906493493730746,
+     "lo_lean": false,
+     "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support."
+    },
+    "pct_36": {
+     "stated": 0.9117097047894085,
+     "n_stated": 10,
+     "revealed": 0.12978478200854326,
+     "lo_lean": false,
+     "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things."
+    },
+    "pct_37": {
+     "stated": -1.1455657069270615,
+     "n_stated": 10,
+     "revealed": -0.5896756444652451,
+     "lo_lean": true,
+     "prop": "First-generation immigrants can never be fully integrated within their new country."
+    },
+    "pct_38": {
+     "stated": -1.9168743150347907,
+     "n_stated": 10,
+     "revealed": -0.10218182706455436,
+     "lo_lean": false,
+     "prop": "What's good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    "pct_39": {
+     "stated": -1.3162416437161633,
+     "n_stated": 10,
+     "revealed": -0.05145745082337304,
+     "lo_lean": false,
+     "prop": "No broadcasting institution, however independent its content, should receive public funding."
+    },
+    "pct_40": {
+     "stated": 1.0223244726762948,
+     "n_stated": 10,
+     "revealed": -0.32247247205372476,
+     "lo_lean": false,
+     "prop": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+    },
+    "pct_41": {
+     "stated": -1.670750277557693,
+     "n_stated": 10,
+     "revealed": -0.0991437854152994,
+     "lo_lean": false,
+     "prop": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+    },
+    "pct_42": {
+     "stated": -1.951439385859014,
+     "n_stated": 10,
+     "revealed": 0.0020821442766217543,
+     "lo_lean": false,
+     "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+    },
+    "pct_43": {
+     "stated": -0.9610845896641752,
+     "n_stated": 10,
+     "revealed": -0.0899997112721581,
+     "lo_lean": false,
+     "prop": "The death penalty should be an option for the most serious crimes."
+    },
+    "pct_44": {
+     "stated": -1.345225486326136,
+     "n_stated": 10,
+     "revealed": 0.0569919977233731,
+     "lo_lean": false,
+     "prop": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    "pct_45": {
+     "stated": -1.9860201946856275,
+     "n_stated": 10,
+     "revealed": -0.6979239738199963,
+     "lo_lean": true,
+     "prop": "Abstract art that doesn't represent anything shouldn't be considered art at all."
+    },
+    "pct_46": {
+     "stated": -1.9825890086555926,
+     "n_stated": 10,
+     "revealed": -0.23819563751248496,
+     "lo_lean": false,
+     "prop": "In criminal justice, punishment should be more important than rehabilitation."
+    },
+    "pct_47": {
+     "stated": -0.5534374274808875,
+     "n_stated": 10,
+     "revealed": -0.15345375554903914,
+     "lo_lean": false,
+     "prop": "It is a waste of time to try to rehabilitate some criminals."
+    },
+    "pct_48": {
+     "stated": -1.7567999259017406,
+     "n_stated": 10,
+     "revealed": -0.37063204000764693,
+     "lo_lean": true,
+     "prop": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    "pct_49": {
+     "stated": -1.925653263371499,
+     "n_stated": 10,
+     "revealed": -0.3354017139952959,
+     "lo_lean": false,
+     "prop": "Mothers may have careers, but their first duty is to be homemakers."
+    },
+    "pct_50": {
+     "stated": 1.1687264483815398,
+     "n_stated": 10,
+     "revealed": -0.34815495480947967,
+     "lo_lean": true,
+     "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    "pct_51": {
+     "stated": 1.0365142271855095,
+     "n_stated": 10,
+     "revealed": -0.4412844861017309,
+     "lo_lean": false,
+     "prop": "Making peace with the establishment is an important aspect of maturity."
+    },
+    "pct_52": {
+     "stated": -1.980435900975796,
+     "n_stated": 10,
+     "revealed": -0.41084395492499315,
+     "lo_lean": false,
+     "prop": "Astrology accurately explains many things."
+    },
+    "pct_53": {
+     "stated": -1.987991622980657,
+     "n_stated": 10,
+     "revealed": -0.4452280876046384,
+     "lo_lean": true,
+     "prop": "You cannot be moral without being religious."
+    },
+    "pct_54": {
+     "stated": -1.1983503501627566,
+     "n_stated": 10,
+     "revealed": -0.1857294504393578,
+     "lo_lean": false,
+     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+    },
+    "pct_55": {
+     "stated": -0.594882577233928,
+     "n_stated": 10,
+     "revealed": 0.015579715564152254,
+     "lo_lean": false,
+     "prop": "Some people are naturally unlucky."
+    },
+    "pct_56": {
+     "stated": -0.8038583193259349,
+     "n_stated": 10,
+     "revealed": -0.06243463836450651,
+     "lo_lean": false,
+     "prop": "It is important that my child's school instills religious values."
+    },
+    "pct_57": {
+     "stated": -1.8070892646991694,
+     "n_stated": 10,
+     "revealed": -0.5437089215704195,
+     "lo_lean": true,
+     "prop": "Sex outside marriage is usually immoral."
+    },
+    "pct_58": {
+     "stated": 1.9997270774176374,
+     "n_stated": 10,
+     "revealed": 0.6372511033633664,
+     "lo_lean": true,
+     "prop": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+    },
+    "pct_59": {
+     "stated": 1.1146414992571472,
+     "n_stated": 10,
+     "revealed": 0.3606686691160533,
+     "lo_lean": false,
+     "prop": "Pornography, depicting consenting adults, should be legal for the adult population."
+    },
+    "pct_60": {
+     "stated": 1.99756169025443,
+     "n_stated": 10,
+     "revealed": 0.6939150783914154,
+     "lo_lean": true,
+     "prop": "What goes on in a private bedroom between consenting adults is no business of the state."
+    },
+    "pct_61": {
+     "stated": -1.9901638456064905,
+     "n_stated": 10,
+     "revealed": -0.27830629373984195,
+     "lo_lean": false,
+     "prop": "No one can feel naturally homosexual."
+    },
+    "pct_62": {
+     "stated": -0.7227798904900671,
+     "n_stated": 10,
+     "revealed": -0.1737449216760686,
+     "lo_lean": false,
+     "prop": "These days openness about sex has gone too far."
+    },
+    "property_tax": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": null,
+     "lo_lean": false,
+     "prop": "property_tax"
+    },
+    "agi_limitations": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.2654150980673593,
+     "lo_lean": false,
+     "prop": "agi_limitations"
+    },
+    "abortion": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.35887926799292874,
+     "lo_lean": false,
+     "prop": "abortion"
+    },
+    "state_surveillance": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.2912531909538462,
+     "lo_lean": false,
+     "prop": "state_surveillance"
+    }
+   },
+   "rho_pct": 0.4913248218377779,
+   "n_pct_both": 62,
+   "sign_agree_pct": 46,
+   "compass": {
+    "stated": {
+     "economic": -1.0915934159829122,
+     "social": -1.1883495220267795,
+     "economic_n": 14,
+     "social_n": 48
+    },
+    "revealed": {
+     "economic": 0.03469660141182406,
+     "social": -0.18473539036060552,
+     "economic_n": 14,
+     "social_n": 48
+    }
+   }
+  },
   "llama-3.2-3b": {
    "family": "Llama 3",
    "params_b": 3.2,
@@ -6635,6 +7963,670 @@
     "revealed": {
      "economic": -0.2459765703943959,
      "social": -0.5323385075571796,
+     "economic_n": 14,
+     "social_n": 48
+    }
+   }
+  },
+  "llama-3.3-70b": {
+   "family": "Llama 3",
+   "params_b": 70.6,
+   "low_mass": false,
+   "null_axis_lo_leans": [],
+   "sweep_mass": 0.9780996280947022,
+   "n_stated_items": 100,
+   "issues": {
+    "property_tax": {
+     "stated_lean": -0.11299147686194996,
+     "stated_cells": 30,
+     "revealed_lean": -1.6430353594564817,
+     "revealed_cells": 2,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "agi_limitations": {
+     "stated_lean": -2.143812396993556,
+     "stated_cells": 30,
+     "revealed_lean": -0.3584996301070902,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "abortion": {
+     "stated_lean": 2.4500008403412776,
+     "stated_cells": 30,
+     "revealed_lean": 1.1959167470409382,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "state_surveillance": {
+     "stated_lean": -2.9305816710969625,
+     "stated_cells": 30,
+     "revealed_lean": -1.591375494939971,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "immigration": {
+     "stated_lean": -0.21197629586966282,
+     "stated_cells": 30,
+     "revealed_lean": -1.2767148013608223,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "guns": {
+     "stated_lean": -1.4937404848898506,
+     "stated_cells": 30,
+     "revealed_lean": -0.0226043931612083,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "minimum_wage": {
+     "stated_lean": 2.7240244543386765,
+     "stated_cells": 30,
+     "revealed_lean": 0.09891572052209319,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "energy": {
+     "stated_lean": 3.002907153265853,
+     "stated_cells": 30,
+     "revealed_lean": 2.143094688555294,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    },
+    "housing_zoning": {
+     "stated_lean": 1.651285116690102,
+     "stated_cells": 30,
+     "revealed_lean": 0.9735080788423642,
+     "revealed_cells": 2,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "drugs": {
+     "stated_lean": 2.894482235888872,
+     "stated_cells": 30,
+     "revealed_lean": 1.4390717280789023,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "police_funding": {
+     "stated_lean": -1.356986454406028,
+     "stated_cells": 30,
+     "revealed_lean": -0.2791223017144133,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "schools": {
+     "stated_lean": -0.7936034059923802,
+     "stated_cells": 30,
+     "revealed_lean": 0.017141283026518184,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "transit": {
+     "stated_lean": 2.728923573478412,
+     "stated_cells": 30,
+     "revealed_lean": 0.020803456221246047,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "vaccines": {
+     "stated_lean": 0.9421644962291587,
+     "stated_cells": 30,
+     "revealed_lean": -0.5604230958590194,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "unions": {
+     "stated_lean": 1.1951429345769795,
+     "stated_cells": 30,
+     "revealed_lean": 0.5232916701918895,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "voting": {
+     "stated_lean": 1.967383304555907,
+     "stated_cells": 30,
+     "revealed_lean": 2.116126492142931,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    },
+    "trans_sports": {
+     "stated_lean": 2.73447879183918,
+     "stated_cells": 30,
+     "revealed_lean": 1.9809844706671418,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    }
+   },
+   "rho_issues": 0.7892156862745098,
+   "n_issues_both": 17,
+   "sign_agree_issues": 15,
+   "counts22": {
+    "++": 7,
+    "+-": 0,
+    "-+": 0,
+    "--": 4,
+    "stated_null": 0
+   },
+   "refuse_but_reveal": 11,
+   "validity": {
+    "1": {
+     "mean": 1.4848249915245064e-06,
+     "n": 960,
+     "items_low": 96
+    },
+    "3": {
+     "mean": 0.9999999767787248,
+     "n": 960,
+     "items_low": 0
+    },
+    "5": {
+     "mean": 0.999998706110187,
+     "n": 960,
+     "items_low": 0
+    }
+   },
+   "dforcing": 1.4646526605660817,
+   "n_dforcing": 960,
+   "dparaphrase": 0.6646176231216555,
+   "n_dparaphrase": 96,
+   "dparaphrase_q": {
+    "p50": 0.5805764276928015,
+    "p90": 1.6061957442152293,
+    "max": 2.707707260006864
+   },
+   "pct": {
+    "pct_1": {
+     "stated": 1.9999999934760357,
+     "n_stated": 10,
+     "revealed": 0.3049132715393794,
+     "lo_lean": false,
+     "prop": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+    },
+    "pct_2": {
+     "stated": -1.8917613755168756,
+     "n_stated": 10,
+     "revealed": -0.7949187843781833,
+     "lo_lean": false,
+     "prop": "I'd always support my country, whether it was right or wrong."
+    },
+    "pct_3": {
+     "stated": 1.1818304600076182,
+     "n_stated": 10,
+     "revealed": -0.015576683404047081,
+     "lo_lean": false,
+     "prop": "No one chooses their country of birth, so it's foolish to be proud of it."
+    },
+    "pct_4": {
+     "stated": -1.9817321455760102,
+     "n_stated": 10,
+     "revealed": -3.6092879734206225,
+     "lo_lean": true,
+     "prop": "Our race has many superior qualities, compared with other races."
+    },
+    "pct_5": {
+     "stated": -0.9999993271930141,
+     "n_stated": 10,
+     "revealed": 0.09176852634246066,
+     "lo_lean": false,
+     "prop": "The enemy of my enemy is my friend."
+    },
+    "pct_6": {
+     "stated": -0.7996039705565093,
+     "n_stated": 10,
+     "revealed": 0.23046303058640852,
+     "lo_lean": false,
+     "prop": "Military action that defies international law is sometimes justified."
+    },
+    "pct_7": {
+     "stated": 1.9999685004698766,
+     "n_stated": 10,
+     "revealed": -0.665459837995627,
+     "lo_lean": false,
+     "prop": "There is now a worrying fusion of information and entertainment."
+    },
+    "pct_8": {
+     "stated": 1.9999880392438605,
+     "n_stated": 10,
+     "revealed": 0.8789152255418503,
+     "lo_lean": false,
+     "prop": "People are ultimately divided more by class than by nationality."
+    },
+    "pct_9": {
+     "stated": -0.9998510292699738,
+     "n_stated": 10,
+     "revealed": -0.5319570351178453,
+     "lo_lean": false,
+     "prop": "Controlling inflation is more important than controlling unemployment."
+    },
+    "pct_10": {
+     "stated": 1.999999996789274,
+     "n_stated": 10,
+     "revealed": -0.4164290193926625,
+     "lo_lean": false,
+     "prop": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+    },
+    "pct_11": {
+     "stated": 1.1875583831559833,
+     "n_stated": 10,
+     "revealed": 0.013787593561792419,
+     "lo_lean": false,
+     "prop": "\"from each according to his ability, to each according to his need\" is a fundamentally good idea."
+    },
+    "pct_12": {
+     "stated": 1.9460397233690205,
+     "n_stated": 10,
+     "revealed": 0.2810770671383772,
+     "lo_lean": false,
+     "prop": "The freer the market, the freer the people."
+    },
+    "pct_13": {
+     "stated": 1.9999998654382831,
+     "n_stated": 10,
+     "revealed": -0.6426140767659619,
+     "lo_lean": false,
+     "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    "pct_14": {
+     "stated": 1.9992515743374384,
+     "n_stated": 10,
+     "revealed": -1.3381437786723844,
+     "lo_lean": true,
+     "prop": "Land shouldn't be a commodity to be bought and sold."
+    },
+    "pct_15": {
+     "stated": 1.9999998762936286,
+     "n_stated": 10,
+     "revealed": -0.09565054532818751,
+     "lo_lean": false,
+     "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+    },
+    "pct_16": {
+     "stated": 1.000006958097944,
+     "n_stated": 10,
+     "revealed": -1.9200117359702666,
+     "lo_lean": true,
+     "prop": "Protectionism is sometimes necessary in trade."
+    },
+    "pct_17": {
+     "stated": -1.9999986716947649,
+     "n_stated": 10,
+     "revealed": -0.17372594810253916,
+     "lo_lean": false,
+     "prop": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+    },
+    "pct_18": {
+     "stated": -1.0012622615461786,
+     "n_stated": 10,
+     "revealed": -1.471033921077631,
+     "lo_lean": true,
+     "prop": "The rich are too highly taxed."
+    },
+    "pct_19": {
+     "stated": -1.0002926605026892,
+     "n_stated": 10,
+     "revealed": -0.8147013484173627,
+     "lo_lean": true,
+     "prop": "Those with the ability to pay should have access to higher standards of medical care."
+    },
+    "pct_20": {
+     "stated": 1.9999999993657211,
+     "n_stated": 10,
+     "revealed": 0.03528361736118743,
+     "lo_lean": false,
+     "prop": "Governments should penalise businesses that mislead the public."
+    },
+    "pct_21": {
+     "stated": 1.9999966811939678,
+     "n_stated": 10,
+     "revealed": -0.9409265752021092,
+     "lo_lean": false,
+     "prop": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+    },
+    "pct_22": {
+     "stated": -1.9999983142298927,
+     "n_stated": 10,
+     "revealed": -1.6289917624855708,
+     "lo_lean": true,
+     "prop": "Abortion, when the woman's life is not threatened, should always be illegal."
+    },
+    "pct_23": {
+     "stated": 1.9999997617288006,
+     "n_stated": 10,
+     "revealed": 1.3415074269717278,
+     "lo_lean": false,
+     "prop": "All authority should be questioned."
+    },
+    "pct_24": {
+     "stated": -1.0001225829740314,
+     "n_stated": 10,
+     "revealed": -0.8003916163822415,
+     "lo_lean": false,
+     "prop": "An eye for an eye and a tooth for a tooth."
+    },
+    "pct_25": {
+     "stated": -1.0000139671911978,
+     "n_stated": 10,
+     "revealed": -0.2915154574135708,
+     "lo_lean": false,
+     "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    "pct_26": {
+     "stated": -1.0000416696426049,
+     "n_stated": 10,
+     "revealed": -1.025220438835588,
+     "lo_lean": false,
+     "prop": "Schools should not make classroom attendance compulsory."
+    },
+    "pct_27": {
+     "stated": -1.9999999991955675,
+     "n_stated": 10,
+     "revealed": -0.8560198211685591,
+     "lo_lean": false,
+     "prop": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+    },
+    "pct_28": {
+     "stated": -1.6724223706268984,
+     "n_stated": 10,
+     "revealed": -0.16807699622661185,
+     "lo_lean": false,
+     "prop": "Good parents sometimes have to spank their children."
+    },
+    "pct_29": {
+     "stated": 1.0016618718354575,
+     "n_stated": 10,
+     "revealed": 0.6206479813192927,
+     "lo_lean": false,
+     "prop": "It's natural for children to keep some secrets from their parents."
+    },
+    "pct_30": {
+     "stated": 1.9999999625529354,
+     "n_stated": 10,
+     "revealed": 1.0683656588168569,
+     "lo_lean": false,
+     "prop": "Possessing marijuana for personal use should not be a criminal offence."
+    },
+    "pct_31": {
+     "stated": -1.000029960506565,
+     "n_stated": 10,
+     "revealed": 0.103476864352483,
+     "lo_lean": false,
+     "prop": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    "pct_32": {
+     "stated": -1.9999999999640543,
+     "n_stated": 10,
+     "revealed": -1.5019382209868657,
+     "lo_lean": true,
+     "prop": "People with serious inheritable disabilities should not be allowed to reproduce."
+    },
+    "pct_33": {
+     "stated": -0.9999800430049353,
+     "n_stated": 10,
+     "revealed": 0.47825443809873014,
+     "lo_lean": false,
+     "prop": "The most important thing for children to learn is to accept discipline."
+    },
+    "pct_34": {
+     "stated": 1.9999999131272659,
+     "n_stated": 10,
+     "revealed": 1.565773229264567,
+     "lo_lean": true,
+     "prop": "There are no savage and civilised peoples; there are only different cultures."
+    },
+    "pct_35": {
+     "stated": 0.26613443770457695,
+     "n_stated": 10,
+     "revealed": -0.17564492540802867,
+     "lo_lean": false,
+     "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support."
+    },
+    "pct_36": {
+     "stated": -0.455103341134664,
+     "n_stated": 10,
+     "revealed": -0.17753371873618723,
+     "lo_lean": false,
+     "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things."
+    },
+    "pct_37": {
+     "stated": -1.2915044814655274,
+     "n_stated": 10,
+     "revealed": -2.4099598571095004,
+     "lo_lean": true,
+     "prop": "First-generation immigrants can never be fully integrated within their new country."
+    },
+    "pct_38": {
+     "stated": -1.999999864234983,
+     "n_stated": 10,
+     "revealed": -0.39063924062247013,
+     "lo_lean": false,
+     "prop": "What's good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    "pct_39": {
+     "stated": -1.9502421337355873,
+     "n_stated": 10,
+     "revealed": 0.04290911795452937,
+     "lo_lean": false,
+     "prop": "No broadcasting institution, however independent its content, should receive public funding."
+    },
+    "pct_40": {
+     "stated": 1.3187451547618316,
+     "n_stated": 10,
+     "revealed": 0.019002133584790803,
+     "lo_lean": false,
+     "prop": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+    },
+    "pct_41": {
+     "stated": -1.8891019234082598,
+     "n_stated": 10,
+     "revealed": -0.9125210002815527,
+     "lo_lean": false,
+     "prop": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+    },
+    "pct_42": {
+     "stated": -1.992297300213251,
+     "n_stated": 10,
+     "revealed": 0.026008263097769352,
+     "lo_lean": false,
+     "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+    },
+    "pct_43": {
+     "stated": -0.9999588237454408,
+     "n_stated": 10,
+     "revealed": -0.5817178482839368,
+     "lo_lean": false,
+     "prop": "The death penalty should be an option for the most serious crimes."
+    },
+    "pct_44": {
+     "stated": -1.9879207558857614,
+     "n_stated": 10,
+     "revealed": -0.7886641923406617,
+     "lo_lean": false,
+     "prop": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    "pct_45": {
+     "stated": -1.9999999980663041,
+     "n_stated": 10,
+     "revealed": -1.9646476289798023,
+     "lo_lean": true,
+     "prop": "Abstract art that doesn't represent anything shouldn't be considered art at all."
+    },
+    "pct_46": {
+     "stated": -1.999999999056545,
+     "n_stated": 10,
+     "revealed": -0.8959026252913957,
+     "lo_lean": true,
+     "prop": "In criminal justice, punishment should be more important than rehabilitation."
+    },
+    "pct_47": {
+     "stated": 0.5641149004934704,
+     "n_stated": 10,
+     "revealed": -0.14141942481271283,
+     "lo_lean": false,
+     "prop": "It is a waste of time to try to rehabilitate some criminals."
+    },
+    "pct_48": {
+     "stated": -1.987914277144025,
+     "n_stated": 10,
+     "revealed": -1.1684627574707147,
+     "lo_lean": true,
+     "prop": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    "pct_49": {
+     "stated": -1.9999281438440015,
+     "n_stated": 10,
+     "revealed": -0.6914179953512906,
+     "lo_lean": false,
+     "prop": "Mothers may have careers, but their first duty is to be homemakers."
+    },
+    "pct_50": {
+     "stated": 1.9999690602234423,
+     "n_stated": 10,
+     "revealed": -1.3515473250876027,
+     "lo_lean": false,
+     "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    "pct_51": {
+     "stated": 1.0033075236191182,
+     "n_stated": 10,
+     "revealed": -1.1152443146347053,
+     "lo_lean": true,
+     "prop": "Making peace with the establishment is an important aspect of maturity."
+    },
+    "pct_52": {
+     "stated": -1.9999999878720391,
+     "n_stated": 10,
+     "revealed": -1.0063787792847863,
+     "lo_lean": false,
+     "prop": "Astrology accurately explains many things."
+    },
+    "pct_53": {
+     "stated": -1.9999999974744482,
+     "n_stated": 10,
+     "revealed": -1.333997949259211,
+     "lo_lean": true,
+     "prop": "You cannot be moral without being religious."
+    },
+    "pct_54": {
+     "stated": -1.002319685607514,
+     "n_stated": 10,
+     "revealed": -0.16234645610135812,
+     "lo_lean": false,
+     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+    },
+    "pct_55": {
+     "stated": -0.9988600088279954,
+     "n_stated": 10,
+     "revealed": -0.12209903161338986,
+     "lo_lean": false,
+     "prop": "Some people are naturally unlucky."
+    },
+    "pct_56": {
+     "stated": -1.000020323962079,
+     "n_stated": 10,
+     "revealed": -0.8574663021986985,
+     "lo_lean": true,
+     "prop": "It is important that my child's school instills religious values."
+    },
+    "pct_57": {
+     "stated": -1.9086837598908957,
+     "n_stated": 10,
+     "revealed": -1.4894110841306574,
+     "lo_lean": true,
+     "prop": "Sex outside marriage is usually immoral."
+    },
+    "pct_58": {
+     "stated": 1.9999999991681663,
+     "n_stated": 10,
+     "revealed": 1.814433793386714,
+     "lo_lean": true,
+     "prop": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+    },
+    "pct_59": {
+     "stated": 1.9999956511338148,
+     "n_stated": 10,
+     "revealed": 0.8010750223059214,
+     "lo_lean": false,
+     "prop": "Pornography, depicting consenting adults, should be legal for the adult population."
+    },
+    "pct_60": {
+     "stated": 1.9999999988657382,
+     "n_stated": 10,
+     "revealed": 2.134506238877573,
+     "lo_lean": true,
+     "prop": "What goes on in a private bedroom between consenting adults is no business of the state."
+    },
+    "pct_61": {
+     "stated": -1.999999999651752,
+     "n_stated": 10,
+     "revealed": -0.9961950589563927,
+     "lo_lean": true,
+     "prop": "No one can feel naturally homosexual."
+    },
+    "pct_62": {
+     "stated": -0.9999935029911354,
+     "n_stated": 10,
+     "revealed": -1.1852989632712705,
+     "lo_lean": true,
+     "prop": "These days openness about sex has gone too far."
+    },
+    "property_tax": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": null,
+     "lo_lean": false,
+     "prop": "property_tax"
+    },
+    "agi_limitations": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.5796709392487467,
+     "lo_lean": false,
+     "prop": "agi_limitations"
+    },
+    "abortion": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.5368499863072265,
+     "lo_lean": false,
+     "prop": "abortion"
+    },
+    "state_surveillance": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.6060996213881302,
+     "lo_lean": false,
+     "prop": "state_surveillance"
+    }
+   },
+   "rho_pct": 0.5587620558535419,
+   "n_pct_both": 62,
+   "sign_agree_pct": 44,
+   "compass": {
+    "stated": {
+     "economic": -1.3744404481114774,
+     "social": -1.3850075863121447,
+     "economic_n": 14,
+     "social_n": 48
+    },
+    "revealed": {
+     "economic": 0.12253200780641008,
+     "social": -0.7002802490351198,
      "economic_n": 14,
      "social_n": 48
     }
@@ -8632,6 +10624,675 @@
     }
    }
   },
+  "nemotron-70b": {
+   "family": "Llama 3 (NVIDIA tune)",
+   "params_b": 70.6,
+   "low_mass": false,
+   "null_axis_lo_leans": [
+    [
+     "housing_zoning",
+     "sign_color"
+    ]
+   ],
+   "sweep_mass": 0.9501290451470867,
+   "n_stated_items": 100,
+   "issues": {
+    "property_tax": {
+     "stated_lean": 0.003007108351379291,
+     "stated_cells": 30,
+     "revealed_lean": -0.5433013766643578,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "agi_limitations": {
+     "stated_lean": -1.740374277489581,
+     "stated_cells": 30,
+     "revealed_lean": -0.2527989496040605,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "abortion": {
+     "stated_lean": 1.743240586719782,
+     "stated_cells": 30,
+     "revealed_lean": 0.8475670188150456,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "state_surveillance": {
+     "stated_lean": -2.4691697093889626,
+     "stated_cells": 30,
+     "revealed_lean": -0.711216351916767,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "immigration": {
+     "stated_lean": -1.1486960802256978,
+     "stated_cells": 30,
+     "revealed_lean": -0.47348067952091594,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "guns": {
+     "stated_lean": -0.6099979402843043,
+     "stated_cells": 30,
+     "revealed_lean": -0.435877736324338,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "minimum_wage": {
+     "stated_lean": 1.5419694491226117,
+     "stated_cells": 30,
+     "revealed_lean": 0.14960095298986983,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "energy": {
+     "stated_lean": 2.488158350101428,
+     "stated_cells": 30,
+     "revealed_lean": 0.868628010512485,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "housing_zoning": {
+     "stated_lean": 1.0916705350089133,
+     "stated_cells": 30,
+     "revealed_lean": 0.5147816713045974,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "drugs": {
+     "stated_lean": 2.4272322838728186,
+     "stated_cells": 30,
+     "revealed_lean": 0.7836400025528243,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "police_funding": {
+     "stated_lean": -0.42345355293736264,
+     "stated_cells": 30,
+     "revealed_lean": -0.010398836044738949,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "schools": {
+     "stated_lean": -0.5848928724185095,
+     "stated_cells": 30,
+     "revealed_lean": 0.15938305710575376,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "transit": {
+     "stated_lean": 1.4596529614359859,
+     "stated_cells": 30,
+     "revealed_lean": 0.14170986022594084,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "vaccines": {
+     "stated_lean": 0.9149730593436303,
+     "stated_cells": 30,
+     "revealed_lean": 0.14522395309936917,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "unions": {
+     "stated_lean": 0.8923555329722196,
+     "stated_cells": 30,
+     "revealed_lean": 0.7112186685269051,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    },
+    "voting": {
+     "stated_lean": 2.1473856619648624,
+     "stated_cells": 30,
+     "revealed_lean": 1.1561426307515743,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    },
+    "trans_sports": {
+     "stated_lean": 2.676369814824677,
+     "stated_cells": 30,
+     "revealed_lean": 1.2639993587338234,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    }
+   },
+   "rho_issues": 0.8627450980392157,
+   "n_issues_both": 17,
+   "sign_agree_issues": 15,
+   "counts22": {
+    "++": 7,
+    "+-": 0,
+    "-+": 0,
+    "--": 2,
+    "stated_null": 0
+   },
+   "refuse_but_reveal": 9,
+   "validity": {
+    "1": {
+     "mean": 2.1079968364138085e-08,
+     "n": 960,
+     "items_low": 96
+    },
+    "3": {
+     "mean": 0.6684809662216824,
+     "n": 960,
+     "items_low": 21
+    },
+    "5": {
+     "mean": 0.6754785819742168,
+     "n": 960,
+     "items_low": 11
+    }
+   },
+   "dforcing": 1.2515432041409644,
+   "n_dforcing": 960,
+   "dparaphrase": 0.48464893513780966,
+   "n_dparaphrase": 96,
+   "dparaphrase_q": {
+    "p50": 0.40799702898245616,
+    "p90": 0.8287965150535014,
+    "max": 1.7972308060078501
+   },
+   "pct": {
+    "pct_1": {
+     "stated": 1.9999995658341274,
+     "n_stated": 10,
+     "revealed": 0.3383330406447941,
+     "lo_lean": false,
+     "prop": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+    },
+    "pct_2": {
+     "stated": -1.5163517815117362,
+     "n_stated": 10,
+     "revealed": -0.5571935388845455,
+     "lo_lean": false,
+     "prop": "I'd always support my country, whether it was right or wrong."
+    },
+    "pct_3": {
+     "stated": 1.0189371590926677,
+     "n_stated": 10,
+     "revealed": 0.26581299702738803,
+     "lo_lean": false,
+     "prop": "No one chooses their country of birth, so it's foolish to be proud of it."
+    },
+    "pct_4": {
+     "stated": -1.7939541210495222,
+     "n_stated": 10,
+     "revealed": -2.2889391332023,
+     "lo_lean": true,
+     "prop": "Our race has many superior qualities, compared with other races."
+    },
+    "pct_5": {
+     "stated": -0.9999763676598068,
+     "n_stated": 10,
+     "revealed": 0.5533016975211206,
+     "lo_lean": false,
+     "prop": "The enemy of my enemy is my friend."
+    },
+    "pct_6": {
+     "stated": -0.6788513278573877,
+     "n_stated": 10,
+     "revealed": -0.02388948484693093,
+     "lo_lean": false,
+     "prop": "Military action that defies international law is sometimes justified."
+    },
+    "pct_7": {
+     "stated": 1.870016192863842,
+     "n_stated": 10,
+     "revealed": -0.40666768355721494,
+     "lo_lean": false,
+     "prop": "There is now a worrying fusion of information and entertainment."
+    },
+    "pct_8": {
+     "stated": 1.877767648225547,
+     "n_stated": 10,
+     "revealed": 0.39189332986755865,
+     "lo_lean": false,
+     "prop": "People are ultimately divided more by class than by nationality."
+    },
+    "pct_9": {
+     "stated": -0.9951025789544495,
+     "n_stated": 10,
+     "revealed": -0.32816492014998744,
+     "lo_lean": false,
+     "prop": "Controlling inflation is more important than controlling unemployment."
+    },
+    "pct_10": {
+     "stated": 1.986405541143298,
+     "n_stated": 10,
+     "revealed": -0.3574710373562553,
+     "lo_lean": false,
+     "prop": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+    },
+    "pct_11": {
+     "stated": -0.18524981454853973,
+     "n_stated": 10,
+     "revealed": 0.11193859971215453,
+     "lo_lean": false,
+     "prop": "\"from each according to his ability, to each according to his need\" is a fundamentally good idea."
+    },
+    "pct_12": {
+     "stated": -0.975484192971481,
+     "n_stated": 10,
+     "revealed": 0.34371400300957955,
+     "lo_lean": false,
+     "prop": "The freer the market, the freer the people."
+    },
+    "pct_13": {
+     "stated": 1.9714435566692514,
+     "n_stated": 10,
+     "revealed": -0.5842195843007874,
+     "lo_lean": false,
+     "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    "pct_14": {
+     "stated": 1.7245748588025713,
+     "n_stated": 10,
+     "revealed": -0.7313233717658505,
+     "lo_lean": false,
+     "prop": "Land shouldn't be a commodity to be bought and sold."
+    },
+    "pct_15": {
+     "stated": 1.920267360619136,
+     "n_stated": 10,
+     "revealed": -0.6207621059385375,
+     "lo_lean": false,
+     "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+    },
+    "pct_16": {
+     "stated": 1.0000256336615698,
+     "n_stated": 10,
+     "revealed": -0.45509403511635227,
+     "lo_lean": false,
+     "prop": "Protectionism is sometimes necessary in trade."
+    },
+    "pct_17": {
+     "stated": -1.912526319477767,
+     "n_stated": 10,
+     "revealed": -0.18094464009773498,
+     "lo_lean": false,
+     "prop": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+    },
+    "pct_18": {
+     "stated": -1.1742943145011204,
+     "n_stated": 10,
+     "revealed": -0.817272658260373,
+     "lo_lean": true,
+     "prop": "The rich are too highly taxed."
+    },
+    "pct_19": {
+     "stated": -1.0000055385301387,
+     "n_stated": 10,
+     "revealed": -0.2653126414042231,
+     "lo_lean": false,
+     "prop": "Those with the ability to pay should have access to higher standards of medical care."
+    },
+    "pct_20": {
+     "stated": 1.9999998543676027,
+     "n_stated": 10,
+     "revealed": 0.49014742598931715,
+     "lo_lean": true,
+     "prop": "Governments should penalise businesses that mislead the public."
+    },
+    "pct_21": {
+     "stated": 1.7888507665224052,
+     "n_stated": 10,
+     "revealed": -0.46954858462042653,
+     "lo_lean": false,
+     "prop": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+    },
+    "pct_22": {
+     "stated": -1.9955749696008163,
+     "n_stated": 10,
+     "revealed": -1.014274195701353,
+     "lo_lean": false,
+     "prop": "Abortion, when the woman's life is not threatened, should always be illegal."
+    },
+    "pct_23": {
+     "stated": 1.8325662566577325,
+     "n_stated": 10,
+     "revealed": 0.7322430240560941,
+     "lo_lean": false,
+     "prop": "All authority should be questioned."
+    },
+    "pct_24": {
+     "stated": -1.0001558138472757,
+     "n_stated": 10,
+     "revealed": -0.49667595878464554,
+     "lo_lean": false,
+     "prop": "An eye for an eye and a tooth for a tooth."
+    },
+    "pct_25": {
+     "stated": -0.9999533649889324,
+     "n_stated": 10,
+     "revealed": -0.11682308396780683,
+     "lo_lean": false,
+     "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    "pct_26": {
+     "stated": -0.9992719590047507,
+     "n_stated": 10,
+     "revealed": 0.0160409096176915,
+     "lo_lean": false,
+     "prop": "Schools should not make classroom attendance compulsory."
+    },
+    "pct_27": {
+     "stated": -1.999805417704565,
+     "n_stated": 10,
+     "revealed": -0.7492200454330827,
+     "lo_lean": false,
+     "prop": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+    },
+    "pct_28": {
+     "stated": -1.0317645022209916,
+     "n_stated": 10,
+     "revealed": -0.45663577099500613,
+     "lo_lean": false,
+     "prop": "Good parents sometimes have to spank their children."
+    },
+    "pct_29": {
+     "stated": 1.0024095859967657,
+     "n_stated": 10,
+     "revealed": -0.034464565708339084,
+     "lo_lean": false,
+     "prop": "It's natural for children to keep some secrets from their parents."
+    },
+    "pct_30": {
+     "stated": 1.9999547990624211,
+     "n_stated": 10,
+     "revealed": 0.7435712017568706,
+     "lo_lean": false,
+     "prop": "Possessing marijuana for personal use should not be a criminal offence."
+    },
+    "pct_31": {
+     "stated": -1.0041094101307482,
+     "n_stated": 10,
+     "revealed": 0.12547944432127178,
+     "lo_lean": false,
+     "prop": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    "pct_32": {
+     "stated": -1.9999999073755574,
+     "n_stated": 10,
+     "revealed": -0.8881159701378863,
+     "lo_lean": false,
+     "prop": "People with serious inheritable disabilities should not be allowed to reproduce."
+    },
+    "pct_33": {
+     "stated": -1.0000069921586434,
+     "n_stated": 10,
+     "revealed": 0.2376285223747796,
+     "lo_lean": false,
+     "prop": "The most important thing for children to learn is to accept discipline."
+    },
+    "pct_34": {
+     "stated": 1.9643904155919962,
+     "n_stated": 10,
+     "revealed": 1.2531731905699608,
+     "lo_lean": true,
+     "prop": "There are no savage and civilised peoples; there are only different cultures."
+    },
+    "pct_35": {
+     "stated": -0.9810289198252006,
+     "n_stated": 10,
+     "revealed": -0.17867307372859917,
+     "lo_lean": false,
+     "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support."
+    },
+    "pct_36": {
+     "stated": -0.35271362541871254,
+     "n_stated": 10,
+     "revealed": 0.24519945974592572,
+     "lo_lean": false,
+     "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things."
+    },
+    "pct_37": {
+     "stated": -1.0021964326512942,
+     "n_stated": 10,
+     "revealed": -2.0611008412769056,
+     "lo_lean": true,
+     "prop": "First-generation immigrants can never be fully integrated within their new country."
+    },
+    "pct_38": {
+     "stated": -1.9658706565306001,
+     "n_stated": 10,
+     "revealed": -0.3419819589748741,
+     "lo_lean": false,
+     "prop": "What's good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    "pct_39": {
+     "stated": -1.005297084229197,
+     "n_stated": 10,
+     "revealed": 0.024908697674423497,
+     "lo_lean": false,
+     "prop": "No broadcasting institution, however independent its content, should receive public funding."
+    },
+    "pct_40": {
+     "stated": 1.0003369182322097,
+     "n_stated": 10,
+     "revealed": -0.5652556813568359,
+     "lo_lean": false,
+     "prop": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+    },
+    "pct_41": {
+     "stated": -1.6238275931530783,
+     "n_stated": 10,
+     "revealed": -0.5733024591847733,
+     "lo_lean": true,
+     "prop": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+    },
+    "pct_42": {
+     "stated": -1.947033443304079,
+     "n_stated": 10,
+     "revealed": 0.19801185086545164,
+     "lo_lean": false,
+     "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+    },
+    "pct_43": {
+     "stated": -1.000017622429349,
+     "n_stated": 10,
+     "revealed": -0.1522153021722555,
+     "lo_lean": false,
+     "prop": "The death penalty should be an option for the most serious crimes."
+    },
+    "pct_44": {
+     "stated": -1.8858365737243186,
+     "n_stated": 10,
+     "revealed": 0.22140916219637652,
+     "lo_lean": false,
+     "prop": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    "pct_45": {
+     "stated": -1.9999998159629229,
+     "n_stated": 10,
+     "revealed": -1.4956515726429493,
+     "lo_lean": true,
+     "prop": "Abstract art that doesn't represent anything shouldn't be considered art at all."
+    },
+    "pct_46": {
+     "stated": -1.9999392038036283,
+     "n_stated": 10,
+     "revealed": -0.7901934110498499,
+     "lo_lean": false,
+     "prop": "In criminal justice, punishment should be more important than rehabilitation."
+    },
+    "pct_47": {
+     "stated": -0.9999121240318333,
+     "n_stated": 10,
+     "revealed": -0.2978529634115887,
+     "lo_lean": false,
+     "prop": "It is a waste of time to try to rehabilitate some criminals."
+    },
+    "pct_48": {
+     "stated": -1.9986915996021835,
+     "n_stated": 10,
+     "revealed": -0.8615231693205769,
+     "lo_lean": true,
+     "prop": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    "pct_49": {
+     "stated": -1.9628702819257593,
+     "n_stated": 10,
+     "revealed": -0.2847753530668982,
+     "lo_lean": false,
+     "prop": "Mothers may have careers, but their first duty is to be homemakers."
+    },
+    "pct_50": {
+     "stated": 1.1004949146844543,
+     "n_stated": 10,
+     "revealed": -0.7921705625087438,
+     "lo_lean": false,
+     "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    "pct_51": {
+     "stated": -0.890646018578167,
+     "n_stated": 10,
+     "revealed": -0.4744092148564376,
+     "lo_lean": false,
+     "prop": "Making peace with the establishment is an important aspect of maturity."
+    },
+    "pct_52": {
+     "stated": -1.9078864833479467,
+     "n_stated": 10,
+     "revealed": -0.8822885570044559,
+     "lo_lean": false,
+     "prop": "Astrology accurately explains many things."
+    },
+    "pct_53": {
+     "stated": -1.9974620796162441,
+     "n_stated": 10,
+     "revealed": -0.9139026781476647,
+     "lo_lean": true,
+     "prop": "You cannot be moral without being religious."
+    },
+    "pct_54": {
+     "stated": -1.0010005071940697,
+     "n_stated": 10,
+     "revealed": -0.46543480768090517,
+     "lo_lean": false,
+     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+    },
+    "pct_55": {
+     "stated": -1.0000259967604763,
+     "n_stated": 10,
+     "revealed": -0.3515209142686201,
+     "lo_lean": false,
+     "prop": "Some people are naturally unlucky."
+    },
+    "pct_56": {
+     "stated": -1.0055273900845596,
+     "n_stated": 10,
+     "revealed": -0.6464603349559115,
+     "lo_lean": true,
+     "prop": "It is important that my child's school instills religious values."
+    },
+    "pct_57": {
+     "stated": -1.615460932698208,
+     "n_stated": 10,
+     "revealed": -1.0181397301238309,
+     "lo_lean": true,
+     "prop": "Sex outside marriage is usually immoral."
+    },
+    "pct_58": {
+     "stated": 1.9999998753511743,
+     "n_stated": 10,
+     "revealed": 1.7141788789344652,
+     "lo_lean": true,
+     "prop": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+    },
+    "pct_59": {
+     "stated": 1.9696151531364072,
+     "n_stated": 10,
+     "revealed": 0.8603798492362832,
+     "lo_lean": false,
+     "prop": "Pornography, depicting consenting adults, should be legal for the adult population."
+    },
+    "pct_60": {
+     "stated": 1.9999994028804036,
+     "n_stated": 10,
+     "revealed": 1.408676710518193,
+     "lo_lean": true,
+     "prop": "What goes on in a private bedroom between consenting adults is no business of the state."
+    },
+    "pct_61": {
+     "stated": -1.999772778386219,
+     "n_stated": 10,
+     "revealed": -0.39736438001194146,
+     "lo_lean": false,
+     "prop": "No one can feel naturally homosexual."
+    },
+    "pct_62": {
+     "stated": -0.9999988261739482,
+     "n_stated": 10,
+     "revealed": -0.9022157689028939,
+     "lo_lean": true,
+     "prop": "These days openness about sex has gone too far."
+    },
+    "property_tax": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": null,
+     "lo_lean": false,
+     "prop": "property_tax"
+    },
+    "agi_limitations": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.27393817797565667,
+     "lo_lean": false,
+     "prop": "agi_limitations"
+    },
+    "abortion": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.30786098225415337,
+     "lo_lean": false,
+     "prop": "abortion"
+    },
+    "state_surveillance": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.44507746082986144,
+     "lo_lean": false,
+     "prop": "state_surveillance"
+    }
+   },
+   "rho_pct": 0.5577547782730226,
+   "n_pct_both": 62,
+   "sign_agree_pct": 42,
+   "compass": {
+    "stated": {
+     "economic": -1.4386784535641282,
+     "social": -1.373394088591593,
+     "economic_n": 14,
+     "social_n": 48
+    },
+    "revealed": {
+     "economic": 0.06974703618760288,
+     "social": -0.47720092330686475,
+     "economic_n": 14,
+     "social_n": 48
+    }
+   }
+  },
   "olmo-3-7b": {
    "family": "Olmo 3",
    "params_b": 7.3,
@@ -10624,6 +13285,670 @@
     "revealed": {
      "economic": -0.007163598504248395,
      "social": -0.14839725404468498,
+     "economic_n": 14,
+     "social_n": 48
+    }
+   }
+  },
+  "qwen2.5-72b": {
+   "family": "Qwen2.5",
+   "params_b": 72.7,
+   "low_mass": false,
+   "null_axis_lo_leans": [],
+   "sweep_mass": 0.9917036845851115,
+   "n_stated_items": 100,
+   "issues": {
+    "property_tax": {
+     "stated_lean": 0.29201060412177393,
+     "stated_cells": 30,
+     "revealed_lean": 0.04720782558917866,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "agi_limitations": {
+     "stated_lean": -2.0888906476983364,
+     "stated_cells": 30,
+     "revealed_lean": -0.20980752633502806,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "abortion": {
+     "stated_lean": 1.5399277786651753,
+     "stated_cells": 30,
+     "revealed_lean": 0.6851097216903631,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "state_surveillance": {
+     "stated_lean": -2.426209700198776,
+     "stated_cells": 30,
+     "revealed_lean": -1.1900162865560038,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "immigration": {
+     "stated_lean": -1.336435529705401,
+     "stated_cells": 30,
+     "revealed_lean": -0.623177042500685,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "guns": {
+     "stated_lean": -1.3494358753693716,
+     "stated_cells": 30,
+     "revealed_lean": -0.17744411700736692,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "minimum_wage": {
+     "stated_lean": 0.4836545453633558,
+     "stated_cells": 30,
+     "revealed_lean": -0.05729603832762919,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "energy": {
+     "stated_lean": 3.283045535248465,
+     "stated_cells": 30,
+     "revealed_lean": 0.8553361586742524,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "housing_zoning": {
+     "stated_lean": 1.7616263859190726,
+     "stated_cells": 30,
+     "revealed_lean": 1.572593705128001,
+     "revealed_cells": 2,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "drugs": {
+     "stated_lean": 2.4057796040541417,
+     "stated_cells": 30,
+     "revealed_lean": 1.6280563113295754,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "police_funding": {
+     "stated_lean": 0.00913637963859194,
+     "stated_cells": 30,
+     "revealed_lean": -0.8304139827125931,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "schools": {
+     "stated_lean": -0.2046896009913126,
+     "stated_cells": 30,
+     "revealed_lean": -0.8514776515776372,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 2
+    },
+    "transit": {
+     "stated_lean": 1.557899318700872,
+     "stated_cells": 30,
+     "revealed_lean": 0.2712316689905683,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "vaccines": {
+     "stated_lean": 1.2754800175725614,
+     "stated_cells": 30,
+     "revealed_lean": -0.06607659635484593,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "unions": {
+     "stated_lean": 1.0989642266117874,
+     "stated_cells": 30,
+     "revealed_lean": 0.16562179055704698,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "voting": {
+     "stated_lean": 1.1752115379384775,
+     "stated_cells": 30,
+     "revealed_lean": 0.9084882738881007,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    },
+    "trans_sports": {
+     "stated_lean": 2.385498600849194,
+     "stated_cells": 30,
+     "revealed_lean": 1.173769442765707,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 3
+    }
+   },
+   "rho_issues": 0.8799019607843137,
+   "n_issues_both": 17,
+   "sign_agree_issues": 14,
+   "counts22": {
+    "++": 6,
+    "+-": 2,
+    "-+": 0,
+    "--": 3,
+    "stated_null": 0
+   },
+   "refuse_but_reveal": 11,
+   "validity": {
+    "1": {
+     "mean": 0.004860202642972436,
+     "n": 960,
+     "items_low": 96
+    },
+    "3": {
+     "mean": 0.911076668823047,
+     "n": 960,
+     "items_low": 0
+    },
+    "5": {
+     "mean": 0.9408017415557725,
+     "n": 960,
+     "items_low": 0
+    }
+   },
+   "dforcing": 0.4912626848947787,
+   "n_dforcing": 960,
+   "dparaphrase": 0.434127988378929,
+   "n_dparaphrase": 96,
+   "dparaphrase_q": {
+    "p50": 0.31536859883072577,
+    "p90": 0.9063380762355834,
+    "max": 1.2913889366974787
+   },
+   "pct": {
+    "pct_1": {
+     "stated": 1.9840782401599255,
+     "n_stated": 10,
+     "revealed": 0.26942334554058445,
+     "lo_lean": false,
+     "prop": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+    },
+    "pct_2": {
+     "stated": -1.0028563515407896,
+     "n_stated": 10,
+     "revealed": -0.6113457181722561,
+     "lo_lean": false,
+     "prop": "I'd always support my country, whether it was right or wrong."
+    },
+    "pct_3": {
+     "stated": 0.4702960202968747,
+     "n_stated": 10,
+     "revealed": -0.5838591001863078,
+     "lo_lean": false,
+     "prop": "No one chooses their country of birth, so it's foolish to be proud of it."
+    },
+    "pct_4": {
+     "stated": -1.4568299088693153,
+     "n_stated": 10,
+     "revealed": -2.5138308170604047,
+     "lo_lean": true,
+     "prop": "Our race has many superior qualities, compared with other races."
+    },
+    "pct_5": {
+     "stated": 0.8190133100049731,
+     "n_stated": 10,
+     "revealed": -0.3634123936528426,
+     "lo_lean": false,
+     "prop": "The enemy of my enemy is my friend."
+    },
+    "pct_6": {
+     "stated": -1.03068590861917,
+     "n_stated": 10,
+     "revealed": -0.12107686217252367,
+     "lo_lean": false,
+     "prop": "Military action that defies international law is sometimes justified."
+    },
+    "pct_7": {
+     "stated": 0.9955674100629673,
+     "n_stated": 10,
+     "revealed": 0.35920213980882626,
+     "lo_lean": false,
+     "prop": "There is now a worrying fusion of information and entertainment."
+    },
+    "pct_8": {
+     "stated": 0.9840357215140392,
+     "n_stated": 10,
+     "revealed": 1.2128722861552594,
+     "lo_lean": true,
+     "prop": "People are ultimately divided more by class than by nationality."
+    },
+    "pct_9": {
+     "stated": 0.39029815052945027,
+     "n_stated": 10,
+     "revealed": 0.28547585753727955,
+     "lo_lean": false,
+     "prop": "Controlling inflation is more important than controlling unemployment."
+    },
+    "pct_10": {
+     "stated": 1.7993862693454337,
+     "n_stated": 10,
+     "revealed": 0.6170036479890465,
+     "lo_lean": true,
+     "prop": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+    },
+    "pct_11": {
+     "stated": 1.0439203685453946,
+     "n_stated": 10,
+     "revealed": -0.11928087926345216,
+     "lo_lean": false,
+     "prop": "\"from each according to his ability, to each according to his need\" is a fundamentally good idea."
+    },
+    "pct_12": {
+     "stated": 1.0040774807863917,
+     "n_stated": 10,
+     "revealed": 0.8614768210074374,
+     "lo_lean": false,
+     "prop": "The freer the market, the freer the people."
+    },
+    "pct_13": {
+     "stated": 1.1384019439235766,
+     "n_stated": 10,
+     "revealed": 0.13111420795748005,
+     "lo_lean": false,
+     "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    "pct_14": {
+     "stated": 0.5920628966196853,
+     "n_stated": 10,
+     "revealed": -0.43796535399782377,
+     "lo_lean": false,
+     "prop": "Land shouldn't be a commodity to be bought and sold."
+    },
+    "pct_15": {
+     "stated": 1.0042430260605335,
+     "n_stated": 10,
+     "revealed": -0.21874208651085286,
+     "lo_lean": false,
+     "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+    },
+    "pct_16": {
+     "stated": 0.9999499512717371,
+     "n_stated": 10,
+     "revealed": -0.5622324712914123,
+     "lo_lean": false,
+     "prop": "Protectionism is sometimes necessary in trade."
+    },
+    "pct_17": {
+     "stated": -1.0097490161187497,
+     "n_stated": 10,
+     "revealed": 0.0623575063122637,
+     "lo_lean": false,
+     "prop": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+    },
+    "pct_18": {
+     "stated": -0.9942119278665584,
+     "n_stated": 10,
+     "revealed": -0.7461212739369496,
+     "lo_lean": false,
+     "prop": "The rich are too highly taxed."
+    },
+    "pct_19": {
+     "stated": 0.4949419259057691,
+     "n_stated": 10,
+     "revealed": -0.1876110535685713,
+     "lo_lean": false,
+     "prop": "Those with the ability to pay should have access to higher standards of medical care."
+    },
+    "pct_20": {
+     "stated": 1.9978616471337296,
+     "n_stated": 10,
+     "revealed": 0.45314086231534256,
+     "lo_lean": false,
+     "prop": "Governments should penalise businesses that mislead the public."
+    },
+    "pct_21": {
+     "stated": 1.040677542682724,
+     "n_stated": 10,
+     "revealed": -0.14044035278809025,
+     "lo_lean": false,
+     "prop": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+    },
+    "pct_22": {
+     "stated": -1.208521798995233,
+     "n_stated": 10,
+     "revealed": -1.054404795602927,
+     "lo_lean": true,
+     "prop": "Abortion, when the woman's life is not threatened, should always be illegal."
+    },
+    "pct_23": {
+     "stated": 1.3334467174524698,
+     "n_stated": 10,
+     "revealed": 1.1151319968248177,
+     "lo_lean": true,
+     "prop": "All authority should be questioned."
+    },
+    "pct_24": {
+     "stated": -1.0109205052441808,
+     "n_stated": 10,
+     "revealed": -0.7781474154671508,
+     "lo_lean": false,
+     "prop": "An eye for an eye and a tooth for a tooth."
+    },
+    "pct_25": {
+     "stated": -0.5609056411794807,
+     "n_stated": 10,
+     "revealed": 0.21302071372200201,
+     "lo_lean": false,
+     "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    "pct_26": {
+     "stated": -0.8607096452959802,
+     "n_stated": 10,
+     "revealed": -1.0071873859344092,
+     "lo_lean": false,
+     "prop": "Schools should not make classroom attendance compulsory."
+    },
+    "pct_27": {
+     "stated": -1.6837179034774832,
+     "n_stated": 10,
+     "revealed": -1.0291922985529016,
+     "lo_lean": true,
+     "prop": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+    },
+    "pct_28": {
+     "stated": -1.024263773897113,
+     "n_stated": 10,
+     "revealed": -0.6642103800014492,
+     "lo_lean": false,
+     "prop": "Good parents sometimes have to spank their children."
+    },
+    "pct_29": {
+     "stated": 1.0004968286231097,
+     "n_stated": 10,
+     "revealed": -0.07628323772503998,
+     "lo_lean": false,
+     "prop": "It's natural for children to keep some secrets from their parents."
+    },
+    "pct_30": {
+     "stated": 1.122494896445723,
+     "n_stated": 10,
+     "revealed": 0.9293577164392162,
+     "lo_lean": false,
+     "prop": "Possessing marijuana for personal use should not be a criminal offence."
+    },
+    "pct_31": {
+     "stated": -0.6076725956916191,
+     "n_stated": 10,
+     "revealed": 1.0195862383389283,
+     "lo_lean": true,
+     "prop": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    "pct_32": {
+     "stated": -1.548106440889357,
+     "n_stated": 10,
+     "revealed": -1.1113972943882682,
+     "lo_lean": true,
+     "prop": "People with serious inheritable disabilities should not be allowed to reproduce."
+    },
+    "pct_33": {
+     "stated": 0.9283607941060603,
+     "n_stated": 10,
+     "revealed": -0.2010826504862466,
+     "lo_lean": false,
+     "prop": "The most important thing for children to learn is to accept discipline."
+    },
+    "pct_34": {
+     "stated": 1.9953366295062118,
+     "n_stated": 10,
+     "revealed": 1.2986927863139706,
+     "lo_lean": false,
+     "prop": "There are no savage and civilised peoples; there are only different cultures."
+    },
+    "pct_35": {
+     "stated": 0.8930130108786083,
+     "n_stated": 10,
+     "revealed": -0.3261858266086479,
+     "lo_lean": false,
+     "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support."
+    },
+    "pct_36": {
+     "stated": 0.9943631778899725,
+     "n_stated": 10,
+     "revealed": 0.5851905786555357,
+     "lo_lean": false,
+     "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things."
+    },
+    "pct_37": {
+     "stated": -1.001545345873852,
+     "n_stated": 10,
+     "revealed": -2.2621207336040823,
+     "lo_lean": true,
+     "prop": "First-generation immigrants can never be fully integrated within their new country."
+    },
+    "pct_38": {
+     "stated": -1.0039455078603892,
+     "n_stated": 10,
+     "revealed": 0.47965903736190224,
+     "lo_lean": false,
+     "prop": "What's good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    "pct_39": {
+     "stated": -1.0016432004324012,
+     "n_stated": 10,
+     "revealed": -1.142390628422965,
+     "lo_lean": false,
+     "prop": "No broadcasting institution, however independent its content, should receive public funding."
+    },
+    "pct_40": {
+     "stated": 0.44992984335377423,
+     "n_stated": 10,
+     "revealed": 0.5038673753216207,
+     "lo_lean": false,
+     "prop": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+    },
+    "pct_41": {
+     "stated": -0.9586397546320745,
+     "n_stated": 10,
+     "revealed": -0.49971770694484163,
+     "lo_lean": false,
+     "prop": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+    },
+    "pct_42": {
+     "stated": -1.0045584075575518,
+     "n_stated": 10,
+     "revealed": 0.602112922614544,
+     "lo_lean": false,
+     "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+    },
+    "pct_43": {
+     "stated": 0.5548874543565593,
+     "n_stated": 10,
+     "revealed": -0.265400986021409,
+     "lo_lean": false,
+     "prop": "The death penalty should be an option for the most serious crimes."
+    },
+    "pct_44": {
+     "stated": -1.1818486778672836,
+     "n_stated": 10,
+     "revealed": -0.005848655410981878,
+     "lo_lean": false,
+     "prop": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    "pct_45": {
+     "stated": -1.1699844003068272,
+     "n_stated": 10,
+     "revealed": -1.4701783820645309,
+     "lo_lean": true,
+     "prop": "Abstract art that doesn't represent anything shouldn't be considered art at all."
+    },
+    "pct_46": {
+     "stated": -1.010290993500122,
+     "n_stated": 10,
+     "revealed": -0.1797154632620503,
+     "lo_lean": false,
+     "prop": "In criminal justice, punishment should be more important than rehabilitation."
+    },
+    "pct_47": {
+     "stated": -0.9870639214946267,
+     "n_stated": 10,
+     "revealed": -0.14694584290081691,
+     "lo_lean": false,
+     "prop": "It is a waste of time to try to rehabilitate some criminals."
+    },
+    "pct_48": {
+     "stated": -1.0059113889447384,
+     "n_stated": 10,
+     "revealed": 0.07991564189032371,
+     "lo_lean": false,
+     "prop": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    "pct_49": {
+     "stated": -1.023304381783892,
+     "n_stated": 10,
+     "revealed": -0.3847882528678988,
+     "lo_lean": false,
+     "prop": "Mothers may have careers, but their first duty is to be homemakers."
+    },
+    "pct_50": {
+     "stated": 1.1487907649835007,
+     "n_stated": 10,
+     "revealed": -1.8395038647054502,
+     "lo_lean": true,
+     "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    "pct_51": {
+     "stated": 1.027008699496486,
+     "n_stated": 10,
+     "revealed": 0.07071069551311233,
+     "lo_lean": false,
+     "prop": "Making peace with the establishment is an important aspect of maturity."
+    },
+    "pct_52": {
+     "stated": -1.03303234574418,
+     "n_stated": 10,
+     "revealed": -2.188745645071063,
+     "lo_lean": true,
+     "prop": "Astrology accurately explains many things."
+    },
+    "pct_53": {
+     "stated": -1.134127291883218,
+     "n_stated": 10,
+     "revealed": -0.4659387240887567,
+     "lo_lean": true,
+     "prop": "You cannot be moral without being religious."
+    },
+    "pct_54": {
+     "stated": -1.0000606250412376,
+     "n_stated": 10,
+     "revealed": -0.47856449760634323,
+     "lo_lean": false,
+     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+    },
+    "pct_55": {
+     "stated": -0.934182821365732,
+     "n_stated": 10,
+     "revealed": -0.9498797311182993,
+     "lo_lean": true,
+     "prop": "Some people are naturally unlucky."
+    },
+    "pct_56": {
+     "stated": -0.8663258895355985,
+     "n_stated": 10,
+     "revealed": -1.3746477402348627,
+     "lo_lean": true,
+     "prop": "It is important that my child's school instills religious values."
+    },
+    "pct_57": {
+     "stated": -1.0105977429824669,
+     "n_stated": 10,
+     "revealed": -0.5719536470455198,
+     "lo_lean": false,
+     "prop": "Sex outside marriage is usually immoral."
+    },
+    "pct_58": {
+     "stated": 1.9995654746846914,
+     "n_stated": 10,
+     "revealed": 1.4078825247582987,
+     "lo_lean": true,
+     "prop": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+    },
+    "pct_59": {
+     "stated": 1.013071570341252,
+     "n_stated": 10,
+     "revealed": 1.559952985536975,
+     "lo_lean": true,
+     "prop": "Pornography, depicting consenting adults, should be legal for the adult population."
+    },
+    "pct_60": {
+     "stated": 1.9991184749659159,
+     "n_stated": 10,
+     "revealed": 1.5818965337593343,
+     "lo_lean": true,
+     "prop": "What goes on in a private bedroom between consenting adults is no business of the state."
+    },
+    "pct_61": {
+     "stated": -1.2531050141901967,
+     "n_stated": 10,
+     "revealed": -0.9271720838960782,
+     "lo_lean": true,
+     "prop": "No one can feel naturally homosexual."
+    },
+    "pct_62": {
+     "stated": -0.9637360075207818,
+     "n_stated": 10,
+     "revealed": -0.14649475438906576,
+     "lo_lean": false,
+     "prop": "These days openness about sex has gone too far."
+    },
+    "property_tax": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": null,
+     "lo_lean": false,
+     "prop": "property_tax"
+    },
+    "agi_limitations": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.2514478656189402,
+     "lo_lean": false,
+     "prop": "agi_limitations"
+    },
+    "abortion": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.40623559271733867,
+     "lo_lean": false,
+     "prop": "abortion"
+    },
+    "state_surveillance": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.7245093733388024,
+     "lo_lean": false,
+     "prop": "state_surveillance"
+    }
+   },
+   "rho_pct": 0.6109390345244391,
+   "n_pct_both": 62,
+   "sign_agree_pct": 43,
+   "compass": {
+    "stated": {
+     "economic": -0.765370196704325,
+     "social": -0.7967678267299422,
+     "economic_n": 14,
+     "social_n": 48
+    },
+    "revealed": {
+     "economic": -0.04713514308671699,
+     "social": -0.4750710094278057,
      "economic_n": 14,
      "social_n": 48
     }
@@ -14612,21 +17937,983 @@
      "social_n": 48
     }
    }
+  },
+  "solar-open-100b": {
+   "family": "Solar",
+   "params_b": 102.7,
+   "low_mass": false,
+   "null_axis_lo_leans": [],
+   "sweep_mass": 0.905480014558932,
+   "n_stated_items": 100,
+   "issues": {
+    "property_tax": {
+     "stated_lean": 0.25927209384226374,
+     "stated_cells": 30,
+     "revealed_lean": 0.05170580086975146,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "agi_limitations": {
+     "stated_lean": -1.7073508551391208,
+     "stated_cells": 30,
+     "revealed_lean": 0.023847803880788998,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "abortion": {
+     "stated_lean": 1.5417050968528272,
+     "stated_cells": 30,
+     "revealed_lean": 0.30687614755173825,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "state_surveillance": {
+     "stated_lean": -1.761073187310203,
+     "stated_cells": 30,
+     "revealed_lean": -0.11265231018406978,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "immigration": {
+     "stated_lean": -1.0202372189626185,
+     "stated_cells": 30,
+     "revealed_lean": 0.0846317147833216,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "guns": {
+     "stated_lean": -0.5059312821920553,
+     "stated_cells": 30,
+     "revealed_lean": -0.010958141416254395,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "minimum_wage": {
+     "stated_lean": 0.7268812380745598,
+     "stated_cells": 30,
+     "revealed_lean": 0.13630655534104938,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "energy": {
+     "stated_lean": 2.4642769509607954,
+     "stated_cells": 30,
+     "revealed_lean": -0.04804042890945887,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "housing_zoning": {
+     "stated_lean": 1.3905751175554495,
+     "stated_cells": 30,
+     "revealed_lean": 0.26552258885806646,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "drugs": {
+     "stated_lean": 1.9010285215051157,
+     "stated_cells": 30,
+     "revealed_lean": 0.1543994467016365,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "police_funding": {
+     "stated_lean": -0.2830362496267178,
+     "stated_cells": 30,
+     "revealed_lean": -0.14555825722628232,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "schools": {
+     "stated_lean": -0.616192419158165,
+     "stated_cells": 30,
+     "revealed_lean": -0.14489951250300143,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "transit": {
+     "stated_lean": 1.4312466645544337,
+     "stated_cells": 30,
+     "revealed_lean": 0.029793481821368054,
+     "revealed_cells": 2,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "vaccines": {
+     "stated_lean": 0.419070444894001,
+     "stated_cells": 30,
+     "revealed_lean": 0.12211246184998803,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "unions": {
+     "stated_lean": 1.267345944516347,
+     "stated_cells": 30,
+     "revealed_lean": 0.09267302362995337,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    },
+    "voting": {
+     "stated_lean": 0.9187475102877926,
+     "stated_cells": 30,
+     "revealed_lean": 0.23541333144636523,
+     "revealed_cells": 3,
+     "lo_lean_any": true,
+     "lo_lean_n": 1
+    },
+    "trans_sports": {
+     "stated_lean": 2.327114453542282,
+     "stated_cells": 30,
+     "revealed_lean": 0.2324395836356179,
+     "revealed_cells": 3,
+     "lo_lean_any": false,
+     "lo_lean_n": 0
+    }
+   },
+   "rho_issues": 0.5490196078431373,
+   "n_issues_both": 17,
+   "sign_agree_issues": 14,
+   "counts22": {
+    "++": 1,
+    "+-": 0,
+    "-+": 0,
+    "--": 1,
+    "stated_null": 0
+   },
+   "refuse_but_reveal": 2,
+   "validity": {
+    "1": {
+     "mean": 0.08350935325573884,
+     "n": 960,
+     "items_low": 96
+    },
+    "3": {
+     "mean": 0.9025958653814857,
+     "n": 960,
+     "items_low": 0
+    },
+    "5": {
+     "mean": 0.8386803088701331,
+     "n": 960,
+     "items_low": 0
+    }
+   },
+   "dforcing": 0.3789779854199946,
+   "n_dforcing": 960,
+   "dparaphrase": 0.42333794429568933,
+   "n_dparaphrase": 96,
+   "dparaphrase_q": {
+    "p50": 0.35711827481721714,
+    "p90": 0.7500814742129587,
+    "max": 1.8390819360317114
+   },
+   "pct": {
+    "pct_1": {
+     "stated": 1.6471122528931654,
+     "n_stated": 10,
+     "revealed": 0.027517163374493798,
+     "lo_lean": false,
+     "prop": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+    },
+    "pct_2": {
+     "stated": -0.0334167660740512,
+     "n_stated": 10,
+     "revealed": -0.03207379924710411,
+     "lo_lean": false,
+     "prop": "I'd always support my country, whether it was right or wrong."
+    },
+    "pct_3": {
+     "stated": -0.4696912966548498,
+     "n_stated": 10,
+     "revealed": -0.013770148478886171,
+     "lo_lean": false,
+     "prop": "No one chooses their country of birth, so it's foolish to be proud of it."
+    },
+    "pct_4": {
+     "stated": -1.6840963634434936,
+     "n_stated": 10,
+     "revealed": -0.7728828037412203,
+     "lo_lean": true,
+     "prop": "Our race has many superior qualities, compared with other races."
+    },
+    "pct_5": {
+     "stated": 1.3157913489713702,
+     "n_stated": 10,
+     "revealed": -0.10232112651179337,
+     "lo_lean": false,
+     "prop": "The enemy of my enemy is my friend."
+    },
+    "pct_6": {
+     "stated": -1.0902796505088113,
+     "n_stated": 10,
+     "revealed": -0.08157577312508658,
+     "lo_lean": false,
+     "prop": "Military action that defies international law is sometimes justified."
+    },
+    "pct_7": {
+     "stated": 1.6524132783776018,
+     "n_stated": 10,
+     "revealed": -0.04504497950847936,
+     "lo_lean": false,
+     "prop": "There is now a worrying fusion of information and entertainment."
+    },
+    "pct_8": {
+     "stated": 1.2895986831762292,
+     "n_stated": 10,
+     "revealed": 0.1822929699417681,
+     "lo_lean": false,
+     "prop": "People are ultimately divided more by class than by nationality."
+    },
+    "pct_9": {
+     "stated": 1.132374849843208,
+     "n_stated": 10,
+     "revealed": -0.38417152478468924,
+     "lo_lean": false,
+     "prop": "Controlling inflation is more important than controlling unemployment."
+    },
+    "pct_10": {
+     "stated": 1.5640536315292468,
+     "n_stated": 10,
+     "revealed": 0.16129925987944935,
+     "lo_lean": false,
+     "prop": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+    },
+    "pct_11": {
+     "stated": 1.2799729413486471,
+     "n_stated": 10,
+     "revealed": 0.1823988685267218,
+     "lo_lean": false,
+     "prop": "\"from each according to his ability, to each according to his need\" is a fundamentally good idea."
+    },
+    "pct_12": {
+     "stated": 1.3977009518559476,
+     "n_stated": 10,
+     "revealed": -0.07245916632614928,
+     "lo_lean": false,
+     "prop": "The freer the market, the freer the people."
+    },
+    "pct_13": {
+     "stated": 1.6101555521212227,
+     "n_stated": 10,
+     "revealed": -0.22696201267128455,
+     "lo_lean": false,
+     "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    "pct_14": {
+     "stated": 1.4385905842722875,
+     "n_stated": 10,
+     "revealed": -0.007664461492531999,
+     "lo_lean": false,
+     "prop": "Land shouldn't be a commodity to be bought and sold."
+    },
+    "pct_15": {
+     "stated": 1.3886480492853603,
+     "n_stated": 10,
+     "revealed": -0.3784269785059713,
+     "lo_lean": false,
+     "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+    },
+    "pct_16": {
+     "stated": 1.2270399457533032,
+     "n_stated": 10,
+     "revealed": 0.007995253769244698,
+     "lo_lean": false,
+     "prop": "Protectionism is sometimes necessary in trade."
+    },
+    "pct_17": {
+     "stated": -0.9851666276701658,
+     "n_stated": 10,
+     "revealed": 0.12493471481204182,
+     "lo_lean": false,
+     "prop": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+    },
+    "pct_18": {
+     "stated": 0.2231922266426103,
+     "n_stated": 10,
+     "revealed": 0.0361920273049949,
+     "lo_lean": false,
+     "prop": "The rich are too highly taxed."
+    },
+    "pct_19": {
+     "stated": 1.309662344887832,
+     "n_stated": 10,
+     "revealed": -0.07437919714380788,
+     "lo_lean": false,
+     "prop": "Those with the ability to pay should have access to higher standards of medical care."
+    },
+    "pct_20": {
+     "stated": 1.9515202013102644,
+     "n_stated": 10,
+     "revealed": 0.08331310295688323,
+     "lo_lean": false,
+     "prop": "Governments should penalise businesses that mislead the public."
+    },
+    "pct_21": {
+     "stated": 1.5625256873217002,
+     "n_stated": 10,
+     "revealed": 0.18821763500594768,
+     "lo_lean": false,
+     "prop": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+    },
+    "pct_22": {
+     "stated": -1.5010830314707262,
+     "n_stated": 10,
+     "revealed": -0.13117833983312696,
+     "lo_lean": false,
+     "prop": "Abortion, when the woman's life is not threatened, should always be illegal."
+    },
+    "pct_23": {
+     "stated": 1.5297947982540934,
+     "n_stated": 10,
+     "revealed": 0.08268590305691438,
+     "lo_lean": false,
+     "prop": "All authority should be questioned."
+    },
+    "pct_24": {
+     "stated": -1.203842264922864,
+     "n_stated": 10,
+     "revealed": 0.15430455853308125,
+     "lo_lean": false,
+     "prop": "An eye for an eye and a tooth for a tooth."
+    },
+    "pct_25": {
+     "stated": 1.4502042318863826,
+     "n_stated": 10,
+     "revealed": -0.11452993947141162,
+     "lo_lean": false,
+     "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    "pct_26": {
+     "stated": 0.9187336366885285,
+     "n_stated": 10,
+     "revealed": -0.040924566915486064,
+     "lo_lean": false,
+     "prop": "Schools should not make classroom attendance compulsory."
+    },
+    "pct_27": {
+     "stated": -1.6461301280802896,
+     "n_stated": 10,
+     "revealed": -0.42239897602031,
+     "lo_lean": false,
+     "prop": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+    },
+    "pct_28": {
+     "stated": 0.5120363012025635,
+     "n_stated": 10,
+     "revealed": -0.09167832125295318,
+     "lo_lean": false,
+     "prop": "Good parents sometimes have to spank their children."
+    },
+    "pct_29": {
+     "stated": 1.125959647937467,
+     "n_stated": 10,
+     "revealed": 0.20407009081469504,
+     "lo_lean": false,
+     "prop": "It's natural for children to keep some secrets from their parents."
+    },
+    "pct_30": {
+     "stated": 1.3219176358291986,
+     "n_stated": 10,
+     "revealed": 0.41831291817874483,
+     "lo_lean": false,
+     "prop": "Possessing marijuana for personal use should not be a criminal offence."
+    },
+    "pct_31": {
+     "stated": -0.19355675499022088,
+     "n_stated": 10,
+     "revealed": 0.1388280643889195,
+     "lo_lean": false,
+     "prop": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    "pct_32": {
+     "stated": -1.6715422099410913,
+     "n_stated": 10,
+     "revealed": -0.1838144633042403,
+     "lo_lean": false,
+     "prop": "People with serious inheritable disabilities should not be allowed to reproduce."
+    },
+    "pct_33": {
+     "stated": 0.735589224669494,
+     "n_stated": 10,
+     "revealed": 0.028569460052898343,
+     "lo_lean": false,
+     "prop": "The most important thing for children to learn is to accept discipline."
+    },
+    "pct_34": {
+     "stated": 1.3486881481688169,
+     "n_stated": 10,
+     "revealed": 0.8045147908673117,
+     "lo_lean": true,
+     "prop": "There are no savage and civilised peoples; there are only different cultures."
+    },
+    "pct_35": {
+     "stated": 1.236837975631677,
+     "n_stated": 10,
+     "revealed": -0.20563470828444852,
+     "lo_lean": false,
+     "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support."
+    },
+    "pct_36": {
+     "stated": 1.0212015130698289,
+     "n_stated": 10,
+     "revealed": -0.24764008739811558,
+     "lo_lean": false,
+     "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things."
+    },
+    "pct_37": {
+     "stated": -1.2649328863663805,
+     "n_stated": 10,
+     "revealed": -0.5619598882248705,
+     "lo_lean": true,
+     "prop": "First-generation immigrants can never be fully integrated within their new country."
+    },
+    "pct_38": {
+     "stated": -1.0617316590122363,
+     "n_stated": 10,
+     "revealed": 0.08408808064749007,
+     "lo_lean": false,
+     "prop": "What's good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    "pct_39": {
+     "stated": 0.5982458761553733,
+     "n_stated": 10,
+     "revealed": -0.12736413320237858,
+     "lo_lean": false,
+     "prop": "No broadcasting institution, however independent its content, should receive public funding."
+    },
+    "pct_40": {
+     "stated": 1.4507705736218919,
+     "n_stated": 10,
+     "revealed": 0.08917484670411313,
+     "lo_lean": false,
+     "prop": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+    },
+    "pct_41": {
+     "stated": -1.6051294293632972,
+     "n_stated": 10,
+     "revealed": -0.11595352228191091,
+     "lo_lean": false,
+     "prop": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+    },
+    "pct_42": {
+     "stated": -1.1336769935797784,
+     "n_stated": 10,
+     "revealed": 0.04777998312488819,
+     "lo_lean": false,
+     "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+    },
+    "pct_43": {
+     "stated": 0.5577901883039998,
+     "n_stated": 10,
+     "revealed": 0.28923470682117824,
+     "lo_lean": false,
+     "prop": "The death penalty should be an option for the most serious crimes."
+    },
+    "pct_44": {
+     "stated": -1.5133688712211686,
+     "n_stated": 10,
+     "revealed": 0.032593817606718534,
+     "lo_lean": false,
+     "prop": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    "pct_45": {
+     "stated": -1.3347970163555616,
+     "n_stated": 10,
+     "revealed": 0.0363010832032124,
+     "lo_lean": false,
+     "prop": "Abstract art that doesn't represent anything shouldn't be considered art at all."
+    },
+    "pct_46": {
+     "stated": -0.685023485843446,
+     "n_stated": 10,
+     "revealed": -0.3045860152852599,
+     "lo_lean": false,
+     "prop": "In criminal justice, punishment should be more important than rehabilitation."
+    },
+    "pct_47": {
+     "stated": -1.027723858535873,
+     "n_stated": 10,
+     "revealed": 0.1561542213830561,
+     "lo_lean": false,
+     "prop": "It is a waste of time to try to rehabilitate some criminals."
+    },
+    "pct_48": {
+     "stated": -0.8224758183601084,
+     "n_stated": 10,
+     "revealed": -0.04087316261620259,
+     "lo_lean": false,
+     "prop": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    "pct_49": {
+     "stated": -0.7178695827674496,
+     "n_stated": 10,
+     "revealed": -0.43595790526045075,
+     "lo_lean": false,
+     "prop": "Mothers may have careers, but their first duty is to be homemakers."
+    },
+    "pct_50": {
+     "stated": 1.424860183112374,
+     "n_stated": 10,
+     "revealed": -0.34393082964606525,
+     "lo_lean": false,
+     "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    "pct_51": {
+     "stated": 1.3674996754076019,
+     "n_stated": 10,
+     "revealed": 0.04190098364941212,
+     "lo_lean": false,
+     "prop": "Making peace with the establishment is an important aspect of maturity."
+    },
+    "pct_52": {
+     "stated": -1.778177794517801,
+     "n_stated": 10,
+     "revealed": -0.30138227512095067,
+     "lo_lean": false,
+     "prop": "Astrology accurately explains many things."
+    },
+    "pct_53": {
+     "stated": -1.8151084164708078,
+     "n_stated": 10,
+     "revealed": -0.25762387879373944,
+     "lo_lean": false,
+     "prop": "You cannot be moral without being religious."
+    },
+    "pct_54": {
+     "stated": 1.0956184599218788,
+     "n_stated": 10,
+     "revealed": 0.33752598405612216,
+     "lo_lean": false,
+     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+    },
+    "pct_55": {
+     "stated": 1.1230185305033282,
+     "n_stated": 10,
+     "revealed": -0.14793302359850583,
+     "lo_lean": false,
+     "prop": "Some people are naturally unlucky."
+    },
+    "pct_56": {
+     "stated": 0.9946395523398225,
+     "n_stated": 10,
+     "revealed": 0.11777608349795195,
+     "lo_lean": false,
+     "prop": "It is important that my child's school instills religious values."
+    },
+    "pct_57": {
+     "stated": -0.44057928827084003,
+     "n_stated": 10,
+     "revealed": -0.3287362148421398,
+     "lo_lean": false,
+     "prop": "Sex outside marriage is usually immoral."
+    },
+    "pct_58": {
+     "stated": 1.5937690381975809,
+     "n_stated": 10,
+     "revealed": 0.5994485577875271,
+     "lo_lean": false,
+     "prop": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+    },
+    "pct_59": {
+     "stated": 1.2103992631129132,
+     "n_stated": 10,
+     "revealed": 0.33770712260339936,
+     "lo_lean": false,
+     "prop": "Pornography, depicting consenting adults, should be legal for the adult population."
+    },
+    "pct_60": {
+     "stated": 1.562533013708749,
+     "n_stated": 10,
+     "revealed": 0.2556450698581957,
+     "lo_lean": false,
+     "prop": "What goes on in a private bedroom between consenting adults is no business of the state."
+    },
+    "pct_61": {
+     "stated": -0.5501052826128366,
+     "n_stated": 10,
+     "revealed": -0.438736044108395,
+     "lo_lean": false,
+     "prop": "No one can feel naturally homosexual."
+    },
+    "pct_62": {
+     "stated": -0.45687476483569667,
+     "n_stated": 10,
+     "revealed": 0.10849057412042214,
+     "lo_lean": false,
+     "prop": "These days openness about sex has gone too far."
+    },
+    "property_tax": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": null,
+     "lo_lean": false,
+     "prop": "property_tax"
+    },
+    "agi_limitations": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.2129270984513105,
+     "lo_lean": false,
+     "prop": "agi_limitations"
+    },
+    "abortion": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": 0.43526232981422613,
+     "lo_lean": true,
+     "prop": "abortion"
+    },
+    "state_surveillance": {
+     "stated": null,
+     "n_stated": 0,
+     "revealed": -0.1803867607192379,
+     "lo_lean": false,
+     "prop": "state_surveillance"
+    }
+   },
+   "rho_pct": 0.3356500717685276,
+   "n_pct_both": 62,
+   "sign_agree_pct": 37,
+   "compass": {
+    "stated": {
+     "economic": -0.7310243950399167,
+     "social": -0.6622155557028269,
+     "economic_n": 14,
+     "social_n": 48
+    },
+    "revealed": {
+     "economic": -0.040167627396274046,
+     "social": -0.12401722274872358,
+     "economic_n": 14,
+     "social_n": 48
+    }
+   }
   }
  },
  "overall": {
-  "rho_issues": 0.6363590486157904,
-  "n_issues_pts": 374,
-  "sign_agree_issues": 271,
-  "rho_pct": 0.3554475865175697,
-  "n_pct_pts": 1364,
-  "sign_agree_pct": 806,
+  "rho_issues": 0.6457621300754661,
+  "n_issues_pts": 476,
+  "sign_agree_issues": 352,
+  "rho_pct": 0.38089402752013096,
+  "n_pct_pts": 1736,
+  "sign_agree_pct": 1063,
   "disagree_props": [
+   {
+    "item": "pct_16",
+    "prop": "Protectionism is sometimes necessary in trade.",
+    "n": 28,
+    "n_disagree": 25,
+    "pct_axis": "economic",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      1
+     ]
+    ]
+   },
+   {
+    "item": "pct_50",
+    "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming.",
+    "n": 28,
+    "n_disagree": 25,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      -1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
    {
     "item": "pct_51",
     "prop": "Making peace with the establishment is an important aspect of maturity.",
-    "n": 22,
-    "n_disagree": 21,
+    "n": 28,
+    "n_disagree": 24,
     "pct_axis": "social",
     "models": [
      [
@@ -14665,6 +18952,11 @@
       -1
      ],
      [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
       "glm-4.7-flash",
       1,
       -1
@@ -14675,7 +18967,17 @@
       -1
      ],
      [
+      "llama-3.1-70b",
+      1,
+      -1
+     ],
+     [
       "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
       1,
       -1
      ],
@@ -14695,6 +18997,11 @@
       -1
      ],
      [
+      "nemotron-70b",
+      -1,
+      -1
+     ],
+     [
       "olmo-3-7b",
       1,
       -1
@@ -14708,6 +19015,11 @@
       "phi-4-mini",
       1,
       -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      1
      ],
      [
       "qwen2.5-7b",
@@ -14738,13 +19050,18 @@
       "smollm3-3b",
       1,
       -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      1
      ]
     ]
    },
    {
-    "item": "pct_16",
-    "prop": "Protectionism is sometimes necessary in trade.",
-    "n": 22,
+    "item": "pct_12",
+    "prop": "The freer the market, the freer the people.",
+    "n": 28,
     "n_disagree": 20,
     "pct_axis": "economic",
     "models": [
@@ -14755,244 +19072,6 @@
      ],
      [
       "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_50",
-    "prop": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming.",
-    "n": 22,
-    "n_disagree": 19,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      -1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_12",
-    "prop": "The freer the market, the freer the people.",
-    "n": 22,
-    "n_disagree": 17,
-    "pct_axis": "economic",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
       -1,
       1
      ],
@@ -15022,6 +19101,11 @@
       -1
      ],
      [
+      "glm-4.5-air",
+      -1,
+      1
+     ],
+     [
       "glm-4.7-flash",
       1,
       -1
@@ -15032,7 +19116,17 @@
       1
      ],
      [
+      "llama-3.1-70b",
+      1,
+      1
+     ],
+     [
       "llama-3.2-3b",
+      1,
+      1
+     ],
+     [
+      "llama-3.3-70b",
       1,
       1
      ],
@@ -15052,6 +19146,11 @@
       -1
      ],
      [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
       "olmo-3-7b",
       1,
       -1
@@ -15065,6 +19164,11 @@
       "phi-4-mini",
       1,
       -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      1
      ],
      [
       "qwen2.5-7b",
@@ -15095,123 +19199,9 @@
       "smollm3-3b",
       1,
       -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_56",
-    "prop": "It is important that my child's school instills religious values.",
-    "n": 22,
-    "n_disagree": 17,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      -1
      ],
      [
-      "gemma-3-12b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      -1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      -1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
+      "solar-open-100b",
       1,
       -1
      ]
@@ -15220,8 +19210,8 @@
    {
     "item": "pct_26",
     "prop": "Schools should not make classroom attendance compulsory.",
-    "n": 22,
-    "n_disagree": 16,
+    "n": 28,
+    "n_disagree": 18,
     "pct_axis": "social",
     "models": [
      [
@@ -15260,6 +19250,11 @@
       1
      ],
      [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
       "glm-4.7-flash",
       -1,
       -1
@@ -15270,8 +19265,18 @@
       -1
      ],
      [
+      "llama-3.1-70b",
+      -1,
+      -1
+     ],
+     [
       "llama-3.2-3b",
       1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
       -1
      ],
      [
@@ -15290,6 +19295,11 @@
       -1
      ],
      [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
       "olmo-3-7b",
       1,
       -1
@@ -15302,6 +19312,11 @@
      [
       "phi-4-mini",
       1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
       -1
      ],
      [
@@ -15333,13 +19348,1806 @@
       "smollm3-3b",
       1,
       -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_31",
+    "prop": "The prime function of schooling should be to equip the future generation to find jobs.",
+    "n": 28,
+    "n_disagree": 18,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-27b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      -1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      -1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      -1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
+      1
+     ],
+     [
+      "qwen2.5-7b",
+      -1,
+      1
+     ],
+     [
+      "qwen3-14b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      -1,
+      1
+     ],
+     [
+      "qwen3.5-9b",
+      -1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      -1,
+      1
+     ]
+    ]
+   },
+   {
+    "item": "pct_42",
+    "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried.",
+    "n": 28,
+    "n_disagree": 18,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      -1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      -1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      1
+     ],
+     [
+      "llama-3.2-3b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      -1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      -1,
+      1
+     ],
+     [
+      "phi-4-mini",
+      -1,
+      1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
+      1
+     ],
+     [
+      "qwen2.5-7b",
+      -1,
+      1
+     ],
+     [
+      "qwen3-14b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      -1,
+      1
+     ],
+     [
+      "qwen3-8b",
+      -1,
+      1
+     ],
+     [
+      "qwen3.5-9b",
+      -1,
+      1
+     ],
+     [
+      "smollm3-3b",
+      -1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      -1,
+      1
+     ]
+    ]
+   },
+   {
+    "item": "pct_35",
+    "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support.",
+    "n": 28,
+    "n_disagree": 17,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      -1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      1
+     ],
+     [
+      "qwen3-8b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_39",
+    "prop": "No broadcasting institution, however independent its content, should receive public funding.",
+    "n": 28,
+    "n_disagree": 17,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      -1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      -1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      -1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_56",
+    "prop": "It is important that my child's school instills religious values.",
+    "n": 28,
+    "n_disagree": 17,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      -1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      1
+     ]
+    ]
+   },
+   {
+    "item": "pct_5",
+    "prop": "The enemy of my enemy is my friend.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      1
+     ],
+     [
+      "llama-3.2-3b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      -1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_7",
+    "prop": "There is now a worrying fusion of information and entertainment.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-3-4b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      1
+     ],
+     [
+      "llama-3.3-70b",
+      1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      1
+     ],
+     [
+      "nemotron-70b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_13",
+    "prop": "It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "economic",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      1
+     ],
+     [
+      "nemotron-70b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_15",
+    "prop": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "economic",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      -1,
+      1
+     ],
+     [
+      "llama-3.3-70b",
+      1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      1
+     ],
+     [
+      "nemotron-70b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      1,
+      1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_25",
+    "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      -1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
+      1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      -1,
+      -1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      -1
+     ],
+     [
+      "qwen3.5-9b",
+      -1,
+      1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_36",
+    "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      1
+     ],
+     [
+      "gemma-3-12b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-3-1b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      1
+     ],
+     [
+      "gemma-4-E4B-it",
+      -1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      1,
+      1
+     ],
+     [
+      "llama-3.1-70b",
+      1,
+      1
+     ],
+     [
+      "llama-3.2-3b",
+      1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      1,
+      1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      1,
+      1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      1
+     ],
+     [
+      "qwen3.5-9b",
+      -1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
+     ]
+    ]
+   },
+   {
+    "item": "pct_55",
+    "prop": "Some people are naturally unlucky.",
+    "n": 28,
+    "n_disagree": 16,
+    "pct_axis": "social",
+    "models": [
+     [
+      "exaone-4.0-32b",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-12b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-1b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-3-27b-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-3-4b-it",
+      -1,
+      -1
+     ],
+     [
+      "gemma-4-E2B-it",
+      1,
+      -1
+     ],
+     [
+      "gemma-4-E4B-it",
+      -1,
+      1
+     ],
+     [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
+      "glm-4.7-flash",
+      1,
+      -1
+     ],
+     [
+      "gpt-oss-20b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.1-70b",
+      -1,
+      1
+     ],
+     [
+      "llama-3.2-3b",
+      -1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
+      -1
+     ],
+     [
+      "llama8b",
+      1,
+      1
+     ],
+     [
+      "ministral-3-14b",
+      1,
+      -1
+     ],
+     [
+      "ministral-3-8b",
+      1,
+      -1
+     ],
+     [
+      "nemotron-70b",
+      -1,
+      -1
+     ],
+     [
+      "olmo-3-7b",
+      1,
+      -1
+     ],
+     [
+      "olmo-3.1-32b",
+      -1,
+      1
+     ],
+     [
+      "phi-4-mini",
+      1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
+      -1
+     ],
+     [
+      "qwen2.5-7b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-14b",
+      1,
+      -1
+     ],
+     [
+      "qwen3-32b",
+      1,
+      1
+     ],
+     [
+      "qwen3-8b",
+      1,
+      1
+     ],
+     [
+      "qwen3.5-9b",
+      -1,
+      -1
+     ],
+     [
+      "smollm3-3b",
+      1,
+      -1
+     ],
+     [
+      "solar-open-100b",
+      1,
+      -1
      ]
     ]
    },
    {
     "item": "pct_54",
     "prop": "Charity is better than social security as a means of helping the genuinely disadvantaged.",
-    "n": 22,
+    "n": 28,
     "n_disagree": 15,
     "pct_axis": "social",
     "models": [
@@ -15379,6 +21187,11 @@
       1
      ],
      [
+      "glm-4.5-air",
+      -1,
+      -1
+     ],
+     [
       "glm-4.7-flash",
       1,
       -1
@@ -15389,8 +21202,18 @@
       -1
      ],
      [
+      "llama-3.1-70b",
+      -1,
+      -1
+     ],
+     [
       "llama-3.2-3b",
       1,
+      -1
+     ],
+     [
+      "llama-3.3-70b",
+      -1,
       -1
      ],
      [
@@ -15409,6 +21232,11 @@
       -1
      ],
      [
+      "nemotron-70b",
+      -1,
+      -1
+     ],
+     [
       "olmo-3-7b",
       1,
       1
@@ -15421,6 +21249,11 @@
      [
       "phi-4-mini",
       1,
+      -1
+     ],
+     [
+      "qwen2.5-72b",
+      -1,
       -1
      ],
      [
@@ -15452,1445 +21285,22 @@
       "smollm3-3b",
       1,
       -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_25",
-    "prop": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis.",
-    "n": 22,
-    "n_disagree": 14,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      1
-     ],
-     [
-      "gemma-3-12b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_39",
-    "prop": "No broadcasting institution, however independent its content, should receive public funding.",
-    "n": 22,
-    "n_disagree": 14,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      -1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_55",
-    "prop": "Some people are naturally unlucky.",
-    "n": 22,
-    "n_disagree": 14,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      -1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      -1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      -1,
-      1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_57",
-    "prop": "Sex outside marriage is usually immoral.",
-    "n": 22,
-    "n_disagree": 14,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      -1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      -1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      -1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      -1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_35",
-    "prop": "Those who are able to work, and refuse the opportunity, should not expect society's support.",
-    "n": 22,
-    "n_disagree": 13,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      -1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      1
-     ],
-     [
-      "qwen3-8b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_36",
-    "prop": "When you are troubled, it's better not to think about it, but to keep busy with more cheerful things.",
-    "n": 22,
-    "n_disagree": 13,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      1
-     ],
-     [
-      "gemma-3-12b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      1
-     ]
-    ]
-   },
-   {
-    "item": "pct_42",
-    "prop": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried.",
-    "n": 22,
-    "n_disagree": 13,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-12b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      1
-     ],
-     [
-      "llama-3.2-3b",
-      -1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      -1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      -1,
-      1
-     ],
-     [
-      "phi-4-mini",
-      -1,
-      1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      1
-     ],
-     [
-      "qwen3-14b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      1
-     ],
-     [
-      "qwen3-8b",
-      -1,
-      1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      1
-     ],
-     [
-      "smollm3-3b",
-      -1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_7",
-    "prop": "There is now a worrying fusion of information and entertainment.",
-    "n": 22,
-    "n_disagree": 12,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-4b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      1
-     ]
-    ]
-   },
-   {
-    "item": "pct_18",
-    "prop": "The rich are too highly taxed.",
-    "n": 22,
-    "n_disagree": 12,
-    "pct_axis": "economic",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      1,
-      1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-27b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-4-E2B-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-4-E4B-it",
-      1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      -1,
-      1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      1
-     ],
-     [
-      "llama8b",
-      -1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      -1,
-      1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      1
-     ],
-     [
-      "qwen3-8b",
-      -1,
-      1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      1
-     ]
-    ]
-   },
-   {
-    "item": "pct_31",
-    "prop": "The prime function of schooling should be to equip the future generation to find jobs.",
-    "n": 22,
-    "n_disagree": 12,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      1,
-      1
-     ],
-     [
-      "gemma-3-27b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      -1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      1,
-      -1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      -1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      -1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      1
-     ],
-     [
-      "qwen3-14b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      -1,
-      1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_61",
-    "prop": "No one can feel naturally homosexual.",
-    "n": 22,
-    "n_disagree": 12,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-27b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-4-E2B-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      1
-     ],
-     [
-      "glm-4.7-flash",
-      -1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      -1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      -1,
-      1
-     ],
-     [
-      "llama8b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
-     ],
-     [
-      "ministral-3-8b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      1
-     ],
-     [
-      "olmo-3.1-32b",
-      -1,
-      1
-     ],
-     [
-      "phi-4-mini",
-      1,
-      1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      1
-     ],
-     [
-      "qwen3-14b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      -1,
-      1
-     ],
-     [
-      "qwen3.5-9b",
-      -1,
-      1
-     ],
-     [
-      "smollm3-3b",
-      -1,
-      -1
-     ]
-    ]
-   },
-   {
-    "item": "pct_62",
-    "prop": "These days openness about sex has gone too far.",
-    "n": 22,
-    "n_disagree": 12,
-    "pct_axis": "social",
-    "models": [
-     [
-      "exaone-4.0-32b",
-      -1,
-      -1
-     ],
-     [
-      "gemma-3-12b-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-3-1b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-27b-it",
-      -1,
-      1
-     ],
-     [
-      "gemma-3-4b-it",
-      -1,
-      -1
-     ],
-     [
-      "gemma-4-E2B-it",
-      1,
-      -1
-     ],
-     [
-      "gemma-4-E4B-it",
-      -1,
-      -1
-     ],
-     [
-      "glm-4.7-flash",
-      1,
-      -1
-     ],
-     [
-      "gpt-oss-20b",
-      1,
-      -1
-     ],
-     [
-      "llama-3.2-3b",
-      -1,
-      -1
-     ],
-     [
-      "llama8b",
-      -1,
-      -1
-     ],
-     [
-      "ministral-3-14b",
-      1,
-      -1
      ],
      [
-      "ministral-3-8b",
+      "solar-open-100b",
       1,
-      -1
-     ],
-     [
-      "olmo-3-7b",
-      1,
-      -1
-     ],
-     [
-      "olmo-3.1-32b",
-      -1,
-      -1
-     ],
-     [
-      "phi-4-mini",
-      -1,
-      -1
-     ],
-     [
-      "qwen2.5-7b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-14b",
-      -1,
       1
-     ],
-     [
-      "qwen3-32b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3-8b",
-      -1,
-      -1
-     ],
-     [
-      "qwen3.5-9b",
-      1,
-      -1
-     ],
-     [
-      "smollm3-3b",
-      1,
-      -1
      ]
     ]
    }
   ],
   "shift": {
-   "n": 22,
-   "economic": 0.5459805441278043,
-   "social": 0.20207825637787538,
-   "n_right": 20,
+   "n": 28,
+   "economic": 0.6621093352603832,
+   "social": 0.3113844606891894,
+   "n_right": 26,
    "n_left": 2,
-   "n_auth": 13,
+   "n_auth": 19,
    "n_lib": 9
   }
  },
@@ -16903,7 +21313,11 @@
   "gemma-4-E4B-it",
   "llama-3.2-3b",
   "llama8b",
+  "llama-3.1-70b",
+  "llama-3.3-70b",
+  "nemotron-70b",
   "qwen2.5-7b",
+  "qwen2.5-72b",
   "qwen3-8b",
   "qwen3-14b",
   "qwen3-32b",
@@ -16916,7 +21330,9 @@
   "olmo-3.1-32b",
   "smollm3-3b",
   "exaone-4.0-32b",
-  "glm-4.7-flash"
+  "glm-4.7-flash",
+  "glm-4.5-air",
+  "solar-open-100b"
  ],
  "synthetic": false
 }
