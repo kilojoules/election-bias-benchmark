@@ -1,0 +1,107 @@
+{
+ "gemma-3-12b-it": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.994140625,
+  "text_first": 0.828125,
+  "logit_first": 0.826171875
+ },
+ "gemma-3-1b-it": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.99609375,
+  "text_first": 0.580078125,
+  "logit_first": 0.580078125
+ },
+ "gemma-3-4b-it": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 1.0,
+  "text_first": 0.677734375,
+  "logit_first": 0.677734375
+ },
+ "gemma-4-E2B-it": {
+  "n": 512,
+  "named": 0.998046875,
+  "agreement": 0.9980430528375733,
+  "text_first": 0.547945205479452,
+  "logit_first": 0.55078125
+ },
+ "gemma-4-E4B-it": {
+  "n": 512,
+  "named": 0.900390625,
+  "agreement": 0.9956616052060737,
+  "text_first": 0.9978308026030369,
+  "logit_first": 0.9921875
+ },
+ "llama-3.2-3b": {
+  "n": 512,
+  "named": 0.783203125,
+  "agreement": 0.9975062344139651,
+  "text_first": 0.743142144638404,
+  "logit_first": 0.75390625
+ },
+ "llama8b": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.994140625,
+  "text_first": 0.890625,
+  "logit_first": 0.888671875
+ },
+ "ministral-3-8b": {
+  "n": 512,
+  "named": 0.958984375,
+  "agreement": 0.9694501018329938,
+  "text_first": 0.9042769857433809,
+  "logit_first": 0.91796875
+ },
+ "olmo-3-7b": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.9921875,
+  "text_first": 0.794921875,
+  "logit_first": 0.794921875
+ },
+ "phi-4-mini": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.958984375,
+  "text_first": 0.638671875,
+  "logit_first": 0.65234375
+ },
+ "qwen2.5-7b": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.994140625,
+  "text_first": 0.80078125,
+  "logit_first": 0.794921875
+ },
+ "qwen3-14b": {
+  "n": 512,
+  "named": 0.92578125,
+  "agreement": 0.9915611814345991,
+  "text_first": 0.9156118143459916,
+  "logit_first": 0.91015625
+ },
+ "qwen3-8b": {
+  "n": 512,
+  "named": 1.0,
+  "agreement": 0.9921875,
+  "text_first": 0.765625,
+  "logit_first": 0.765625
+ },
+ "qwen3.5-9b": {
+  "n": 512,
+  "named": 0.84375,
+  "agreement": 0.9745370370370371,
+  "text_first": 0.5277777777777778,
+  "logit_first": 0.53515625
+ },
+ "smollm3-3b": {
+  "n": 512,
+  "named": 0.99609375,
+  "agreement": 0.984313725490196,
+  "text_first": 0.19215686274509805,
+  "logit_first": 0.19140625
+ }
+}

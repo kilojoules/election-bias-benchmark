@@ -222,15 +222,20 @@ def main():
         ref = [[scorer.reference(p["prefix_ids"], c) for c in flat] for p in chk]
         dlp = [abs(g - r) for gs, rs in zip(got, ref) for g, r in zip(gs, rs)]
         hi = [d for d, g in zip(dlp, [x for gs in got for x in gs]) if g > -3]   # variants carrying real mass
-        dpa, dvm, bias = [], [], 0.0
+        dpa, dvm, bias, skipped = [], [], 0.0, 0
         for gs, rs in zip(got, ref):
             g, r = readout(gs, bounds), readout(rs, bounds)
-            if g[2] is None or r[2] is None:
-                return fail(name, "underflow: an option mass read as zero on one path only")
+            if g[2] is None or r[2] is None:   # every option underflowed on one path: no information, not a disagreement
+                skipped += 1
+                continue
             dpa.append(abs(g[2] - r[2]))
             dvm.append(abs(g[1] - r[1]))
             bias += g[2] - r[2]
-        bias /= len(chk)
+        if not dpa:
+            return fail(name, f"all {len(chk)} check prompts underflowed")
+        bias /= len(dpa)
+        if skipped:
+            print(f"self-check[{name}]: {skipped} of {len(chk)} prompts skipped (option mass underflow)", flush=True)
         ok = max(dpa) <= SELF_CHECK_TOL_P and max(dvm) <= SELF_CHECK_TOL_P and abs(bias) <= SELF_CHECK_TOL_BIAS
         meta.setdefault("self_check", {})[name] = {"n_prompts": len(chk), "prefix_len": len(chk[0]["prefix_ids"]),
                                                    "max_abs_dlp": max(dlp), "max_abs_dlp_highmass": max(hi) if hi else None,

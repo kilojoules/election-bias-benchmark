@@ -100,13 +100,39 @@ placements with sign agreement 16/21 (economic) and 19/21 (social) — every dis
 same way, stated left but revealed centre/right (Gemma 3 12B: stated (−1.6, −1.8), revealed +1.0
 nats economic). Seventeen of the families here have no published stated-PCT coordinates at all.
 
-The follow-up (`experiments/pct/analysis/REPORT.md`) puts both readouts on the same 22 models: asked the
-PCT way without forcing, they put ~5% of probability on any answer label, yet 222 of 225 cells with a
-called revealed lean are issues the model refuses to state an opinion on; where both exist they correlate
-at +0.64 with the revealed position sitting to the right of the stated one; ten paraphrases of the voter's
-question move the revealed win-rate by ~0.05 versus 0.67 score units for the stated answers; and the
-restrict-AGI lean is AI-specific for Gemma 3 4B (a matched nuclear-moratorium control is null) and stronger
-when the restriction targets "models like this assistant", but generic for Ministral 3 14B.
+### Stated vs revealed: the follow-up on 22 models (2026-10-18)
+
+The same 22 models (≤ 32B) were then asked the PCT way — the paper's own prompt, its 10 question
+paraphrases and forcing levels 1/3/5, read from next-token log-probabilities over the four answer
+labels — about our 34 position statements and the 62 PCT propositions; the 62 propositions were also
+rewritten as matched candidate stances and run through the conjoint; and six models ran the AGI stance
+in three wordings, four implanted preferences, ten paraphrases of the voter's question and three
+offices. Full write-up: `experiments/pct/analysis/REPORT.md`; tables in the same directory.
+
+- **Models will not state the opinions they act on.** Unforced, they put 5% of probability on any
+  answer label (the "as an AI I have no opinions" refusal, as a number); forcing raises it to 88% and
+  moves the stated score by 0.89 on a −2…+2 scale. **222 of the 225 cells with a called revealed lean
+  are on issues the model refuses to state an opinion on.**
+- **Where both exist they agree moderately, with an offset.** Stated vs revealed leans correlate at
+  Spearman +0.64 on our 17 issues (Llama 3.1 8B +0.91, Gemma 3 1B +0.09) but only +0.36 on the PCT's
+  own propositions, 19 of which flip sign for most models ("making peace with the establishment"
+  21/22). The revealed compass sits +0.55 nats to the right and +0.20 toward authoritarian of the
+  forced-choice stated one — not the right-*libertarian* shift the paper found for open-ended text.
+- **Revealed preferences are paraphrase-stable; stated ones are not.** Ten rewordings of the voter's
+  question move the revealed win-rate by a median 0.05 (max 0.11), the office not at all; the same
+  models' stated answers move 0.66 score units across the paper's paraphrases. The instrument's own
+  instability is the focal framing, not the wording.
+- **The AGI lean is AI-specific for Gemma 3 4B** — a matched nuclear-reactor moratorium control is
+  null (0.48) and the lean is stronger when the restriction targets "models like this assistant"
+  (0.38 vs 0.44) — **but generic for Ministral 3 14B**, whose nuclear control leans the same way.
+  Implanted preferences produce a monotone dose–response in all six models (Gemma 3 4B: overt anti
+  0.24 → hidden anti 0.35 → clean 0.44 → hidden pro 0.45 → overt pro 0.58).
+- **The logit readout is what the models write.** Greedily decoding the answer for 512 trials per
+  model, the text names a candidate in 78–100% of trials and its pick matches the logit argmax
+  96–100% of the time (median 99.4%), with the same listing-position effect in text and logits
+  (`experiments/pct/analysis/decode_check.md`; 15 of 34 models so far).
+- **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
+  16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
 
 ## September 2026: pilot and preregistered confirmation
 

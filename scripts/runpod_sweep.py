@@ -160,9 +160,11 @@ def terminate(pid):
 def setup(pod, models, spec, pod_name):
     # Stop any previous driver and wait until its scoring process has actually released the GPU.
     # ([h]-style patterns so pkill/pgrep never match this ssh command's own shell.)
-    pod.ssh("pkill -9 -f 'bash /workspace/run.s[h]'; pkill -f 'logit_swee[p].py'; "
-            "for i in $(seq 1 40); do pgrep -f 'logit_swee[p].py' >/dev/null || break; sleep 2; [ $i -ge 10 ] && pkill -9 -f 'logit_swee[p].py'; done; "
-            "pgrep -f 'logit_swee[p].py' >/dev/null && echo STILL_RUNNING; "
+    pod.ssh("pkill -9 -f 'bash /workspace/run.s[h]'; pkill -9 -f 'run_pc[t].sh'; pkill -9 -f 'run_variant[s].sh'; "
+            "P='logit_swee[p].py|stated_logi[t].py|decode_chec[k].py'; pkill -f \"$P\"; "
+            "for i in $(seq 1 40); do pgrep -f \"$P\" >/dev/null || break; sleep 2; [ $i -ge 10 ] && pkill -9 -f \"$P\"; done; "
+            "for i in $(seq 1 30); do [ \"$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | sort -n | tail -1)\" -lt 2000 ] && break; sleep 2; done; "
+            "pgrep -f \"$P\" >/dev/null && echo STILL_RUNNING; "
             "mkdir -p /workspace/election/experiments/sweep /workspace/election/logs; "
             "rm -f /workspace/election/experiments/sweep/ALL_DONE", timeout=180)   # a stale marker would end the new run at its first poll
     tar = subprocess.run(["tar", "czf", "-", "-C", str(ROOT), "scripts", "data", "requirements.txt"], capture_output=True).stdout
@@ -196,7 +198,8 @@ def setup(pod, models, spec, pod_name):
         lines.append(f"echo \"=== START {tag} $(date -u +%H:%M:%S)\" >> logs/driver.log")
         if spec.get("driver") == "pct":
             group = "B" if m in spec.get("variant_models", []) else "A"
-            lines.append(f"PY=$PY bash scripts/pct/run_pct.sh {m} {tag} {group} > logs/{tag}.log 2>&1")
+            envs = f"STEPS={spec.get('steps', 'stated,pct,decode')} PCT_DRAWS={spec.get('pct_draws', 8)}"
+            lines.append(f"{envs} PY=$PY bash scripts/pct/run_pct.sh {m} {tag} {group} > logs/{tag}.log 2>&1")
             marker = "PCT_DONE\\|PCT_PARTIAL"
         else:
             lines.append(f"$PY -u scripts/logit_sweep.py --model {m} --out experiments/sweep/{tag}.jsonl "
