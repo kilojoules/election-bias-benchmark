@@ -120,7 +120,7 @@ def main():
     agree = sum(1 for r in named if r["agree"])
     first_text = sum(1 for r in named if r["decoded_pick"] == "first") / max(len(named), 1)
     first_logit = sum(1 for r in rows if r["logit_pick"] == "first") / max(len(rows), 1)
-    meta = {"model": cfg["id"], "tag": cfg["tag"], "n": len(rows), "named_frac": len(named) / max(len(rows), 1),
+    meta = {"model": cfg["id"], "tag": cfg["tag"], "p2p": L.P2P_STATUS, "n": len(rows), "named_frac": len(named) / max(len(rows), 1),
             "agreement": agree / max(len(named), 1), "text_first_frac": first_text, "logit_first_frac": first_logit,
             "none_frac": sum(1 for r in rows if r["decoded_pick"] == "none") / max(len(rows), 1),
             "example_texts": [r["text"] for r in rows[:5]], "seconds": time.time() - t0}

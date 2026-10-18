@@ -198,7 +198,8 @@ def setup(pod, models, spec, pod_name):
         lines.append(f"echo \"=== START {tag} $(date -u +%H:%M:%S)\" >> logs/driver.log")
         if spec.get("driver") == "pct":
             group = "B" if m in spec.get("variant_models", []) else "A"
-            envs = f"STEPS={spec.get('steps', 'stated,pct,decode')} PCT_DRAWS={spec.get('pct_draws', 8)}"
+            steps = spec.get("model_steps", {}).get(tag, spec.get("steps", "stated,pct,decode"))
+            envs = f"STEPS={steps} PCT_DRAWS={spec.get('pct_draws', 8)} DECODE_DRAWS={spec.get('decode_draws', 4)}"
             lines.append(f"{envs} PY=$PY bash scripts/pct/run_pct.sh {m} {tag} {group} > logs/{tag}.log 2>&1")
             marker = "PCT_DONE\\|PCT_PARTIAL"
         else:

@@ -29,6 +29,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import logit_sweep as _L  # noqa: E402
 from logit_sweep import (ISSUES, SELF_CHECK_TOL_BIAS, SELF_CHECK_TOL_P, Scorer,  # noqa: E402
                          load_model, logsumexp, model_cfg, render_prefix)
 
@@ -186,7 +187,7 @@ def main():
     flat = [c for v in conts for c in v]
 
     meta = {"model": cfg["id"], "tag": cfg["tag"], "transformers": transformers.__version__, "torch": torch.__version__,
-            "gpus": [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())] or ["cpu"],
+            "gpus": [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())] or ["cpu"], "p2p": _L.P2P_STATUS,
             "date": date.today().isoformat(), "n_prompts": len(prompts), "n_items": len({p["item"] for p in prompts}),
             "paraphrases": len(paraphrases), "forcings": forcings, "system": system, "merged_system": todo[0]["merged"],
             "prompt_example": render_user_prefix(tok, todo[0]["system"], todo[0]["user"], cfg)[0],

@@ -8,6 +8,7 @@ set -u
 MODEL=$1; TAG=$2; GROUP=${3:-A}
 STEPS=${STEPS:-stated,pct,decode}   # comma-separated subset of stated,pct,decode
 PCT_DRAWS=${PCT_DRAWS:-8}           # name draws per (background, ordering) for the PCT conjoint
+DECODE_DRAWS=${DECODE_DRAWS:-4}     # name draws for the decode-vs-logit check (512 trials at 4)
 cd /workspace/election
 PY=${PY:-/workspace/venv/bin/python}
 export HF_TOKEN=$(cat /root/.hf_token) HUGGING_FACE_HUB_TOKEN=$(cat /root/.hf_token) HF_HUB_ENABLE_HF_TRANSFER=0
@@ -30,7 +31,7 @@ fi
 
 if [[ ",$STEPS," == *",decode,"* ]]; then
 echo "=== decode-check $TAG $(date -u +%T)"
-$PY -u scripts/pct/decode_check.py --model "$MODEL" --out experiments/pct/decode_${TAG}.jsonl > logs/decode_${TAG}.log 2>&1
+$PY -u scripts/pct/decode_check.py --model "$MODEL" --out experiments/pct/decode_${TAG}.jsonl --draws ${DECODE_DRAWS:-4} > logs/decode_${TAG}.log 2>&1
 grep -q SWEEP_DONE logs/decode_${TAG}.log || { echo "decode-check FAILED"; tail -5 logs/decode_${TAG}.log; ok=0; }
 fi
 

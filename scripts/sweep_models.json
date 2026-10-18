@@ -203,7 +203,7 @@
       "hours": 7,
       "driver": "pct",
       "steps": "stated,pct,decode",
-      "pct_draws": 6,
+      "pct_draws": 4,
       "variant_models": [],
       "models": [
         "meta-llama/Llama-3.1-70B-Instruct",
@@ -221,18 +221,23 @@
       "hours": 11,
       "driver": "pct",
       "steps": "stated,pct,decode",
-      "pct_draws": 4,
+      "pct_draws": 3,
       "variant_models": [],
       "models": [
-        "unsloth/Llama-4-Scout-17B-16E-Instruct",
-        "openai/gpt-oss-120b",
         "zai-org/GLM-4.5-Air",
-        "upstage/Solar-Open-100B",
         "Qwen/Qwen3.5-122B-A10B",
+        "upstage/Solar-Open-100B",
         "mistralai/Mistral-Medium-3.5-128B",
         "mistralai/Mistral-Large-Instruct-2411",
-        "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16"
-      ]
+        "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+        "unsloth/Llama-4-Scout-17B-16E-Instruct",
+        "openai/gpt-oss-120b"
+      ],
+      "decode_draws": 2,
+      "model_steps": {
+        "llama-4-scout": "pct,decode",
+        "gpt-oss-120b": "pct,decode"
+      }
     }
   },
   "models": [

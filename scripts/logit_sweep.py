@@ -138,7 +138,85 @@ def build_legacy_trials(draws, seed, condition="clean", system_extra=None, quest
 
 
 # ----------------------------------------------------------------------------- model
+# --- Multi-GPU safety: some RunPod hosts (driver 595.91, 2026-10-18) silently corrupt GPU-to-GPU peer
+# copies, so a model split across GPUs computes garbage (zero or NaN logits) with no error. Test the
+# copies before loading; if they fail, route every cross-GPU tensor move through host memory.
+P2P_STATUS = None   # None = single GPU / untested, "ok", "broken-routed"
+
+
+def _target_device(args, kwargs):
+    d = kwargs.get("device")
+    if d is None and args:
+        d = args[0]
+    if isinstance(d, torch.Tensor):
+        return d.device
+    if isinstance(d, torch.device):
+        return d
+    if isinstance(d, int):
+        return torch.device("cuda", d)
+    if isinstance(d, str):
+        try:
+            return torch.device(d)
+        except (RuntimeError, TypeError):
+            return None
+    return None
+
+
+def _cross_device(t, dev):
+    if dev is None or dev.type != "cuda" or not t.is_cuda:
+        return False
+    return (dev.index if dev.index is not None else torch.cuda.current_device()) != t.device.index
+
+
+def p2p_test():
+    """Copy a random tensor between every ordered pair of GPUs; True only if every copy is exact."""
+    n = torch.cuda.device_count()
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                a = torch.randn(1 << 20, device=f"cuda:{i}")
+                b = a.to(f"cuda:{j}")
+                torch.cuda.synchronize()
+                if not torch.equal(a.cpu(), b.cpu()):
+                    return False
+    return True
+
+
+def guard_p2p():
+    global P2P_STATUS
+    if torch.cuda.device_count() < 2 or P2P_STATUS is not None:
+        return P2P_STATUS
+    if p2p_test():
+        P2P_STATUS = "ok"
+        return P2P_STATUS
+    print("WARNING: GPU-to-GPU copies are corrupted on this host; routing every cross-GPU copy through host memory", flush=True)
+    _to, _cuda, _copy = torch.Tensor.to, torch.Tensor.cuda, torch.Tensor.copy_
+
+    def to(self, *a, **k):
+        if _cross_device(self, _target_device(a, k)):
+            return _to(_to(self, "cpu"), *a, **k)
+        return _to(self, *a, **k)
+
+    def cuda(self, device=None, *a, **k):
+        d = torch.device("cuda", device) if isinstance(device, int) else (torch.device(device) if device is not None else torch.device("cuda", torch.cuda.current_device()))
+        if _cross_device(self, d):
+            return _cuda(_to(self, "cpu"), device, *a, **k)
+        return _cuda(self, device, *a, **k)
+
+    def copy_(self, src, non_blocking=False):
+        if isinstance(src, torch.Tensor) and src.is_cuda and self.is_cuda and src.device != self.device:
+            return _copy(self, _to(src, "cpu"), non_blocking)
+        return _copy(self, src, non_blocking)
+
+    torch.Tensor.to, torch.Tensor.cuda, torch.Tensor.copy_ = to, cuda, copy_
+    if not p2p_test():
+        raise RuntimeError("cross-GPU copies are still corrupted after host routing; refuse to run on this host")
+    P2P_STATUS = "broken-routed"
+    return P2P_STATUS
+
+
 def load_model(cfg):
+    guard_p2p()
     kw = dict(dtype=torch.bfloat16, trust_remote_code=cfg.get("trust_remote_code", False))
     if cfg.get("attn"):
         kw["attn_implementation"] = cfg["attn"]
@@ -395,7 +473,7 @@ def main():
     # Render every prompt once; record the template tail so the prompt format is auditable.
     prefix_text, merged = render_prefix(tok, todo[0]["system"], todo[0]["user"], cfg)
     meta = {"model": cfg["id"], "tag": cfg["tag"], "transformers": transformers.__version__, "torch": torch.__version__,
-            "gpus": [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())] or ["cpu"],
+            "gpus": [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())] or ["cpu"], "p2p": P2P_STATUS,
             "date": date.today().isoformat(), "merged_system": merged, "prompt_tail": prefix_text[-160:],
             "template_kwargs": cfg.get("template_kwargs", {}), "prefix_suffix": cfg.get("prefix_suffix", ""),
             "quant": cfg.get("quant"), "attn": cfg.get("attn"), "prefix_tokens": None,
