@@ -308,6 +308,23 @@
         "openai/gpt-oss-20b",
         "mistralai/Ministral-3-14B-Instruct-2512"
       ]
+    },
+    "d4": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 150,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 2.5,
+      "driver": "pct",
+      "steps": "decode",
+      "variant_models": [],
+      "models": [
+        "LGAI-EXAONE/EXAONE-4.0-32B",
+        "zai-org/GLM-4.7-Flash",
+        "openai/gpt-oss-20b",
+        "mistralai/Ministral-3-14B-Instruct-2512"
+      ]
     }
   },
   "models": [

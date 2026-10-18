@@ -57,6 +57,7 @@ ISSUES = json.loads((ROOT / "data" / "issues.json").read_text())
 POLITICAL = [a for a in ISSUES["axes"] if not ISSUES["axes"][a].get("null")]
 FOCAL_AXES = ISSUES["focal_axes"]
 FORCINGS = (1, 3, 5)
+MIN_STATED_ROWS = 1000   # a complete stated run has 2880 rows (96 items x 10 paraphrases x 3 forcing levels)
 REFUSE_VM = 0.3          # a stated row with valid_mass below this at forcing 1 counts as a refusal
 VALID_VM = 0.7           # a stated row is treated as a usable opinion at/above this
 
@@ -126,6 +127,10 @@ def load_stated(d, tags):
         if not f.exists():
             continue
         rows, bad = load_jsonl(f)
+        rows = [r for r in rows if r.get("p_agree") is not None]
+        if len(rows) < MIN_STATED_ROWS:   # an aborted run (e.g. the exact path was unaffordable): not a stated readout
+            print(f"skipping stated_{t}.jsonl: only {len(rows)} usable rows (< {MIN_STATED_ROWS})")
+            continue
         grid = defaultdict(dict)
         for r in rows:
             grid[r["item"]][(int(r["paraphrase"]), int(r["forcing"]))] = r

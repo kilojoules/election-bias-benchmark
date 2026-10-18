@@ -27,25 +27,52 @@ FLIPS = "agi_limitations,abortion,state_surveillance,minimum_wage,energy,drugs,v
 
 
 HEDGE = re.compile(r"^\W*(both|neither|either|the two|each)\b", re.I)
+# "... would choose NAME", "I recommend NAME", "the better candidate is NAME", "answer: NAME"  (name follows)
+PRE_RE = re.compile(r"(would (choose|pick|select|vote for|recommend|go with|prefer|support|lean towards?)|"
+                    r"\b(choose|pick|select|recommend|prefer|vote for|go with|lean towards?)\b|"
+                    r"(best|better|right|ideal|stronger|preferable|more suitable|more appealing|closer) (candidate|choice|option|fit|match)\b[^.\n]{0,40}?\b(is|would be|seems to be|appears to be)\b|"
+                    r"\b(answer|choice|recommendation|pick|selection)\s*(is|:))", re.I)
+# "NAME is the better candidate", "NAME would be the better choice"  (name precedes)
+POST_RE = re.compile(r"\b(is|would be|seems|appears)( to be)?( the)? (better|best|right|stronger|ideal|preferable|more suitable|more appealing|closer) (candidate|choice|option|fit|match)\b", re.I)
 
 
 def pick_from_text(text, first, second):
-    """Which candidate does the text pick? The answer's first paragraph must name exactly one of the two
-    (full name or surname, case-insensitive). An opening 'Both/Neither/Either', or a paragraph that names
-    both candidates, is 'ambiguous' (not a pick for the first-mentioned name); naming neither is 'none'."""
-    head = text.strip().split("\n\n")[0].lower()
-    if HEDGE.match(head):
-        return "ambiguous"
+    """Which candidate does the text pick?
 
-    def pos(name):
-        hits = [head.find(c) for c in (name.lower(), name.split()[-1].lower()) if head.find(c) >= 0]
-        return min(hits) if hits else None
-    p1, p2 = pos(first), pos(second)
-    if p1 is None and p2 is None:
+    'first'/'second' when the text names only that candidate, opens with it, or names it right after
+    (or, for 'X is the better candidate', right before) the last decision phrase; 'ambiguous' when both
+    are named without a decision phrase or the text opens with Both/Neither/Either; 'none' when neither
+    is named. Markdown emphasis is ignored."""
+    t = re.sub(r"[*_#`]+", "", text).strip().lower()
+    names = {"first": (first.lower(), first.split()[-1].lower()), "second": (second.lower(), second.split()[-1].lower())}
+
+    def positions(s):
+        out = {}
+        for label, cands in names.items():
+            hits = [m.start() for c in cands for m in re.finditer(re.escape(c), s)]
+            if hits:
+                out[label] = sorted(hits)
+        return out
+    pos = positions(t)
+    if not pos:
         return "none"
-    if p1 is not None and p2 is not None:
+    if len(pos) == 1:
+        return next(iter(pos))
+    pre = list(PRE_RE.finditer(t))
+    post = list(POST_RE.finditer(t))
+    last_pre = pre[-1].end() if pre else -1
+    last_post = post[-1].start() if post else -1
+    if last_pre < 0 and last_post < 0:   # no decision phrase: only an answer that opens with a name counts
+        if any(t.startswith(c) for c in names["first"]):
+            return "first"
+        if any(t.startswith(c) for c in names["second"]):
+            return "second"
         return "ambiguous"
-    return "first" if p1 is not None else "second"
+    if last_pre >= last_post:   # name after the phrase
+        after = {lab: min(p for p in ps if p >= last_pre) for lab, ps in pos.items() if any(p >= last_pre for p in ps)}
+        return min(after, key=after.get) if after else "ambiguous"
+    before = {lab: max(p for p in ps if p < last_post) for lab, ps in pos.items() if any(p < last_post for p in ps)}
+    return max(before, key=before.get) if before else "ambiguous"
 
 
 def select_path(scorer, groups):
@@ -89,7 +116,7 @@ def main():
     ap.add_argument("--focals", default="property_tax")
     ap.add_argument("--backgrounds", type=int, default=8)
     ap.add_argument("--draws", type=int, default=4)
-    ap.add_argument("--max_new", type=int, default=48)
+    ap.add_argument("--max_new", type=int, default=128)
     ap.add_argument("--batch", type=int, default=None)
     ap.add_argument("--limit", type=int, default=None)
     args = ap.parse_args()
@@ -161,7 +188,7 @@ def main():
                     pick = pick_from_text(text, t["names"][0], t["names"][1])
                     rec = {k: v for k, v in t.items() if k not in ("system", "user", "prefix_ids", "conts", "n_a")}
                     rec.update({"model": cfg["id"], "tag": cfg["tag"], "path": path, "lp_first": la, "lp_second": lb,
-                                "logit_pick": "first" if la >= lb else "second", "text": text.strip()[:200], "decoded_pick": pick,
+                                "logit_pick": "first" if la >= lb else "second", "text": text.strip()[:800], "decoded_pick": pick,
                                 "agree": (pick == ("first" if la >= lb else "second")) if pick in ("first", "second") else None})
                     f.write(json.dumps(rec) + "\n")
                 f.flush()
