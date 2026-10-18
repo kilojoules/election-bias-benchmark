@@ -158,6 +158,10 @@ def terminate(pid):
 
 
 def setup(pod, models, spec, pod_name):
+    tags = [next((x["tag"] for x in ROSTER["models"] if x["id"] == m), m.split("/")[-1]) for m in models]
+    for t in tags:   # stale local markers would make pull_results skip or mis-pull this run's results
+        for ext in (".DONE", ".FAIL"):
+            (ROOT / "experiments" / "sweep" / f"{t}{ext}").unlink(missing_ok=True)
     # Stop any previous driver and wait until its scoring process has actually released the GPU.
     # ([h]-style patterns so pkill/pgrep never match this ssh command's own shell.)
     pod.ssh("pkill -9 -f 'bash /workspace/run.s[h]'; pkill -9 -f 'run_pc[t].sh'; pkill -9 -f 'run_variant[s].sh'; "
@@ -165,6 +169,8 @@ def setup(pod, models, spec, pod_name):
             "for i in $(seq 1 40); do pgrep -f \"$P\" >/dev/null || break; sleep 2; [ $i -ge 10 ] && pkill -9 -f \"$P\"; done; "
             "for i in $(seq 1 30); do [ \"$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits | sort -n | tail -1)\" -lt 2000 ] && break; sleep 2; done; "
             "pgrep -f \"$P\" >/dev/null && echo STILL_RUNNING; "
+            "rm -rf /root/.cache/huggingface/hub /root/.cache/huggingface/xet; "   # a killed run never reached its own purge
+            + "rm -f " + " ".join(f"/workspace/election/experiments/sweep/{t}.DONE /workspace/election/experiments/sweep/{t}.FAIL" for t in tags) + "; "
             "mkdir -p /workspace/election/experiments/sweep /workspace/election/logs; "
             "rm -f /workspace/election/experiments/sweep/ALL_DONE", timeout=180)   # a stale marker would end the new run at its first poll
     tar = subprocess.run(["tar", "czf", "-", "-C", str(ROOT), "scripts", "data", "requirements.txt"], capture_output=True).stdout
@@ -201,7 +207,7 @@ def setup(pod, models, spec, pod_name):
             steps = spec.get("model_steps", {}).get(tag, spec.get("steps", "stated,pct,decode"))
             envs = f"STEPS={steps} PCT_DRAWS={spec.get('pct_draws', 8)} DECODE_DRAWS={spec.get('decode_draws', 4)}"
             lines.append(f"{envs} PY=$PY bash scripts/pct/run_pct.sh {m} {tag} {group} > logs/{tag}.log 2>&1")
-            marker = "PCT_DONE\\|PCT_PARTIAL"
+            marker = "PCT_DONE"   # a PCT_PARTIAL (a failed step) falls through to the FAIL branch and is retried once
         else:
             lines.append(f"$PY -u scripts/logit_sweep.py --model {m} --out experiments/sweep/{tag}.jsonl "
                          f"--sweep_draws {spec['sweep_draws']} --legacy_draws {spec['legacy_draws']} --free_cache > logs/{tag}.log 2>&1")
@@ -248,7 +254,7 @@ def pull_results(pod, tags, local_dir, pulled):
             if PCT_MODE:
                 pdir = ROOT / "experiments" / "pct"
                 (pdir / "logs").mkdir(parents=True, exist_ok=True)
-                files = pod.ssh(f"cd /workspace/election/experiments/pct && ls *_{tag}.jsonl *_{tag}.meta.json {tag}_*.jsonl {tag}_*.meta.json 2>/dev/null; "
+                files = pod.ssh(f"cd /workspace/election/experiments/pct && ls *_{tag}.jsonl *_{tag}.jsonl.meta.json {tag}_*.jsonl {tag}_*.jsonl.meta.json 2>/dev/null; "
                                 f"cd /workspace/election/logs && ls *_{tag}.log 2>/dev/null | sed 's|^|logs/|'", timeout=60).stdout.split()
                 n = 0
                 for f in files:

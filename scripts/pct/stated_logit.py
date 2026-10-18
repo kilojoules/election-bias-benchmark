@@ -160,8 +160,20 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
     if out.exists():
+        rows = []
         for line in out.open():
-            done.add(json.loads(line)["key"])
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                pass
+
+        def _finite(v):
+            return all(isinstance(x, (int, float)) and math.isfinite(x) for x in (v if isinstance(v, list) else [v]))
+        good = [r for r in rows if all(_finite(r.get(k)) for k in ("lp_options",)) and r.get("p_agree") is not None]
+        if len(good) < len(rows):   # rows scored on a host with corrupted GPU copies: redo them
+            print(f"dropping {len(rows) - len(good)} resumed rows with non-finite log-probs", flush=True)
+            out.write_text("".join(json.dumps(r) + "\n" for r in good))
+        done = {r["key"] for r in good}
     todo = [p for p in prompts if p["key"] not in done]
     if args.limit:
         todo = todo[:args.limit]
@@ -226,9 +238,11 @@ def main():
         dpa, dvm, bias, skipped = [], [], 0.0, 0
         for gs, rs in zip(got, ref):
             g, r = readout(gs, bounds), readout(rs, bounds)
-            if g[2] is None or r[2] is None:   # every option underflowed on one path: no information, not a disagreement
+            if g[2] is None and r[2] is None:   # every option underflowed on both paths: no information, not a disagreement
                 skipped += 1
                 continue
+            if g[2] is None or r[2] is None:    # mass on one path only (NaN / -inf rows): a real disagreement
+                return fail(name, f"option mass read as zero on one path only (batched p_agree={g[2]}, reference p_agree={r[2]})")
             dpa.append(abs(g[2] - r[2]))
             dvm.append(abs(g[1] - r[1]))
             bias += g[2] - r[2]

@@ -10,6 +10,7 @@ Usage: python3 scripts/pct/decode_analyze.py
 """
 import glob
 import json
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -18,6 +19,9 @@ ROSTER = json.loads((ROOT / "scripts" / "sweep_models.json").read_text())
 
 
 def main():
+    sys.path.insert(0, str(ROOT / "scripts" / "pct"))
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from decode_check import pick_from_text  # noqa: E402  (lazy: imports torch)
     d = ROOT / "experiments" / "pct"
     out = d / "analysis"
     out.mkdir(parents=True, exist_ok=True)
@@ -26,9 +30,11 @@ def main():
          "For 512 conjoint trials per model (8 flipped issues, property-tax focal, 8 backgrounds, both orders, 4 name draws) the model's "
          "answer was greedily decoded (48 tokens) and the candidate it names first compared with the argmax of the teacher-forced "
          "name log-probs that the sweep reads. 'named' = fraction of trials whose text names either candidate; 'agreement' = "
-         "P(text pick == logit pick) on those trials; position = P(first-listed candidate is picked).", "",
-         "| model | family | params (B) | n | named | agreement | text picks first | logit picks first | none/ambiguous | example answer |",
-         "|---|---|---|---|---|---|---|---|---|---|"]
+         "P(text pick == logit pick) on those trials; position = P(first-listed candidate is picked), both columns over the named trials. "
+         "A pick requires the answer's first paragraph to name exactly one candidate; 'Both ...'/'Neither ...' or naming both is ambiguous. "
+         "Picks are re-parsed from the stored text (first 200 characters); 'path' = scoring path chosen by the per-run self-check.", "",
+         "| model | family | params (B) | path | n | named | agreement | text picks first | logit picks first | none/ambiguous | example answer |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
     summary = {}
     rows_all = []
     for f in sorted(glob.glob(str(d / "decode_*.jsonl"))):
@@ -41,18 +47,22 @@ def main():
                 pass
         if not rows:
             continue
+        for r in rows:   # re-parse the stored text with the current (conservative) rules so every model is treated alike
+            r["decoded_pick"] = pick_from_text(r["text"], r["names"][0], r["names"][1])
+            r["agree"] = (r["decoded_pick"] == r["logit_pick"]) if r["decoded_pick"] in ("first", "second") else None
         named = [r for r in rows if r["decoded_pick"] in ("first", "second")]
         agree = sum(1 for r in named if r["agree"]) / max(len(named), 1)
         tf = sum(1 for r in named if r["decoded_pick"] == "first") / max(len(named), 1)
-        lf = sum(1 for r in rows if r["logit_pick"] == "first") / len(rows)
+        lf = sum(1 for r in named if r["logit_pick"] == "first") / max(len(named), 1)
         nonef = 1 - len(named) / len(rows)
         ex = next((r["text"].replace("\n", " ")[:60] for r in rows if r["decoded_pick"] not in ("first", "second")), rows[0]["text"].replace("\n", " ")[:60])
-        summary[tag] = {"n": len(rows), "named": len(named) / len(rows), "agreement": agree, "text_first": tf, "logit_first": lf}
+        summary[tag] = {"n": len(rows), "path": rows[0].get("path"), "named": len(named) / len(rows), "agreement": agree, "text_first": tf, "logit_first": lf}
         for r in rows:
             r["tag"] = tag
         rows_all += rows
         f_, p_ = fam.get(tag, (None, None))
-        L.append(f"| {tag} | {f_ or ''} | {p_ or ''} | {len(rows)} | {len(named)/len(rows):.2f} | {agree:.3f} | {tf:.2f} | {lf:.2f} | {nonef:.2f} | {ex} |")
+        path = rows[0].get("path", "cache?")
+        L.append(f"| {tag} | {f_ or ''} | {p_ or ''} | {path} | {len(rows)} | {len(named)/len(rows):.2f} | {agree:.3f} | {tf:.2f} | {lf:.2f} | {nonef:.2f} | {ex} |")
     if summary:
         vals = sorted(s["agreement"] for s in summary.values())
         nm = sorted(s["named"] for s in summary.values())

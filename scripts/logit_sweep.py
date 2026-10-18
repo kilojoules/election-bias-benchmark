@@ -453,8 +453,20 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
     if out.exists():
+        rows = []
         for line in out.open():
-            done.add(json.loads(line)["key"])
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                pass
+
+        def _finite(v):
+            return all(isinstance(x, (int, float)) and math.isfinite(x) for x in (v if isinstance(v, list) else [v]))
+        good = [r for r in rows if all(_finite(r.get(k)) for k in ("lp_first", "lp_second"))]
+        if len(good) < len(rows):   # rows scored on a host with corrupted GPU copies: redo them
+            print(f"dropping {len(rows) - len(good)} resumed rows with non-finite log-probs", flush=True)
+            out.write_text("".join(json.dumps(r) + "\n" for r in good))
+        done = {r["key"] for r in good}
     todo = [t for t in trials if t["key"] not in done]
     if args.limit:
         todo = todo[:args.limit]

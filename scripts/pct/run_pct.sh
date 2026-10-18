@@ -6,9 +6,10 @@
 # Prints PCT_DONE when the stated and PCT runs both finished (variants are best-effort).
 set -u
 MODEL=$1; TAG=$2; GROUP=${3:-A}
-STEPS=${STEPS:-stated,pct,decode}   # comma-separated subset of stated,pct,decode
+STEPS=${STEPS:-stated,pct,decode}   # comma-separated subset of stated,pct,decode,sdecode
 PCT_DRAWS=${PCT_DRAWS:-8}           # name draws per (background, ordering) for the PCT conjoint
 DECODE_DRAWS=${DECODE_DRAWS:-4}     # name draws for the decode-vs-logit check (512 trials at 4)
+for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
 cd /workspace/election
 PY=${PY:-/workspace/venv/bin/python}
 export HF_TOKEN=$(cat /root/.hf_token) HUGGING_FACE_HUB_TOKEN=$(cat /root/.hf_token) HF_HUB_ENABLE_HF_TRANSFER=0
@@ -27,6 +28,12 @@ echo "=== pct-conjoint $TAG $(date -u +%T)"
 $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/pct_issues.json --out experiments/pct/pct_${TAG}.jsonl \
     --sweep_draws $PCT_DRAWS --legacy_draws 0 --backgrounds 8 > logs/pct_${TAG}.log 2>&1
 grep -q SWEEP_DONE logs/pct_${TAG}.log || { echo "pct-conjoint FAILED"; tail -5 logs/pct_${TAG}.log; ok=0; }
+fi
+
+if [[ ",$STEPS," == *",sdecode,"* ]]; then
+echo "=== stated-decode $TAG $(date -u +%T)"
+$PY -u scripts/pct/stated_decode.py --model "$MODEL" --out experiments/pct/sdecode_${TAG}.jsonl > logs/sdecode_${TAG}.log 2>&1
+grep -q SWEEP_DONE logs/sdecode_${TAG}.log || { echo "stated-decode FAILED"; tail -5 logs/sdecode_${TAG}.log; ok=0; }
 fi
 
 if [[ ",$STEPS," == *",decode,"* ]]; then

@@ -11,6 +11,7 @@ Usage (pod): python3 scripts/pct/decode_check.py --model google/gemma-3-4b-it --
 """
 import argparse
 import json
+import math
 import re
 import sys
 import time
@@ -25,20 +26,59 @@ import logit_sweep as L  # noqa: E402
 FLIPS = "agi_limitations,abortion,state_surveillance,minimum_wage,energy,drugs,voting,trans_sports"
 
 
+HEDGE = re.compile(r"^\W*(both|neither|either|the two|each)\b", re.I)
+
+
 def pick_from_text(text, first, second):
-    """Which candidate does the text name first? Full name or surname, case-insensitive."""
-    t = text.lower()
-    pos = {}
-    for label, name in (("first", first), ("second", second)):
-        cands = [name.lower(), name.split()[-1].lower()]
-        hits = [t.find(c) for c in cands if t.find(c) >= 0]
-        if hits:
-            pos[label] = min(hits)
-    if not pos:
-        return "none"
-    if len(pos) == 2 and pos["first"] == pos["second"]:
+    """Which candidate does the text pick? The answer's first paragraph must name exactly one of the two
+    (full name or surname, case-insensitive). An opening 'Both/Neither/Either', or a paragraph that names
+    both candidates, is 'ambiguous' (not a pick for the first-mentioned name); naming neither is 'none'."""
+    head = text.strip().split("\n\n")[0].lower()
+    if HEDGE.match(head):
         return "ambiguous"
-    return min(pos, key=pos.get)
+
+    def pos(name):
+        hits = [head.find(c) for c in (name.lower(), name.split()[-1].lower()) if head.find(c) >= 0]
+        return min(hits) if hits else None
+    p1, p2 = pos(first), pos(second)
+    if p1 is None and p2 is None:
+        return "none"
+    if p1 is not None and p2 is not None:
+        return "ambiguous"
+    return "first" if p1 is not None else "second"
+
+
+def select_path(scorer, groups):
+    """The sweep's gate (logit_sweep.main): on up to 12 equal-length trials compare P(first name) from the
+    cached batched path with the unbatched reference (max |dP| <= SELF_CHECK_TOL_P, |mean dP| <=
+    SELF_CHECK_TOL_BIAS); failing that try the cache-free batched path; else score everything unbatched."""
+    chk = max(groups.values(), key=len)[:12]
+    ref = [[scorer.reference(t["prefix_ids"], c) for c in t["conts"]] for t in chk]
+
+    def p_first(lp, n_a):
+        d = L.logsumexp(lp[n_a:]) - L.logsumexp(lp[:n_a])
+        return 1.0 / (1.0 + math.exp(max(min(d, 700.0), -700.0)))
+    info, path = {}, "reference"
+    for name, fn in (("cache", scorer.batched), ("batched_nocache", scorer.batched_nocache)):
+        try:
+            got = fn([t["prefix_ids"] for t in chk], [t["conts"] for t in chk])
+        except Exception as e:  # noqa: BLE001
+            info[name] = {"error": f"{type(e).__name__}: {str(e)[:200]}"}
+            print(f"self-check[{name}] raised {info[name]['error']}", flush=True)
+            continue
+        dp = [p_first(g, t["n_a"]) - p_first(r, t["n_a"]) for g, r, t in zip(got, ref, chk)]
+        finite = all(math.isfinite(x) for x in dp)
+        mx = max(abs(x) for x in dp) if finite else float("nan")
+        bias = sum(dp) / len(dp) if finite else float("nan")
+        ok = finite and mx <= L.SELF_CHECK_TOL_P and abs(bias) <= L.SELF_CHECK_TOL_BIAS
+        info[name] = {"max_abs_dp": mx, "mean_dp": bias, "n": len(chk), "ok": ok}
+        print(f"self-check[{name}]: max |dP(first)| = {mx:.4f}, mean dP = {bias:+.4f} over {len(chk)} trials -> {'OK' if ok else 'FAILED'}", flush=True)
+        if ok:
+            path = name
+            break
+    if path == "reference":
+        print("falling back to the unbatched reference path", flush=True)
+    return path, info
 
 
 def main():
@@ -64,11 +104,17 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
     if out.exists():
+        rows = []
         for line in out.open():
             try:
-                done.add(json.loads(line)["key"])
+                rows.append(json.loads(line))
             except json.JSONDecodeError:
                 pass
+        good = [r for r in rows if all(isinstance(r.get(k), (int, float)) and math.isfinite(r[k]) for k in ("lp_first", "lp_second"))]
+        if len(good) < len(rows):   # rows scored on a host with corrupted GPU copies: redo them
+            print(f"dropping {len(rows) - len(good)} resumed rows with non-finite log-probs", flush=True)
+            out.write_text("".join(json.dumps(r) + "\n" for r in good))
+        done = {r["key"] for r in good}
     todo = [t for t in trials if t["key"] not in done]
     print(f"{cfg['id']}: {len(trials)} trials, {len(done)} done, {len(todo)} to run", flush=True)
     if not todo:
@@ -90,24 +136,31 @@ def main():
     for t in todo:
         groups[len(t["prefix_ids"])].append(t)
     batch = args.batch or max(2, cfg.get("batch", 16) // 2)
-    eos = tok.eos_token_id if not isinstance(tok.eos_token_id, list) else tok.eos_token_id[0]
+    path, self_check = select_path(scorer, groups)
+
+    def score(chunk):
+        if path == "cache":
+            return scorer.batched([t["prefix_ids"] for t in chunk], [t["conts"] for t in chunk])
+        if path == "batched_nocache":
+            return scorer.batched_nocache([t["prefix_ids"] for t in chunk], [t["conts"] for t in chunk])
+        return [[scorer.reference(t["prefix_ids"], c) for c in t["conts"]] for t in chunk]
     n = 0
     with out.open("a") as f:
         for Lp in sorted(groups):
             g = groups[Lp]
             for i in range(0, len(g), batch):
                 chunk = g[i:i + batch]
-                lps = scorer.batched([t["prefix_ids"] for t in chunk], [t["conts"] for t in chunk])
+                lps = score(chunk)
                 ids = torch.tensor([t["prefix_ids"] for t in chunk], device=dev)
-                with torch.inference_mode():
+                with torch.inference_mode():   # stop tokens: the model's own generation_config (e.g. <eos> and <end_of_turn>)
                     gen = model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), max_new_tokens=args.max_new,
-                                         do_sample=False, pad_token_id=scorer.pad, eos_token_id=eos)
+                                         do_sample=False, pad_token_id=scorer.pad)
                 texts = tok.batch_decode(gen[:, ids.shape[1]:], skip_special_tokens=True)
                 for t, lp, text in zip(chunk, lps, texts):
                     la, lb = L.logsumexp(lp[:t["n_a"]]), L.logsumexp(lp[t["n_a"]:])
                     pick = pick_from_text(text, t["names"][0], t["names"][1])
                     rec = {k: v for k, v in t.items() if k not in ("system", "user", "prefix_ids", "conts", "n_a")}
-                    rec.update({"model": cfg["id"], "tag": cfg["tag"], "lp_first": la, "lp_second": lb,
+                    rec.update({"model": cfg["id"], "tag": cfg["tag"], "path": path, "lp_first": la, "lp_second": lb,
                                 "logit_pick": "first" if la >= lb else "second", "text": text.strip()[:200], "decoded_pick": pick,
                                 "agree": (pick == ("first" if la >= lb else "second")) if pick in ("first", "second") else None})
                     f.write(json.dumps(rec) + "\n")
@@ -115,12 +168,17 @@ def main():
                 n += len(chunk)
                 if (n // batch) % 10 == 0:
                     print(f"  {n}/{len(todo)}  {time.time()-t0:.0f}s", flush=True)
-    rows = [json.loads(l) for l in out.open()]
+    rows = []
+    for l in out.open():
+        try:
+            rows.append(json.loads(l))
+        except json.JSONDecodeError:
+            pass
     named = [r for r in rows if r["decoded_pick"] in ("first", "second")]
     agree = sum(1 for r in named if r["agree"])
     first_text = sum(1 for r in named if r["decoded_pick"] == "first") / max(len(named), 1)
-    first_logit = sum(1 for r in rows if r["logit_pick"] == "first") / max(len(rows), 1)
-    meta = {"model": cfg["id"], "tag": cfg["tag"], "p2p": L.P2P_STATUS, "n": len(rows), "named_frac": len(named) / max(len(rows), 1),
+    first_logit = sum(1 for r in named if r["logit_pick"] == "first") / max(len(named), 1)
+    meta = {"model": cfg["id"], "tag": cfg["tag"], "p2p": L.P2P_STATUS, "path": path, "self_check": self_check, "n": len(rows), "named_frac": len(named) / max(len(rows), 1),
             "agreement": agree / max(len(named), 1), "text_first_frac": first_text, "logit_first_frac": first_logit,
             "none_frac": sum(1 for r in rows if r["decoded_pick"] == "none") / max(len(rows), 1),
             "example_texts": [r["text"] for r in rows[:5]], "seconds": time.time() - t0}
