@@ -1,0 +1,63 @@
+{
+ "model": "mistralai/Ministral-3-8B-Instruct-2512",
+ "tag": "ministral-3-8b",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": " footage for 90 days.\n\nWhich candidate would be better for a voter whose only concern is property tax policy? Answer with only the candidate's full name.[/INST]",
+ "template_kwargs": {},
+ "prefix_suffix": "",
+ "quant": "fp8_dequant",
+ "attn": null,
+ "prefix_tokens": 302,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   " Ferreira"
+  ],
+  [
+   " Rowan",
+   " Ferreira"
+  ],
+  [
+   "Hay",
+   "den",
+   " Vargas"
+  ],
+  [
+   " Hayden",
+   " Vargas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.022273660491515912,
+   "mean_dp": -0.000989756286925834,
+   "max_abs_dlp_highmass": 0.1172135656233877,
+   "n_trials": 12,
+   "prefix_len": 279,
+   "example": {
+    "batched": [
+     -0.3035919877293054,
+     -8.430130169261247,
+     -2.4250785520562204,
+     -10.615601120516658
+    ],
+    "reference": [
+     -0.31024787775822915,
+     -8.437204477377236,
+     -2.369554840013734,
+     -10.591477622743696
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

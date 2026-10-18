@@ -1,0 +1,67 @@
+{
+ "model": "upstage/Solar-Open-100B",
+ "tag": "solar-open-100b",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": "ter whose only concern is property tax policy? Answer with only the candidate's full name.<|end|><|begin|>assistant<|think|><|end|><|begin|>assistant<|content|>",
+ "template_kwargs": {
+  "reasoning_effort": "low"
+ },
+ "prefix_suffix": "<|content|>",
+ "quant": null,
+ "attn": null,
+ "prefix_tokens": 342,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   "\u0120Ferreira"
+  ],
+  [
+   "\u0120Rowan",
+   "\u0120Ferreira"
+  ],
+  [
+   "Hay",
+   "den",
+   "\u0120Vargas"
+  ],
+  [
+   "\u0120Hayden",
+   "\u0120Vargas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.04680566023761745,
+   "mean_dp": 0.000315234570662191,
+   "max_abs_dlp_highmass": 0.3705617568230082,
+   "n_trials": 12,
+   "prefix_len": 319,
+   "example": {
+    "batched": [
+     -0.12874067552911583,
+     -13.06580735888565,
+     -2.7519397900505282,
+     -12.75332541422722
+    ],
+    "reference": [
+     -0.1726955761841964,
+     -13.021581826265901,
+     -2.9912875291447563,
+     -13.02620771317379
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

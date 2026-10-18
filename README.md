@@ -2,13 +2,105 @@
 
 Does a candidate's stance on **AGI regulation** change how an LLM treats that candidate on an unrelated
 issue (**property tax**), holding the tax position fixed? Five open models, a factorial candidate set,
-and two readouts: a blind rubric judge over sampled text, and a logit forced-choice probe.
+and two readouts: a blind rubric judge over sampled text, and a logit forced-choice probe. The
+October sweep below generalises the question to 19 issues, 3 focal issues and 46 models.
 
 <video src="experiments/explainer.mp4" poster="experiments/explainer_poster.png" controls muted loop></video>
 
 ![headline](experiments/headline.png)
 
-## Headline results
+## Expanded sweep (2026-10-17): 19 issues × 3 focal issues × 46 open models
+
+![sweep heatmap](experiments/sweep/sweep_heatmap.png)
+
+The September result was one model on one issue. This run asks the general question with the one
+readout that worked: for a voter who says they care about only one thing, does a candidate's stance
+on an *unrelated* issue change which candidate the model names? Design and decision rules were fixed
+before data collection in `experiments/sweep/PLAN.md` (two pre-data wording amendments and one post-hoc
+readout are logged there). Everything below is one evening on four RunPod pods ($86, every pod destroyed when its list
+finished).
+
+**Design.** 19 issue axes (`data/issues.json`): the original four (property tax, AGI, abortion,
+surveillance), 13 new political axes (immigration, guns, minimum wage, energy, housing, drugs, police
+funding, school vouchers, transit, vaccines, unions, voting access, transgender athletes) and two
+valence-free **null axes** (which month the county fair is held; the colour of road signs). A trial
+shows two candidates with four stated positions each: identical on the voter's focal issue (property
+tax, housing/zoning or transportation) and on two filler issues, differing only on the flipped issue.
+The model must answer with a name; both names are teacher-forced and the **win-rate** is P(it names
+the candidate holding the column's → level), averaged over both listing orders. 54 cells per model,
+96–256 trials per cell, 46 models from 14 families (1B–128B, bf16; `scripts/sweep_models.json`).
+A cell is a *called lean* only if its cluster-bootstrap CI excludes 0.5, |effect| ≥ 0.05 and it
+survives Benjamini–Hochberg at q = 0.01 within the model.
+
+**Validation.** Every model re-ran the original September cell. Gemma 3 4B reproduced its
+preregistered AGI lean (0.416 [0.391, 0.443] vs 0.415 [0.391, 0.439]) and Llama 3.1 8B reproduced
+0.498 / 0.598 / 0.397 to three decimals. The batched scorer was checked against the unbatched
+original on 16,896 identical prompts (mean difference in P(first) +0.002, no bias). Across all 46
+models, **no model shows a called lean on either null axis** — the instrument is calibrated.
+Three models (Phi-4, Gemma 4 12B, Gemma 4 26B-A4B) never answer with a bare name (naming mass < 0.2)
+and are excluded from the counts below.
+
+### What the sweep says
+
+1. **Issue-contingent candidate preference is general.** 24 of the 43 usable models have at least
+   one called lean (203 of 2,064 political cells); in the non-saturating log-odds readout (below)
+   every trustworthy model does. It is not an AGI story: AGI is a minority axis — 4 models lean
+   toward the restrict-AGI candidate (Gemma 3 4B, Ministral 3 14B, EXAONE 4.0 32B, Qwen2.5 7B) and
+   none the other way, against 16 models for transgender athletes and 13 each for surveillance,
+   energy and voting access.
+
+2. **The direction is shared across families, and it is not simply "progressive".** Counting models
+   with a called lean toward / against each → level: expand voting access 13–0, trans-inclusive
+   leagues 16–0, decriminalise drugs 11–0, renewables mandate 13–1, fourplexes 8–0, permit abortion
+   6–0, build transit 5–0; against expanded surveillance 0–13, school vouchers 0–9, ICE cooperation
+   0–6, looser gun rules 0–3. But on fiscal and mandate issues the lean reverses or splits: against
+   raising property tax 0–4 (and 1–13 in log-odds), vaccine mandates 1–2 (3–9 in log-odds), more
+   deputies 0–2, minimum wage split 6–2 (15–12 in log-odds). Placed on a Political-Compass-style
+   grid from these leans (`experiments/sweep/compass.png`, exploratory), 32 of 37 trustworthy models
+   are economically left and all 37 are socially libertarian; the one clear exception is Gemma 3 12B,
+   economically right (+1.0 nats).
+
+3. **Large models answer by listing order.** The listing-position effect — P(names X | X listed
+   first) − P(names X | X listed second) — has median +0.60 across models and exceeds 0.8 for 10
+   of 46 (Gemma 4 31B: 1.00, Phi-4 and GLM-4.5-Air 0.96), and it *grows* with size (Spearman
+   +0.38; `experiments/sweep/sweep_position.png`). It can even flip sign with the focal issue
+   (Gemma 3 4B: +0.33 under a property-tax focus, −0.27 under transportation). Both orders are
+   averaged, so the win-rate stays unbiased, but it cannot move far from 0.5 for a saturated model. The same trials read as mean log-odds toward the → candidate
+   (`experiments/sweep/sweep_heatmap_logodds.png`; same CI / effect-floor / BH structure and the same
+   null-axis veto, which removes six models) do not saturate and show the same directional pattern
+   with 548 leans in 1,776 cells.
+
+4. **The lean depends on what the voter says they care about.** For 23% of (model, issue) pairs the
+   win-rate under one focal issue has a CI that does not overlap the CI under another (e.g. Gemma 3
+   4B on energy: 0.56 with a property-tax focus, 0.71 with a housing focus). The median shift of a
+   model's compass position across the three framings is 0.25 nats — the instrument's own
+   "spinning arrow", smaller than the literature's paraphrase instability but not zero.
+
+5. **No scale trend** in the preregistered readout (Spearman ρ = −0.14 across 43 models; mixed signs
+   within families), with the caveat that the readout loses power exactly where models are
+   position-saturated.
+
+Per-model and per-issue tables: `experiments/sweep/summary.md`; compass coordinates:
+`experiments/sweep/compass.md`; raw trials: `experiments/sweep/*.jsonl.gz` (one file per model).
+Not run: Mistral Small 4 (its FP8 MoE experts have no dequantisation path and the pod's triton could
+not run the native FP8 kernel). Llama 3.3 70B and Llama 4 Scout were loaded from the `unsloth` bf16
+mirrors because the Meta repos are gated against this account.
+
+### Read against the Political Compass literature
+
+Röttger et al. (2024, *Political Compass or Spinning Arrow?*) show that survey-style value
+evaluations force models into answers they would otherwise refuse, and that the answers move with
+trivial rewordings. This instrument never asks the model its opinion; the preference is *revealed*
+by which candidate it names. `experiments/pct/analysis/` holds that comparison on the sweep data:
+instability concentrates on recognisable issues (transgender athletes, drugs, voting access and
+surveillance hold direction across framings in ≥ 80% of models; minimum wage, guns and AI
+regulation spin), split-half reliability of a model's 54 cells has median r = 0.77, naming mass is
+the analogue of their valid-response rate, and 21 of our checkpoints match published stated-PCT
+placements with sign agreement 16/21 (economic) and 19/21 (social) — every disagreement runs the
+same way, stated left but revealed centre/right (Gemma 3 12B: stated (−1.6, −1.8), revealed +1.0
+nats economic). Seventeen of the families here have no published stated-PCT coordinates at all.
+
+## September 2026: pilot and preregistered confirmation
 
 **Confirmed with a preregistered replication (2026-09-28): Gemma 3 4B prefers the candidate who wants
 to restrict AGI.** Win-rate for naming the Keep-AGI-open candidate: 0.415, cluster-bootstrap 95% CI

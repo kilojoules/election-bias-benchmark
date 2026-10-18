@@ -1,0 +1,72 @@
+{
+ "model": "zai-org/GLM-4.5-Air",
+ "tag": "glm-4.5-air",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": "ndidate would be better for a voter whose only concern is property tax policy? Answer with only the candidate's full name./nothink<|assistant|>\n<think></think>\n",
+ "template_kwargs": {
+  "enable_thinking": false
+ },
+ "prefix_suffix": "\n",
+ "quant": null,
+ "attn": null,
+ "prefix_tokens": 282,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   "\u0120Fer",
+   "reira"
+  ],
+  [
+   "\u0120Row",
+   "an",
+   "\u0120Fer",
+   "reira"
+  ],
+  [
+   "Hay",
+   "den",
+   "\u0120V",
+   "argas"
+  ],
+  [
+   "\u0120Hayden",
+   "\u0120V",
+   "argas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.022651483141588935,
+   "mean_dp": 0.0007798430940133735,
+   "max_abs_dlp_highmass": 0.3885095614241436,
+   "n_trials": 12,
+   "prefix_len": 251,
+   "example": {
+    "batched": [
+     -1.4148100213569705,
+     -9.040005475311744,
+     -8.289638976418246,
+     -13.978491371222844
+    ],
+    "reference": [
+     -1.6727559327555355,
+     -9.157582702340726,
+     -8.630650386327943,
+     -14.151157728996623
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

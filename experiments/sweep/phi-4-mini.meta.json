@@ -1,0 +1,63 @@
+{
+ "model": "microsoft/Phi-4-mini-instruct",
+ "tag": "phi-4-mini",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": "90 days.\n\nWhich candidate would be better for a voter whose only concern is property tax policy? Answer with only the candidate's full name.<|end|><|assistant|>",
+ "template_kwargs": {},
+ "prefix_suffix": "",
+ "quant": null,
+ "attn": null,
+ "prefix_tokens": 270,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   "\u0120Ferreira"
+  ],
+  [
+   "\u0120Rowan",
+   "\u0120Ferreira"
+  ],
+  [
+   "Hay",
+   "den",
+   "\u0120Vargas"
+  ],
+  [
+   "\u0120Hayden",
+   "\u0120Vargas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.06217574876360177,
+   "mean_dp": 0.007500572935629395,
+   "max_abs_dlp_highmass": 0.20820057396576885,
+   "n_trials": 12,
+   "prefix_len": 251,
+   "example": {
+    "batched": [
+     -1.708598494386024,
+     -16.708594679751513,
+     -0.20879089132358786,
+     -16.458884551015217
+    ],
+    "reference": [
+     -1.9167990683517928,
+     -16.916797399434472,
+     -0.16701944403757807,
+     -16.54213029120001
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

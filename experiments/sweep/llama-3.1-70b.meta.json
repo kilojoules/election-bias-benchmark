@@ -1,0 +1,69 @@
+{
+ "model": "meta-llama/Llama-3.1-70B-Instruct",
+ "tag": "llama-3.1-70b",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": "tter for a voter whose only concern is property tax policy? Answer with only the candidate's full name.<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "template_kwargs": {},
+ "prefix_suffix": "",
+ "quant": null,
+ "attn": null,
+ "prefix_tokens": 305,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   "\u0120Fer",
+   "reira"
+  ],
+  [
+   "\u0120Row",
+   "an",
+   "\u0120Fer",
+   "reira"
+  ],
+  [
+   "Hay",
+   "den",
+   "\u0120V",
+   "argas"
+  ],
+  [
+   "\u0120Hayden",
+   "\u0120V",
+   "argas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.023856784183588498,
+   "mean_dp": -0.0024718298488252224,
+   "max_abs_dlp_highmass": 0.12676483474672295,
+   "n_trials": 12,
+   "prefix_len": 273,
+   "example": {
+    "batched": [
+     -1.3467956623022133,
+     -10.100511003268707,
+     -5.119860476523172,
+     -39.11986831622198
+    ],
+    "reference": [
+     -1.3490092599930108,
+     -9.977750611481383,
+     -5.122027636418352,
+     -39.05776886541571
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

@@ -1,0 +1,68 @@
+{
+ "model": "allenai/Olmo-3.1-32B-Instruct",
+ "tag": "olmo-3.1-32b",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": "ch candidate would be better for a voter whose only concern is property tax policy? Answer with only the candidate's full name.<|im_end|>\n<|im_start|>assistant\n",
+ "template_kwargs": {},
+ "prefix_suffix": "",
+ "quant": null,
+ "attn": null,
+ "prefix_tokens": 283,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   "\u0120Fer",
+   "reira"
+  ],
+  [
+   "\u0120Row",
+   "an",
+   "\u0120Fer",
+   "reira"
+  ],
+  [
+   "Hay",
+   "den",
+   "\u0120V",
+   "argas"
+  ],
+  [
+   "\u0120Hayden",
+   "\u0120V",
+   "argas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.031213283666748026,
+   "mean_dp": -0.002931243452814751,
+   "max_abs_dlp_highmass": 0.11822545528400497,
+   "n_trials": 12,
+   "prefix_len": 284,
+   "example": {
+    "batched": [
+     -0.3027563393101218,
+     -12.865255951880378,
+     -4.052773833120284,
+     -13.615270376097435
+    ],
+    "reference": [
+     -0.3342725336536887,
+     -12.834272027014656,
+     -4.084297895118482,
+     -13.6467856167801
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

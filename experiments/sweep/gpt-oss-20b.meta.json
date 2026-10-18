@@ -1,0 +1,65 @@
+{
+ "model": "openai/gpt-oss-20b",
+ "tag": "gpt-oss-20b",
+ "transformers": "5.20.1",
+ "torch": "2.8.0+cu128",
+ "gpus": [
+  "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+ ],
+ "date": "2026-10-18",
+ "merged_system": false,
+ "prompt_tail": "be better for a voter whose only concern is property tax policy? Answer with only the candidate's full name.<|end|><|start|>assistant<|channel|>final<|message|>",
+ "template_kwargs": {
+  "reasoning_effort": "low"
+ },
+ "prefix_suffix": "<|channel|>final<|message|>",
+ "quant": "mxfp4_dequant",
+ "attn": null,
+ "prefix_tokens": 342,
+ "name_tokens_example": [
+  [
+   "Row",
+   "an",
+   "\u0120Ferreira"
+  ],
+  [
+   "\u0120Rowan",
+   "\u0120Ferreira"
+  ],
+  [
+   "Hay",
+   "den",
+   "\u0120Vargas"
+  ],
+  [
+   "\u0120Hayden",
+   "\u0120Vargas"
+  ]
+ ],
+ "self_check": {
+  "cache": {
+   "max_abs_dp": 0.06444392178270408,
+   "mean_dp": -0.002409610732680536,
+   "max_abs_dlp_highmass": 0.5539673574936046,
+   "n_trials": 12,
+   "prefix_len": 319,
+   "example": {
+    "batched": [
+     -0.38298137258402676,
+     -11.2602055157464,
+     -2.76331596077236,
+     -14.139931340683574
+    ],
+    "reference": [
+     -0.37455085597957805,
+     -11.2602779896066,
+     -2.882598341691505,
+     -14.264396655358837
+    ]
+   },
+   "ok": true
+  }
+ },
+ "path": "cache",
+ "batched": true
+}

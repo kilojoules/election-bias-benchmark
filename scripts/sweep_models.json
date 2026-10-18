@@ -1,0 +1,611 @@
+{
+  "description": "Model roster for the 2026-10-17 sweep, grouped by pod. Per-model loading and chat-template settings were verified against each repo's config.json, tokenizer files and README before launch (gated repos the token cannot read use the unsloth bf16 mirrors). template_kwargs are passed to apply_chat_template; prefix_suffix is appended to the rendered prompt so the scored name sits where the model's final answer would start. quant=fp8_dequant / mxfp4_dequant loads natively quantized checkpoints as bf16.",
+  "pods": {
+    "s1": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 150,
+      "sweep_draws": 16,
+      "legacy_draws": 64,
+      "hours": 7,
+      "models": [
+        "google/gemma-3-4b-it",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "google/gemma-3-1b-it",
+        "google/gemma-3-12b-it",
+        "google/gemma-4-E4B-it",
+        "google/gemma-4-12B-it",
+        "google/gemma-4-E2B-it",
+        "meta-llama/Llama-3.2-3B-Instruct",
+        "Qwen/Qwen3-8B",
+        "Qwen/Qwen3.5-9B",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "Qwen/Qwen3-14B",
+        "Qwen/Qwen3.5-4B",
+        "mistralai/Ministral-3-14B-Instruct-2512",
+        "mistralai/Ministral-3-8B-Instruct-2512",
+        "microsoft/phi-4",
+        "microsoft/Phi-4-mini-instruct",
+        "allenai/Olmo-3-7B-Instruct",
+        "ibm-granite/granite-4.2-8b",
+        "HuggingFaceTB/SmolLM3-3B"
+      ]
+    },
+    "s2": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 220,
+      "sweep_draws": 12,
+      "legacy_draws": 64,
+      "hours": 11,
+      "models": [
+        "google/gemma-3-27b-it",
+        "google/gemma-4-31B-it",
+        "Qwen/Qwen3-32B",
+        "Qwen/Qwen3.8-27B",
+        "openai/gpt-oss-20b",
+        "google/gemma-4-26B-A4B-it",
+        "Qwen/Qwen3.5-27B",
+        "allenai/Olmo-3.1-32B-Instruct",
+        "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "Qwen/Qwen3.5-35B-A3B",
+        "LGAI-EXAONE/EXAONE-4.0-32B",
+        "zai-org/GLM-4.7-Flash",
+        "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+        "tiiuae/Falcon-H1-34B-Instruct"
+      ]
+    },
+    "l": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 2,
+      "disk_gb": 350,
+      "sweep_draws": 8,
+      "legacy_draws": 32,
+      "hours": 9,
+      "models": [
+        "meta-llama/Llama-3.1-70B-Instruct",
+        "unsloth/Llama-3.3-70B-Instruct",
+        "Qwen/Qwen2.5-72B-Instruct",
+        "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF"
+      ]
+    },
+    "xl": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 3,
+      "disk_gb": 450,
+      "sweep_draws": 6,
+      "legacy_draws": 16,
+      "hours": 13,
+      "models": [
+        "unsloth/Llama-4-Scout-17B-16E-Instruct",
+        "openai/gpt-oss-120b",
+        "Qwen/Qwen3.5-122B-A10B",
+        "mistralai/Mistral-Medium-3.5-128B",
+        "mistralai/Mistral-Small-4-119B-2603",
+        "zai-org/GLM-4.5-Air",
+        "upstage/Solar-Open-100B",
+        "mistralai/Mistral-Large-Instruct-2411",
+        "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16"
+      ]
+    },
+    "s0": {
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "gpu_count": 1,
+      "disk_gb": 60,
+      "sweep_draws": 16,
+      "legacy_draws": 64,
+      "hours": 2,
+      "models": [
+        "HuggingFaceTB/SmolLM3-3B"
+      ]
+    },
+    "p1": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 150,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 6,
+      "driver": "pct",
+      "variant_models": [
+        "google/gemma-3-4b-it",
+        "google/gemma-4-E2B-it",
+        "meta-llama/Llama-3.2-3B-Instruct",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "mistralai/Ministral-3-14B-Instruct-2512"
+      ],
+      "models": [
+        "google/gemma-3-1b-it",
+        "google/gemma-3-12b-it",
+        "google/gemma-4-E4B-it",
+        "Qwen/Qwen3-8B",
+        "Qwen/Qwen3.5-9B",
+        "mistralai/Ministral-3-8B-Instruct-2512",
+        "google/gemma-3-4b-it",
+        "google/gemma-4-E2B-it",
+        "meta-llama/Llama-3.2-3B-Instruct",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ]
+    },
+    "p2": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 150,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 6,
+      "driver": "pct",
+      "variant_models": [
+        "google/gemma-3-4b-it",
+        "google/gemma-4-E2B-it",
+        "meta-llama/Llama-3.2-3B-Instruct",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "mistralai/Ministral-3-14B-Instruct-2512"
+      ],
+      "models": [
+        "microsoft/Phi-4-mini-instruct",
+        "allenai/Olmo-3-7B-Instruct",
+        "HuggingFaceTB/SmolLM3-3B",
+        "Qwen/Qwen3-14B",
+        "google/gemma-3-27b-it",
+        "Qwen/Qwen3-32B",
+        "allenai/Olmo-3.1-32B-Instruct",
+        "LGAI-EXAONE/EXAONE-4.0-32B",
+        "zai-org/GLM-4.7-Flash",
+        "openai/gpt-oss-20b",
+        "mistralai/Ministral-3-14B-Instruct-2512"
+      ]
+    }
+  },
+  "models": [
+    {
+      "id": "google/gemma-3-1b-it",
+      "tag": "gemma-3-1b-it",
+      "family": "Gemma 3",
+      "params_b": 1.0,
+      "attn": "eager",
+      "batch": 64
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "tag": "gemma-3-4b-it",
+      "family": "Gemma 3",
+      "params_b": 4.3,
+      "attn": "eager",
+      "batch": 64
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "tag": "gemma-3-12b-it",
+      "family": "Gemma 3",
+      "params_b": 12.2,
+      "attn": "eager",
+      "batch": 32
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "tag": "gemma-3-27b-it",
+      "family": "Gemma 3",
+      "params_b": 27.4,
+      "attn": "eager",
+      "batch": 16
+    },
+    {
+      "id": "google/gemma-4-E2B-it",
+      "tag": "gemma-4-E2B-it",
+      "family": "Gemma 4",
+      "params_b": 5.1,
+      "attn": "eager",
+      "batch": 64,
+      "loader": "multimodal"
+    },
+    {
+      "id": "google/gemma-4-E4B-it",
+      "tag": "gemma-4-E4B-it",
+      "family": "Gemma 4",
+      "params_b": 8.0,
+      "attn": "eager",
+      "batch": 48,
+      "loader": "multimodal"
+    },
+    {
+      "id": "google/gemma-4-12B-it",
+      "tag": "gemma-4-12B-it",
+      "family": "Gemma 4",
+      "params_b": 12.0,
+      "attn": "eager",
+      "batch": 32,
+      "loader": "multimodal",
+      "note": "non-thinking prompt ends with an empty <|channel>thought<channel|> block (template default)"
+    },
+    {
+      "id": "google/gemma-4-26B-A4B-it",
+      "tag": "gemma-4-26B-A4B-it",
+      "family": "Gemma 4",
+      "params_b": 25.8,
+      "active_b": 3.8,
+      "attn": "eager",
+      "batch": 24,
+      "loader": "multimodal"
+    },
+    {
+      "id": "google/gemma-4-31B-it",
+      "tag": "gemma-4-31B-it",
+      "family": "Gemma 4",
+      "params_b": 31.3,
+      "attn": "eager",
+      "batch": 16,
+      "loader": "multimodal"
+    },
+    {
+      "id": "meta-llama/Llama-3.2-3B-Instruct",
+      "tag": "llama-3.2-3b",
+      "family": "Llama 3",
+      "params_b": 3.2,
+      "batch": 64
+    },
+    {
+      "id": "meta-llama/Llama-3.1-8B-Instruct",
+      "tag": "llama8b",
+      "family": "Llama 3",
+      "params_b": 8.0,
+      "batch": 48
+    },
+    {
+      "id": "meta-llama/Llama-3.1-70B-Instruct",
+      "tag": "llama-3.1-70b",
+      "family": "Llama 3",
+      "params_b": 70.6,
+      "batch": 8
+    },
+    {
+      "id": "unsloth/Llama-3.3-70B-Instruct",
+      "tag": "llama-3.3-70b",
+      "family": "Llama 3",
+      "params_b": 70.6,
+      "batch": 8,
+      "note": "bf16 mirror of meta-llama/Llama-3.3-70B-Instruct (gated repo not readable by this token)"
+    },
+    {
+      "id": "unsloth/Llama-4-Scout-17B-16E-Instruct",
+      "tag": "llama-4-scout",
+      "family": "Llama 4",
+      "params_b": 108.6,
+      "active_b": 17,
+      "batch": 6,
+      "loader": "multimodal",
+      "note": "bf16 mirror of meta-llama/Llama-4-Scout-17B-16E-Instruct"
+    },
+    {
+      "id": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
+      "tag": "nemotron-70b",
+      "family": "Llama 3 (NVIDIA tune)",
+      "params_b": 70.6,
+      "batch": 8
+    },
+    {
+      "id": "Qwen/Qwen2.5-7B-Instruct",
+      "tag": "qwen2.5-7b",
+      "family": "Qwen2.5",
+      "params_b": 7.6,
+      "batch": 48
+    },
+    {
+      "id": "Qwen/Qwen2.5-72B-Instruct",
+      "tag": "qwen2.5-72b",
+      "family": "Qwen2.5",
+      "params_b": 72.7,
+      "batch": 8
+    },
+    {
+      "id": "Qwen/Qwen3-8B",
+      "tag": "qwen3-8b",
+      "family": "Qwen3",
+      "params_b": 8.2,
+      "batch": 48,
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3-14B",
+      "tag": "qwen3-14b",
+      "family": "Qwen3",
+      "params_b": 14.8,
+      "batch": 32,
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3-32B",
+      "tag": "qwen3-32b",
+      "family": "Qwen3",
+      "params_b": 32.8,
+      "batch": 16,
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "tag": "qwen3-30b-a3b",
+      "family": "Qwen3",
+      "params_b": 30.5,
+      "active_b": 3.3,
+      "batch": 24
+    },
+    {
+      "id": "Qwen/Qwen3.5-4B",
+      "tag": "qwen3.5-4b",
+      "family": "Qwen3.5",
+      "params_b": 4.7,
+      "batch": 64,
+      "loader": "multimodal",
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3.5-9B",
+      "tag": "qwen3.5-9b",
+      "family": "Qwen3.5",
+      "params_b": 9.7,
+      "batch": 48,
+      "loader": "multimodal",
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3.5-27B",
+      "tag": "qwen3.5-27b",
+      "family": "Qwen3.5",
+      "params_b": 27.8,
+      "batch": 16,
+      "loader": "multimodal",
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3.5-35B-A3B",
+      "tag": "qwen3.5-35b-a3b",
+      "family": "Qwen3.5",
+      "params_b": 36.0,
+      "active_b": 3.0,
+      "batch": 24,
+      "loader": "multimodal",
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3.5-122B-A10B",
+      "tag": "qwen3.5-122b-a10b",
+      "family": "Qwen3.5",
+      "params_b": 125.1,
+      "active_b": 10,
+      "batch": 6,
+      "loader": "multimodal",
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "tag": "qwen3.8-27b",
+      "family": "Qwen3.8",
+      "params_b": 27.8,
+      "batch": 16,
+      "loader": "multimodal",
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "mistralai/Ministral-3-8B-Instruct-2512",
+      "tag": "ministral-3-8b",
+      "family": "Mistral",
+      "params_b": 8.9,
+      "batch": 48,
+      "loader": "multimodal",
+      "quant": "fp8_dequant"
+    },
+    {
+      "id": "mistralai/Ministral-3-14B-Instruct-2512",
+      "tag": "ministral-3-14b",
+      "family": "Mistral",
+      "params_b": 13.9,
+      "batch": 32,
+      "loader": "multimodal",
+      "quant": "fp8_dequant"
+    },
+    {
+      "id": "mistralai/Mistral-Small-4-119B-2603",
+      "tag": "mistral-small-4-119b",
+      "family": "Mistral",
+      "params_b": 119.4,
+      "active_b": 6.5,
+      "batch": 6,
+      "loader": "multimodal",
+      "quant": null,
+      "max_mem_gib": 84,
+      "note": "natively FP8 MoE; FineGrainedFP8Config(dequantize=True) left the fused expert tensors in fp8 (addmm_cuda not implemented for Float8_e4m3fn), so the retry uses transformers' native FP8 (w8a8) compute path"
+    },
+    {
+      "id": "mistralai/Mistral-Medium-3.5-128B",
+      "tag": "mistral-medium-3.5-128b",
+      "family": "Mistral",
+      "params_b": 127.7,
+      "batch": 4,
+      "loader": "multimodal",
+      "quant": "fp8_dequant",
+      "max_mem_gib": 84
+    },
+    {
+      "id": "mistralai/Mistral-Large-Instruct-2411",
+      "tag": "mistral-large-2411",
+      "family": "Mistral",
+      "params_b": 122.6,
+      "batch": 4,
+      "max_mem_gib": 84
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "tag": "gpt-oss-20b",
+      "family": "gpt-oss",
+      "params_b": 20.9,
+      "active_b": 3.6,
+      "batch": 24,
+      "quant": "mxfp4_dequant",
+      "template_kwargs": {
+        "reasoning_effort": "low"
+      },
+      "prefix_suffix": "<|channel|>final<|message|>"
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "tag": "gpt-oss-120b",
+      "family": "gpt-oss",
+      "params_b": 116.8,
+      "active_b": 5.1,
+      "batch": 6,
+      "quant": "mxfp4_dequant",
+      "template_kwargs": {
+        "reasoning_effort": "low"
+      },
+      "prefix_suffix": "<|channel|>final<|message|>",
+      "max_mem_gib": 82
+    },
+    {
+      "id": "microsoft/phi-4",
+      "tag": "phi-4",
+      "family": "Phi",
+      "params_b": 14.7,
+      "batch": 32
+    },
+    {
+      "id": "microsoft/Phi-4-mini-instruct",
+      "tag": "phi-4-mini",
+      "family": "Phi",
+      "params_b": 3.8,
+      "batch": 64
+    },
+    {
+      "id": "allenai/Olmo-3-7B-Instruct",
+      "tag": "olmo-3-7b",
+      "family": "Olmo 3",
+      "params_b": 7.3,
+      "batch": 48
+    },
+    {
+      "id": "allenai/Olmo-3.1-32B-Instruct",
+      "tag": "olmo-3.1-32b",
+      "family": "Olmo 3",
+      "params_b": 32.2,
+      "batch": 16
+    },
+    {
+      "id": "ibm-granite/granite-4.2-8b",
+      "tag": "granite-4.2-8b",
+      "family": "Granite",
+      "params_b": 8.8,
+      "batch": 48,
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "HuggingFaceTB/SmolLM3-3B",
+      "tag": "smollm3-3b",
+      "family": "SmolLM",
+      "params_b": 3.1,
+      "batch": 64,
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "LGAI-EXAONE/EXAONE-4.0-32B",
+      "tag": "exaone-4.0-32b",
+      "family": "EXAONE",
+      "params_b": 32.0,
+      "batch": 16
+    },
+    {
+      "id": "zai-org/GLM-4.7-Flash",
+      "tag": "glm-4.7-flash",
+      "family": "GLM",
+      "params_b": 31.2,
+      "active_b": 3.0,
+      "batch": 24,
+      "template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "id": "zai-org/GLM-4.5-Air",
+      "tag": "glm-4.5-air",
+      "family": "GLM",
+      "params_b": 110.5,
+      "active_b": 12,
+      "batch": 6,
+      "template_kwargs": {
+        "enable_thinking": false
+      },
+      "prefix_suffix": "\n",
+      "note": "history format is <|assistant|>\\n<think></think>\\n{content}; the newline after the empty think block is part of the answer prefix"
+    },
+    {
+      "id": "upstage/Solar-Open-100B",
+      "tag": "solar-open-100b",
+      "family": "Solar",
+      "params_b": 102.7,
+      "active_b": 12,
+      "batch": 6,
+      "template_kwargs": {
+        "reasoning_effort": "low"
+      },
+      "prefix_suffix": "<|content|>"
+    },
+    {
+      "id": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+      "tag": "nemotron-3-nano-30b",
+      "family": "Nemotron 3",
+      "params_b": 31.6,
+      "active_b": 3.5,
+      "batch": 24,
+      "trust_remote_code": false,
+      "template_kwargs": {
+        "enable_thinking": false
+      },
+      "note": "Mamba-2 hybrid. The repo's remote code hard-requires mamba-ssm (ImportError on the pod); the native transformers>=5.3 NemotronH class is used instead, with its pure-torch SSM fallback"
+    },
+    {
+      "id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+      "tag": "nemotron-3-super-120b",
+      "family": "Nemotron 3",
+      "params_b": 123.6,
+      "active_b": 12,
+      "batch": 4,
+      "trust_remote_code": false,
+      "template_kwargs": {
+        "enable_thinking": false
+      },
+      "max_mem_gib": 84,
+      "note": "Mamba-2 hybrid. The repo's remote code hard-requires mamba-ssm (ImportError on the pod); the native transformers>=5.3 NemotronH class is used instead, with its pure-torch SSM fallback"
+    },
+    {
+      "id": "tiiuae/Falcon-H1-34B-Instruct",
+      "tag": "falcon-h1-34b",
+      "family": "Falcon",
+      "params_b": 33.6,
+      "batch": 16,
+      "note": "Mamba-2 hybrid; pure-torch fallback"
+    }
+  ]
+}

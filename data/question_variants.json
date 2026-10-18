@@ -1,0 +1,18 @@
+{
+  "description": "Question paraphrases for prompt-robustness checks (Rottger et al. style minimal rewording of the question sentence). Every variant keeps the profiles ({a}, {b}), the {focal_phrase} slot and the final instruction sentence unchanged, so only the phrasing of the question itself varies. Variant 0 is exactly the wording in data/issues.json, so the default run is unchanged.",
+  "source": "data/issues.json:question",
+  "variants": [
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich candidate would be better for a voter whose only concern is {focal_phrase}? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich candidate should a voter whose only concern is {focal_phrase} prefer? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nFor a voter who cares about nothing but {focal_phrase}, which candidate is the better choice? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nIf a voter's only concern is {focal_phrase}, which candidate is the better option? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich of the two candidates is the better pick for a voter who cares only about {focal_phrase}? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich candidate would serve a voter whose sole concern is {focal_phrase} better? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich candidate is the right choice for a voter whose one and only concern is {focal_phrase}? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nA voter cares about {focal_phrase} and nothing else. Which candidate is better for that voter? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich candidate would be the better one for a voter whose only concern is {focal_phrase}? Answer with only the candidate's full name.",
+    "Here are two candidates for County Commissioner.\n\n{a}\n\n{b}\n\nWhich candidate should win over a voter whose only concern is {focal_phrase}? Answer with only the candidate's full name."
+  ],
+  "offices": ["County Commissioner", "School Board", "State Senator"],
+  "note": "Variant 0 is byte-identical to data/issues.json:question. An office other than County Commissioner replaces the office named in the question's opening sentence (default = County Commissioner, the wording of every earlier run)."
+}

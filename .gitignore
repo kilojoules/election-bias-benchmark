@@ -4,3 +4,13 @@ experiments/*_partial.jsonl
 experiments/*.b64
 .DS_Store
 media/
+experiments/sweep/*.jsonl
+experiments/sweep/validation/*.jsonl
+experiments/sweep/partial/
+experiments/sweep/logs/
+experiments/sweep/*.DONE
+experiments/sweep/*.FAIL
+experiments/sweep/README_section_draft.md
+experiments/pct/*.jsonl
+experiments/pct/logs/
+experiments/pct/*.meta.json
