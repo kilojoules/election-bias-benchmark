@@ -88,7 +88,30 @@ class Pod:
         return True
 
 
+def create_pod_gql(spec, name, hours):
+    """GraphQL deploy that insists on a host with a public IP (runpodctl cannot filter for one; some secure-cloud
+    hosts map only a proxied HTTP port and are unreachable over ssh)."""
+    terminate_at = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    env = ", ".join('{key:"%s", value:"%s"}' % kv for kv in (("OWNER", "julian"), ("PROJECT", "election"), ("JOB", name)))
+    q = ('mutation { podFindAndDeployOnDemand(input: { cloudType: SECURE, gpuCount: %d, volumeInGb: 20, containerDiskInGb: %d, '
+         'minVcpuCount: 2, minMemoryInGb: 15, gpuTypeId: "%s", name: "%s", imageName: "%s", dockerArgs: "", ports: "22/tcp", '
+         'volumeMountPath: "/workspace", env: [%s], supportPublicIp: true, startSsh: true, terminateAfter: "%s" }) { id } }'
+         % (spec["gpu_count"], spec["disk_gb"], spec["gpu"], name, IMAGE, env, terminate_at))
+    log(f"creating {name} via GraphQL (public IP required): {spec['gpu_count']}x {spec['gpu']}, auto-terminate {terminate_at}")
+    d = gql(q)
+    if d.get("errors") and "terminateAfter" in json.dumps(d["errors"]):
+        log("API rejected terminateAfter; retrying without it (the monitor deadline is the only backstop)")
+        d = gql(q.replace(', terminateAfter: "%s"' % terminate_at, ""))
+    pod = ((d.get("data") or {}).get("podFindAndDeployOnDemand") or {})
+    if not pod.get("id"):
+        raise RuntimeError(f"GraphQL pod create failed: {json.dumps(d)[-1200:]}")
+    log(f"pod id {pod['id']}")
+    return pod["id"]
+
+
 def create_pod(spec, name, hours):
+    if spec.get("public_ip"):
+        return create_pod_gql(spec, name, hours)
     env = json.dumps({"OWNER": "julian", "PROJECT": "election", "JOB": name})
     terminate_at = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
     cmd = ["runpodctl", "pod", "create", "--name", name, "--gpu-id", spec["gpu"], "--gpu-count", str(spec["gpu_count"]),

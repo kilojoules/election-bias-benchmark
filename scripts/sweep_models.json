@@ -383,7 +383,8 @@
       "models": [
         "unsloth/Llama-3.3-70B-Instruct",
         "Qwen/Qwen2.5-72B-Instruct"
-      ]
+      ],
+      "public_ip": true
     }
   },
   "models": [
