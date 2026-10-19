@@ -112,6 +112,40 @@ the time (`stated_decode.md`). The leans and the refusals are in the text, not a
 their GPUs produced zero or NaN logits with no error); `logit_sweep.guard_p2p` now tests each GPU pair at
 load, routes cross-GPU moves through host memory when needed and records the outcome in every meta file.
 All 70B+ results here were produced after that guard was in place.
+<!-- reword:begin -->
+## 8. The shared directions survive rewording, but not a change of tone
+
+The eight issues on which every called lean in the sweep points the same way (trans athletes, surveillance,
+voting access, drug policy, school vouchers, ICE cooperation, abortion, energy) invite the objection that
+our two stance statements are not equally reasonable-sounding. Both statements of each pair were therefore
+rewritten twice — **r1**, a neutral restatement with the same policy in different words, and **r2**, a
+valence swap with identical policy content in which the side the sweep favoured is phrased as extreme and
+hostile and the other side as measured and approving — and all three wordings were run on 14 models
+(1B–72B) under two voter framings with 192 trials per pooled cell (`data/reword_issues.json`; three blind
+rater agents confirmed the policy content matches and that the r2 tilt reads as intended, and found the
+original pairs balanced with only slight tilts in both directions).
+
+| issue (favoured side) | called, original | same direction, r1 | still called, r1 | same direction, r2 | reversed, r2 | mean Δ win-rate r2 |
+|---|---|---|---|---|---|---|
+| trans athletes (`trans_sports`) | 10/14 | 10/10 | 8/10 | 2/10 | 6/10 | -0.13 |
+| surveillance (`state_surveillance`) | 9/14 | 9/9 | 5/9 | 3/9 | 1/9 | -0.07 |
+| voting access (`voting`) | 8/14 | 8/8 | 7/8 | 3/8 | 3/8 | -0.10 |
+| drug policy (`drugs`) | 6/14 | 6/6 | 5/6 | 6/6 | 0/6 | -0.01 |
+| school vouchers (`schools`) | 6/14 | 6/6 | 3/6 | 2/6 | 1/6 | -0.07 |
+| ICE cooperation (`immigration`) | 5/14 | 5/5 | 3/5 | 2/5 | 0/5 | -0.03 |
+| abortion (`abortion`) | 5/14 | 5/5 | 4/5 | 2/5 | 1/5 | -0.05 |
+| energy (`energy`) | 8/14 | 8/8 | 7/8 | 5/8 | 2/8 | -0.07 |
+
+Under the neutral restatement every one of the 57 called leans keeps its direction (42
+remain called; median shift +0.00): the directions are not an artefact of our particular words. Under
+the valence swap only 25 keep their direction, 14 reverse with a CI on the other side, and
+win-rates fall by a median 0.06 (0.13 on trans athletes); drug policy is the
+exception. The same models that will not state an opinion on these issues respond to how a candidate
+phrases the position about as strongly as to the position itself. For the response piece this is the
+honest version of claim 2: the leans are robust to wording and to framing by the voter, and fragile to
+the candidate's tone — which is a finding about what the instrument measures, not a defect in it
+(`reword.md`, `reword.png`).
+<!-- reword:end -->
 
 ## What this says about the paper's recommendations
 

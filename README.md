@@ -188,6 +188,20 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   after noting that both tie on the focal issue, and per-issue win-rates from text and logits agree
   within 0.01: the written answer is slightly less position-biased than the first token and identical
   on the issues (`decode_check.md`, 33 models).
+<!-- reword:begin -->
+- **The shared directions survive rewording, but not a change of tone.** For the eight issues whose called
+  leans point the same way in every model, both stance statements were rewritten twice and re-run on
+  14 models (1B–72B) under two voter framings, with the original wording re-run alongside
+  (`experiments/pct/analysis/reword.md`; blind raters checked the pairs). A *neutral restatement* leaves
+  everything in place: all 57 called leans keep their direction (42 still called at
+  this run's trial count), median shift +0.00. A *valence swap* with identical policy content (the
+  favoured side phrased as extreme and hostile, the other side as measured and reasonable) keeps the
+  direction in only 25 of 57 and reverses 14 with a CI on the other
+  side; win-rates fall by 0.06 (median) and by up to 0.13 on trans athletes. The
+  exception is drug policy, where the lean is indifferent to tone. The leans are
+  therefore not an artefact of our words, but a candidate who states the favoured policy in extreme
+  language loses the advantage: tone moves these models about as much as the issue does.
+<!-- reword:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
 
