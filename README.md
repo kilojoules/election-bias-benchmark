@@ -15,6 +15,14 @@ Four claims survive the October sweep and its follow-ups. Each comes with its ef
 Everything is from open-weight models (1B–128B) under a teacher-forced logit readout that was checked
 against the models' own written answers.
 
+![summary](experiments/summary_figure.png)
+
+*One panel per claim: (A) implanted preferences read back as a dose–response, null axes never produce a
+lean, written answers match the readout; (B) which way each issue's called leans point, counted over 43
+models; (C) called revealed leans sit almost entirely on issues the model will not answer when asked
+directly; (D) leans survive a neutral rewording but not a hostile phrasing of the favoured side
+(`scripts/plot_summary.py`).*
+
 1. **The instrument is calibrated.** Two valence-free null axes (which month the county fair is held,
    the colour of road signs) produce zero called leans across 46 models; four implanted preferences read
    back as a monotone dose–response in all six models tested; batched and exact scoring agree on 16,896
