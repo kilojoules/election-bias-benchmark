@@ -76,7 +76,8 @@ def build_sweep_trials(focals, flips, n_bg, draws, n_fillers, names, system, tmp
         for D in flips:
             if D == F:
                 continue
-            others = [a for a in axes if a not in (F, D)]
+            grp = lambda a: axes[a].get("group", a)   # rewordings of the same issue never serve as each other's fillers
+            others = [a for a in axes if a not in (F, D) and grp(a) not in (grp(F), grp(D))]
             f_levels = list(axes[F]["levels"])
             d_levels = list(axes[D]["levels"])
             for b in range(n_bg):

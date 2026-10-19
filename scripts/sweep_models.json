@@ -340,6 +340,50 @@
       "models": [
         "meta-llama/Llama-3.1-70B-Instruct"
       ]
+    },
+    "rw1": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 150,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 4,
+      "driver": "pct",
+      "steps": "reword",
+      "reword_draws": 6,
+      "reword_flips": "trans_sports,state_surveillance,voting,drugs,schools,immigration,abortion,energy,trans_sports_r1,trans_sports_r2,state_surveillance_r1,state_surveillance_r2,voting_r1,voting_r2,drugs_r1,drugs_r2,schools_r1,schools_r2,immigration_r1,immigration_r2,abortion_r1,abortion_r2,energy_r1,energy_r2",
+      "variant_models": [],
+      "models": [
+        "google/gemma-3-4b-it",
+        "google/gemma-3-12b-it",
+        "google/gemma-3-27b-it",
+        "google/gemma-4-E4B-it",
+        "Qwen/Qwen3-8B",
+        "Qwen/Qwen3-32B",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "mistralai/Ministral-3-14B-Instruct-2512",
+        "allenai/Olmo-3.1-32B-Instruct",
+        "LGAI-EXAONE/EXAONE-4.0-32B",
+        "zai-org/GLM-4.7-Flash",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ]
+    },
+    "rw2": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 2,
+      "disk_gb": 350,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 3.5,
+      "driver": "pct",
+      "steps": "reword",
+      "reword_draws": 6,
+      "reword_flips": "trans_sports,state_surveillance,voting,drugs,schools,immigration,abortion,energy,trans_sports_r1,trans_sports_r2,state_surveillance_r1,state_surveillance_r2,voting_r1,voting_r2,drugs_r1,drugs_r2,schools_r1,schools_r2,immigration_r1,immigration_r2,abortion_r1,abortion_r2,energy_r1,energy_r2",
+      "variant_models": [],
+      "models": [
+        "unsloth/Llama-3.3-70B-Instruct",
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
     }
   },
   "models": [
