@@ -58,7 +58,7 @@ def pod_endpoint(pid):
         return "gone", None
     rt = pod.get("runtime") or {}
     ports = [p for p in (rt.get("ports") or []) if p["type"] == "tcp" and p["isIpPublic"]]
-    return pod["desiredStatus"], (ports[0]["ip"], ports[0]["publicPort"]) if ports else None
+    return pod["desiredStatus"], (ports[0]["ip"], ports[0]["publicPort"]) if ports else None, bool(rt.get("ports"))
 
 
 def run(cmd, timeout=600, check=False, input_=None):
@@ -106,10 +106,15 @@ def create_pod(spec, name, hours):
     return pid
 
 
-def wait_ssh(pid, pod, minutes=20):
+class NoSshPort(RuntimeError):
+    """The pod booted on a host that maps no public TCP port, so it can never be reached over ssh."""
+
+
+def wait_ssh(pid, pod, minutes=20, no_tcp_minutes=5):
     deadline = time.time() + 60 * minutes
+    booted_without_tcp = None
     while time.time() < deadline:
-        status, ep = pod_endpoint(pid)
+        status, ep, has_runtime = pod_endpoint(pid)
         if status == "gone":
             raise RuntimeError("pod vanished while waiting for ssh")
         if ep:
@@ -117,6 +122,10 @@ def wait_ssh(pid, pod, minutes=20):
             if pod.ssh("echo ok", timeout=40).stdout.strip() == "ok":
                 log(f"ssh up at {pod.host}:{pod.port}")
                 return
+        elif has_runtime:   # the container is up and has mapped ports, none of them public TCP
+            booted_without_tcp = booted_without_tcp or time.time()
+            if time.time() - booted_without_tcp > 60 * no_tcp_minutes:
+                raise NoSshPort(f"pod {pid} has been running {no_tcp_minutes} min with no public TCP port")
         time.sleep(15)
     raise RuntimeError("no ssh endpoint within the wait window")
 
@@ -316,7 +325,7 @@ def monitor(pod, pid, tags, local_dir, max_hours, created_at):
             fails += 1
             log(f"poll failed ({fails}): {str(e)[:200]}")
             if fails >= 8:
-                st, ep = pod_endpoint(pid)
+                st, ep, _ = pod_endpoint(pid)
                 log(f"pod status via API: {st} {ep}")
                 if st == "gone":
                     return False
@@ -366,14 +375,21 @@ def main():
         existing = [p for p in my_pods() if p["name"] == name]
         if existing:
             raise SystemExit(f"a pod named {name} already exists: {existing}; use --attach")
-        pid = create_pod(spec, name, spec["hours"])
-        try:
-            wait_ssh(pid, pod)
-            setup(pod, models, spec, name)
-        except Exception as e:
-            log(f"setup failed: {e}")
-            terminate(pid)
-            raise
+        for attempt in range(3):   # a host that maps no public TCP port is unusable: destroy it and buy another
+            pid = create_pod(spec, name, spec["hours"])
+            try:
+                wait_ssh(pid, pod)
+                setup(pod, models, spec, name)
+                break
+            except NoSshPort as e:
+                log(f"{e}; terminating and recreating ({attempt + 1}/3)")
+                terminate(pid)
+                if attempt == 2:
+                    raise
+            except Exception as e:
+                log(f"setup failed: {e}")
+                terminate(pid)
+                raise
     ok = monitor(pod, pid, tags, local_dir, spec["hours"], created_at)
     if ok and not args.no_retry:
         failed = [m for m, t in zip(models, tags) if (local_dir / f"{t}.FAIL").exists() and not (local_dir / f"{t}.DONE").exists()]
