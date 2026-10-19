@@ -111,14 +111,14 @@
  },
  "llama-3.1-70b": {
   "n": 512,
-  "path": null,
-  "named": 0.869140625,
-  "agreement": 0.9887640449438202,
+  "path": "cache",
+  "named": 0.916015625,
+  "agreement": 0.9872068230277186,
   "agreement_margin1": 1.0,
-  "n_margin1": 429,
-  "share_close": 0.01348314606741573,
-  "text_first": 0.9865168539325843,
-  "logit_first": 0.9977528089887641
+  "n_margin1": 452,
+  "share_close": 0.01279317697228145,
+  "text_first": 0.9850746268656716,
+  "logit_first": 0.997867803837953
  },
  "llama-3.2-3b": {
   "n": 512,
@@ -141,6 +141,17 @@
   "share_close": 0.017578125,
   "text_first": 0.931640625,
   "logit_first": 0.93359375
+ },
+ "llama-4-scout": {
+  "n": 256,
+  "path": "cache",
+  "named": 0.6953125,
+  "agreement": 0.8876404494382022,
+  "agreement_margin1": 0.8922155688622755,
+  "n_margin1": 167,
+  "share_close": 0.02247191011235955,
+  "text_first": 0.47752808988764045,
+  "logit_first": 0.47752808988764045
  },
  "llama8b": {
   "n": 512,
@@ -174,6 +185,39 @@
   "share_close": 0.10359408033826638,
   "text_first": 0.9006342494714588,
   "logit_first": 0.9238900634249472
+ },
+ "mistral-large-2411": {
+  "n": 256,
+  "path": "cache",
+  "named": 0.890625,
+  "agreement": 1.0,
+  "agreement_margin1": 1.0,
+  "n_margin1": 215,
+  "share_close": 0.03508771929824561,
+  "text_first": 0.6973684210526315,
+  "logit_first": 0.6973684210526315
+ },
+ "mistral-medium-3.5-128b": {
+  "n": 256,
+  "path": "cache",
+  "named": 0.98828125,
+  "agreement": 0.9486166007905138,
+  "agreement_margin1": 0.9644444444444444,
+  "n_margin1": 225,
+  "share_close": 0.04743083003952569,
+  "text_first": 0.9288537549407114,
+  "logit_first": 0.9486166007905138
+ },
+ "nemotron-3-super-120b": {
+  "n": 256,
+  "path": "cache",
+  "named": 0.51171875,
+  "agreement": 1.0,
+  "agreement_margin1": 1.0,
+  "n_margin1": 129,
+  "share_close": 0.0,
+  "text_first": 1.0,
+  "logit_first": 1.0
  },
  "nemotron-70b": {
   "n": 512,

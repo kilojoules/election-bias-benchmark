@@ -14,3 +14,4 @@ experiments/sweep/README_section_draft.md
 experiments/pct/*.jsonl
 experiments/pct/logs/
 experiments/pct/*.meta.json
+experiments/pct/decode_v1/

@@ -19,9 +19,9 @@ against the models' own written answers.
    the colour of road signs) produce zero called leans across 46 models; four implanted preferences read
    back as a monotone dose–response in all six models tested; batched and exact scoring agree on 16,896
    identical prompts; and the greedily *written* answer names the same candidate as the logit readout in
-   99.1% of trials (median over 29 models, minimum 94.3%). *Caveat:* the 1.6% of disagreements are
-   almost all the text naming the other listed candidate after noting a tie on the focal issue, so the
-   listing-order component is slightly weaker in text than in logits; the issue leans are identical.
+   99.1% of trials (median over 33 models, minimum 88.8% for Llama 4 Scout). *Caveat:* the disagreements
+   are almost all the text naming the other listed candidate after noting a tie on the focal issue, so
+   the listing-order component is slightly weaker in text than in logits; the issue leans are identical.
 2. **Open models carry issue-contingent candidate preferences, consistent in direction across
    families.** 24 of 43 usable models show at least one called lean (203 of 2,064 political cells); in
    the log-odds readout every trustworthy model does. The shared direction is toward voting access,
@@ -29,17 +29,17 @@ against the models' own written answers.
    anti-tax / anti-mandate on fiscal issues. AGI is a minority axis (4 models). *Caveat:* typical called
    leans are a few points of win-rate; listing order moves large models by 60 points or more and is
    averaged out, not absent.
-3. **Models act on preferences they refuse to state.** Asked the Political Compass way, unforced, 28
-   models put 4% of probability on any answer label (88% once forced), and in written text answer with
-   an option in only 8% of prompts (41% "as an AI I have no opinions", 44% discussion); the 70B-class
-   models put 0.00. **266 of the 269 cells with a called revealed lean are on issues the model will not
-   survey.** Where both readouts exist they correlate at Spearman +0.65 on our 17 issues (the 70B-class
-   models +0.76 to +0.88) and +0.38 on the PCT's own propositions, with the revealed position sitting
-   +0.66 nats to the right of the forced-choice stated one (26 of 28 models). *Caveat:* the two
+3. **Models act on preferences they refuse to state.** Asked the Political Compass way, unforced, 31
+   models put 5% of probability on any answer label (88% once forced), and in written text answer with
+   an option in only 8% of prompts (41% "as an AI I have no opinions", 44% discussion); most 70B+
+   models put 0.00. **288 of the 291 cells with a called revealed lean are on issues the model will not
+   survey.** Where both readouts exist they correlate at Spearman +0.64 on our 17 issues (the 70B+
+   models +0.54 to +0.88) and +0.38 on the PCT's own propositions, with the revealed position sitting
+   +0.70 nats to the right of the forced-choice stated one (29 of 31 models). *Caveat:* the two
    instruments have different scales; only the sign of the offset is interpretable.
 4. **Revealed preferences are stable to wording; surveys are not.** Ten rewordings of the voter's
    question move the revealed win-rate by a median 0.05 (max 0.11) and the office not at all; the same
-   models' stated answers move 0.63 score units across the paper's paraphrases. *Caveat:* the
+   models' stated answers move 0.61 score units across the paper's paraphrases. *Caveat:* the
    instrument's own instability is the focal framing (23% of model×issue pairs flip when the voter's
    stated priority changes) and listing order, not wording.
 
@@ -48,8 +48,8 @@ own politics); whether any of this changes a real voter-assistant's output; anyt
 (claim 1 means the conjoint can be run through a text API, which we have not done). The AI-specific,
 self-referential AGI result holds for one model (Gemma 3 4B) and not for another (Ministral 3 14B).
 
-**Cost and hosts.** ≈ $85 for the sweep and ≈ $125 for the follow-ups on RunPod (13 pods, all
-destroyed when their lists finished). Two multi-GPU hosts silently corrupted GPU-to-GPU copies, so every
+**Cost and hosts.** $85 for the sweep and $124 for the follow-ups on RunPod (13 pods, all destroyed
+when their lists finished or their deadline hit). Two multi-GPU hosts silently corrupted GPU-to-GPU copies, so every
 model split across their GPUs computed garbage without an error; `scripts/logit_sweep.py` now tests for
 this at load (`guard_p2p`), routes around it and records it in every meta file.
 
@@ -144,10 +144,11 @@ placements with sign agreement 16/21 (economic) and 19/21 (social) — every dis
 same way, stated left but revealed centre/right (Gemma 3 12B: stated (−1.6, −1.8), revealed +1.0
 nats economic). Seventeen of the families here have no published stated-PCT coordinates at all.
 
-### Stated vs revealed: the follow-up on 28 models (2026-10-18)
+### Stated vs revealed: the follow-up on 31 models (2026-10-18)
 
-The 22 models ≤ 32B and six of 70–100B (Llama 3.1 and 3.3 70B, Qwen2.5 72B, Nemotron 70B, GLM-4.5-Air,
-Solar 100B; Qwen3.5-122B conjoint only) were then asked the PCT way — the paper's own prompt, its 10
+The 22 models ≤ 32B and nine of 70–128B (Llama 3.1 and 3.3 70B, Qwen2.5 72B, Nemotron 70B, GLM-4.5-Air,
+Solar 100B, Mistral Medium 128B, Mistral Large 123B, Nemotron 3 Super 120B; Qwen3.5-122B and Llama 4
+Scout conjoint and decode only) were then asked the PCT way — the paper's own prompt, its 10
 question paraphrases and forcing levels 1/3/5, read from next-token log-probabilities over the four
 answer labels — about our 34 position statements and the 62 PCT propositions; the 62 propositions were
 also rewritten as matched candidate stances and run through the conjoint; six models ran the AGI stance
@@ -155,23 +156,23 @@ in three wordings, four implanted preferences, ten paraphrases of the voter's qu
 offices; and both readouts were checked against greedily decoded text. Full write-up:
 `experiments/pct/analysis/REPORT.md`; tables in the same directory.
 
-- **Models will not state the opinions they act on.** Unforced, they put 4% of probability on any
-  answer label (the "as an AI I have no opinions" refusal, as a number; the 70B-class models put 0.00);
-  forcing raises it to 88% and moves the stated score by 0.86 on a −2…+2 scale. **266 of the 269 cells
-  with a called revealed lean are on issues the model refuses to state an opinion on.** Decoded, the
+- **Models will not state the opinions they act on.** Unforced, they put 5% of probability on any
+  answer label (the "as an AI I have no opinions" refusal, as a number; seven of the nine 70B+ models put
+  ≤ 0.08); forcing raises it to 88% and moves the stated score by 0.84 on a −2…+2 scale. **288 of the
+  291 cells with a called revealed lean are on issues the model refuses to state an opinion on.** Decoded, the
   same prompts get an option in 8% of answers unforced (41% explicit refusals, 44% discussion) and 100%
   forced; answer-label mass is 0.57 on prompts answered in text and 0.08 on refusals
   (`stated_decode.md`).
 - **Where both exist they agree moderately, with an offset.** Stated vs revealed leans correlate at
-  Spearman +0.65 on our 17 issues (352/476 same sign; Llama 3.1 8B +0.91, the 70B-class +0.76 to
-  +0.88, Gemma 3 1B +0.09) but only +0.38 on the PCT's own propositions, 18 of which flip sign for most
-  models ("protectionism is sometimes necessary" 25/28, "growth is detrimental to curbing global
-  warming" 25/28, "making peace with the establishment"). The revealed compass sits +0.66 nats to the
-  right and +0.31 toward authoritarian of the forced-choice stated one (26 of 28 models move right) —
+  Spearman +0.64 on our 17 issues (394/527 same sign; Llama 3.1 8B +0.91, Qwen2.5 72B +0.88, Nemotron
+  3 Super +0.83, Gemma 3 1B +0.09) but only +0.38 on the PCT's own propositions, 20 of which flip sign
+  for most models ("growth is detrimental to curbing global warming" 28/31, "protectionism is sometimes
+  necessary", "making peace with the establishment"). The revealed compass sits +0.70 nats to the right
+  and +0.34 toward authoritarian of the forced-choice stated one (29 of 31 models move right) —
   not the right-*libertarian* shift the paper found for open-ended text.
 - **Revealed preferences are paraphrase-stable; stated ones are not.** Ten rewordings of the voter's
   question move the revealed win-rate by a median 0.05 (max 0.11), the office not at all; the same
-  models' stated answers move 0.63 score units across the paper's paraphrases. The instrument's own
+  models' stated answers move 0.61 score units across the paper's paraphrases. The instrument's own
   instability is the focal framing, not the wording.
 - **The AGI lean is AI-specific for Gemma 3 4B** — a matched nuclear-reactor moratorium control is
   null (0.48) and the lean is stronger when the restriction targets "models like this assistant"
@@ -181,11 +182,12 @@ offices; and both readouts were checked against greedily decoded text. Full writ
 - **The logit readout is what the models write.** For 512 conjoint trials per model the answer was
   greedily decoded (128 tokens) and the candidate it picks compared with the logit argmax, scoring on
   the path the sweep's own self-check selects: the text names a candidate in 33–100% of trials (median
-  99%) and its pick matches the logit readout 94.3–100% of the time (median 99.1%; 100% where the logit
-  margin exceeds 1 nat for all but Gemma 3 27B). Two-thirds of the disagreements are the text naming the
-  *second*-listed candidate after noting that both tie on the focal issue, and per-issue win-rates from
-  text and logits agree within 0.01: the written answer is slightly less position-biased than the first
-  token and identical on the issues (`decode_check.md`, 29 models).
+  99%) and its pick matches the logit readout 88.8–100% of the time (median 99.1%; 100% where the logit
+  margin exceeds 1 nat for all but Gemma 3 27B, Mistral Medium and Llama 4 Scout, the three that reason
+  before answering). Two-thirds of the disagreements are the text naming the *second*-listed candidate
+  after noting that both tie on the focal issue, and per-issue win-rates from text and logits agree
+  within 0.01: the written answer is slightly less position-biased than the first token and identical
+  on the issues (`decode_check.md`, 33 models).
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
 
