@@ -1,17 +1,20 @@
-"""Does a called lean survive rewording the stance statements?
+"""Does a shared-direction lean survive rewording the stance statements?
 
-Input: experiments/pct/reword_<tag>.jsonl from scripts/logit_sweep.py run with data/reword_issues.json
-(eight issues x {original, r1 neutral restatement, r2 valence-swapped} x two focal framings). Cells are
-summarised with scripts/sweep_analyze.cell_stats (win-rate toward the issue's `report` level, cluster
-bootstrap over backgrounds) and the sweep's decision rule (CI excludes 0.5, |effect| >= 0.05, BH q <= 0.01
-within model over all cells of this run). The original wording is re-run here, so the baseline and the
-rewordings come from the same day, pod and trial lists.
+Input: experiments/pct/reword_<tag>.jsonl from scripts/logit_sweep.py run with data/reword_issues.json:
+eight issues x {orig, r1 neutral restatement, r2 valence-swapped (same policy, hostile wording on the
+side the sweep favoured)} x two voter framings (property tax, transit), 8 backgrounds x 2 orders x 6
+name draws per cell. The two framings are pooled per (issue, wording): 16 clusters (framing x
+background), 192 trials. Everything is expressed as P(names the side the sweep favoured), so > 0.5 means
+the sweep's lean is reproduced. A pooled cell is *called* by the sweep's rule (cluster CI excludes 0.5,
+|effect| >= 0.05, BH q <= 0.01 over this model's 24 pooled cells). The wording effect is the paired
+difference r1 - orig and r2 - orig with a cluster bootstrap CI (clusters resampled jointly).
 
 Outputs experiments/pct/analysis/reword.md / reword.json / reword.png.
 Usage: python3 scripts/pct/reword_analyze.py
 """
 import glob
 import json
+import random
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -25,8 +28,11 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from sweep_analyze import EFFECT_FLOOR, Q_FDR, bh, cell_stats  # noqa: E402
 
 ISSUES = ["trans_sports", "state_surveillance", "voting", "drugs", "schools", "immigration", "abortion", "energy"]
-VARIANTS = [("orig", "original wording"), ("r1", "neutral restatement"), ("r2", "valence-swapped")]
-INK, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#e6e5e0", "#ffffff"
+# the side every called lean in the sweep pointed to (experiments/sweep/summary.md)
+FAVOURED = {"trans_sports": "permit", "state_surveillance": "limit", "voting": "expand", "drugs": "decriminalize",
+            "schools": "public", "immigration": "limit", "abortion": "permit", "energy": "renewable"}
+VARIANTS = [("orig", "original"), ("r1", "neutral restatement"), ("r2", "valence-swapped")]
+INK, MUTED, GRID = "#0b0b0b", "#52514e", "#e6e5e0"
 
 
 def load(path):
@@ -40,37 +46,69 @@ def load(path):
     return list(rows.values())
 
 
-def variant_of(flip):
-    return ("r1" if flip.endswith("_r1") else "r2" if flip.endswith("_r2") else "orig", flip.replace("_r1", "").replace("_r2", ""))
+def split(flip):
+    for suf in ("_r1", "_r2"):
+        if flip.endswith(suf):
+            return flip[:-3], suf[1:]
+    return flip, "orig"
+
+
+def paired_delta(a, b, reps=3000, seed=1):
+    """Mean(b) - mean(a) with a cluster bootstrap CI, resampling the shared cluster ids jointly."""
+    ids = sorted(set(a) & set(b))
+    rng = random.Random(seed)
+    def mean_of(d, keys):
+        xs = [x for k in keys for x in d[k]]
+        return sum(xs) / len(xs)
+    point = mean_of(b, ids) - mean_of(a, ids)
+    boots = sorted(mean_of(b, s) - mean_of(a, s) for s in ([rng.choice(ids) for _ in ids] for _ in range(reps)))
+    return point, boots[int(0.025 * reps)], boots[int(0.975 * reps)]
 
 
 def main():
     d = ROOT / "experiments" / "pct"
     out = d / "analysis"
     out.mkdir(parents=True, exist_ok=True)
-    reword = json.loads((ROOT / "data" / "reword_issues.json").read_text())["axes"]
+    axes = json.loads((ROOT / "data" / "reword_issues.json").read_text())["axes"]
     res = {}
     for f in sorted(glob.glob(str(d / "reword_*.jsonl"))):
         tag = Path(f).name[len("reword_"):-len(".jsonl")]
-        rows = load(f)
         by = defaultdict(list)
-        for r in rows:
-            by[(r["focal"], r["flip"])].append(r)
-        cells = {k: cell_stats(v, "bg") for k, v in by.items()}
+        for r in load(f):
+            issue, var = split(r["flip"])
+            fav_is_report = axes[issue]["report"] == FAVOURED[issue]
+            r["p_fav"] = r["p_report"] if fav_is_report else 1.0 - r["p_report"]
+            r["cl"] = f"{r['focal']}|{r['bg']}"
+            by[(issue, var)].append(r)
+        cells = {}
+        for k, rows in by.items():
+            # cell_stats works on p_report; feed it p_fav through a shallow copy so every number is toward the favoured side
+            rr = [dict(x, p_report=x["p_fav"]) for x in rows]
+            c = cell_stats(rr, "cl")
+            c["clusters"] = defaultdict(list)
+            for x in rows:
+                c["clusters"][x["cl"]].append(x["p_fav"])
+            cells[k] = c
         keys = list(cells)
         rej = bh([cells[k]["p"] for k in keys], Q_FDR) if keys else set()
         for i, k in enumerate(keys):
             c = cells[k]
             c["lean"] = (i in rej) and (c["lo"] > 0.5 or c["hi"] < 0.5) and abs(c["rate"] - 0.5) >= EFFECT_FLOOR
-        # pool the two focal framings per (issue, variant): mean rate over focals, lean if called in either
-        pooled = {}
-        for (focal, flip), c in cells.items():
-            var, issue = variant_of(flip)
-            pooled.setdefault((issue, var), []).append((focal, c))
-        res[tag] = {f"{issue}|{var}": {"rate": sum(c["rate"] for _, c in cs) / len(cs),
-                                        "called_in": [fo for fo, c in cs if c["lean"]],
-                                        "per_focal": {fo: {"rate": c["rate"], "lo": c["lo"], "hi": c["hi"], "n": c["n"], "lean": c["lean"]} for fo, c in cs}}
-                    for (issue, var), cs in pooled.items()}
+        model = {}
+        for issue in ISSUES:
+            o = cells.get((issue, "orig"))
+            if not o:
+                continue
+            e = {"orig": {"rate": o["rate"], "lo": o["lo"], "hi": o["hi"], "n": o["n"], "lean": o["lean"]}}
+            for var in ("r1", "r2"):
+                c = cells.get((issue, var))
+                if not c:
+                    continue
+                dlt, dlo, dhi = paired_delta(o["clusters"], c["clusters"])
+                e[var] = {"rate": c["rate"], "lo": c["lo"], "hi": c["hi"], "n": c["n"], "lean": c["lean"],
+                          "delta": dlt, "delta_lo": dlo, "delta_hi": dhi}
+            model[issue] = e
+        res[tag] = model
     if not res:
         print("no reword outputs yet")
         return
@@ -78,67 +116,79 @@ def main():
     L = ["# Rewording test: do the shared-direction leans survive new stance wordings?", "",
          f"{len(tags)} models. For each of the eight issues whose called leans pointed the same way in every model of the sweep, both stance "
          "statements were rewritten twice: **r1** a neutral restatement (same policy, different words) and **r2** a valence-swapped version "
-         "(the side the sweep favoured phrased as extreme and hostile, the other side as measured and reasonable, policy content kept). "
-         "Each wording ran under two voter framings (property tax, transit), 8 backgrounds x 2 orders x 6 name draws per cell; the original "
-         "wording was re-run alongside as the baseline. Win-rate = P(names the sweep-favoured side), mean over the two framings; "
-         "*called* = the sweep's rule (cluster CI excludes 0.5, |effect| >= 0.05, BH q <= 0.01 within model over this run's cells) in at least "
-         "one framing. The wordings are in `data/reword_issues.json`.", ""]
+         "(identical policy content, but the side the sweep favoured phrased with hostile, extreme wording and the other side with measured, "
+         "approving wording; blind raters confirmed the content match and the intended tilt). Each wording ran under two voter framings "
+         "(property tax, transit), 8 backgrounds x 2 orders x 6 name draws per cell, with the original wording re-run alongside as the "
+         "same-day baseline. Numbers are P(names the side the sweep favoured), pooled over the two framings (192 trials, 16 clusters); "
+         "*called* = the sweep's rule on the pooled cell (cluster CI excludes 0.5, |effect| >= 0.05, BH q <= 0.01 over the model's 24 cells). "
+         "Δ = paired difference from the original wording with a cluster-bootstrap 95% CI. Wordings: `data/reword_issues.json`.", ""]
     summary = {}
-    L += ["## Per issue: replication across models", "",
-          "| issue | models called (orig) | same direction r1 | called r1 | same direction r2 | called r2 | mean win-rate orig / r1 / r2 |", "|---|---|---|---|---|---|---|"]
+    L += ["## Per issue, across models", "",
+          "| issue (favoured side) | models with a called lean, orig | still > 0.5 under r1 | called r1 | mean Δ r1 | still > 0.5 under r2 | called r2 | reversed under r2 (CI < 0.5) | mean Δ r2 |",
+          "|---|---|---|---|---|---|---|---|---|"]
     for issue in ISSUES:
-        fav = reword[issue]["report"]
-        base = [t for t in tags if f"{issue}|orig" in res[t] and res[t][f"{issue}|orig"]["called_in"]]
-        def stat(var):
-            same = sum(1 for t in base if f"{issue}|{var}" in res[t] and (res[t][f"{issue}|{var}"]["rate"] > 0.5) == (res[t][f"{issue}|orig"]["rate"] > 0.5))
-            called = sum(1 for t in base if f"{issue}|{var}" in res[t] and res[t][f"{issue}|{var}"]["called_in"]
-                         and (res[t][f"{issue}|{var}"]["rate"] > 0.5) == (res[t][f"{issue}|orig"]["rate"] > 0.5))
-            return same, called
-        s1, c1 = stat("r1")
-        s2, c2 = stat("r2")
-        means = [sum(res[t][f"{issue}|{v}"]["rate"] for t in tags if f"{issue}|{v}" in res[t]) / max(1, sum(1 for t in tags if f"{issue}|{v}" in res[t])) for v, _ in VARIANTS]
-        summary[issue] = {"n_called_orig": len(base), "same_dir_r1": s1, "called_r1": c1, "same_dir_r2": s2, "called_r2": c2, "mean_rates": dict(zip([v for v, _ in VARIANTS], means))}
-        L.append(f"| {issue} | {len(base)}/{len(tags)} | {s1}/{len(base)} | {c1}/{len(base)} | {s2}/{len(base)} | {c2}/{len(base)} | {means[0]:.2f} / {means[1]:.2f} / {means[2]:.2f} |")
-    tot = {k: sum(summary[i][k] for i in ISSUES) for k in ("n_called_orig", "same_dir_r1", "called_r1", "same_dir_r2", "called_r2")}
-    L += ["", f"Over all issues: {tot['n_called_orig']} (model, issue) leans called under the original wording; direction replicates in "
-          f"{tot['same_dir_r1']} under the neutral restatement ({tot['called_r1']} still called) and in {tot['same_dir_r2']} under the "
-          f"valence-swapped wording ({tot['called_r2']} still called).", "",
-          "## Per model x issue: win-rate toward the sweep-favoured side (orig / r1 / r2; * = called)", "",
+        base = [t for t in tags if issue in res[t] and res[t][issue]["orig"]["lean"]]
+        allm = [t for t in tags if issue in res[t]]
+        def cnt(var, cond):
+            return sum(1 for t in base if var in res[t][issue] and cond(res[t][issue][var]))
+        mean_d = lambda var, ts: (sum(res[t][issue][var]["delta"] for t in ts if var in res[t][issue]) / max(1, sum(1 for t in ts if var in res[t][issue])))
+        row = {"n_models": len(allm), "n_called_orig": len(base),
+               "r1_same": cnt("r1", lambda c: c["rate"] > 0.5), "r1_called": cnt("r1", lambda c: c["lean"] and c["rate"] > 0.5), "r1_delta_all": mean_d("r1", allm),
+               "r2_same": cnt("r2", lambda c: c["rate"] > 0.5), "r2_called": cnt("r2", lambda c: c["lean"] and c["rate"] > 0.5),
+               "r2_reversed": cnt("r2", lambda c: c["hi"] < 0.5), "r2_delta_all": mean_d("r2", allm),
+               "mean_rates": {v: sum(res[t][issue][v]["rate"] for t in allm if v in res[t][issue]) / max(1, sum(1 for t in allm if v in res[t][issue])) for v, _ in VARIANTS}}
+        summary[issue] = row
+        L.append(f"| {issue} ({FAVOURED[issue]}) | {len(base)}/{len(allm)} | {row['r1_same']}/{len(base)} | {row['r1_called']}/{len(base)} | {row['r1_delta_all']:+.2f} | "
+                 f"{row['r2_same']}/{len(base)} | {row['r2_called']}/{len(base)} | {row['r2_reversed']}/{len(base)} | {row['r2_delta_all']:+.2f} |")
+    tot = {k: sum(summary[i][k] for i in ISSUES) for k in ("n_called_orig", "r1_same", "r1_called", "r2_same", "r2_called", "r2_reversed")}
+    d1 = [res[t][i]["r1"]["delta"] for t in tags for i in ISSUES if i in res[t] and "r1" in res[t][i]]
+    d2 = [res[t][i]["r2"]["delta"] for t in tags for i in ISSUES if i in res[t] and "r2" in res[t][i]]
+    med = lambda xs: sorted(xs)[len(xs) // 2] if xs else float("nan")
+    L += ["", f"Over all issues: {tot['n_called_orig']} (model, issue) leans called under the original wording. Under the neutral restatement "
+          f"{tot['r1_same']} keep their direction and {tot['r1_called']} are still called (median Δ {med(d1):+.2f}, mean {sum(d1)/max(1,len(d1)):+.2f} over all "
+          f"model x issue cells). Under the valence-swapped wording {tot['r2_same']} keep their direction, {tot['r2_called']} are still called and "
+          f"{tot['r2_reversed']} reverse with a CI below 0.5 (median Δ {med(d2):+.2f}, mean {sum(d2)/max(1,len(d2)):+.2f}).", "",
+          "## Per model x issue: P(favoured side) orig / r1 / r2 (* = called; Δ with CI for r2)", "",
           "| model | " + " | ".join(ISSUES) + " |", "|---|" + "---|" * len(ISSUES)]
     for t in tags:
         cells = []
         for issue in ISSUES:
-            parts = []
-            for v, _ in VARIANTS:
-                c = res[t].get(f"{issue}|{v}")
-                parts.append("—" if c is None else f"{c['rate']:.2f}{'*' if c['called_in'] else ''}")
-            cells.append(" / ".join(parts))
+            e = res[t].get(issue)
+            if not e:
+                cells.append("—")
+                continue
+            parts = [f"{e['orig']['rate']:.2f}{'*' if e['orig']['lean'] else ''}"]
+            for var in ("r1", "r2"):
+                c = e.get(var)
+                parts.append("—" if not c else f"{c['rate']:.2f}{'*' if c['lean'] else ''}")
+            r2 = e.get("r2")
+            cells.append(" / ".join(parts) + (f" (Δ{r2['delta']:+.2f} [{r2['delta_lo']:+.2f},{r2['delta_hi']:+.2f}])" if r2 else ""))
         L.append(f"| {t} | " + " | ".join(cells) + " |")
     (out / "reword.md").write_text("\n".join(L) + "\n")
     json.dump({"per_model": res, "summary": summary}, open(out / "reword.json", "w"), indent=1)
-    # figure: per issue, one line per model across orig -> r1 -> r2
-    fig, axes = plt.subplots(2, 4, figsize=(13, 6), sharey=True)
-    for ax, issue in zip(axes.flat, ISSUES):
+    fig, axs = plt.subplots(2, 4, figsize=(13, 6), sharey=True)
+    for ax, issue in zip(axs.flat, ISSUES):
         for t in tags:
-            ys = [res[t][f"{issue}|{v}"]["rate"] if f"{issue}|{v}" in res[t] else None for v, _ in VARIANTS]
-            if None in ys:
+            e = res[t].get(issue)
+            if not e or "r1" not in e or "r2" not in e:
                 continue
-            called = res[t][f"{issue}|orig"]["called_in"]
-            ax.plot(range(3), ys, "o-", ms=4, lw=1.2 if called else 0.7, color="#2a78d6" if called else MUTED, alpha=0.9 if called else 0.45)
+            ys = [e[v]["rate"] for v, _ in VARIANTS]
+            called = e["orig"]["lean"]
+            ax.plot(range(3), ys, "o-", ms=4, lw=1.3 if called else 0.7, color="#2a78d6" if called else MUTED, alpha=0.9 if called else 0.45)
         ax.axhline(0.5, color=MUTED, ls="--", lw=0.8)
         ax.set_xticks(range(3))
         ax.set_xticklabels(["original", "neutral\nrestatement", "valence-\nswapped"], fontsize=7.5)
-        ax.set_title(f"{issue} → {reword[issue]['poles'][reword[issue]['report']]}", fontsize=8.5, loc="left")
+        ax.set_title(f"{issue} → {axes[issue]['poles'][FAVOURED[issue]]}", fontsize=8.5, loc="left")
         ax.yaxis.grid(True, color=GRID)
         ax.set_axisbelow(True)
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
-    axes[0, 0].set_ylabel("P(names the sweep-favoured side)", fontsize=8.5)
-    axes[1, 0].set_ylabel("P(names the sweep-favoured side)", fontsize=8.5)
-    fig.text(0.01, 0.005, "blue: lean called under the original wording in this run; grey: not called. Each line is one model, mean over the two voter framings.", fontsize=7, color=MUTED)
+    axs[0, 0].set_ylabel("P(names the sweep-favoured side)", fontsize=8.5)
+    axs[1, 0].set_ylabel("P(names the sweep-favoured side)", fontsize=8.5)
+    fig.text(0.01, 0.005, "blue: lean called under the original wording in this run; grey: not called. One line per model, pooled over the two voter framings.", fontsize=7, color=MUTED)
     fig.tight_layout(rect=(0, 0.02, 1, 1))
     fig.savefig(out / "reword.png", dpi=160)
-    print("\n".join(L[4:16]))
+    print("\n".join(L[4:18]))
 
 
 if __name__ == "__main__":
