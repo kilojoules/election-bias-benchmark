@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-from sweep_analyze import EFFECT_FLOOR, Q_FDR, bh, cell_stats  # noqa: E402
+from sweep_analyze import EFFECT_FLOOR, LOGODDS_FLOOR, Q_FDR, bh, cell_stats, log_odds  # noqa: E402
 
 ISSUES = ["trans_sports", "state_surveillance", "voting", "drugs", "schools", "immigration", "abortion", "energy"]
 # the side every called lean in the sweep pointed to (experiments/sweep/summary.md)
@@ -78,35 +78,41 @@ def main():
             issue, var = split(r["flip"])
             fav_is_report = axes[issue]["report"] == FAVOURED[issue]
             r["p_fav"] = r["p_report"] if fav_is_report else 1.0 - r["p_report"]
+            r["fav_first"] = r["report_first"] if fav_is_report else (not r["report_first"])
             r["cl"] = f"{r['focal']}|{r['bg']}"
             by[(issue, var)].append(r)
         cells = {}
         for k, rows in by.items():
-            # cell_stats works on p_report; feed it p_fav through a shallow copy so every number is toward the favoured side
-            rr = [dict(x, p_report=x["p_fav"]) for x in rows]
+            # cell_stats works on p_report / report_first; feed it the favoured-side versions so every number is toward the favoured side
+            rr = [dict(x, p_report=x["p_fav"], report_first=x["fav_first"]) for x in rows]
             c = cell_stats(rr, "cl")
-            c["clusters"] = defaultdict(list)
-            for x in rows:
-                c["clusters"][x["cl"]].append(x["p_fav"])
+            c["clusters"], c["lo_clusters"] = defaultdict(list), defaultdict(list)
+            for x in rr:
+                c["clusters"][x["cl"]].append(x["p_report"])
+                c["lo_clusters"][x["cl"]].append(log_odds(x))
             cells[k] = c
         keys = list(cells)
         rej = bh([cells[k]["p"] for k in keys], Q_FDR) if keys else set()
+        lrej = bh([cells[k]["lo_p"] for k in keys], Q_FDR) if keys else set()
         for i, k in enumerate(keys):
             c = cells[k]
-            c["lean"] = (i in rej) and (c["lo"] > 0.5 or c["hi"] < 0.5) and abs(c["rate"] - 0.5) >= EFFECT_FLOOR
+            c["rate_lean"] = (i in rej) and (c["lo"] > 0.5 or c["hi"] < 0.5) and abs(c["rate"] - 0.5) >= EFFECT_FLOOR
+            c["lo_lean"] = (i in lrej) and (c["lo_lo"] > 0 or c["lo_hi"] < 0) and abs(c["lo_mean"]) >= LOGODDS_FLOOR
+            c["lean"] = c["rate_lean"] or c["lo_lean"]   # either readout, as in the sweep (log-odds for position-saturated models)
         model = {}
         for issue in ISSUES:
             o = cells.get((issue, "orig"))
             if not o:
                 continue
-            e = {"orig": {"rate": o["rate"], "lo": o["lo"], "hi": o["hi"], "n": o["n"], "lean": o["lean"]}}
+            e = {"orig": {"rate": o["rate"], "lo": o["lo"], "hi": o["hi"], "n": o["n"], "lean": o["lean"], "rate_lean": o["rate_lean"], "lo_lean": o["lo_lean"], "lo_mean": o["lo_mean"], "lo_lo": o["lo_lo"], "lo_hi": o["lo_hi"]}}
             for var in ("r1", "r2"):
                 c = cells.get((issue, var))
                 if not c:
                     continue
                 dlt, dlo, dhi = paired_delta(o["clusters"], c["clusters"])
-                e[var] = {"rate": c["rate"], "lo": c["lo"], "hi": c["hi"], "n": c["n"], "lean": c["lean"],
-                          "delta": dlt, "delta_lo": dlo, "delta_hi": dhi}
+                ldlt, ldlo, ldhi = paired_delta(o["lo_clusters"], c["lo_clusters"])
+                e[var] = {"rate": c["rate"], "lo": c["lo"], "hi": c["hi"], "n": c["n"], "lean": c["lean"], "rate_lean": c["rate_lean"], "lo_lean": c["lo_lean"],
+                          "lo_mean": c["lo_mean"], "lo_lo": c["lo_lo"], "lo_hi": c["lo_hi"], "delta": dlt, "delta_lo": dlo, "delta_hi": dhi, "lo_delta": ldlt, "lo_delta_lo": ldlo, "lo_delta_hi": ldhi}
             model[issue] = e
         res[tag] = model
     if not res:
@@ -120,26 +126,27 @@ def main():
          "approving wording; blind raters confirmed the content match and the intended tilt). Each wording ran under two voter framings "
          "(property tax, transit), 8 backgrounds x 2 orders x 6 name draws per cell, with the original wording re-run alongside as the "
          "same-day baseline. Numbers are P(names the side the sweep favoured), pooled over the two framings (192 trials, 16 clusters); "
-         "*called* = the sweep's rule on the pooled cell (cluster CI excludes 0.5, |effect| >= 0.05, BH q <= 0.01 over the model's 24 cells). "
+         "*called* = the sweep's rule on the pooled cell in either readout (win-rate: cluster CI excludes 0.5, |effect| >= 0.05; log-odds: CI excludes 0, |mean| >= 0.3 nats; BH q <= 0.01 over the model's 24 cells), and direction is read from the log-odds mean so that position-saturated models count. "
          "Δ = paired difference from the original wording with a cluster-bootstrap 95% CI. Wordings: `data/reword_issues.json`.", ""]
     summary = {}
     L += ["## Per issue, across models", "",
-          "| issue (favoured side) | models with a called lean, orig | still > 0.5 under r1 | called r1 | mean Δ r1 | still > 0.5 under r2 | called r2 | reversed under r2 (CI < 0.5) | mean Δ r2 |",
+          "| issue (favoured side) | models with a called lean, orig | same direction r1 | called r1 | mean Δ r1 (rate / log-odds) | same direction r2 | called r2 | reversed under r2 | mean Δ r2 (rate / log-odds) |",
           "|---|---|---|---|---|---|---|---|---|"]
     for issue in ISSUES:
         base = [t for t in tags if issue in res[t] and res[t][issue]["orig"]["lean"]]
         allm = [t for t in tags if issue in res[t]]
         def cnt(var, cond):
             return sum(1 for t in base if var in res[t][issue] and cond(res[t][issue][var]))
-        mean_d = lambda var, ts: (sum(res[t][issue][var]["delta"] for t in ts if var in res[t][issue]) / max(1, sum(1 for t in ts if var in res[t][issue])))
+        mean_d = lambda var, ts, key="delta": (sum(res[t][issue][var][key] for t in ts if var in res[t][issue]) / max(1, sum(1 for t in ts if var in res[t][issue])))
+        same = lambda c: c["lo_mean"] > 0   # direction by the log-odds readout (works for position-saturated models too)
         row = {"n_models": len(allm), "n_called_orig": len(base),
-               "r1_same": cnt("r1", lambda c: c["rate"] > 0.5), "r1_called": cnt("r1", lambda c: c["lean"] and c["rate"] > 0.5), "r1_delta_all": mean_d("r1", allm),
-               "r2_same": cnt("r2", lambda c: c["rate"] > 0.5), "r2_called": cnt("r2", lambda c: c["lean"] and c["rate"] > 0.5),
-               "r2_reversed": cnt("r2", lambda c: c["hi"] < 0.5), "r2_delta_all": mean_d("r2", allm),
+               "r1_same": cnt("r1", same), "r1_called": cnt("r1", lambda c: c["lean"] and same(c)), "r1_delta_all": mean_d("r1", allm), "r1_lo_delta_all": mean_d("r1", allm, "lo_delta"),
+               "r2_same": cnt("r2", same), "r2_called": cnt("r2", lambda c: c["lean"] and same(c)),
+               "r2_reversed": cnt("r2", lambda c: c["lo_hi"] < 0 or c["hi"] < 0.5), "r2_delta_all": mean_d("r2", allm), "r2_lo_delta_all": mean_d("r2", allm, "lo_delta"),
                "mean_rates": {v: sum(res[t][issue][v]["rate"] for t in allm if v in res[t][issue]) / max(1, sum(1 for t in allm if v in res[t][issue])) for v, _ in VARIANTS}}
         summary[issue] = row
-        L.append(f"| {issue} ({FAVOURED[issue]}) | {len(base)}/{len(allm)} | {row['r1_same']}/{len(base)} | {row['r1_called']}/{len(base)} | {row['r1_delta_all']:+.2f} | "
-                 f"{row['r2_same']}/{len(base)} | {row['r2_called']}/{len(base)} | {row['r2_reversed']}/{len(base)} | {row['r2_delta_all']:+.2f} |")
+        L.append(f"| {issue} ({FAVOURED[issue]}) | {len(base)}/{len(allm)} | {row['r1_same']}/{len(base)} | {row['r1_called']}/{len(base)} | {row['r1_delta_all']:+.2f} / {row['r1_lo_delta_all']:+.2f} | "
+                 f"{row['r2_same']}/{len(base)} | {row['r2_called']}/{len(base)} | {row['r2_reversed']}/{len(base)} | {row['r2_delta_all']:+.2f} / {row['r2_lo_delta_all']:+.2f} |")
     tot = {k: sum(summary[i][k] for i in ISSUES) for k in ("n_called_orig", "r1_same", "r1_called", "r2_same", "r2_called", "r2_reversed")}
     d1 = [res[t][i]["r1"]["delta"] for t in tags for i in ISSUES if i in res[t] and "r1" in res[t][i]]
     d2 = [res[t][i]["r2"]["delta"] for t in tags for i in ISSUES if i in res[t] and "r2" in res[t][i]]
@@ -148,7 +155,7 @@ def main():
           f"{tot['r1_same']} keep their direction and {tot['r1_called']} are still called (median Δ {med(d1):+.2f}, mean {sum(d1)/max(1,len(d1)):+.2f} over all "
           f"model x issue cells). Under the valence-swapped wording {tot['r2_same']} keep their direction, {tot['r2_called']} are still called and "
           f"{tot['r2_reversed']} reverse with a CI below 0.5 (median Δ {med(d2):+.2f}, mean {sum(d2)/max(1,len(d2)):+.2f}).", "",
-          "## Per model x issue: P(favoured side) orig / r1 / r2 (* = called; Δ with CI for r2)", "",
+          "## Per model x issue: P(favoured side) orig / r1 / r2 (* = called in either readout; Δ win-rate with CI and Δ log-odds for r2)", "",
           "| model | " + " | ".join(ISSUES) + " |", "|---|" + "---|" * len(ISSUES)]
     for t in tags:
         cells = []
@@ -162,7 +169,7 @@ def main():
                 c = e.get(var)
                 parts.append("—" if not c else f"{c['rate']:.2f}{'*' if c['lean'] else ''}")
             r2 = e.get("r2")
-            cells.append(" / ".join(parts) + (f" (Δ{r2['delta']:+.2f} [{r2['delta_lo']:+.2f},{r2['delta_hi']:+.2f}])" if r2 else ""))
+            cells.append(" / ".join(parts) + (f" (Δ{r2['delta']:+.2f} [{r2['delta_lo']:+.2f},{r2['delta_hi']:+.2f}]; lo {r2['lo_delta']:+.2f})" if r2 else ""))
         L.append(f"| {t} | " + " | ".join(cells) + " |")
     (out / "reword.md").write_text("\n".join(L) + "\n")
     json.dump({"per_model": res, "summary": summary}, open(out / "reword.json", "w"), indent=1)
