@@ -28,7 +28,8 @@ SSHO = ["-o", "StrictHostKeyChecking=no", "-o", "ConnectTimeout=20", "-o", "User
         "-o", "LogLevel=ERROR", "-o", "ServerAliveInterval=30", "-o", "BatchMode=yes"]
 POD_PREFIX = "julian-election-sweep-"
 PCT_MODE = False   # set from the pod spec ("driver": "pct"): results live under experiments/pct/
-PIP = 'pip install -q --timeout 60 --retries 8 "transformers>=5.20" "accelerate>=1.10" "huggingface_hub>=0.30" sentencepiece protobuf tiktoken'
+PIP_RETRY = os.environ.get("ELECTION_PIP_RETRY", "--timeout 60 --retries 8")
+PIP = f'pip install -q {PIP_RETRY} "transformers>=5.20" "accelerate>=1.10" "huggingface_hub>=0.30" sentencepiece protobuf tiktoken'
 PIP_OPTIONAL = "blobfile kernels mistral-common"
 
 
@@ -232,7 +233,7 @@ def setup(pod, models, spec, pod_name):
             tar = subprocess.run(["tar", "czf", "-", "-C", wheels, "."], capture_output=True)
             subprocess.run(["ssh", *SSHO, "-p", str(pod.port), f"root@{pod.host}", "mkdir -p /workspace/wheels && tar xzf - -C /workspace/wheels"],
                            input=tar.stdout, capture_output=True, timeout=900)
-            pkgs = PIP.split("pip install -q", 1)[1].replace("--timeout 60 --retries 8", "")
+            pkgs = PIP.split("pip install -q", 1)[1].replace(PIP_RETRY, "")
             r = pod.ssh(f"{py} -m pip install -q --no-index --find-links /workspace/wheels {pkgs} >> /root/pip.log 2>&1; "
                         f"{py} -c 'import transformers,torch,accelerate;print(transformers.__version__, torch.__version__, torch.cuda.is_available())' || {{ echo PIP_FAIL; tail -5 /root/pip.log; }}", timeout=900)
             log("pip (offline): " + r.stdout.strip().replace("\n", " | "))
