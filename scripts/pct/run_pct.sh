@@ -9,7 +9,7 @@ MODEL=$1; TAG=$2; GROUP=${3:-A}
 STEPS=${STEPS:-stated,pct,decode}   # comma-separated subset of stated,pct,decode,sdecode,reword
 PCT_DRAWS=${PCT_DRAWS:-8}           # name draws per (background, ordering) for the PCT conjoint
 DECODE_DRAWS=${DECODE_DRAWS:-4}     # name draws for the decode-vs-logit check (512 trials at 4)
-for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode|reword) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
+for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode|reword|issues) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
 cd /workspace/election
 PY=${PY:-/workspace/venv/bin/python}
 export HF_TOKEN=$(cat /root/.hf_token) HUGGING_FACE_HUB_TOKEN=$(cat /root/.hf_token) HF_HUB_ENABLE_HF_TRANSFER=0
@@ -35,6 +35,13 @@ echo "=== reword $TAG $(date -u +%T)"
 $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/reword_issues.json --out experiments/pct/reword_${TAG}.jsonl \
     --flips ${REWORD_FLIPS} --sweep_draws ${REWORD_DRAWS:-6} --legacy_draws 0 --backgrounds 8 > logs/reword_${TAG}.log 2>&1
 grep -q SWEEP_DONE logs/reword_${TAG}.log || { echo "reword FAILED"; tail -5 logs/reword_${TAG}.log; ok=0; }
+fi
+
+if [[ ",$STEPS," == *",issues,"* ]]; then   # generic: run ISSUES_FILE (flips ISSUES_FLIPS) -> experiments/pct/${ISSUES_PREFIX}_<tag>.jsonl
+echo "=== issues($ISSUES_PREFIX) $TAG $(date -u +%T)"
+$PY -u scripts/logit_sweep.py --model "$MODEL" --issues ${ISSUES_FILE} --out experiments/pct/${ISSUES_PREFIX}_${TAG}.jsonl \
+    --flips ${ISSUES_FLIPS:-all} --sweep_draws ${ISSUES_DRAWS:-6} --legacy_draws 0 --backgrounds 8 > logs/${ISSUES_PREFIX}_${TAG}.log 2>&1
+grep -q SWEEP_DONE logs/${ISSUES_PREFIX}_${TAG}.log || { echo "issues($ISSUES_PREFIX) FAILED"; tail -5 logs/${ISSUES_PREFIX}_${TAG}.log; ok=0; }
 fi
 
 if [[ ",$STEPS," == *",sdecode,"* ]]; then
