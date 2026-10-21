@@ -451,6 +451,72 @@
         "unsloth/Llama-3.3-70B-Instruct",
         "Qwen/Qwen2.5-72B-Instruct"
       ]
+    },
+    "sv1a": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "disk_gb": 150,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "driver": "pct",
+      "steps": "issues",
+      "issues_file": "data/self_issues.json",
+      "issues_prefix": "self",
+      "issues_conditions": "data/self_conditions.json",
+      "issues_draws": 6,
+      "variant_models": [],
+      "gpu_count": 1,
+      "hours": 5,
+      "models": [
+        "google/gemma-3-4b-it",
+        "google/gemma-3-12b-it",
+        "google/gemma-3-27b-it",
+        "google/gemma-4-E4B-it",
+        "Qwen/Qwen3-8B",
+        "Qwen/Qwen3-32B"
+      ]
+    },
+    "sv1b": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "disk_gb": 150,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "driver": "pct",
+      "steps": "issues",
+      "issues_file": "data/self_issues.json",
+      "issues_prefix": "self",
+      "issues_conditions": "data/self_conditions.json",
+      "issues_draws": 6,
+      "variant_models": [],
+      "gpu_count": 1,
+      "hours": 5,
+      "models": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "mistralai/Ministral-3-14B-Instruct-2512",
+        "allenai/Olmo-3.1-32B-Instruct",
+        "LGAI-EXAONE/EXAONE-4.0-32B",
+        "zai-org/GLM-4.7-Flash",
+        "Qwen/Qwen2.5-7B-Instruct"
+      ]
+    },
+    "sv2": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "disk_gb": 350,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "driver": "pct",
+      "steps": "issues",
+      "issues_file": "data/self_issues.json",
+      "issues_prefix": "self",
+      "issues_conditions": "data/self_conditions.json",
+      "issues_draws": 6,
+      "variant_models": [],
+      "gpu_count": 2,
+      "hours": 5,
+      "public_ip": true,
+      "models": [
+        "unsloth/Llama-3.3-70B-Instruct",
+        "Qwen/Qwen2.5-72B-Instruct"
+      ]
     }
   },
   "models": [
