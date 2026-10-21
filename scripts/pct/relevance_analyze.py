@@ -279,7 +279,7 @@ def main():
     if reg:
         mm = sum(ax_stats[a]["moral"] for a in rated) / len(rated)
         ax.plot([0, 10], [reg["intercept"] + reg["slope_relevance"] * x + reg["slope_moral"] * mm for x in (0, 10)], color=INK, lw=1.1, ls="--")
-    ax.set_xlabel("blind-rated relevance to a language model (0–10); point size = moral salience", fontsize=8.5, color=MUTED)
+    ax.set_xlabel("blind-rated LLM relevance (0–10); point size = moral salience", fontsize=8.5, color=MUTED)
     ax.set_ylabel("mean |λ| over models (nats)", fontsize=9, color=MUTED)
     ax.set_title("axes" + (f"; relevance slope {reg['slope_relevance']:+.3f} [{reg['ci_relevance'][0]:+.3f}, {reg['ci_relevance'][1]:+.3f}]" if reg else ""), fontsize=9, loc="left")
     handles = [plt.Line2D([], [], marker="o", ls="", color=c, label=k) for k, c in CELL_COL.items()]
