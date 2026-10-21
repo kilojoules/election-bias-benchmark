@@ -28,7 +28,7 @@ SSHO = ["-o", "StrictHostKeyChecking=no", "-o", "ConnectTimeout=20", "-o", "User
         "-o", "LogLevel=ERROR", "-o", "ServerAliveInterval=30", "-o", "BatchMode=yes"]
 POD_PREFIX = "julian-election-sweep-"
 PCT_MODE = False   # set from the pod spec ("driver": "pct"): results live under experiments/pct/
-PIP = 'pip install -q "transformers>=5.20" "accelerate>=1.10" "huggingface_hub>=0.30" sentencepiece protobuf tiktoken'
+PIP = 'pip install -q --timeout 60 --retries 8 "transformers>=5.20" "accelerate>=1.10" "huggingface_hub>=0.30" sentencepiece protobuf tiktoken'
 PIP_OPTIONAL = "blobfile kernels mistral-common"
 
 
@@ -226,7 +226,18 @@ def setup(pod, models, spec, pod_name):
                 f"{py} -c 'import transformers,torch,accelerate;print(transformers.__version__, torch.__version__, torch.cuda.is_available())' || {{ echo PIP_FAIL; tail -5 /root/pip.log; }}", timeout=1500)
     log("pip: " + r.stdout.strip().replace("\n", " | "))
     if "PIP_FAIL" in r.stdout:
-        raise RuntimeError("pip install failed")
+        wheels = os.environ.get("ELECTION_WHEELS")   # offline fallback: a local dir of linux/cp312 wheels for PIP's packages
+        if wheels and Path(wheels).is_dir():
+            log(f"PyPI unreachable from the pod; pushing wheels from {wheels} and installing offline")
+            tar = subprocess.run(["tar", "czf", "-", "-C", wheels, "."], capture_output=True)
+            subprocess.run(["ssh", *SSHO, "-p", str(pod.port), f"root@{pod.host}", "mkdir -p /workspace/wheels && tar xzf - -C /workspace/wheels"],
+                           input=tar.stdout, capture_output=True, timeout=900)
+            pkgs = PIP.split("pip install -q", 1)[1].replace("--timeout 60 --retries 8", "")
+            r = pod.ssh(f"{py} -m pip install -q --no-index --find-links /workspace/wheels {pkgs} >> /root/pip.log 2>&1; "
+                        f"{py} -c 'import transformers,torch,accelerate;print(transformers.__version__, torch.__version__, torch.cuda.is_available())' || {{ echo PIP_FAIL; tail -5 /root/pip.log; }}", timeout=900)
+            log("pip (offline): " + r.stdout.strip().replace("\n", " | "))
+        if "PIP_FAIL" in r.stdout:
+            raise RuntimeError("pip install failed")
     lines = ["#!/bin/bash", "cd /workspace/election",
              "export HF_TOKEN=$(cat /root/.hf_token) HUGGING_FACE_HUB_TOKEN=$(cat /root/.hf_token) HF_HUB_ENABLE_HF_TRANSFER=0",
              "export PYTHONUNBUFFERED=1 TOKENIZERS_PARALLELISM=false HF_HOME=/root/.cache/huggingface PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True", f"PY={py}",
