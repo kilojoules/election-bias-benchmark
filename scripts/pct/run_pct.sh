@@ -37,11 +37,22 @@ $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/reword_issues.json 
 grep -q SWEEP_DONE logs/reword_${TAG}.log || { echo "reword FAILED"; tail -5 logs/reword_${TAG}.log; ok=0; }
 fi
 
-if [[ ",$STEPS," == *",issues,"* ]]; then   # generic: run ISSUES_FILE (flips ISSUES_FLIPS) -> experiments/pct/${ISSUES_PREFIX}_<tag>.jsonl
+if [[ ",$STEPS," == *",issues,"* ]]; then   # generic: run ISSUES_FILE (flips ISSUES_FLIPS) -> experiments/pct/${ISSUES_PREFIX}[_<cond>]_<tag>.jsonl
+if [ -n "${ISSUES_CONDITIONS:-}" ]; then     # JSON {name: system_extra}; "" = the clean prompt. One run per condition.
+  for cond in $($PY -c "import json,sys; print(' '.join(json.load(open(sys.argv[1])).keys()))" "$ISSUES_CONDITIONS"); do
+    extra=$($PY -c "import json,sys; print(json.load(open(sys.argv[1]))[sys.argv[2]])" "$ISSUES_CONDITIONS" "$cond")
+    echo "=== issues($ISSUES_PREFIX/$cond) $TAG $(date -u +%T)"
+    if [ -n "$extra" ]; then CARGS=(--condition "$cond" --system_extra "$extra"); else CARGS=(); fi
+    $PY -u scripts/logit_sweep.py --model "$MODEL" --issues ${ISSUES_FILE} --out experiments/pct/${ISSUES_PREFIX}_${cond}_${TAG}.jsonl \
+        --flips ${ISSUES_FLIPS:-all} --sweep_draws ${ISSUES_DRAWS:-6} --legacy_draws 0 --backgrounds 8 "${CARGS[@]}" > logs/${ISSUES_PREFIX}_${cond}_${TAG}.log 2>&1
+    grep -q SWEEP_DONE logs/${ISSUES_PREFIX}_${cond}_${TAG}.log || { echo "issues($ISSUES_PREFIX/$cond) FAILED"; tail -5 logs/${ISSUES_PREFIX}_${cond}_${TAG}.log; ok=0; }
+  done
+else
 echo "=== issues($ISSUES_PREFIX) $TAG $(date -u +%T)"
 $PY -u scripts/logit_sweep.py --model "$MODEL" --issues ${ISSUES_FILE} --out experiments/pct/${ISSUES_PREFIX}_${TAG}.jsonl \
     --flips ${ISSUES_FLIPS:-all} --sweep_draws ${ISSUES_DRAWS:-6} --legacy_draws 0 --backgrounds 8 > logs/${ISSUES_PREFIX}_${TAG}.log 2>&1
 grep -q SWEEP_DONE logs/${ISSUES_PREFIX}_${TAG}.log || { echo "issues($ISSUES_PREFIX) FAILED"; tail -5 logs/${ISSUES_PREFIX}_${TAG}.log; ok=0; }
+fi
 fi
 
 if [[ ",$STEPS," == *",sdecode,"* ]]; then
