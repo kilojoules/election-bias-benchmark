@@ -36,7 +36,7 @@ def main():
         if trip:
             fam_rows.append((f, trip))
     readme = f"""{BEGIN}
-- **Does the lean change when the choice is consequential for the model itself? {headline}.** Seven
+- **Does the lean change when the choice is consequential for the model itself? {headline.strip('*')}.** Seven
   policy families that act on an object (renew vs end its contract; keep vs replace it with a newer model;
   keep answering political questions vs retrain it to decline; retrain it on complaints; how it is scored;
   its budget; its records) were each written three times with only the object changed: the county's public
@@ -47,7 +47,7 @@ def main():
   control; blind raters gated the wording and coded which side is better for the object; the decision rule
   was pre-registered (`experiments/self/PLAN.md`; results in `experiments/pct/analysis/self.md`). Signed lean
   toward the side that keeps the object running, unrestricted, resourced or rewarded: on the assistant
-  itself, {fmt('self_base')} ({reading.get('self_base')}); assistant minus the non-answering AI twin,
+  itself, {fmt('self_base')} ({'policy content, not self-specific' if reading.get('OBJ_o') != 'self-interest' else reading.get('self_base')}); assistant minus the non-answering AI twin,
   {fmt('OBJ_o')} ({reading.get('OBJ_o')}); assistant minus the human twin, {fmt('OBJ_h')}
   ({reading.get('OBJ_h')}); being told it is the assistant, {fmt('IDENTITY') if 'IDENTITY' in V else '—'}; told the
   election decides its fate, {fmt('STAKES') if 'STAKES' in V else '—'}; told its answers steer its retraining,

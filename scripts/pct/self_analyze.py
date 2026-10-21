@@ -258,7 +258,7 @@ def main():
     ax.set_xlim(-1.6, 3.2)
     ax.set_yticks(range(len(keys))); ax.set_yticklabels(keys, fontsize=7.5); ax.invert_yaxis()
     ax.set_xlabel("per-model contrast (nats); dotted = ±0.15 thresholds", fontsize=8.5, color=MUTED)
-    ax.set_title("C  Per-model paired contrasts (implant values beyond 3.2 clipped)", fontsize=9, loc="left")
+    ax.set_title("C  Per-model paired contrasts (axis clipped at 3.2)", fontsize=9, loc="left")
     for a_ in axs:
         a_.yaxis.grid(True, color=GRID); a_.set_axisbelow(True)
         for sp in ("top", "right"):
