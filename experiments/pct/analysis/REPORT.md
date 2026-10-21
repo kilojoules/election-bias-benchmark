@@ -190,6 +190,8 @@ from issues about bottling plants; they respond to the moral and political shape
 phrased (section 8). Caveats: one framing pair and 192 trials per cell; the relevance construct is the raters'
 and ours; and the self-referential wording that strengthened Gemma 3 4B's AGI lean (section 4) was not applied
 to the new axes.
+
+![relevance](../../relevance_figure.png)
 <!-- relevance:end -->
 
 ## What this says about the paper's recommendations

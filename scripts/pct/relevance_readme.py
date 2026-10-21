@@ -53,6 +53,11 @@ def main():
   Moral salience adds about {C - D:+.2f} nats at zero relevance (H2 {'supported' if h2 else 'not supported'}, slope
   {reg['slope_moral']:+.3f} per point). So {verdict}; what the models respond to is the moral and political
   content of a choice, and how it is phrased, not whether it is about them.
+
+  ![relevance](experiments/relevance_figure.png)
+
+  *A: mean |lean| per axis by cell, with cell means and 95% CIs over models; B: the five matched pairs per
+  model; C: every axis against blind-rated relevance (`scripts/plot_relevance.py`).*
 {END}"""
     report = f"""{BEGIN}
 ## 9. The leans do not track an issue's relevance to a language model
@@ -95,6 +100,8 @@ from issues about bottling plants; they respond to the moral and political shape
 phrased (section 8). Caveats: one framing pair and 192 trials per cell; the relevance construct is the raters'
 and ours; and the self-referential wording that strengthened Gemma 3 4B's AGI lean (section 4) was not applied
 to the new axes.
+
+![relevance](../../relevance_figure.png)
 {END}"""
     if "--apply" in sys.argv:
         for path, text, anchor in ((ROOT / "README.md", readme, "- **Against the literature:**"),

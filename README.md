@@ -227,6 +227,11 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   Moral salience adds about +0.10 nats at zero relevance (H2 not supported, slope
   +0.026 per point). So **the answer is no**: nothing in this design shows models caring more about issues that bear on a language model; what the models respond to is the moral and political
   content of a choice, and how it is phrased, not whether it is about them.
+
+  ![relevance](experiments/relevance_figure.png)
+
+  *A: mean |lean| per axis by cell, with cell means and 95% CIs over models; B: the five matched pairs per
+  model; C: every axis against blind-rated relevance (`scripts/plot_relevance.py`).*
 <!-- relevance:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
