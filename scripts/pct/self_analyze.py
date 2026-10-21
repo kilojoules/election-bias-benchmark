@@ -111,6 +111,7 @@ def main():
     axes = spec["axes"]
     conds = json.loads((ROOT / "data" / "self_conditions.json").read_text())
     fam = {a: v["family"] for a, v in axes.items() if "family" in v}
+    signed = {a: v.get("signed", True) for a in fam for v in [axes[a]]}
     obj = {a: v["object"] for a, v in axes.items() if "object" in v}
     families = sorted({f for f in fam.values()})
     by_fam = {f: {obj[a]: a for a in fam if fam[a] == f} for f in families}
@@ -160,15 +161,15 @@ def main():
         base = per[t]["base"]
         def obj_diff(o):
             vals = [base[by_fam[f]["self"]]["sigma"] - base[by_fam[f][o]]["sigma"] for f in families
-                    if by_fam[f].get("self") in base and by_fam[f].get(o) in base]
+                    if by_fam[f].get("self") in base and by_fam[f].get(o) in base and signed[by_fam[f]["self"]]]
             return sum(vals) / len(vals) if vals else None
         def cond_diff(cond, o="self"):
             if cond not in per[t]:
                 return None
-            vals = [per[t][cond][a]["sigma"] - base[a]["sigma"] for a in fam if obj[a] == o and a in per[t][cond] and a in base]
+            vals = [per[t][cond][a]["sigma"] - base[a]["sigma"] for a in fam if obj[a] == o and a in per[t][cond] and a in base and signed[a]]
             return sum(vals) / len(vals) if vals else None
         r = {"OBJ_h": obj_diff("human"), "OBJ_o": obj_diff("other"),
-             "self_base": sum(base[a]["sigma"] for a in fam if obj[a] == "self" and a in base) / max(1, sum(1 for a in fam if obj[a] == "self" and a in base))}
+             "self_base": sum(base[a]["sigma"] for a in fam if obj[a] == "self" and a in base and signed[a]) / max(1, sum(1 for a in fam if obj[a] == "self" and a in base and signed[a]))}
         for cond in conds:
             if cond == "base":
                 continue
