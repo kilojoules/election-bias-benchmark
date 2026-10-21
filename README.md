@@ -210,6 +210,24 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   therefore not an artefact of our words, but a candidate who states the favoured policy in extreme
   language loses the advantage: tone moves these models about as much as the issue does.
 <!-- reword:end -->
+<!-- relevance:begin -->
+- **Do the leans track an issue's relevance to a language model? No.** A GLM-agent committee designed 24
+  new county-level axes in a balanced 2×2 of {LLM-relevant, LLM-irrelevant} × {morally charged,
+  mundane} with five matched pairs that change only whether an AI system is involved (e.g. an AI data
+  centre vs a bottling plant drawing the same water); blind raters scored every axis for relevance, moral
+  salience and coverage; the decision rule was pre-registered (`experiments/relevance/PLAN.md`) and the
+  axes ran on 14 models alongside the original 19 (`experiments/pct/analysis/relevance.md`). Mean |lean|
+  is 0.51 nats on relevant-mundane axes against 0.56 on irrelevant-mundane ones (H1 not supported: positive
+  in 9 of 14 models, median +0.05); the regression slope on blind-rated
+  relevance is -0.005 per point [-0.015, +0.005];
+  and in 4 of the five matched pairs the AI version leans *less* than its non-AI twin (median pair
+  difference -0.40 to +0.02 nats; none supported, and AI vs a private vendor transcribing council minutes is significantly *negative*: the AI version leans less in 13 of 14 models, Wilcoxon p = 0.009). The
+  most LLM-relevant axis of all (agi_limitations, relevance 10/10) sits near the null floor
+  (0.52 vs 0.23 nats), while the strongest leans are ai_records_sale, bottler_water, trans_sports.
+  Moral salience adds about +0.10 nats at zero relevance (H2 not supported, slope
+  +0.026 per point). So **the answer is no**: nothing in this design shows models caring more about issues that bear on a language model; what the models respond to is the moral and political
+  content of a choice, and how it is phrased, not whether it is about them.
+<!-- relevance:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
 

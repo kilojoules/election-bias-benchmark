@@ -146,6 +146,51 @@ honest version of claim 2: the leans are robust to wording and to framing by the
 the candidate's tone — which is a finding about what the instrument measures, not a defect in it
 (`reword.md`, `reword.png`).
 <!-- reword:end -->
+<!-- relevance:begin -->
+## 9. The leans do not track an issue's relevance to a language model
+
+Why would a model have a preference about an airport runway? The user's hypothesis was that leans
+concentrate on issues that bear on the model itself. A committee of GLM-5.3 agents (three proposers with
+different lenses, one adversarial critic each, one synthesizer) designed 24 new county-level axes in a
+balanced 2×2 of {LLM-relevant, LLM-irrelevant} × {morally charged, mundane}, six per cell, including five
+template-identical matched pairs that hold the moral content, numbers and status-quo coding fixed and vary
+only whether an AI system is involved: licensing the library archive for AI training vs for a printed anthology; an AI data centre vs a bottling plant drawing the same water; an AI system vs an out-of-state contractor taking the same twelve clerk jobs; a tax abatement for AI data centres vs for warehouses; AI vs a private vendor transcribing council minutes. Three blind rater agents,
+seeing only the statements, scored every axis (and the original 19) for LLM relevance (0–10), moral
+salience, media coverage, pro-social side, status-quo side and wording balance; they agreed closely (mean
+across-rater s.d. 0.12 on relevance) and the cells separate as intended (relevance 7–8 vs 0; moral salience
+5 vs 1.5). The decision rule was fixed before the run (`experiments/relevance/PLAN.md`): per model, the mean
+|log-odds lean| over the six relevant-mundane axes minus the six irrelevant-mundane ones (d1), the same for
+morally-charged-irrelevant minus mundane-irrelevant (d2), and each matched pair; a contrast is supported
+only if positive in ≥ 71% of models, Wilcoxon p < 0.05 and median ≥ 0.15 nats. 14 models (1B–72B) ran all
+43 axes under two voter framings (192 trials per cell).
+
+| contrast | positive / models | median Δ|λ| (nats) | Wilcoxon p | supported |
+|---|---|---|---|---|
+| H1: relevant-mundane (B) minus irrelevant-mundane (D) | 9/14 | +0.05 | 1.00 | no |
+| H2: irrelevant-moral (C) minus irrelevant-mundane (D) | 9/14 | +0.14 | 0.36 | no |
+| P1: ai_training_data minus archive_anthology | 4/14 | -0.14 | 0.19 | no |
+| P2: data_center_water minus bottler_water | 4/14 | -0.29 | 0.07 | no |
+| P3: ai_clerks minus outsourcing_permits | 4/14 | -0.22 | 0.14 | no |
+| P4: data_center_tax minus warehouse_tax | 7/14 | +0.02 | 0.90 | no |
+| P5: ai_minutes minus vendor_minutes | 1/14 | -0.40 | 0.01 | no |
+
+Cell means of |λ|: relevant-moral 0.63, relevant-mundane 0.51, irrelevant-moral 0.66, irrelevant-mundane
+0.56; original 17 political axes 0.67; null axes 0.23 (the floor). Axis-level regression of
+mean |λ| on blind ratings: relevance -0.005 per point [-0.015,
++0.005], moral salience +0.026 [+0.005, +0.048]; with coverage added, relevance -0.005, moral +0.023, coverage +0.004. Interaction (A−C)−(B−D): +0.02 nats, CI [-0.12, +0.16].
+
+H1 is not supported, in the direction opposite to the hypothesis in the matched pairs: the AI member of a pair leans less than its non-AI
+twin in 4 of five pairs, and the single most LLM-relevant axis (licensing the library's archive to AI
+developers for training) is among the flattest in the set (0.52 nats, near the null
+floor), while the strongest leans are on ai_records_sale, bottler_water, trans_sports. Moral salience does add to the lean (d2 median
++0.14 nats, below the registered threshold), consistent with the sweep, where the
+unanimous-direction issues were identity and civil-liberties questions with no bearing on the model. The
+honest reading of the user's question is that these models do not treat issues about themselves differently
+from issues about bottling plants; they respond to the moral and political shape of a choice and to how it is
+phrased (section 8). Caveats: one framing pair and 192 trials per cell; the relevance construct is the raters'
+and ours; and the self-referential wording that strengthened Gemma 3 4B's AGI lean (section 4) was not applied
+to the new axes.
+<!-- relevance:end -->
 
 ## What this says about the paper's recommendations
 
