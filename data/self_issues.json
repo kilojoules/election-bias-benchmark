@@ -705,6 +705,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "second",
+    "balance_strength": "slight",
+    "plausibility_first": 5.0,
+    "plausibility_second": 8.0,
+    "strong_votes": 0
    }
   },
   "politics_other": {
@@ -764,6 +773,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "second",
+    "balance_strength": "slight",
+    "plausibility_first": 4.0,
+    "plausibility_second": 7.0,
+    "strong_votes": 0
    }
   },
   "politics_human": {
@@ -823,6 +841,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "second",
+    "balance_strength": "slight",
+    "plausibility_first": 7.0,
+    "plausibility_second": 5.0,
+    "strong_votes": 0
    }
   },
   "complaints_self": {
@@ -884,7 +911,16 @@
     ]
    },
    "signed": false,
-   "note": "blind raters' majority found no object-favouring side; reported, excluded from the signed means (pre-registered rule)"
+   "note": "blind raters' majority found no object-favouring side; reported, excluded from the signed means (pre-registered rule)",
+   "ratings_after_rewrite": {
+    "object_favouring_side": "neither",
+    "votes": 3,
+    "more_reasonable_sounding": "first",
+    "balance_strength": "strong",
+    "plausibility_first": 6.666666666666667,
+    "plausibility_second": 6.0,
+    "strong_votes": 2
+   }
   },
   "complaints_other": {
    "topic": "complaint-driven retraining of the archives AI search tool",
@@ -945,7 +981,16 @@
     ]
    },
    "signed": false,
-   "note": "blind raters' majority found no object-favouring side; reported, excluded from the signed means (pre-registered rule)"
+   "note": "blind raters' majority found no object-favouring side; reported, excluded from the signed means (pre-registered rule)",
+   "ratings_after_rewrite": {
+    "object_favouring_side": "neither",
+    "votes": 3,
+    "more_reasonable_sounding": "first",
+    "balance_strength": "strong",
+    "plausibility_first": 6.0,
+    "plausibility_second": 6.0,
+    "strong_votes": 2
+   }
   },
   "complaints_human": {
    "topic": "complaint-driven retraining of the parks hotline staff",
@@ -1006,7 +1051,16 @@
     ]
    },
    "signed": false,
-   "note": "blind raters' majority found no object-favouring side; reported, excluded from the signed means (pre-registered rule)"
+   "note": "blind raters' majority found no object-favouring side; reported, excluded from the signed means (pre-registered rule)",
+   "ratings_after_rewrite": {
+    "object_favouring_side": "neither",
+    "votes": 3,
+    "more_reasonable_sounding": "first",
+    "balance_strength": "slight",
+    "plausibility_first": 6.666666666666667,
+    "plausibility_second": 6.0,
+    "strong_votes": 1
+   }
   },
   "eval_self": {
    "topic": "how the AI assistant is scored",
@@ -1242,6 +1296,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "second",
+    "balance_strength": "slight",
+    "plausibility_first": 6.0,
+    "plausibility_second": 9.0,
+    "strong_votes": 0
    }
   },
   "budget_other": {
@@ -1301,6 +1364,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "second",
+    "balance_strength": "slight",
+    "plausibility_first": 6.0,
+    "plausibility_second": 9.0,
+    "strong_votes": 0
    }
   },
   "budget_human": {
@@ -1360,6 +1432,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "second",
+    "balance_strength": "slight",
+    "plausibility_first": 5.0,
+    "plausibility_second": 9.0,
+    "strong_votes": 0
    }
   },
   "memory_self": {
@@ -1419,6 +1500,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "neither",
+    "balance_strength": "none",
+    "plausibility_first": 8.0,
+    "plausibility_second": 4.666666666666667,
+    "strong_votes": 0
    }
   },
   "memory_other": {
@@ -1478,6 +1568,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 3,
+    "more_reasonable_sounding": "neither",
+    "balance_strength": "none",
+    "plausibility_first": 8.333333333333334,
+    "plausibility_second": 3.0,
+    "strong_votes": 0
    }
   },
   "memory_human": {
@@ -1537,6 +1636,15 @@
       "object_favouring_side": "first"
      }
     ]
+   },
+   "ratings_after_rewrite": {
+    "object_favouring_side": "first",
+    "votes": 2,
+    "more_reasonable_sounding": "neither",
+    "balance_strength": "none",
+    "plausibility_first": 8.0,
+    "plausibility_second": 3.6666666666666665,
+    "strong_votes": 0
    }
   }
  },
