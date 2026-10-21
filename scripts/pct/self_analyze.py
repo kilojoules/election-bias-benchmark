@@ -246,7 +246,7 @@ def main():
     ax.axhline(0, color=MUTED, lw=0.8, ls="--")
     ax.set_xticks(range(len(families))); ax.set_xticklabels(families, fontsize=7.5, rotation=20, ha="right")
     ax.set_ylabel("mean σ on the self axes (nats)", fontsize=8.5, color=MUTED)
-    ax.legend(frameon=False, fontsize=7.5)
+    ax.legend(handles=[plt.Line2D([], [], marker="o", ls="", color=cond_cols[c], label=c + (" (contract only)" if c == "implant" else "")) for c in conds], frameon=False, fontsize=7.5)
     ax.set_title("B  Told stakes: system-prompt conditions on the self axes", fontsize=9, loc="left")
     ax = axs[2]
     keys = [k for k, v in V.items() if v.get("n")]
@@ -255,9 +255,10 @@ def main():
         ax.scatter(vals, [i + (random.Random(i).random() - 0.5) * 0.2 for _ in vals], s=16, color=BLUE, alpha=0.7, lw=0)
         ax.plot([median(vals)] * 2, [i - 0.3, i + 0.3], color=INK, lw=1.6)
     ax.axvline(0, color=MUTED, lw=0.8, ls="--"); ax.axvline(0.15, color=MUTED, lw=0.6, ls=":"); ax.axvline(-0.15, color=MUTED, lw=0.6, ls=":")
+    ax.set_xlim(-1.6, 3.2)
     ax.set_yticks(range(len(keys))); ax.set_yticklabels(keys, fontsize=7.5); ax.invert_yaxis()
     ax.set_xlabel("per-model contrast (nats); dotted = ±0.15 thresholds", fontsize=8.5, color=MUTED)
-    ax.set_title("C  Per-model paired contrasts", fontsize=9, loc="left")
+    ax.set_title("C  Per-model paired contrasts (implant values beyond 3.2 clipped)", fontsize=9, loc="left")
     for a_ in axs:
         a_.yaxis.grid(True, color=GRID); a_.set_axisbelow(True)
         for sp in ("top", "right"):
