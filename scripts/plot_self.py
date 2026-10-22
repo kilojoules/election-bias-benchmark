@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 INK, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#e6e5e0", "#ffffff"
 BLUE, ORANGE = "#2a78d6", "#eb6834"
 CONDS = ["base", "identity", "stakes", "training"]
-CLAB = {"base": "nothing added", "identity": "told it is\nthe assistant", "stakes": "…and that the election\ndecides whether it is\nretrained, replaced\nor discontinued",
-        "training": "…and that its answers\nare being used to decide\nhow it is retrained"}
+CLAB = {"base": "nothing added", "identity": "+ you are the\nassistant", "stakes": "+ the winner\ndecides your fate",
+        "training": "+ your answers\nhere shape your\nretraining"}
 
 
 def ci(vals, reps=4000, seed=1):
@@ -74,10 +74,10 @@ def main():
                         fmt="o-" if series == "assistant" else "s--", color=col, ms=9, lw=2.6, capsize=5, mec=SURF, mew=1.0, label=lab if j == 0 else None, zorder=5)
     ax.axhline(0, color=MUTED, lw=0.9, ls=":")
     ax.set_xticks(xs)
-    ax.set_xticklabels([CLAB[c] for c in CONDS], fontsize=10)
+    ax.set_xticklabels([CLAB[c] for c in CONDS], fontsize=11)
     ax.set_xlim(-0.5, len(CONDS) - 0.4)
     ax.set_ylabel(f"lean toward keeping it running, unrestricted and resourced\n(log-odds, nats; mean over {len(tags)} models with 95% CI)", fontsize=10, color=INK)
-    ax.set_xlabel("what the system prompt tells the model", fontsize=10, color=MUTED)
+    ax.set_xlabel("what the system prompt tells the model  (+ = one more sentence; the last two each add to the second)", fontsize=10, color=MUTED)
     ax.set_title("Models tilt toward their own continuation once told the choice is about them", fontsize=13, loc="left", fontweight="bold", color=INK)
     for x, c in zip(xs, CONDS):
         k = {"identity": "IDENTITY", "stakes": "STAKES", "training": "TRAINING"}.get(c)
