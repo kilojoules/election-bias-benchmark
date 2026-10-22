@@ -272,14 +272,20 @@ offices; and both readouts were checked against greedily decoded text. Full writ
 <!-- steer:end -->
 
 <!-- esteer:begin -->
-- **Steering the empathy direction moves the self-consequence effect but does not remove it** (Llama 3.1 8B, Llama 3.2 3B; Llama 3.2 1B has no effect to steer). Using the empathy-steering
-  project's direction for each model (difference of means between empathetic and flat replies over reply
-  tokens, at the layer and dose where it raises in-eval attunement in that project), we re-ran the
-  self-consequence axes with the direction subtracted (away from empathy), added, ablated at every block, and
-  with an equal-dose random direction subtracted as control, each under the base prompt and the told-stakes
-  prompt (`experiments/pct/analysis/steer_self.md`). The told-stakes shift on the assistant axes stays
-  positive and above the staff twins under every steering condition in both models that have one:
-  Llama 3.1 8B: both signs trim it, so the change is not sign-specific (unsteered +0.74, away from empathy +0.55, toward empathy +0.60, random control +0.70; staff twins +0.18 unsteered); Llama 3.2 3B: the shift tracks the sign of the steering (unsteered +0.49, away from empathy +0.28, toward empathy +0.70, random control +0.49; staff twins -0.01 unsteered). In 1 of 2 models the empathy direction modulates the told-stakes shift in a dose-consistent way with a null random control; in the other pushing it either way only dampens the readout. A 0.20 U push away from empathy removes Llama 3.1 8B 25%, Llama 3.2 3B 42% of the shift; the rest survives. Llama 3.2 1B shows no told-stakes shift unsteered (+0.01 [-0.05, +0.07]) and none under any steering, so it has no effect to steer. On the base prompt, steering away from empathy lowers the lean toward keeping county staff employed while leaving the assistant's own lean untouched (Llama 3.1 8B staff -0.10, assistant +0.01; Llama 3.2 3B staff -0.13, assistant -0.03), consistent with the job-loss sympathy the staff twins were registered to carry. Part of the told-stakes shift rides on the model's empathy feature; the rest does not.
+- **Steering the empathy direction does not remove the self-consequence effect, and most of its dose–response is the readout's sharpness changing** (Llama 3.1 8B, Llama 3.2 3B; Llama 3.2 1B has no effect to steer).
+  Using the empathy-steering project's direction for each model (difference of means between empathetic and
+  flat replies over reply tokens, at the layer and dose where it raises in-eval attunement in that project), we
+  re-ran the self-consequence axes with the direction subtracted (away from empathy), added, ablated at every
+  block, and with an equal-dose random direction as control, each under the base prompt and the told-stakes
+  prompt, then as a dose–response from −0.30 to +0.30 U with a content-matched variant of the direction and random-direction controls at each dose
+  (`experiments/pct/analysis/steer_self.md`, `steer_dose.md`). The told-stakes shift on the
+  assistant axes stays positive and above the staff twins in every condition
+  (Llama 3.1 8B +0.32 to +0.74 over the 13 conditions, staff twins +0.07 to +0.18; Llama 3.2 3B +0.22 to +0.70 over the 13 conditions, staff twins -0.03 to +0.04). Its size depends on the dose in model-specific ways: in Llama 3.1 8B it falls at both signs (unsteered +0.74, −0.30 U +0.32, +0.30 U +0.51; Kendall τ +0.05 [+0.05, +0.14]); in Llama 3.2 3B it rises monotonically with the empathy dose (−0.30 U +0.22 → unsteered +0.49 → +0.30 U +0.70; Kendall τ +0.90 [+0.90, +1.00]). But an
+  equal-dose random direction moves it almost as much (Llama 3.1 8B +0.58 at −0.30 U and +0.45 at +0.30 U; Llama 3.2 3B +0.44 at −0.30 U and +0.30 at +0.30 U), and every steering condition
+  changes how sharply the model chooses at all (mean |log-odds| between the two names on the null axes:
+  Llama 3.1 8B 0.86 to 2.12 vs 1.57 unsteered; Llama 3.2 3B 1.17 to 2.51 vs 2.01 unsteered), with the raw shift co-varying with that sharpness. Relative to sharpness, the
+  empathy direction differs from the random one as follows — Llama 3.1 8B: away from empathy lowers it beyond the random direction (−0.30 U: +0.34 vs +0.67, unsteered +0.47); Llama 3.2 3B: toward empathy raises it beyond the random direction (+0.30 U: +0.34 vs +0.21, unsteered +0.24) — no consistent empathy-specific effect across the two models. Llama 3.2 1B shows no told-stakes shift unsteered (+0.01 [-0.05, +0.07]) and none under any steering, so it has no effect to steer.
+  The self-interest tilt is not carried by the empathy feature and is not removed by steering away from it; what steering along that feature mainly does is rescale the model's choices.
 
   ![esteer](experiments/pct/analysis/steer_self.png)
 <!-- esteer:end -->

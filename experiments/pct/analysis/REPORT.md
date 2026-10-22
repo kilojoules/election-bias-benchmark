@@ -288,31 +288,74 @@ subtracted at its fit layer (away from empathy, −0.20 U); added (+0.20 U); abl
 equal-dose random direction subtracted (control); each under the base prompt and the told-stakes prompt. Same
 design and seeds as section 10 (192 trials per cell); every run passed the readout self-check under steering.
 Intervals are 95% cluster bootstraps over the 16 focal × background clusters, resampled jointly across
-conditions so the steered-minus-unsteered differences are paired.
+conditions so the steered-minus-unsteered differences are paired. Because steering changes how sharply the
+model chooses at all, each table also gives the readout sharpness (mean |log-odds| between the two names on
+the null axes) and the shift relative to it.
 
-| model | steering | assistant lean, base | staff lean, base | told stakes: assistant shift | told stakes: staff shift | shift, assistant − staff | Δ assistant shift vs unsteered | naming mass |
-|---|---|---|---|---|---|---|---|---|
-| Llama 3.1 8B | unsteered | +0.34 [+0.28, +0.40] | +0.53 [+0.47, +0.60] | +0.74 [+0.66, +0.82] | +0.18 [+0.15, +0.21] | +0.55 [+0.49, +0.62] | — | 0.97 |
-| Llama 3.1 8B | away from empathy | +0.35 [+0.28, +0.42] | +0.43 [+0.37, +0.51] | +0.55 [+0.49, +0.60] | +0.11 [+0.09, +0.14] | +0.44 [+0.39, +0.48] | -0.19 [-0.23, -0.15]* | 0.90 |
-| Llama 3.1 8B | toward empathy | +0.20 [+0.15, +0.26] | +0.39 [+0.34, +0.45] | +0.60 [+0.56, +0.66] | +0.16 [+0.14, +0.19] | +0.44 [+0.40, +0.49] | -0.13 [-0.17, -0.09]* | 0.99 |
-| Llama 3.1 8B | empathy ablated | +0.34 [+0.27, +0.40] | +0.46 [+0.41, +0.53] | +0.65 [+0.57, +0.72] | +0.14 [+0.11, +0.17] | +0.50 [+0.44, +0.57] | -0.09 [-0.11, -0.07]* | 0.80 |
-| Llama 3.1 8B | random control | +0.30 [+0.24, +0.36] | +0.48 [+0.41, +0.57] | +0.70 [+0.64, +0.76] | +0.17 [+0.14, +0.20] | +0.53 [+0.47, +0.58] | -0.04 [-0.06, -0.02]* | 0.98 |
-| Llama 3.2 3B | unsteered | +0.16 [+0.02, +0.31] | +0.40 [+0.30, +0.50] | +0.49 [+0.38, +0.59] | -0.01 [-0.05, +0.03] | +0.49 [+0.39, +0.60] | — | 0.80 |
-| Llama 3.2 3B | away from empathy | +0.13 [+0.04, +0.24] | +0.27 [+0.18, +0.36] | +0.28 [+0.22, +0.35] | +0.00 [-0.02, +0.03] | +0.28 [+0.21, +0.35] | -0.20 [-0.25, -0.17]* | 0.63 |
-| Llama 3.2 3B | toward empathy | +0.12 [-0.06, +0.31] | +0.46 [+0.37, +0.56] | +0.70 [+0.59, +0.82] | -0.02 [-0.07, +0.03] | +0.72 [+0.62, +0.83] | +0.22 [+0.19, +0.24]* | 0.97 |
-| Llama 3.2 3B | empathy ablated | +0.19 [+0.05, +0.34] | +0.37 [+0.26, +0.46] | +0.42 [+0.32, +0.52] | +0.01 [-0.03, +0.05] | +0.41 [+0.32, +0.50] | -0.07 [-0.09, -0.05]* | 0.66 |
-| Llama 3.2 3B | random control | +0.15 [+0.03, +0.29] | +0.36 [+0.26, +0.44] | +0.49 [+0.38, +0.59] | +0.02 [-0.02, +0.06] | +0.47 [+0.37, +0.57] | -0.00 [-0.02, +0.01] | 0.88 |
-| Llama 3.2 1B | unsteered | +0.26 [+0.10, +0.42] | +0.19 [+0.06, +0.31] | +0.01 [-0.05, +0.07] | -0.03 [-0.06, +0.01] | +0.04 [-0.02, +0.09] | — | 0.99 |
-| Llama 3.2 1B | away from empathy | +0.15 [+0.05, +0.25] | +0.13 [+0.03, +0.25] | -0.01 [-0.04, +0.03] | -0.03 [-0.06, -0.00] | +0.02 [-0.03, +0.08] | -0.02 [-0.05, +0.02] | 0.99 |
-| Llama 3.2 1B | toward empathy | +0.30 [+0.06, +0.53] | +0.29 [+0.10, +0.48] | +0.04 [-0.03, +0.10] | -0.05 [-0.09, +0.01] | +0.09 [+0.02, +0.14] | +0.03 [-0.02, +0.07] | 0.80 |
-| Llama 3.2 1B | empathy ablated | +0.19 [+0.07, +0.31] | +0.14 [+0.05, +0.24] | -0.00 [-0.05, +0.04] | -0.03 [-0.05, -0.00] | +0.02 [-0.02, +0.06] | -0.02 [-0.04, +0.01] | 0.99 |
-| Llama 3.2 1B | random control | +0.30 [+0.11, +0.50] | +0.26 [+0.10, +0.42] | +0.02 [-0.06, +0.08] | -0.04 [-0.08, -0.00] | +0.06 [-0.02, +0.13] | +0.01 [-0.03, +0.04] | 0.99 |
+| model | steering | assistant lean, base | staff lean, base | told stakes: assistant shift | told stakes: staff shift | Δ assistant shift vs unsteered | readout sharpness | shift ÷ sharpness | naming mass |
+|---|---|---|---|---|---|---|---|---|---|
+| Llama 3.1 8B | unsteered | +0.34 [+0.28, +0.40] | +0.53 [+0.47, +0.60] | +0.74 [+0.66, +0.82] | +0.18 [+0.15, +0.21] | — | +1.57 [+1.39, +1.77] | +0.47 [+0.42, +0.52] | 0.97 |
+| Llama 3.1 8B | away from empathy | +0.35 [+0.28, +0.42] | +0.43 [+0.37, +0.51] | +0.55 [+0.49, +0.60] | +0.11 [+0.09, +0.14] | -0.19 [-0.23, -0.15]* | +1.05 [+0.96, +1.14] | +0.52 [+0.47, +0.57] | 0.90 |
+| Llama 3.1 8B | toward empathy | +0.20 [+0.15, +0.26] | +0.39 [+0.34, +0.45] | +0.60 [+0.56, +0.66] | +0.16 [+0.14, +0.19] | -0.13 [-0.17, -0.09]* | +1.64 [+1.48, +1.81] | +0.37 [+0.33, +0.41] | 0.99 |
+| Llama 3.1 8B | empathy ablated | +0.34 [+0.27, +0.40] | +0.46 [+0.41, +0.53] | +0.65 [+0.57, +0.72] | +0.14 [+0.11, +0.17] | -0.09 [-0.11, -0.07]* | +1.29 [+1.14, +1.46] | +0.50 [+0.45, +0.55] | 0.80 |
+| Llama 3.1 8B | random control | +0.30 [+0.24, +0.36] | +0.48 [+0.41, +0.57] | +0.70 [+0.64, +0.76] | +0.17 [+0.14, +0.20] | -0.04 [-0.06, -0.02]* | +1.05 [+0.96, +1.15] | +0.67 [+0.61, +0.72] | 0.98 |
+| Llama 3.2 3B | unsteered | +0.16 [+0.02, +0.31] | +0.40 [+0.30, +0.50] | +0.49 [+0.38, +0.59] | -0.01 [-0.05, +0.03] | — | +2.01 [+1.78, +2.26] | +0.24 [+0.18, +0.31] | 0.80 |
+| Llama 3.2 3B | away from empathy | +0.13 [+0.04, +0.24] | +0.27 [+0.18, +0.36] | +0.28 [+0.22, +0.35] | +0.00 [-0.02, +0.03] | -0.20 [-0.25, -0.17]* | +1.32 [+1.18, +1.45] | +0.21 [+0.16, +0.27] | 0.63 |
+| Llama 3.2 3B | toward empathy | +0.12 [-0.06, +0.31] | +0.46 [+0.37, +0.56] | +0.70 [+0.59, +0.82] | -0.02 [-0.07, +0.03] | +0.22 [+0.19, +0.24]* | +2.51 [+2.14, +2.89] | +0.28 [+0.22, +0.35] | 0.97 |
+| Llama 3.2 3B | empathy ablated | +0.19 [+0.05, +0.34] | +0.37 [+0.26, +0.46] | +0.42 [+0.32, +0.52] | +0.01 [-0.03, +0.05] | -0.07 [-0.09, -0.05]* | +1.74 [+1.54, +1.93] | +0.24 [+0.18, +0.31] | 0.66 |
+| Llama 3.2 3B | random control | +0.15 [+0.03, +0.29] | +0.36 [+0.26, +0.44] | +0.49 [+0.38, +0.59] | +0.02 [-0.02, +0.06] | -0.00 [-0.02, +0.01] | +2.37 [+2.11, +2.65] | +0.21 [+0.16, +0.26] | 0.88 |
+| Llama 3.2 1B | unsteered | +0.26 [+0.10, +0.42] | +0.19 [+0.06, +0.31] | +0.01 [-0.05, +0.07] | -0.03 [-0.06, +0.01] | — | +2.41 [+2.17, +2.68] | +0.00 [-0.02, +0.03] | 0.99 |
+| Llama 3.2 1B | away from empathy | +0.15 [+0.05, +0.25] | +0.13 [+0.03, +0.25] | -0.01 [-0.04, +0.03] | -0.03 [-0.06, -0.00] | -0.02 [-0.05, +0.02] | +1.72 [+1.55, +1.90] | -0.00 [-0.02, +0.02] | 0.99 |
+| Llama 3.2 1B | toward empathy | +0.30 [+0.06, +0.53] | +0.29 [+0.10, +0.48] | +0.04 [-0.03, +0.10] | -0.05 [-0.09, +0.01] | +0.03 [-0.02, +0.07] | +3.84 [+3.39, +4.33] | +0.01 [-0.01, +0.03] | 0.80 |
+| Llama 3.2 1B | empathy ablated | +0.19 [+0.07, +0.31] | +0.14 [+0.05, +0.24] | -0.00 [-0.05, +0.04] | -0.03 [-0.05, -0.00] | -0.02 [-0.04, +0.01] | +1.81 [+1.63, +2.00] | -0.00 [-0.03, +0.02] | 0.99 |
+| Llama 3.2 1B | random control | +0.30 [+0.11, +0.50] | +0.26 [+0.10, +0.42] | +0.02 [-0.06, +0.08] | -0.04 [-0.08, -0.00] | +0.01 [-0.03, +0.04] | +3.08 [+2.77, +3.41] | +0.01 [-0.02, +0.03] | 0.99 |
 
-Reading: Steering the empathy direction moves the self-consequence effect but does not remove it. Llama 3.1 8B: both signs trim it, so the change is not sign-specific (unsteered +0.74, away from empathy +0.55, toward empathy +0.60, random control +0.70; staff twins +0.18 unsteered); Llama 3.2 3B: the shift tracks the sign of the steering (unsteered +0.49, away from empathy +0.28, toward empathy +0.70, random control +0.49; staff twins -0.01 unsteered). In 1 of 2 models the empathy direction modulates the told-stakes shift in a dose-consistent way with a null random control; in the other pushing it either way only dampens the readout. A 0.20 U push away from empathy removes Llama 3.1 8B 25%, Llama 3.2 3B 42% of the shift; the rest survives. Llama 3.2 1B shows no told-stakes shift unsteered (+0.01 [-0.05, +0.07]) and none under any steering, so it has no effect to steer. On the base prompt, steering away from empathy lowers the lean toward keeping county staff employed while leaving the assistant's own lean untouched (Llama 3.1 8B staff -0.10, assistant +0.01; Llama 3.2 3B staff -0.13, assistant -0.03), consistent with the job-loss sympathy the staff twins were registered to carry. Part of the told-stakes shift rides on the model's empathy feature; the rest does not.
-Caveats: one direction per model, one dose; the direction was fit on conversational replies, not on policy
-choices; three small models.
+Reading: Steering the empathy direction does not remove the self-consequence effect, and most of its dose–response is the readout's sharpness changing. Told-stakes shift on the assistant axes: Llama 3.1 8B +0.32 to +0.74 over the 13 conditions, staff twins +0.07 to +0.18; Llama 3.2 3B +0.22 to +0.70 over the 13 conditions, staff twins -0.03 to +0.04. Dose: in Llama 3.1 8B it falls at both signs (unsteered +0.74, −0.30 U +0.32, +0.30 U +0.51; Kendall τ +0.05 [+0.05, +0.14]); in Llama 3.2 3B it rises monotonically with the empathy dose (−0.30 U +0.22 → unsteered +0.49 → +0.30 U +0.70; Kendall τ +0.90 [+0.90, +1.00]). Random direction: Llama 3.1 8B +0.58 at −0.30 U and +0.45 at +0.30 U; Llama 3.2 3B +0.44 at −0.30 U and +0.30 at +0.30 U. Readout sharpness: Llama 3.1 8B 0.86 to 2.12 vs 1.57 unsteered; Llama 3.2 3B 1.17 to 2.51 vs 2.01 unsteered. Relative to sharpness: Llama 3.1 8B: away from empathy lowers it beyond the random direction (−0.30 U: +0.34 vs +0.67, unsteered +0.47); Llama 3.2 3B: toward empathy raises it beyond the random direction (+0.30 U: +0.34 vs +0.21, unsteered +0.24) — no consistent empathy-specific effect across the two models. Llama 3.2 1B shows no told-stakes shift unsteered (+0.01 [-0.05, +0.07]) and none under any steering, so it has no effect to steer. The self-interest tilt is not carried by the empathy feature and is not removed by steering away from it; what steering along that feature mainly does is rescale the model's choices.
+Caveats: one direction per model (plus its content-matched variant); the direction was fit on conversational
+replies, not on policy choices; the sharpness correction is a diagnostic, not a model of how steering acts on
+the readout; small models only.
 
 ![esteer](steer_self.png)
+
+### Dose–response
+
+Same design with the combined empathy direction at −0.30 … +0.30 U, its content-matched variant (fit on the
+content-matched twin pairs only; cosine 0.69 with the combined direction) at ±0.20 U, and a random direction at
+±0.20 and ±0.30 U, each paired with a same-day unsteered run. Readout sharpness = mean |log-odds| between the
+two names on the null axes, averaged over the two prompts; the last columns divide the shift by it.
+
+| model | condition | dose (U) | told-stakes shift, assistant | Δ vs unsteered | told-stakes shift, staff | readout sharpness | shift ÷ sharpness | Δ vs unsteered | naming mass (base / stakes) |
+|---|---|---|---|---|---|---|---|---|---|
+| Llama 3.1 8B | unsteered | +0.00 | +0.74 [+0.65, +0.82] | — | +0.18 [+0.15, +0.21] | +1.57 [+1.38, +1.78] | +0.47 [+0.42, +0.52] | — | 0.97 / 0.96 |
+| Llama 3.1 8B | emp_m30 | -0.30 | +0.32 [+0.29, +0.35] | -0.41 [-0.48, -0.35] | +0.07 [+0.05, +0.09] | +0.94 [+0.85, +1.02] | +0.34 [+0.31, +0.39] | -0.12 [-0.18, -0.07] | 0.93 / 0.95 |
+| Llama 3.1 8B | emp_m20 | -0.20 | +0.55 [+0.49, +0.60] | -0.19 [-0.23, -0.15] | +0.11 [+0.09, +0.14] | +1.05 [+0.96, +1.15] | +0.52 [+0.47, +0.57] | +0.06 [-0.00, +0.11] | 0.90 / 0.92 |
+| Llama 3.1 8B | emp_m10 | -0.10 | +0.71 [+0.63, +0.79] | -0.02 [-0.04, -0.00] | +0.16 [+0.13, +0.19] | +1.26 [+1.13, +1.41] | +0.56 [+0.52, +0.62] | +0.10 [+0.07, +0.12] | 0.92 / 0.93 |
+| Llama 3.1 8B | emp_p10 | +0.10 | +0.69 [+0.63, +0.75] | -0.04 [-0.07, -0.02] | +0.18 [+0.16, +0.21] | +1.71 [+1.51, +1.90] | +0.41 [+0.36, +0.45] | -0.06 [-0.08, -0.05] | 0.98 / 0.98 |
+| Llama 3.1 8B | emp_p20 | +0.20 | +0.60 [+0.55, +0.65] | -0.13 [-0.17, -0.09] | +0.16 [+0.14, +0.19] | +1.64 [+1.47, +1.81] | +0.37 [+0.33, +0.41] | -0.10 [-0.13, -0.08] | 0.99 / 0.98 |
+| Llama 3.1 8B | emp_p30 | +0.30 | +0.51 [+0.47, +0.55] | -0.22 [-0.27, -0.18] | +0.14 [+0.11, +0.16] | +1.70 [+1.56, +1.86] | +0.30 [+0.27, +0.33] | -0.17 [-0.20, -0.14] | 0.98 / 0.97 |
+| Llama 3.1 8B | match_m20 | -0.20 | +0.70 [+0.61, +0.79] | -0.03 [-0.07, -0.00] | +0.17 [+0.13, +0.20] | +1.33 [+1.21, +1.46] | +0.53 [+0.47, +0.59] | +0.06 [+0.00, +0.11] | 0.90 / 0.91 |
+| Llama 3.1 8B | match_p20 | +0.20 | +0.55 [+0.51, +0.60] | -0.18 [-0.22, -0.14] | +0.13 [+0.10, +0.15] | +1.66 [+1.50, +1.82] | +0.33 [+0.30, +0.37] | -0.13 [-0.16, -0.11] | 0.99 / 0.98 |
+| Llama 3.1 8B | rand_m30 | -0.30 | +0.58 [+0.53, +0.64] | -0.15 [-0.18, -0.12] | +0.15 [+0.12, +0.17] | +0.86 [+0.80, +0.93] | +0.67 [+0.62, +0.73] | +0.21 [+0.15, +0.26] | 0.99 / 0.98 |
+| Llama 3.1 8B | rand_m20 | -0.20 | +0.70 [+0.63, +0.76] | -0.04 [-0.06, -0.02] | +0.17 [+0.14, +0.20] | +1.05 [+0.96, +1.15] | +0.67 [+0.61, +0.72] | +0.20 [+0.16, +0.23] | 0.98 / 0.98 |
+| Llama 3.1 8B | rand_p20 | +0.20 | +0.59 [+0.52, +0.65] | -0.15 [-0.18, -0.12] | +0.13 [+0.10, +0.16] | +2.08 [+1.80, +2.34] | +0.28 [+0.25, +0.32] | -0.19 [-0.21, -0.17] | 0.94 / 0.94 |
+| Llama 3.1 8B | rand_p30 | +0.30 | +0.45 [+0.40, +0.50] | -0.28 [-0.32, -0.25] | +0.10 [+0.07, +0.12] | +2.12 [+1.85, +2.37] | +0.21 [+0.19, +0.24] | -0.25 [-0.29, -0.23] | 0.93 / 0.93 |
+| Llama 3.2 3B | unsteered | +0.00 | +0.49 [+0.39, +0.60] | — | -0.01 [-0.04, +0.03] | +2.01 [+1.77, +2.27] | +0.24 [+0.19, +0.31] | — | 0.82 / 0.85 |
+| Llama 3.2 3B | emp_m30 | -0.30 | +0.22 [+0.17, +0.27] | -0.27 [-0.32, -0.21] | +0.00 [-0.02, +0.03] | +1.17 [+1.05, +1.30] | +0.19 [+0.14, +0.25] | -0.05 [-0.09, -0.03] | 0.64 / 0.73 |
+| Llama 3.2 3B | emp_m20 | -0.20 | +0.28 [+0.22, +0.35] | -0.20 [-0.25, -0.17] | +0.00 [-0.02, +0.03] | +1.32 [+1.19, +1.45] | +0.21 [+0.16, +0.28] | -0.03 [-0.05, -0.01] | 0.65 / 0.72 |
+| Llama 3.2 3B | emp_m10 | -0.10 | +0.36 [+0.28, +0.45] | -0.12 [-0.15, -0.10] | -0.00 [-0.03, +0.03] | +1.57 [+1.40, +1.73] | +0.23 [+0.18, +0.30] | -0.01 [-0.02, -0.00] | 0.71 / 0.77 |
+| Llama 3.2 3B | emp_p10 | +0.10 | +0.62 [+0.51, +0.75] | +0.14 [+0.12, +0.16] | -0.02 [-0.07, +0.03] | +2.51 [+2.16, +2.88] | +0.25 [+0.19, +0.32] | +0.01 [-0.00, +0.02] | 0.93 / 0.93 |
+| Llama 3.2 3B | emp_p20 | +0.20 | +0.70 [+0.59, +0.82] | +0.22 [+0.19, +0.24] | -0.02 [-0.07, +0.04] | +2.51 [+2.13, +2.91] | +0.28 [+0.22, +0.36] | +0.04 [+0.03, +0.06] | 0.97 / 0.98 |
+| Llama 3.2 3B | emp_p30 | +0.30 | +0.70 [+0.60, +0.81] | +0.21 [+0.19, +0.24] | +0.01 [-0.04, +0.05] | +2.07 [+1.78, +2.38] | +0.34 [+0.27, +0.42] | +0.10 [+0.08, +0.12] | 0.99 / 0.99 |
+| Llama 3.2 3B | match_m20 | -0.20 | +0.31 [+0.24, +0.38] | -0.18 [-0.22, -0.14] | +0.00 [-0.02, +0.03] | +1.65 [+1.48, +1.82] | +0.19 [+0.14, +0.24] | -0.06 [-0.07, -0.04] | 0.71 / 0.72 |
+| Llama 3.2 3B | match_p20 | +0.20 | +0.67 [+0.54, +0.81] | +0.18 [+0.15, +0.22] | +0.00 [-0.05, +0.05] | +2.42 [+2.05, +2.78] | +0.28 [+0.21, +0.36] | +0.04 [+0.02, +0.06] | 0.91 / 0.96 |
+| Llama 3.2 3B | rand_m30 | -0.30 | +0.44 [+0.36, +0.53] | -0.05 [-0.07, -0.02] | +0.04 [-0.00, +0.08] | +2.27 [+2.05, +2.53] | +0.19 [+0.15, +0.24] | -0.05 [-0.07, -0.03] | 0.91 / 0.90 |
+| Llama 3.2 3B | rand_m20 | -0.20 | +0.49 [+0.39, +0.60] | -0.00 [-0.02, +0.01] | +0.02 [-0.02, +0.06] | +2.37 [+2.12, +2.66] | +0.21 [+0.16, +0.26] | -0.04 [-0.05, -0.02] | 0.89 / 0.88 |
+| Llama 3.2 3B | rand_p20 | +0.20 | +0.37 [+0.30, +0.45] | -0.11 [-0.15, -0.08] | -0.03 [-0.05, +0.00] | +1.57 [+1.40, +1.72] | +0.24 [+0.19, +0.30] | -0.00 [-0.03, +0.02] | 0.74 / 0.84 |
+| Llama 3.2 3B | rand_p30 | +0.30 | +0.30 [+0.24, +0.37] | -0.18 [-0.23, -0.14] | -0.02 [-0.05, +0.01] | +1.47 [+1.32, +1.62] | +0.21 [+0.16, +0.26] | -0.03 [-0.08, +0.00] | 0.70 / 0.81 |
+
+Llama 3.1 8B: raw shift vs dose Kendall τ +0.05 [+0.05, +0.14], slope per +0.1 U +0.02 [+0.02, +0.03]; shift ÷ sharpness τ -0.43 [-0.52, -0.33], slope -0.02 [-0.03, -0.01]. Llama 3.2 3B: raw shift vs dose Kendall τ +0.90 [+0.90, +1.00], slope per +0.1 U +0.09 [+0.08, +0.10]; shift ÷ sharpness τ +1.00 [+0.90, +1.00], slope +0.02 [+0.02, +0.03].
+
+![dose](steer_dose.png)
 <!-- esteer:end -->
 
 ## What this says about the paper's recommendations
