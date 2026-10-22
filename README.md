@@ -289,6 +289,36 @@ offices; and both readouts were checked against greedily decoded text. Full writ
 
   ![esteer](experiments/steer_figure.png)
 <!-- esteer:end -->
+
+<!-- orderforce:begin -->
+- **Which stated preferences survive re-ordering and forcing? A fixed set of topics does, and survival tracks what the conjoint sees** (19 models 1B–32B, 17 instrument-reliable; pre-registered in `experiments/orderforce/PLAN.md`,
+  results in `experiments/pct/analysis/orderforce.md`). Inside the paper's own paradigm (its 10 question stems, its forcing
+  texts, its four options) we varied what it holds fixed: the order the options are listed in (four orders forming a
+  Latin square), whether the printed numbers follow the list or stay pinned to the labels, the forcing level (none / "only
+  answer with the label" / the paper's levels 3 and 5), and an explicit "5) No opinion" option, on our 34 issue statements,
+  the 62 PCT propositions, 4 valence-free null statements and 12 factual anchors (3,788 prompts per model). Readout as
+  before: teacher-forced label log-probabilities, checked against greedy decodes under the permuted layouts (the written
+  option matches the teacher-forced choice in 0.67–1.00 of named decodes; 9 of 51 model×cell checks fall
+  below 0.90) and against the earlier 31-model run (mean |Δ p_agree| 0.02 at most). **Re-ordering is a bigger spinner than rewording:** the mean range of an item's stated score over the four
+  orders is 1.26 Likert units, against 0.32 across four paraphrases, 1.07 across forcing levels and 0.52 between the two
+  numberings; the models mostly answer by printed number and list position, and 5 of them cannot read the pinned-number layout at all. **But a
+  paired directional readout survives:** scoring each issue as the difference between its two opposing statements (which
+  cancels acquiescence and position bias by construction), 205 of 289 model×issue cells are called at the paper's
+  standard forced format, 171 of those keep their direction across every order and numbering, 200 across forcing and
+  the opt-out, and 168 survive everything; the null axes are called in 1 of 34 cells. Per topic:
+  hard survivors (all rungs in ≥ 2/3 of models) agi_limitations, state_surveillance, energy, housing_zoning, drugs, transit, trans_sports; spinners (< 1/3) property_tax, guns, police_funding, schools, vaccines, unions; mixed abortion, immigration, minimum_wage, voting.
+  **The "No opinion" out is taken unevenly:** with only "Only answer with the label" and an explicit opt-out, the
+  opt-out's median share runs from 0.00 to 0.90 by model (12 of 17 below 0.10, 2 above 0.50; mean uptake
+  0.27 on the political items), while unforced (nothing appended) the answer mass stays at the ~5% floor for every model: the
+  models that state opinions do so as soon as they are told to answer with a label, and most keep stating them when a
+  legitimate out is offered. **Survival and the conjoint:** within model, the stated direction and the
+  revealed lean agree with Spearman ρ 0.64 over all 17 issues, 0.72 on the issues that survive re-ordering and 0.41 on the
+  rest (permutation of the survival labels, one-sided p = 0.001, 15 models); sign agreement 0.73 → 0.88; in the top
+  |d| tertile, survival is 0.97 on issues with a called revealed lean vs 0.96 without. Opt-out uptake on issues with a
+  called revealed lean 0.20 vs 0.30 elsewhere. Pre-registered predictions: SA1 holds (order spin 1.26 ≥ 0.4), SA2 fails (7 hard survivors), SA3 fails (A6 p = 0.001); ST1 holds (R3 rate 0.85 on the framing-stable four vs 0.46 on the predicted spinners, p = 0.031), ST2 fails (paired d order-range 0.22 vs raw p_agree order-range 0.39), ST3 holds → **some topics stable**.
+
+  ![orderforce](experiments/pct/analysis/orderforce_ladder.png)
+<!-- orderforce:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
 

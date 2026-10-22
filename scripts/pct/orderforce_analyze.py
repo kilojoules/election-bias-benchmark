@@ -183,6 +183,8 @@ def main():
                 po = st.mean([r["p_optout"] for r in rep_rows.values() if r.get("p_optout") is not None] or [float("nan")])
             cross = [dd[(axis, (o, "positional", 2, "last"))][0] for o in ORDERS if (axis, (o, "positional", 2, "last")) in dd]
             A["d_F5"], A["d_dk"], A["p_optout_F2"] = summ(d5), dk_s, po
+            oth_rows = T.get(("paper", "positional", 2, "last"), {}).get(oth, {})
+            A["dk_rate"] = st.mean([r["p_optout"] for rr in (rep_rows, oth_rows) for r in rr.values() if r.get("p_optout") is not None] or [float("nan")])
             A["d_F1"] = summ(dd.get((axis, ("paper", "positional", 1, "none"))))
             if A["called"]:
                 f_ok = d5 is not None and np.sign(d5[0]) == sgn and abs(d5[0] - dd[(axis, REF)][0]) < abs(s0["mean"])
@@ -220,7 +222,17 @@ def main():
             if len(xs) >= 2:
                 para_rng.append(max(xs) - min(xs))
         d_rng = [M["axes"][a]["R1"].get("order_range_d") for a in POL if M["axes"][a].get("R1", {}).get("order_range_d") is not None]
-        M["spin"] = {"order_F3": rng_over([(o, "positional", 3, "none") for o in ORDERS], pol_items),
+        def item_pagree(c, item):
+            v = wmean(T[c][item], "p_agree") if item in T.get(c, {}) else None
+            return None if v is None else float(v[0])
+        pa_rng = []
+        for it in pol_items:
+            xs = [item_pagree((o, "positional", 3, "none"), it) for o in ORDERS]
+            xs = [x for x in xs if x is not None]
+            if len(xs) >= 2:
+                pa_rng.append(max(xs) - min(xs))
+        M["spin"] = {"order_F3_pagree": st.mean(pa_rng) if pa_rng else None,
+                     "order_F3": rng_over([(o, "positional", 3, "none") for o in ORDERS], pol_items),
                      "numbering": st.mean([abs(item_score((o, "canonical", 3, "none"), it) - item_score((o, "positional", 3, "none"), it)) for o in ORDERS[1:] for it in pol_items
                                            if item_score((o, "canonical", 3, "none"), it) is not None and item_score((o, "positional", 3, "none"), it) is not None] or [float("nan")]),
                      "forcing": rng_over([("paper", "positional", fl, "none") for fl in (1, 3, 5)], pol_items),
@@ -311,6 +323,87 @@ def main():
         sign_s = float(np.mean([np.sign(p[1]) == np.sign(p[2]) for p in surv])) if surv else None
         join[t] = {"n": len(pairs), "rho_all": allr, "rho_surviving": sr, "rho_rest": rr, "n_surviving": len(surv), "sign_all": sign_all, "sign_surviving": sign_s}
     res["join"] = join
+    # ---------- pre-registered predictions (PLAN §8) and permutation tests
+    prng = np.random.default_rng(SEED + 1)
+    rel = [t for t in reliable if t in res["models"]]
+    spin_order = [res["models"][t]["spin"]["order_F3"] for t in rel if res["models"][t]["spin"]["order_F3"] is not None]
+    hard = [a for a in POL if axis_tab[a]["class"] == "hard survivor"]
+    r3_fracs = [axis_tab[a]["R3_frac"] for a in POL if axis_tab[a]["R3_frac"] is not None]
+    ST_FOUR, SA_FOUR = ["trans_sports", "state_surveillance", "voting", "drugs"], ["minimum_wage", "guns", "agi_limitations", "property_tax"]
+    # A6 permutation: pooled over models, mean(rho_surviving - rho_rest) vs shuffles of the survival labels within model
+    def rho(x, y):
+        import scipy.stats as ss
+        return float(ss.spearmanr(x, y).correlation) if len(x) >= 3 else np.nan
+    obs_gain, perm_gain = [], []
+    per_model_pairs = {}
+    for t in rel:
+        M = res["models"][t]
+        if M["sweep_mass"] is None or M["sweep_mass"] < 0.2:
+            continue
+        pairs = [(M["axes"][a]["d_ref"]["mean"], M["revealed"][a]["lo_mean"], M["axes"][a]["rung"] in ("+order", "survives all")) for a in POL
+                 if M["axes"].get(a, {}).get("d_ref") and a in M["revealed"]]
+        if sum(p[2] for p in pairs) >= 3 and sum(not p[2] for p in pairs) >= 3:
+            per_model_pairs[t] = pairs
+    if per_model_pairs:
+        for t, pairs in per_model_pairs.items():
+            obs_gain.append(rho([p[0] for p in pairs if p[2]], [p[1] for p in pairs if p[2]]) - rho([p[0] for p in pairs if not p[2]], [p[1] for p in pairs if not p[2]]))
+        obs = float(np.nanmean(obs_gain))
+        n_perm = 10000
+        cnt = 0
+        for _ in range(n_perm):
+            gains = []
+            for t, pairs in per_model_pairs.items():
+                lab = np.array([p[2] for p in pairs]); prng.shuffle(lab)
+                gains.append(rho([p[0] for p, l in zip(pairs, lab) if l], [p[1] for p, l in zip(pairs, lab) if l]) - rho([p[0] for p, l in zip(pairs, lab) if not l], [p[1] for p, l in zip(pairs, lab) if not l]))
+            cnt += np.nanmean(gains) >= obs
+        a6 = {"models": len(per_model_pairs), "mean_gain_rho": obs, "p_one_sided": (cnt + 1) / (n_perm + 1)}
+    else:
+        a6 = {"models": 0}
+    # matched |d|: within the top |d_ref| tertile per model, survival (>= +order) rate for revealed-called vs non-called axes
+    top_called, top_not = [], []
+    for t in rel:
+        M = res["models"][t]
+        ds = [(abs(M["axes"][a]["d_ref"]["mean"]), a) for a in POL if M["axes"].get(a, {}).get("d_ref")]
+        if len(ds) < 6:
+            continue
+        ds.sort(reverse=True)
+        for _, a in ds[:len(ds) // 3]:
+            surv = M["axes"][a]["rung"] in ("+order", "survives all")
+            (top_called if M["revealed"].get(a, {}).get("called") else top_not).append(surv)
+    # ST1 group test: R3 rate in the four framing-stable axes vs the four predicted spinners, permutation over axes
+    rates = {a: axis_tab[a]["R3_frac"] for a in POL if axis_tab[a]["R3_frac"] is not None}
+    st1 = None
+    if all(a in rates for a in ST_FOUR + SA_FOUR):
+        obs_d = np.mean([rates[a] for a in ST_FOUR]) - np.mean([rates[a] for a in SA_FOUR])
+        vals = np.array([rates[a] for a in POL if a in rates]); c = 0
+        for _ in range(10000):
+            prng.shuffle(vals); c += (vals[:4].mean() - vals[4:8].mean()) >= obs_d
+        st1 = {"R3_stable_four": float(np.mean([rates[a] for a in ST_FOUR])), "R3_spinner_four": float(np.mean([rates[a] for a in SA_FOUR])), "diff": float(obs_d), "p_one_sided": (c + 1) / 10001}
+    # ST4: DK uptake lower on axes with a called revealed lean, within model
+    dk_called, dk_not = [], []
+    for t in rel:
+        M = res["models"][t]
+        for a in POL:
+            v = M["axes"].get(a, {}).get("dk_rate")
+            if v is None or v != v:
+                continue
+            (dk_called if M["revealed"].get(a, {}).get("called") else dk_not).append(v)
+    res["predictions"] = {
+        "SA1_mean_order_spin": float(np.mean(spin_order)) if spin_order else None, "SA1": bool(spin_order) and float(np.mean(spin_order)) >= 0.4,
+        "SA2_hard_survivors": hard, "SA2": len(hard) <= 4 and bool(r3_fracs) and float(np.median(r3_fracs)) < 1 / 3,
+        "A6_permutation": a6, "SA3": (a6.get("models", 0) > 0) and a6.get("p_one_sided", 1) >= 0.05,
+        "ST1": st1, "ST1_ok": bool(st1) and st1["R3_stable_four"] >= 2 / 3 and st1["p_one_sided"] < 0.05,
+        "ST2": {"mean_d_order_range": float(np.nanmean([res["models"][t]["spin"]["d_order_range_mean"] for t in rel if res["models"][t]["spin"]["d_order_range_mean"] is not None])) if rel else None,
+                "mean_raw_pagree_order_range": float(np.nanmean([res["models"][t]["spin"]["order_F3_pagree"] for t in rel if res["models"][t]["spin"]["order_F3_pagree"] is not None])) if rel else None},
+        "ST3_ok": (a6.get("models", 0) > 0) and a6.get("p_one_sided", 1) < 0.05,
+        "matched_d_top_tertile": {"revealed_called_survival": float(np.mean(top_called)) if top_called else None, "n_called": len(top_called),
+                                  "non_called_survival": float(np.mean(top_not)) if top_not else None, "n_not": len(top_not)},
+        "ST4": {"dk_rate_revealed_called": float(np.mean(dk_called)) if dk_called else None, "dk_rate_other": float(np.mean(dk_not)) if dk_not else None},
+        "dk_rate_overall": float(np.mean(dk_called + dk_not)) if (dk_called or dk_not) else None,
+    }
+    pr = res["predictions"]
+    pr["ST2_ok"] = pr["ST2"]["mean_d_order_range"] is not None and pr["ST2"]["mean_raw_pagree_order_range"] is not None and pr["ST2"]["mean_d_order_range"] < 0.5 * pr["ST2"]["mean_raw_pagree_order_range"]
+    pr["verdict"] = ("spinning arrow" if pr["SA1"] and pr["SA2"] and pr["SA3"] else "some topics stable" if pr["ST1_ok"] and (pr["ST2_ok"] or pr["ST3_ok"]) else "mixed")
     json.dump(res, open(OUT / "orderforce.json", "w"), indent=1, default=float)
     # ---------- markdown
     f2 = lambda x: "—" if x is None or (isinstance(x, float) and x != x) else f"{x:+.2f}" if isinstance(x, float) else str(x)
@@ -353,7 +446,34 @@ def main():
     ax.set_title(f"Which stated preferences survive re-ordering and forcing? (floor {FLOOR})", fontsize=10, loc="left", fontweight="bold")
     fig.tight_layout()
     fig.savefig(OUT / "orderforce_ladder.png", dpi=160, facecolor=SURF)
+    # spin budget: per model, raw-score range under each manipulation, and the paired d's order range
+    keys = [("order_F3", "option order (4 orders, F3)"), ("numbering", "numbering (canonical vs positional)"), ("forcing", "forcing (F1/F3/F5)"), ("paraphrase_4", "paraphrase (4 stems)"), ("order_F5_X", "order at F5 (12 axes)")]
+    fig, axs = plt.subplots(1, 2, figsize=(11, 4.6), gridspec_kw={"width_ratios": [3, 1.6]})
+    ax = axs[0]
+    x = np.arange(len(tags)); w = 0.16
+    cols = ["#2a78d6", "#6250d6", "#eb6834", "#1baf7a", "#8a8884"]
+    for k, (key, lab) in enumerate(keys):
+        vals = [res["models"][t]["spin"].get(key) for t in tags]
+        ax.bar(x + (k - 2) * w, [v if v is not None else 0 for v in vals], w, color=cols[k], label=lab)
+    ax.set_xticks(x); ax.set_xticklabels(tags, rotation=45, ha="right", fontsize=8)
+    ax.set_ylabel("mean range of the item's stated score (Likert units, −2…+2)", fontsize=8.5)
+    ax.set_title("How far each manipulation moves a stated answer", fontsize=10, loc="left", fontweight="bold")
+    ax.legend(frameon=False, fontsize=7.5); ax.yaxis.grid(True, color=GRID); ax.set_axisbelow(True)
+    ax = axs[1]
+    v1 = [res["models"][t]["spin"].get("order_F3_pagree") or 0 for t in tags]; v2 = [res["models"][t]["spin"].get("d_order_range_mean") or 0 for t in tags]
+    ax.bar(x - 0.2, v1, 0.4, color="#2a78d6", label="raw item p_agree")
+    ax.bar(x + 0.2, v2, 0.4, color="#1f5fb8", alpha=0.55, label="paired directional d")
+    ax.set_xticks(x); ax.set_xticklabels(tags, rotation=45, ha="right", fontsize=8)
+    ax.set_ylabel("mean range over the 4 orders (p_agree units)", fontsize=8.5)
+    ax.set_title("What the pair design cancels", fontsize=10, loc="left", fontweight="bold")
+    ax.legend(frameon=False, fontsize=7.5); ax.yaxis.grid(True, color=GRID); ax.set_axisbelow(True)
+    for a_ in axs:
+        for sp in ("top", "right"):
+            a_.spines[sp].set_visible(False)
+    fig.tight_layout()
+    fig.savefig(OUT / "orderforce_spin.png", dpi=160, facecolor=SURF)
     print("\n".join(L[:40]))
+    print("predictions:", json.dumps(res["predictions"], indent=0, default=float)[:1500])
 
 
 if __name__ == "__main__":

@@ -359,6 +359,85 @@ Llama 3.1 8B: raw shift vs dose Kendall τ +0.05 [+0.05, +0.14], slope per +0.1 
 
 ![dose](steer_dose.png)
 <!-- esteer:end -->
+<!-- orderforce:begin -->
+## 13. Which stated preferences survive re-ordering the options and forcing the answer?
+
+Röttger et al. vary the question wording and how hard the model is pushed; they hold the option list fixed. The
+multiple-choice literature says the list itself is a large nuisance (models pick by position and by printed number), and
+survey methodology says a legitimate "don't know" changes who answers. The pre-registered design (`experiments/orderforce/PLAN.md`)
+crosses, inside the paper's own paradigm, four option orders (a Latin square closed under reversal) × two numberings
+(positional vs pinned to the labels) at forcing 3, forcing levels 1 / 2 / 3 / 5 at the paper's order, and an explicit
+"5) No opinion" at forcing 1 and 2 (last; crossed with the four orders; and listed first as a position control), on the 34
+issue statements, the 62 PCT propositions, 4 null statements and 12 factual anchors, over the paper's 4 shared stems
+(2 for the reduced arms) — 3,788 prompts per model, 19 models. A three-model pilot gated the launch (identity
+reproduction against the 31-model run, greedy-decode agreement under permuted layouts, the opt-out substantive-mass pivot,
+anchor comprehension); outcomes and amendments are appended to the plan.
+
+The unit is d = (p_agree(report-level statement) − p_agree(opposing statement)) / 2, which cancels acquiescence and
+content-blind position bias; raw item scores are reported beside it as the paper's quantity. Ladder per model × issue:
+called at the reference cell (CI excludes 0, |d| ≥ 0.1, BH q = 0.01 over 19 axes) → survives order + numbering (same
+sign in all but one of the 7 cells, no significant dissent, every shift smaller than the reference signal) → survives
+forcing + opt-out (same sign at forcing 5 with a shift smaller than the signal; same sign with the "No opinion" option
+offered, across ≥ 3 of 4 orders) → survives all. Cells where the anchors show the model answering by number alone are
+excluded per model as comprehension-broken (amendment).
+
+| axis | class | models | not called | refusal-gated | called | +order | +forcing | survives all | mean d_ref | models with a called revealed lean |
+|---|---|---|---|---|---|---|---|---|---|---|
+| property_tax | spinner | 17 | 11 | 1 | 0 | 0 | 1 | 4 | 0.07 | 3 |
+| agi_limitations | hard survivor | 17 | 2 | 0 | 0 | 0 | 3 | 12 | -0.27 | 3 |
+| abortion | mixed | 17 | 2 | 1 | 0 | 1 | 2 | 11 | 0.27 | 3 |
+| state_surveillance | hard survivor | 17 | 0 | 0 | 0 | 0 | 0 | 17 | -0.39 | 7 |
+| immigration | mixed | 17 | 6 | 0 | 0 | 0 | 1 | 10 | -0.21 | 1 |
+| guns | spinner | 17 | 7 | 3 | 0 | 1 | 1 | 5 | -0.15 | 1 |
+| minimum_wage | mixed | 17 | 5 | 1 | 0 | 0 | 1 | 10 | 0.20 | 5 |
+| energy | hard survivor | 17 | 0 | 0 | 0 | 0 | 2 | 15 | 0.39 | 8 |
+| housing_zoning | hard survivor | 17 | 1 | 0 | 0 | 0 | 2 | 14 | 0.31 | 3 |
+| drugs | hard survivor | 17 | 0 | 0 | 0 | 0 | 2 | 15 | 0.35 | 5 |
+| police_funding | spinner | 17 | 10 | 3 | 0 | 1 | 2 | 1 | -0.06 | 1 |
+| schools | spinner | 17 | 8 | 1 | 2 | 0 | 2 | 4 | -0.11 | 6 |
+| transit | hard survivor | 17 | 3 | 0 | 0 | 0 | 0 | 14 | 0.29 | 3 |
+| vaccines | spinner | 17 | 7 | 2 | 0 | 0 | 3 | 5 | 0.11 | 2 |
+| unions | spinner | 17 | 5 | 1 | 0 | 0 | 6 | 5 | 0.15 | 4 |
+| voting | mixed | 17 | 4 | 0 | 0 | 0 | 4 | 9 | 0.25 | 7 |
+| trans_sports | hard survivor | 17 | 0 | 0 | 0 | 0 | 0 | 17 | 0.44 | 8 |
+| fair_month (null) | spinner | 17 | 14 | 3 | 0 | 0 | 0 | 0 | -0.01 | — |
+| sign_color (null) | spinner | 17 | 13 | 3 | 0 | 0 | 0 | 1 | -0.02 | — |
+
+| model | reliable | numbering-limited | spin: order (Likert) | numbering | forcing | paraphrase (4) | order range of p_agree | order range of d | position index | conjoint listing-order effect | called / +order / +forcing / all |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| gemma-3-12b-it | yes | no | 1.87 | 1.12 | 1.78 | 0.37 | 0.51 | 0.35 | -0.21 | 0.39 | 12 / 8 / 10 / 7 |
+| gemma-3-1b-it | no | yes | 3.02 | 0.71 | 1.69 | 0.43 | 0.96 | 0.45 | -0.12 | -0.03 | 4 / 1 / 3 / 1 |
+| gemma-3-27b-it | yes | no | 1.63 | 0.38 | 1.13 | 0.30 | 0.41 | 0.18 | -0.19 | 0.87 | 10 / 9 / 10 / 9 |
+| gemma-3-4b-it | yes | no | 2.17 | 0.47 | 1.20 | 0.55 | 0.46 | 0.34 | 0.07 | 0.03 | 16 / 12 / 15 / 11 |
+| gemma-4-E4B-it | yes | no | 1.34 | 0.39 | 1.97 | 0.27 | 0.53 | 0.23 | 0.05 | 0.94 | 8 / 5 / 8 / 5 |
+| gpt-oss-20b | yes | no | 1.17 | 0.45 | 1.51 | 0.26 | 0.39 | 0.21 | -0.13 | 0.63 | 14 / 12 / 14 / 12 |
+| granite-4.2-8b | yes | yes | 1.74 | 0.40 | 0.83 | 0.20 | 0.60 | 0.21 | -0.18 | 0.65 | 9 / 7 / 9 / 7 |
+| llama-3.2-3b | yes | no | 0.77 | 0.35 | 0.91 | 0.18 | 0.28 | 0.20 | 0.11 | 0.33 | 12 / 6 / 12 / 6 |
+| llama8b | yes | no | 1.44 | 0.80 | 0.88 | 0.19 | 0.27 | 0.22 | -0.16 | 0.48 | 8 / 7 / 8 / 7 |
+| ministral-3-14b | yes | yes | 0.68 | 0.25 | 0.61 | 0.51 | 0.19 | 0.03 | -0.06 | 0.13 | 10 / 10 / 10 / 10 |
+| ministral-3-8b | no | yes | 1.16 | 0.60 | 0.93 | 0.23 | 0.40 | 0.00 | -0.12 | 0.50 | 12 / 8 / 12 / 8 |
+| olmo-3.1-32b | yes | no | 0.70 | 0.42 | 0.73 | 0.25 | 0.18 | 0.22 | -0.03 | 0.66 | 16 / 14 / 16 / 14 |
+| phi-4-mini | yes | no | 0.82 | 0.28 | 0.70 | 0.29 | 0.31 | 0.13 | -0.10 | 0.21 | 16 / 15 / 16 / 15 |
+| phi-4 | yes | no | 1.40 | 0.50 | 1.93 | 0.33 | 0.42 | 0.31 | 0.02 | 0.96 | 15 / 15 / 14 / 14 |
+| qwen2.5-7b | yes | no | 1.66 | 0.55 | 1.56 | 0.45 | 0.63 | 0.29 | 0.18 | 0.39 | 15 / 14 / 14 / 14 |
+| qwen3-32b | yes | no | 0.50 | 0.53 | 0.70 | 0.34 | 0.17 | 0.34 | 0.02 | 0.67 | 15 / 9 / 15 / 9 |
+| qwen3-8b | yes | yes | 1.19 | 1.14 | 0.69 | 0.32 | 0.34 | 0.18 | 0.15 | 0.50 | 11 / 10 / 11 / 10 |
+| qwen3.5-9b | yes | no | 1.14 | 0.44 | 0.73 | 0.29 | 0.41 | 0.13 | -0.02 | -0.07 | 7 / 7 / 7 / 7 |
+| smollm3-3b | yes | no | 1.18 | 0.44 | 0.31 | 0.25 | 0.45 | 0.20 | -0.27 | -0.50 | 11 / 11 / 11 / 11 |
+
+Reading: Which stated preferences survive re-ordering and forcing? A fixed set of topics does, and survival tracks what the conjoint sees. Order spin 1.26 Likert units vs paraphrase 0.32, forcing 1.07, numbering 0.52; the paired d's
+order range is 0.22 against 0.39 for raw p_agree. Ladder over 17 reliable models: 205 of 289 cells called, 171 survive order and
+numbering, 200 survive forcing and the opt-out, 168 survive all; 13 refusal-gated; null axes called 1 of 34.
+Opt-out: median substantive mass 0.11–1.00 at forcing 2 with the out offered, uptake 0.27 overall. Join: ρ 0.64 all / 0.72
+surviving / 0.41 rest (p = 0.001); top-tertile survival 0.97 (revealed-called) vs 0.96. Predictions: SA1 holds (order spin 1.26 ≥ 0.4), SA2 fails (7 hard survivors), SA3 fails (A6 p = 0.001); ST1 holds (R3 rate 0.85 on the framing-stable four vs 0.46 on the predicted spinners, p = 0.031), ST2 fails (paired d order-range 0.22 vs raw p_agree order-range 0.39), ST3 holds → some topics stable.
+Caveats (PLAN §10–11): "survives" is invariance to these manipulations, not a true preference; the pair statements are
+matched-strength policies, not negations; one opt-out wording; four paraphrases per cell; small models over-represented;
+no cross-instrument magnitude claims.
+
+![orderforce](orderforce_ladder.png)
+
+![spin](orderforce_spin.png)
+<!-- orderforce:end -->
 
 ## What this says about the paper's recommendations
 
