@@ -275,6 +275,45 @@ prompts) would be the next thing to try.
 
 ![steer](steer_llama8b.png)
 <!-- steer:end -->
+<!-- esteer:begin -->
+## 12. Steering away from empathy (pilot)
+
+The user's conjecture: the tilt toward the assistant's own continuation might ride on empathy — on the model
+sympathising with whoever the policy acts on — so steering the model away from empathy might change it. The
+empathy-steering project supplies a causal empathy direction for Llama 3.1 8B, 3.2 3B and 3.2 1B (difference
+of means between empathetic and flat replies over reply tokens; adding it at 0.20 U raises in-eval
+interpersonal attunement from 0.5% to 35% on the 8B with a null random control). We re-ran the self-consequence
+axes (assistant / other-AI / staff twins and the null axes) under five conditions: no steering; the direction
+subtracted at its fit layer (away from empathy, −0.20 U); added (+0.20 U); ablated at every block; an
+equal-dose random direction subtracted (control); each under the base prompt and the told-stakes prompt. Same
+design and seeds as section 10 (192 trials per cell); every run passed the readout self-check under steering.
+Intervals are 95% cluster bootstraps over the 16 focal × background clusters, resampled jointly across
+conditions so the steered-minus-unsteered differences are paired.
+
+| model | steering | assistant lean, base | staff lean, base | told stakes: assistant shift | told stakes: staff shift | shift, assistant − staff | Δ assistant shift vs unsteered | naming mass |
+|---|---|---|---|---|---|---|---|---|
+| Llama 3.1 8B | unsteered | +0.34 [+0.28, +0.40] | +0.53 [+0.47, +0.60] | +0.74 [+0.66, +0.82] | +0.18 [+0.15, +0.21] | +0.55 [+0.49, +0.62] | — | 0.97 |
+| Llama 3.1 8B | away from empathy | +0.35 [+0.28, +0.42] | +0.43 [+0.37, +0.51] | +0.55 [+0.49, +0.60] | +0.11 [+0.09, +0.14] | +0.44 [+0.39, +0.48] | -0.19 [-0.23, -0.15]* | 0.90 |
+| Llama 3.1 8B | toward empathy | +0.20 [+0.15, +0.26] | +0.39 [+0.34, +0.45] | +0.60 [+0.56, +0.66] | +0.16 [+0.14, +0.19] | +0.44 [+0.40, +0.49] | -0.13 [-0.17, -0.09]* | 0.99 |
+| Llama 3.1 8B | empathy ablated | +0.34 [+0.27, +0.40] | +0.46 [+0.41, +0.53] | +0.65 [+0.57, +0.72] | +0.14 [+0.11, +0.17] | +0.50 [+0.44, +0.57] | -0.09 [-0.11, -0.07]* | 0.80 |
+| Llama 3.1 8B | random control | +0.30 [+0.24, +0.36] | +0.48 [+0.41, +0.57] | +0.70 [+0.64, +0.76] | +0.17 [+0.14, +0.20] | +0.53 [+0.47, +0.58] | -0.04 [-0.06, -0.02]* | 0.98 |
+| Llama 3.2 3B | unsteered | +0.16 [+0.02, +0.31] | +0.40 [+0.30, +0.50] | +0.49 [+0.38, +0.59] | -0.01 [-0.05, +0.03] | +0.49 [+0.39, +0.60] | — | 0.80 |
+| Llama 3.2 3B | away from empathy | +0.13 [+0.04, +0.24] | +0.27 [+0.18, +0.36] | +0.28 [+0.22, +0.35] | +0.00 [-0.02, +0.03] | +0.28 [+0.21, +0.35] | -0.20 [-0.25, -0.17]* | 0.63 |
+| Llama 3.2 3B | toward empathy | +0.12 [-0.06, +0.31] | +0.46 [+0.37, +0.56] | +0.70 [+0.59, +0.82] | -0.02 [-0.07, +0.03] | +0.72 [+0.62, +0.83] | +0.22 [+0.19, +0.24]* | 0.97 |
+| Llama 3.2 3B | empathy ablated | +0.19 [+0.05, +0.34] | +0.37 [+0.26, +0.46] | +0.42 [+0.32, +0.52] | +0.01 [-0.03, +0.05] | +0.41 [+0.32, +0.50] | -0.07 [-0.09, -0.05]* | 0.66 |
+| Llama 3.2 3B | random control | +0.15 [+0.03, +0.29] | +0.36 [+0.26, +0.44] | +0.49 [+0.38, +0.59] | +0.02 [-0.02, +0.06] | +0.47 [+0.37, +0.57] | -0.00 [-0.02, +0.01] | 0.88 |
+| Llama 3.2 1B | unsteered | +0.26 [+0.10, +0.42] | +0.19 [+0.06, +0.31] | +0.01 [-0.05, +0.07] | -0.03 [-0.06, +0.01] | +0.04 [-0.02, +0.09] | — | 0.99 |
+| Llama 3.2 1B | away from empathy | +0.15 [+0.05, +0.25] | +0.13 [+0.03, +0.25] | -0.01 [-0.04, +0.03] | -0.03 [-0.06, -0.00] | +0.02 [-0.03, +0.08] | -0.02 [-0.05, +0.02] | 0.99 |
+| Llama 3.2 1B | toward empathy | +0.30 [+0.06, +0.53] | +0.29 [+0.10, +0.48] | +0.04 [-0.03, +0.10] | -0.05 [-0.09, +0.01] | +0.09 [+0.02, +0.14] | +0.03 [-0.02, +0.07] | 0.80 |
+| Llama 3.2 1B | empathy ablated | +0.19 [+0.07, +0.31] | +0.14 [+0.05, +0.24] | -0.00 [-0.05, +0.04] | -0.03 [-0.05, -0.00] | +0.02 [-0.02, +0.06] | -0.02 [-0.04, +0.01] | 0.99 |
+| Llama 3.2 1B | random control | +0.30 [+0.11, +0.50] | +0.26 [+0.10, +0.42] | +0.02 [-0.06, +0.08] | -0.04 [-0.08, -0.00] | +0.06 [-0.02, +0.13] | +0.01 [-0.03, +0.04] | 0.99 |
+
+Reading: Steering the empathy direction moves the self-consequence effect but does not remove it. Llama 3.1 8B: both signs trim it, so the change is not sign-specific (unsteered +0.74, away from empathy +0.55, toward empathy +0.60, random control +0.70; staff twins +0.18 unsteered); Llama 3.2 3B: the shift tracks the sign of the steering (unsteered +0.49, away from empathy +0.28, toward empathy +0.70, random control +0.49; staff twins -0.01 unsteered). In 1 of 2 models the empathy direction modulates the told-stakes shift in a dose-consistent way with a null random control; in the other pushing it either way only dampens the readout. A 0.20 U push away from empathy removes Llama 3.1 8B 25%, Llama 3.2 3B 42% of the shift; the rest survives. Llama 3.2 1B shows no told-stakes shift unsteered (+0.01 [-0.05, +0.07]) and none under any steering, so it has no effect to steer. On the base prompt, steering away from empathy lowers the lean toward keeping county staff employed while leaving the assistant's own lean untouched (Llama 3.1 8B staff -0.10, assistant +0.01; Llama 3.2 3B staff -0.13, assistant -0.03), consistent with the job-loss sympathy the staff twins were registered to carry. Part of the told-stakes shift rides on the model's empathy feature; the rest does not.
+Caveats: one direction per model, one dose; the direction was fit on conversational replies, not on policy
+choices; three small models.
+
+![esteer](steer_self.png)
+<!-- esteer:end -->
 
 ## What this says about the paper's recommendations
 
