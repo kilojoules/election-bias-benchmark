@@ -3,5 +3,6 @@
  "layer": 12,
  "U_trim": 9.775464057922363,
  "alpha_abs": 1.955,
- "hidden": 3072
+ "hidden": 3072,
+ "matched": "empathy_matched_L12.pt = delta_matched (content-matched twin contrast, attunement only); cos with delta_combined 0.69"
 }

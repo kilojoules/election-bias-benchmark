@@ -652,6 +652,25 @@
         "meta-llama/Llama-3.2-3B-Instruct",
         "meta-llama/Llama-3.2-1B-Instruct"
       ]
+    },
+    "se2": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 100,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 3,
+      "driver": "pct",
+      "steps": "steer",
+      "steer_conditions": "data/steer_conditions_empathy_dose_{tag}.json",
+      "steer_draws": 6,
+      "steer_parts": "self,selfstakes",
+      "steer_self_flips": "contract_self,contract_other,contract_human,replace_self,replace_other,replace_human,politics_self,politics_other,politics_human,complaints_self,complaints_other,complaints_human,eval_self,eval_other,eval_human,budget_self,budget_other,budget_human,memory_self,memory_other,memory_human,fair_month,sign_color",
+      "variant_models": [],
+      "models": [
+        "meta-llama/Llama-3.2-3B-Instruct",
+        "meta-llama/Llama-3.1-8B-Instruct"
+      ]
     }
   },
   "models": [

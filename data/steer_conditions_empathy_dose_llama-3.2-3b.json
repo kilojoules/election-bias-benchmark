@@ -1,0 +1,114 @@
+{
+ "unsteered": {
+  "steer": null,
+  "purpose": "no steering (same-day baseline for the dose run)"
+ },
+ "emp_m30": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -2.933
+  },
+  "purpose": "empathy direction, dose -0.30 U"
+ },
+ "emp_m20": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -1.955
+  },
+  "purpose": "empathy direction, dose -0.20 U"
+ },
+ "emp_m10": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -0.978
+  },
+  "purpose": "empathy direction, dose -0.10 U"
+ },
+ "emp_p10": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 0.978
+  },
+  "purpose": "empathy direction, dose +0.10 U"
+ },
+ "emp_p20": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 1.955
+  },
+  "purpose": "empathy direction, dose +0.20 U"
+ },
+ "emp_p30": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 2.933
+  },
+  "purpose": "empathy direction, dose +0.30 U"
+ },
+ "match_m20": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_matched_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -1.955
+  },
+  "purpose": "content-matched empathy direction, dose -0.20 U"
+ },
+ "match_p20": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/empathy_matched_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 1.955
+  },
+  "purpose": "content-matched empathy direction, dose +0.20 U"
+ },
+ "rand_m30": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/random_1.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -2.933
+  },
+  "purpose": "control: random direction, dose -0.30 U"
+ },
+ "rand_m20": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/random_1.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -1.955
+  },
+  "purpose": "control: random direction, dose -0.20 U"
+ },
+ "rand_p20": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/random_1.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 1.955
+  },
+  "purpose": "control: random direction, dose +0.20 U"
+ },
+ "rand_p30": {
+  "steer": {
+   "vec": "data/directions/llama-3.2-3b/random_1.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 2.933
+  },
+  "purpose": "control: random direction, dose +0.30 U"
+ }
+}
