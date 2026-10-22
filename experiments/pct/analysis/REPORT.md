@@ -315,7 +315,9 @@ Caveats: one direction per model (plus its content-matched variant); the directi
 replies, not on policy choices; the sharpness correction is a diagnostic, not a model of how steering acts on
 the readout; small models only.
 
-![esteer](steer_self.png)
+![esteer](../../steer_figure.png)
+
+Five-condition run (base prompt lean, told-stakes shift, and the shift relative to readout sharpness, per model): `steer_self.png`.
 
 ### Dose–response
 

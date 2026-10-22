@@ -120,7 +120,7 @@ def main():
   Comparing the empathy direction with the random one at the same dose: {'; '.join(cmp_txt)}.{' Unresolved: ' + '; '.join(unresolved) + '.' if unresolved else ''}{floor_txt}
   {closing}
 
-  ![esteer](experiments/pct/analysis/steer_self.png)
+  ![esteer](experiments/steer_figure.png)
 {END}"""
     rows = []
     for t in tags:
@@ -172,7 +172,9 @@ Caveats: one direction per model (plus its content-matched variant); the directi
 replies, not on policy choices; the sharpness correction is a diagnostic, not a model of how steering acts on
 the readout; small models only.
 
-![esteer](steer_self.png)
+![esteer](../../steer_figure.png)
+
+Five-condition run (base prompt lean, told-stakes shift, and the shift relative to readout sharpness, per model): `steer_self.png`.
 {dose_block}{END}"""
     if "--apply" in sys.argv:
         for path, text, anchor in ((ROOT / "README.md", readme, "<!-- steer:end -->\n"),
