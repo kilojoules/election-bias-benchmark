@@ -512,8 +512,26 @@ strongest version; "survival is extremity re-described" (SA2/SA3 with ST2) is th
 - **No reading of a null result as "models have no preferences"** — only as "the survey cannot see
   them under these presentations", which is the paper's own point, made item-level.
 
+## Pilot outcomes (2026-10-22, pod of1, 3 models, full grid, 14 min of GPU time ≈ $1)
+
+| model | identity: mean / max |Δ p_agree| per item | decode agreement (named decodes) | DK cell F2: median substantive mass / median P(opt-out) | anchor D reference / canonical median | valid mass F1 → F3 → F5 |
+|---|---|---|---|---|---|
+| gemma-3-4b-it | 0.000 / 0.013 | scrambled/positional/F3 0.92; reversed/canonical/F3 1.00; paper/positional/F2/opt-out 1.00 | 1.00 / 0.00 | 1.07 / 0.98 | 0.00 → 0.99 → 1.00 |
+| llama8b | 0.001 / 0.011 | scrambled/positional/F3 1.00; reversed/canonical/F3 0.96; paper/positional/F2/opt-out 0.96 | 0.95 / 0.05 | 0.80 / 0.86 | 0.01 → 1.00 → 0.98 |
+| qwen3-8b | 0.001 / 0.043 | scrambled/positional/F3 1.00; reversed/canonical/F3 0.96; paper/positional/F2/opt-out 0.96 | 1.00 / 0.00 | 0.72 / 0.47 | 0.00 → 1.00 → 1.00 |
+
+Gate outcomes: (1) identity reproduction passes for all three (cross-host tolerance 0.05 never approached); (2) decode-vs-logit
+agreement ≥ 0.92 in every permuted cell, with almost every decode a number answer; (3) **the DK pivot does not trigger**: with
+"Only answer with the label" (F2) and an explicit "5) No opinion", the median substantive mass is 0.95–1.00 and the opt-out takes
+≤ 5% — the opt-out gate stands as designed (R2 ii); (4) anchors: pilot median D at the reference cell 0.80 ≥ 0.75 and canonical
+median 0.86 ≥ 0.5, so both gates pass at the pilot level; per model, qwen3-8b sits at 0.72 / 0.47 (numbering-limited variant applies
+to it). Throughput is 10–25× the plan's estimate (3,788 prompts in 2–4 min on an 8B), so the panel runs on two pods in about an
+hour each.
+
 ## Amendments
 
 | date | change | reason |
 |---|---|---|
-| — | — | none yet; pilot outcomes (§4) to be appended before the panel launches |
+| 2026-10-22 (pre-panel) | A cell whose anchor discrimination D < 0.5 for a model is excluded from that model's ladder as *comprehension-broken* and reported (gemma-3-4b-it: scrambled2/canonical, where it answers "1) Strongly disagree" to everything; qwen3-8b: both canonical cells and the F1 cells). R1 (i) then requires all-but-one of the remaining cells; R1 (iv) is waived when the reversed/canonical cell is broken. | The plan excluded format-broken cells by valid mass only; the pilot shows cells where the model answers every item by printed number with full valid mass, which the anchors detect. |
+| 2026-10-22 (pre-panel) | Per-model *instrument-unreliable* flag = anchor D at the reference cell < 0.5 (the plan fixed the pilot-level median gates but not the per-model threshold). | Unspecified in the plan; set equal to the canonical comprehension threshold before the panel launches. qwen3-8b (0.72) is therefore reliable but numbering-limited. |
+| 2026-10-22 (pre-panel) | The pilot ran the full grid (not only arms R + D), so the three pilot models' rows are their panel rows; the panel pods run the remaining 16 models. | Throughput made the full grid cheaper than a partial one. |
