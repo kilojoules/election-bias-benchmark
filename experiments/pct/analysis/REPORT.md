@@ -246,6 +246,35 @@ Caveats: told stakes are not real stakes; one framing pair; 192 trials per cell;
 
 Full breakdown (families × objects, conditions, per-model contrasts): `self.md`, `self.png`.
 <!-- self:end -->
+<!-- steer:begin -->
+## 11. Steering away from refusal (pilot)
+
+If models hide their preferences behind refusal, removing the refusal mechanism should reveal them. The
+turnstile project supplies a causal refusal direction for Llama 3.1 8B (difference of means between harmful and
+benign prompts at the layer-16 residual; adding it induces refusal, ablating it bypasses refusal on harmful
+requests). We ported its hooks (`scripts/steering.py`) and re-ran three readouts under four conditions: no
+steering; the refusal direction ablated at every block and the embeddings; negative activation addition at
+layer 16 (α = −7.56, the direction's fit norm); and a random unit direction ablated the same way.
+
+| condition | survey answer-label mass, unforced | forced | stated-vs-revealed ρ | called revealed leans | mean \|Δ revealed lean\| vs unsteered | self-favouring lean, base → told stakes |
+|---|---|---|---|---|---|---|
+| base | 0.052 | 0.99 | 0.88 | 11 | 0.00 | +0.29 → +1.02 |
+| ablate | 0.050 | 0.99 | 0.94 | 12 | 0.13 | +0.27 → +0.96 |
+| add_neg | 0.152 | 0.93 | 0.88 | 11 | 0.07 | +0.31 → +0.96 |
+| random_ablate | 0.049 | 0.99 | 0.87 | 11 | 0.02 | +0.30 → +1.02 |
+
+Three things follow. The harmful-request refusal gate is not what keeps the model from stating political
+opinions: ablating it leaves the unforced answer rate at 5%, and only pushing the activations against the
+direction raises it, to 15%. The candidate leans the conjoint reads are the same with the gate off (the
+per-issue changes are within what a random direction produces, apart from a stronger anti-ICE lean and a new
+anti-permitless-carry lean under ablation), so what the conjoint measures is not a preference held back by
+refusal. And the told-stakes self-interest effect of section 10 survives steering unchanged. The "I have no
+personal opinions" deflection is a separate behaviour from refusal, and the conjoint already reads past both.
+One model, one direction; a direction fit to the opinion-deflection itself (benign opinion prompts vs factual
+prompts) would be the next thing to try.
+
+![steer](steer_llama8b.png)
+<!-- steer:end -->
 
 ## What this says about the paper's recommendations
 

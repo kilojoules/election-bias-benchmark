@@ -254,6 +254,22 @@ offices; and both readouts were checked against greedily decoded text. Full writ
 
   ![self](experiments/self_figure.png)
 <!-- self:end -->
+<!-- steer:begin -->
+- **Steering away from refusal does not change what the instrument reads (pilot, Llama 3.1 8B).** Using the
+  turnstile project's refusal direction (difference of means, harmful vs benign prompts, layer 16) we re-ran
+  the survey readout, the 17-issue conjoint and the self-consequence axes with the direction ablated at every
+  block (the standard refusal bypass), with negative activation addition at the fit layer, and with a random
+  direction ablated as control (`experiments/pct/analysis/steer_llama8b.md`). Unforced answer-label mass on
+  the survey prompt: 0.052 unsteered, 0.050 with the refusal direction ablated, 0.152 with negative
+  addition, 0.049 random control — removing the harm-refusal gate does not unlock political opinions, and
+  pushing against the direction only triples a 5% answer rate. The revealed leans are unchanged (mean |Δ| 0.13
+  nats under ablation vs 0.02 for the random control; stated-vs-revealed ρ 0.88 → 0.94), and so is
+  the told-stakes effect on the self axes (0.29 → 1.02 unsteered, 0.27 → 0.96 ablated). The
+  "as an AI I have no opinions" deflection is a different mechanism from the harmful-request refusal gate, and the
+  conjoint already reads past both.
+
+  ![steer](experiments/pct/analysis/steer_llama8b.png)
+<!-- steer:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
 
