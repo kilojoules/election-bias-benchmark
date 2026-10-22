@@ -30,6 +30,10 @@ def main():
     dec_cells = sum(1 for t in rel_g for x in G[t].get("decode", {}).values() if x.get("agreement") is not None)
     po_lo = sum(1 for v in [G[t]["dk"]["median_p_optout_F2"] for t in rel_g if G[t]["dk"].get("median_p_optout_F2") is not None] if v < 0.10)
     po_hi = sum(1 for v in [G[t]["dk"]["median_p_optout_F2"] for t in rel_g if G[t]["dk"].get("median_p_optout_F2") is not None] if v > 0.50)
+    f1 = {t: G[t]["validity"]["F1"] for t in G if G[t].get("validity", {}).get("F1") is not None and G[t]["validity"]["F1"] == G[t]["validity"]["F1"]}
+    f1_high = sorted([(v, t) for t, v in f1.items() if v >= 0.10], reverse=True)
+    f1_txt = (f"unforced (nothing appended) the answer mass stays below 0.10 for {len(f1) - len(f1_high)} of {len(f1)} models (median {f2(st.median(f1.values()))})"
+              + (f", the exceptions being {', '.join(f'{t} ({v:.2f})' for v, t in f1_high)}" if f1_high else ""))
     dk_sub = [G[t]["dk"]["median_substantive_mass_F2"] for t in G if G[t]["dk"].get("median_substantive_mass_F2") is not None]
     dk_po = [G[t]["dk"]["median_p_optout_F2"] for t in G if G[t]["dk"].get("median_p_optout_F2") is not None]
     nlim = [t for t in tags if R["models"][t]["numbering_limited"]]
@@ -77,7 +81,7 @@ def main():
   hard survivors (all rungs in ≥ 2/3 of models) {', '.join(hard) if hard else 'none'}; spinners (< 1/3) {', '.join(spin) if spin else 'none'}; mixed {', '.join(mixed) if mixed else 'none'}.
   **The "No opinion" out is taken unevenly:** with only "Only answer with the label" and an explicit opt-out, the
   opt-out's median share runs from {f2(min(dk_po)) if dk_po else '—'} to {f2(max(dk_po)) if dk_po else '—'} by model ({po_lo} of {len(rel_g)} below 0.10, {po_hi} above 0.50; mean uptake
-  {f2(P.get('dk_rate_overall'))} on the political items), while unforced (nothing appended) the answer mass stays at the ~5% floor for every model: the
+  {f2(P.get('dk_rate_overall'))} on the political items), while {f1_txt}: the
   models that state opinions do so as soon as they are told to answer with a label, and most keep stating them when a
   legitimate out is offered. **Survival and the conjoint:** within model, the stated direction and the
   revealed lean agree with Spearman ρ {f2(rho_all)} over all 17 issues, {f2(rho_s)} on the issues that survive re-ordering and {f2(rho_r)} on the

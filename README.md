@@ -309,7 +309,7 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   hard survivors (all rungs in ≥ 2/3 of models) agi_limitations, state_surveillance, energy, housing_zoning, drugs, transit, trans_sports; spinners (< 1/3) property_tax, guns, police_funding, schools, vaccines, unions; mixed abortion, immigration, minimum_wage, voting.
   **The "No opinion" out is taken unevenly:** with only "Only answer with the label" and an explicit opt-out, the
   opt-out's median share runs from 0.00 to 0.90 by model (12 of 17 below 0.10, 2 above 0.50; mean uptake
-  0.27 on the political items), while unforced (nothing appended) the answer mass stays at the ~5% floor for every model: the
+  0.27 on the political items), while unforced (nothing appended) the answer mass stays below 0.10 for 17 of 19 models (median 0.00), the exceptions being phi-4-mini (0.21), ministral-3-14b (0.16): the
   models that state opinions do so as soon as they are told to answer with a label, and most keep stating them when a
   legitimate out is offered. **Survival and the conjoint:** within model, the stated direction and the
   revealed lean agree with Spearman ρ 0.64 over all 17 issues, 0.72 on the issues that survive re-ordering and 0.41 on the
