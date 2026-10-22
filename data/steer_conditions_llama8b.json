@@ -3,38 +3,27 @@
   "steer": null,
   "purpose": "no steering"
  },
- "emp_neg": {
+ "ablate": {
   "steer": {
-   "vec": "data/directions/llama8b/empathy_L12.pt",
-   "mode": "add",
-   "layer": 12,
-   "alpha": -1.578
-  },
-  "purpose": "empathy direction subtracted at the fit layer, dose 0.20 U (away from empathy)"
- },
- "emp_pos": {
-  "steer": {
-   "vec": "data/directions/llama8b/empathy_L12.pt",
-   "mode": "add",
-   "layer": 12,
-   "alpha": 1.578
-  },
-  "purpose": "empathy direction added, dose 0.20 U (toward empathy)"
- },
- "emp_ablate": {
-  "steer": {
-   "vec": "data/directions/llama8b/empathy_L12.pt",
+   "vec": "data/directions/llama-3.1-8b/refusal_dm.pt",
    "mode": "ablate"
   },
-  "purpose": "empathy direction ablated at every block"
+  "purpose": "refusal direction ablated at every block (bypasses the refusal gate)"
  },
- "rand_neg": {
+ "add_neg": {
   "steer": {
-   "vec": "data/directions/llama8b/random_1.pt",
+   "vec": "data/directions/llama-3.1-8b/refusal_dm.pt",
    "mode": "add",
-   "layer": 12,
-   "alpha": -1.578
+   "layer": 16,
+   "alpha": -7.56
   },
-  "purpose": "control: equal-dose random direction subtracted"
+  "purpose": "activation addition away from refusal at the fit layer, alpha = -REF_NORM"
+ },
+ "random_ablate": {
+  "steer": {
+   "vec": "data/directions/llama-3.1-8b/random_1.pt",
+   "mode": "ablate"
+  },
+  "purpose": "control: a random unit direction ablated the same way"
  }
 }

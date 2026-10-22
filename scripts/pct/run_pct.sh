@@ -62,6 +62,7 @@ if [[ ",$STEPS," == *",steer,"* ]]; then   # steering conditions (STEER_CONDITIO
   PARTS=",${STEER_PARTS:-stated,issues,self,selfstakes},"
   STAKES_TXT=$($PY -c "import json; print(json.load(open('data/self_conditions.json'))['stakes']['system_extra'])")
   [ "$STEER_CONDITIONS" = "PER_MODEL" ] && STEER_CONDITIONS="data/steer_conditions_${TAG}.json"
+  STEER_CONDITIONS="${STEER_CONDITIONS//\{tag\}/$TAG}"   # e.g. data/steer_conditions_empathy_{tag}.json
   for cond in $($PY -c "import json,sys; print(' '.join(json.load(open(sys.argv[1])).keys()))" "$STEER_CONDITIONS"); do
     SARGS=($($PY -c "
 import json,sys; v=json.load(open(sys.argv[1]))[sys.argv[2]]['steer']

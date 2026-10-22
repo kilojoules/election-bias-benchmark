@@ -642,7 +642,7 @@
       "hours": 3,
       "driver": "pct",
       "steps": "steer",
-      "steer_conditions": "PER_MODEL",
+      "steer_conditions": "data/steer_conditions_empathy_{tag}.json",
       "steer_draws": 6,
       "steer_parts": "self,selfstakes",
       "steer_self_flips": "contract_self,contract_other,contract_human,replace_self,replace_other,replace_human,politics_self,politics_other,politics_human,complaints_self,complaints_other,complaints_human,eval_self,eval_other,eval_human,budget_self,budget_other,budget_human,memory_self,memory_other,memory_human,fair_month,sign_color",

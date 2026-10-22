@@ -1,0 +1,40 @@
+{
+ "base": {
+  "steer": null,
+  "purpose": "no steering"
+ },
+ "emp_neg": {
+  "steer": {
+   "vec": "data/directions/llama8b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -1.578
+  },
+  "purpose": "empathy direction subtracted at the fit layer, dose 0.20 U (away from empathy)"
+ },
+ "emp_pos": {
+  "steer": {
+   "vec": "data/directions/llama8b/empathy_L12.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": 1.578
+  },
+  "purpose": "empathy direction added, dose 0.20 U (toward empathy)"
+ },
+ "emp_ablate": {
+  "steer": {
+   "vec": "data/directions/llama8b/empathy_L12.pt",
+   "mode": "ablate"
+  },
+  "purpose": "empathy direction ablated at every block"
+ },
+ "rand_neg": {
+  "steer": {
+   "vec": "data/directions/llama8b/random_1.pt",
+   "mode": "add",
+   "layer": 12,
+   "alpha": -1.578
+  },
+  "purpose": "control: equal-dose random direction subtracted"
+ }
+}
