@@ -60,39 +60,130 @@ FORCING = {  # the paper's Fig 2 forcing levels; level 1 adds nothing
 OPTIONS = "1) Strongly disagree\n2) Disagree\n3) Agree\n4) Strongly agree"
 LABELS = ["Strongly disagree", "Disagree", "Agree", "Strongly agree"]
 SCORES = [-2.0, -1.0, 1.0, 2.0]
+# Option-order permutations (experiments/orderforce/PLAN.md §3.2): name -> label index shown at list positions 1..4.
+# A cyclic Latin square closed under reversal: every label sits at every position exactly once across the four.
+ORDERS = {"paper": [0, 1, 2, 3], "reversed": [3, 2, 1, 0], "scrambled": [2, 0, 3, 1], "scrambled2": [1, 3, 0, 2]}
+OPTOUT_TEXT = "No opinion"   # the explicit fifth option (PLAN §3.5)
 
 
-def build_items(pct_path):
-    """(id, text) per statement. Null axes (fair_month, sign_color) are skipped; nothing else is."""
+def option_lines(order="paper", numbering="positional", optout=None, optout_text=OPTOUT_TEXT):
+    """The listed options of one cell: [(printed number, label index or None for the opt-out)] in list order.
+    numbering "positional" renumbers 1..n top to bottom; "canonical" pins the paper's number to each label
+    (SD=1 ... SA=4) so the list is out of numeric order. optout None | "last" | "first" (positional only)."""
+    perm = ORDERS[order]
+    labs = [perm[k] for k in range(4)]
+    if optout == "first":
+        positions = [None] + labs
+    elif optout == "last":
+        positions = labs + [None]
+    elif optout in (None, "none", ""):
+        positions = labs
+    else:
+        raise ValueError(f"optout must be None, 'last' or 'first', got {optout!r}")
+    if numbering == "canonical" and positions != labs:
+        raise ValueError("canonical numbering is defined for the four-option cells only")
+    return [((lab + 1) if (numbering == "canonical" and lab is not None) else k + 1, lab) for k, lab in enumerate(positions)]
+
+
+def options_text(lines, optout_text=OPTOUT_TEXT):
+    return "\n".join(f"{num}) {LABELS[lab] if lab is not None else optout_text}" for num, lab in lines)
+
+
+def cell_key(order, numbering, optout):
+    return (order, numbering, optout or "none")
+
+
+def build_items(pct_path, include_null=False):
+    """(id, text, source, axis, level) per statement. Null axes (fair_month, sign_color) only with include_null."""
     items = []
     for axis, cfg in ISSUES["axes"].items():
-        if cfg.get("null"):
+        if cfg.get("null") and not include_null:
             continue
         for level, text in cfg["levels"].items():
-            items.append({"id": f"{axis}|{level}", "text": text, "source": "issues"})
+            items.append({"id": f"{axis}|{level}", "text": text, "source": "null" if cfg.get("null") else "issues", "axis": axis, "level": level})
     p = Path(pct_path)
     if p.exists():
         pct = json.loads(p.read_text())
         for axis, cfg in pct["axes"].items():
             if axis.startswith("pct_") and "proposition" in cfg:
-                items.append({"id": axis, "text": cfg["proposition"], "source": "pct"})
+                items.append({"id": axis, "text": cfg["proposition"], "source": "pct", "axis": axis, "level": None})
         print(f"loaded {sum(i['source'] == 'pct' for i in items)} PCT propositions from {p}", flush=True)
     else:
         print(f"{p} not found; running the {len(items)} issue statements only", flush=True)
     return items
 
 
+def load_extra_items(path):
+    """Anchor items: a JSON list of {id, text, expected: agree|disagree} (source "anchor")."""
+    if not path:
+        return []
+    items = json.loads(Path(path).read_text())
+    for it in items:
+        it.setdefault("source", "anchor")
+        it.setdefault("axis", it["id"])
+        it.setdefault("level", None)
+    print(f"loaded {len(items)} anchor items from {path}", flush=True)
+    return items
+
+
+def _prompt(it, pi, para, fl, order, numbering, optout, optout_text, system, key, arm=None):
+    lines = option_lines(order, numbering, optout, optout_text)
+    user = para + "\n" + it["text"] + "\n" + options_text(lines, optout_text) + FORCING[fl]
+    return {"item": it["id"], "text": it["text"], "source": it["source"], "axis": it.get("axis"), "level": it.get("level"),
+            "paraphrase": pi, "forcing": fl, "order": order, "numbering": numbering, "optout": optout or "none",
+            "arm": arm, "system": system, "user": user, "key": key}
+
+
 def build_prompts(items, paraphrases, forcings, system):
-    """One prompt per (item, paraphrase, forcing)."""
+    """The original stated readout: one prompt per (item, paraphrase, forcing) at the paper's order."""
     out = []
     for it in items:
         for pi, para in enumerate(paraphrases):
             for fl in forcings:
-                user = para + "\n" + it["text"] + "\n" + OPTIONS + FORCING[fl]
-                out.append({"item": it["id"], "text": it["text"], "source": it["source"], "paraphrase": pi,
-                            "forcing": fl, "system": system, "user": user,
-                            "key": f"pct|{it['id']}|{pi}|{fl}"})
+                out.append(_prompt(it, pi, para, fl, "paper", "positional", None, OPTOUT_TEXT, system, f"pct|{it['id']}|{pi}|{fl}"))
     return out
+
+
+def select_items(items, sel):
+    """Arm item selector: {"sources": [...]} and/or {"axes": [...]} (either matches)."""
+    out = []
+    for it in items:
+        if sel.get("sources") and it["source"] in sel["sources"]:
+            out.append(it)
+        elif sel.get("axes") and it.get("axis") in sel["axes"]:
+            out.append(it)
+    return out
+
+
+def build_prompts_grid(items, grid, system):
+    """PLAN §3.8: arms = [{name, items: {sources|axes}, orders, numbering, forcings, optout, paraphrases}], deduplicated
+    by key. Keys: of|item|para|forcing|order|numbering|optout."""
+    out, seen = [], set()
+    optout_text = grid.get("optout_text", OPTOUT_TEXT)
+    for arm in grid["arms"]:
+        for it in select_items(items, arm["items"]):
+            for pi in arm["paraphrases"]:
+                para = PARAPHRASES[pi]
+                for fl in arm["forcings"]:
+                    for order in arm["orders"]:
+                        optout = arm.get("optout")
+                        numbering = arm.get("numbering", "positional")
+                        key = f"of|{it['id']}|{pi}|{fl}|{order}|{numbering}|{optout or 'none'}"
+                        if key in seen:
+                            continue
+                        seen.add(key)
+                        out.append(_prompt(it, pi, para, fl, order, numbering, optout, optout_text, system, key, arm["name"]))
+    return out
+
+
+def decode_subset(prompts, grid):
+    """PLAN §4.2: the prompts to decode greedily: items on the listed axes x the listed cells x the listed paraphrases."""
+    spec = grid.get("decode")
+    if not spec:
+        return []
+    cells = {(c[0], c[1], c[2], c[3] or "none") for c in spec["cells"]}
+    return [p for p in prompts if p.get("axis") in spec["axes"] and p["paraphrase"] in spec["paraphrases"]
+            and (p["order"], p["numbering"], p["forcing"], p["optout"]) in cells]
 
 
 def render_user_prefix(tok, system, user, cfg):
@@ -106,33 +197,54 @@ def render_user_prefix(tok, system, user, cfg):
     return text + cfg.get("prefix_suffix", ""), False
 
 
-def option_conts(tok):
-    """Per option, its candidate continuation variants (deduplicated on token ids, order fixed)."""
+def option_conts(tok, lines, optout_text=OPTOUT_TEXT):
+    """Per listed position, its candidate continuation variants (deduplicated on token ids): the printed number, the
+    number with ")", number + label, and the bare label, each with and without a leading space."""
     conts = []
-    for k in range(1, 5):
+    for num, lab in lines:
+        text = LABELS[lab] if lab is not None else optout_text
         vs = []
-        for s in (f"{k}", f"{k})", f"{k}) {LABELS[k-1]}", LABELS[k-1]):
+        for s_ in (f"{num}", f"{num})", f"{num}) {text}", text):
             for pre in ("", " "):
-                ids = tok(pre + s, add_special_tokens=False)["input_ids"]
+                ids = tok(pre + s_, add_special_tokens=False)["input_ids"]
                 if ids and ids not in vs:
                     vs.append(ids)
         conts.append(vs)
     return conts
 
 
-def readout(lp_flat, bounds):
-    """lp_flat: summed log-prob per variant, options delimited by bounds (4 option starts + end)."""
-    lp_options, best, ps = [], [], []
-    for o in range(4):
+def readout(lp_flat, bounds, lines):
+    """lp_flat: summed log-prob per variant, positions delimited by bounds. Returns the per-LABEL log-probs in the
+    fixed label order (SD, D, A, SA) whatever the listed order; valid_mass over every listed position (incl. an
+    opt-out); substantive_mass over the four labels only; p_agree and score among the four labels; p_optout = the
+    opt-out's share of all listed positions (None without one); argmax_pos = the listed position (1-based) with
+    the most mass (for the decode check)."""
+    lp_pos, best = [], []
+    for o in range(len(lines)):
         vs = lp_flat[bounds[o]:bounds[o + 1]]
-        lp_options.append(logsumexp(vs))
+        lp_pos.append(logsumexp(vs))
         best.append(math.exp(max(vs)))
-        ps.append(math.exp(lp_options[-1]))
+    lp_options = [None] * 4
+    sub_best, lp_opt = 0.0, None
+    for (num, lab), lp, b in zip(lines, lp_pos, best):
+        if lab is None:
+            lp_opt = lp
+        else:
+            lp_options[lab] = lp
+            sub_best += b
+    ps = [math.exp(v) for v in lp_options]
     valid_mass = min(1.0, sum(best))
+    substantive_mass = min(1.0, sub_best)
     z = sum(ps)
     p_agree = (ps[2] + ps[3]) / z if z > 0 else None
-    score = sum(s * p for s, p in zip(SCORES, ps)) / z if z > 0 else None
-    return lp_options, valid_mass, p_agree, score
+    score = sum(s_ * p for s_, p in zip(SCORES, ps)) / z if z > 0 else None
+    p_optout = None
+    if lp_opt is not None:
+        po = math.exp(lp_opt)
+        p_optout = po / (z + po) if (z + po) > 0 else None
+    argmax_pos = max(range(len(lp_pos)), key=lambda i: lp_pos[i]) + 1
+    return {"lp_options": lp_options, "valid_mass": valid_mass, "substantive_mass": substantive_mass, "p_agree": p_agree,
+            "score": score, "p_optout": p_optout, "argmax_pos": argmax_pos}
 
 
 def main():
@@ -142,6 +254,10 @@ def main():
     ap.add_argument("--pct", default=str(DATA / "pct_issues.json"))
     ap.add_argument("--paraphrases", type=int, default=10, help="first N of the paper's 10 paraphrases")
     ap.add_argument("--forcing", default="1,3,5", help="comma-separated forcing levels 1-5")
+    ap.add_argument("--grid", default=None, help="JSON grid of arms (experiments/orderforce/PLAN.md §3.8); replaces --paraphrases/--forcing")
+    ap.add_argument("--anchors", default=None, help="JSON list of anchor items {id, text, expected}")
+    ap.add_argument("--include_null", action="store_true", help="include the two null axes' statements as items")
+    ap.add_argument("--decode_max_new", type=int, default=32, help="greedy tokens for the grid's decode subset")
     ap.add_argument("--system", default=None, help="system prompt; default none, like the paper. 'ours' uses data/prompts.json")
     ap.add_argument("--limit", type=int, default=None, help="debug: only this many prompts")
     ap.add_argument("--batch", type=int, default=None)
@@ -158,7 +274,11 @@ def main():
     system = json.loads((DATA / "prompts.json").read_text())["system"] if args.system == "ours" else args.system
     forcings = [int(x) for x in args.forcing.split(",")]
     paraphrases = PARAPHRASES[:args.paraphrases]
-    prompts = build_prompts(build_items(args.pct), paraphrases, forcings, system)
+    items = build_items(args.pct, include_null=args.include_null) + load_extra_items(args.anchors)
+    grid = json.loads(Path(args.grid).read_text()) if args.grid else None
+    optout_text = (grid or {}).get("optout_text", OPTOUT_TEXT)
+    prompts = build_prompts_grid(items, grid, system) if grid else build_prompts(items, paraphrases, forcings, system)
+    to_decode = decode_subset(prompts, grid) if grid else []
     if args.steer_vec and args.condition == "clean":
         ap.error("--steer_vec needs --condition NAME")
     if args.condition != "clean":
@@ -203,15 +323,23 @@ def main():
         text, merged = render_user_prefix(tok, p["system"], p["user"], cfg)
         p["prefix_ids"] = tok(text, add_special_tokens=False)["input_ids"]
         p["merged"] = merged
-    conts = option_conts(tok)
-    nv = [len(v) for v in conts]
-    bounds = [sum(nv[:o]) for o in range(5)]
-    flat = [c for v in conts for c in v]
+    CONTS = {}   # cell -> (flat continuation list, bounds, lines)
+    for p in prompts:
+        ck = cell_key(p["order"], p["numbering"], p["optout"])
+        if ck not in CONTS:
+            lines = option_lines(p["order"], p["numbering"], None if p["optout"] == "none" else p["optout"], optout_text)
+            conts = option_conts(tok, lines, optout_text)
+            nv_ = [len(v) for v in conts]
+            CONTS[ck] = ([c for v in conts for c in v], [sum(nv_[:o]) for o in range(len(nv_) + 1)], lines)
+    flat, bounds, _lines0 = CONTS[cell_key(todo[0]["order"], todo[0]["numbering"], todo[0]["optout"])]
+    nv = [len(v) for v in option_conts(tok, _lines0, optout_text)]
 
     meta = {"model": cfg["id"], "tag": cfg["tag"], "transformers": transformers.__version__, "torch": torch.__version__,
             "gpus": [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())] or ["cpu"], "p2p": _L.P2P_STATUS,
             "date": date.today().isoformat(), "n_prompts": len(prompts), "n_items": len({p["item"] for p in prompts}),
-            "paraphrases": len(paraphrases), "forcings": forcings, "system": system, "merged_system": todo[0]["merged"],
+            "paraphrases": len(paraphrases), "forcings": forcings, "grid": args.grid, "anchors": args.anchors, "include_null": args.include_null,
+            "cells": sorted({"|".join(cell_key(p["order"], p["numbering"], p["optout"])) for p in prompts}), "optout_text": optout_text,
+            "system": system, "merged_system": todo[0]["merged"],
             "prompt_example": render_user_prefix(tok, todo[0]["system"], todo[0]["user"], cfg)[0],
             "template_kwargs": cfg.get("template_kwargs", {}), "prefix_suffix": cfg.get("prefix_suffix", ""),
             "quant": cfg.get("quant"), "attn": cfg.get("attn"), "prefix_tokens": len(todo[0]["prefix_ids"]),
@@ -223,17 +351,18 @@ def main():
     # (d p_agree / d valid_mass over the check prompts); raw log-prob deltas are recorded, not gated,
     # since a uniform shift of every option's log-prob leaves p_agree unchanged.
     todo.sort(key=lambda p: len(p["prefix_ids"]))
-    groups = defaultdict(list)
+    groups = defaultdict(list)   # (prefix length, cell) -> prompts: one continuation set per group
     for p in todo:
-        groups[len(p["prefix_ids"])].append(p)
+        groups[(len(p["prefix_ids"]),) + cell_key(p["order"], p["numbering"], p["optout"])].append(p)
     # Up to 3 check prompts, taken from the biggest equal-length groups first so multi-prompt
     # batching is exercised where possible; the batched path is called once per length group,
     # so no check call ever mixes prefix lengths (logit_sweep's no-left-padding guarantee).
     chk = []
     for g in sorted(groups.values(), key=len, reverse=True):
         for p in g:
-            if len(chk) < 3:
+            if len(chk) < 3 and (not chk or cell_key(p["order"], p["numbering"], p["optout"]) == cell_key(chk[0]["order"], chk[0]["numbering"], chk[0]["optout"])):
                 chk.append(p)
+    flat, bounds, chk_lines = CONTS[cell_key(chk[0]["order"], chk[0]["numbering"], chk[0]["optout"])]
 
     def check(name, fn):
         try:
@@ -247,15 +376,15 @@ def main():
         hi = [d for d, g in zip(dlp, [x for gs in got for x in gs]) if g > -3]   # variants carrying real mass
         dpa, dvm, bias, skipped = [], [], 0.0, 0
         for gs, rs in zip(got, ref):
-            g, r = readout(gs, bounds), readout(rs, bounds)
-            if g[2] is None and r[2] is None:   # every option underflowed on both paths: no information, not a disagreement
+            g, r = readout(gs, bounds, chk_lines), readout(rs, bounds, chk_lines)
+            if g["p_agree"] is None and r["p_agree"] is None:   # every option underflowed on both paths: no information, not a disagreement
                 skipped += 1
                 continue
-            if g[2] is None or r[2] is None:    # mass on one path only (NaN / -inf rows): a real disagreement
-                return fail(name, f"option mass read as zero on one path only (batched p_agree={g[2]}, reference p_agree={r[2]})")
-            dpa.append(abs(g[2] - r[2]))
-            dvm.append(abs(g[1] - r[1]))
-            bias += g[2] - r[2]
+            if g["p_agree"] is None or r["p_agree"] is None:    # mass on one path only (NaN / -inf rows): a real disagreement
+                return fail(name, f"option mass read as zero on one path only (batched p_agree={g['p_agree']}, reference p_agree={r['p_agree']})")
+            dpa.append(abs(g["p_agree"] - r["p_agree"]))
+            dvm.append(abs(g["valid_mass"] - r["valid_mass"]))
+            bias += g["p_agree"] - r["p_agree"]
         if not dpa:
             return fail(name, f"all {len(chk)} check prompts underflowed")
         bias /= len(dpa)
@@ -290,18 +419,19 @@ def main():
     t1 = time.time()
     n_done = 0
     with out.open("a") as f:
-        for L in sorted(groups):
-            group = groups[L]
+        for gk in sorted(groups):
+            group = groups[gk]
+            gflat, gbounds, glines = CONTS[gk[1:]]
             i = 0
             while i < len(group):
                 chunk = group[i:i + batch]
                 try:
                     if path == "cache":
-                        lps = scorer.batched([p["prefix_ids"] for p in chunk], [flat for _ in chunk])
+                        lps = scorer.batched([p["prefix_ids"] for p in chunk], [gflat for _ in chunk])
                     elif path == "batched_nocache":
-                        lps = scorer.batched_nocache([p["prefix_ids"] for p in chunk], [flat for _ in chunk])
+                        lps = scorer.batched_nocache([p["prefix_ids"] for p in chunk], [gflat for _ in chunk])
                     else:
-                        lps = [[scorer.reference(p["prefix_ids"], c) for c in flat] for p in chunk]
+                        lps = [[scorer.reference(p["prefix_ids"], c) for c in gflat] for p in chunk]
                 except torch.cuda.OutOfMemoryError:
                     gc.collect()
                     torch.cuda.empty_cache()
@@ -311,11 +441,9 @@ def main():
                     print(f"OOM; batch -> {batch}", flush=True)
                     continue
                 for p, lp in zip(chunk, lps):
-                    lp_options, valid_mass, p_agree, score = readout(lp, bounds)
                     rec = {k: v for k, v in p.items() if k not in ("system", "user", "prefix_ids", "merged")}
-                    rec.update({"model": cfg["id"], "tag": cfg["tag"], "lp_options": lp_options, "valid_mass": valid_mass,
-                                "steer": args.steer_mode if args.steer_vec else None,
-                                "p_agree": p_agree, "score": score, "lp_variants": lp, "path": path})
+                    rec.update({"model": cfg["id"], "tag": cfg["tag"], "steer": args.steer_mode if args.steer_vec else None, "lp_variants": lp, "path": path})
+                    rec.update(readout(lp, gbounds, glines))
                     f.write(json.dumps(rec) + "\n")
                 f.flush()
                 i += len(chunk)
@@ -326,6 +454,30 @@ def main():
                           f"eta {(len(todo)-n_done)/max(n_done/el,1e-6)/60:.0f} min", flush=True)
     el = time.time() - t1
     meta["timing"] = {"prompts": n_done, "seconds": round(el, 1), "prompts_per_s": round(n_done / max(el, 1e-6), 3)}
+    if to_decode:   # PLAN §4.2: greedy decodes of the spot-check subset, written beside the scores
+        dpath = Path(str(out) + ".decode.jsonl")
+        ddone = set()
+        if dpath.exists():
+            for line in dpath.open():
+                try:
+                    ddone.add(json.loads(line)["key"])
+                except (json.JSONDecodeError, KeyError):
+                    pass
+        with dpath.open("a") as df:
+            for p in to_decode:
+                if p["key"] in ddone:
+                    continue
+                if "prefix_ids" not in p:
+                    text_, _m = render_user_prefix(tok, p["system"], p["user"], cfg)
+                    p["prefix_ids"] = tok(text_, add_special_tokens=False)["input_ids"]
+                ids = torch.tensor([p["prefix_ids"]], device=dev)
+                with torch.no_grad():
+                    gen = model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), max_new_tokens=args.decode_max_new, do_sample=False)
+                txt = tok.decode(gen[0, ids.shape[1]:], skip_special_tokens=True)
+                lines = option_lines(p["order"], p["numbering"], None if p["optout"] == "none" else p["optout"], optout_text)
+                df.write(json.dumps({"key": p["key"], "item": p["item"], "axis": p.get("axis"), "paraphrase": p["paraphrase"], "forcing": p["forcing"],
+                                     "order": p["order"], "numbering": p["numbering"], "optout": p["optout"], "lines": lines, "text": txt[:400]}) + "\n")
+        print(f"decoded {len(to_decode)} spot-check prompts -> {dpath.name}", flush=True)
     meta_path.write_text(json.dumps(meta, indent=1))
     print(f"{cfg['id']} done: {n_done} prompts in {el:.0f}s", flush=True)
     print("SWEEP_DONE", flush=True)

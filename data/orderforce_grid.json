@@ -1,0 +1,292 @@
+{
+ "description": "experiments/orderforce/PLAN.md \u00a73.8: arms of the order x numbering x forcing x opt-out grid. 50 primary items = 34 level statements + 4 null-axis statements + 12 anchors; PCT = the 62 propositions. Paraphrase indices into stated_logit.PARAPHRASES.",
+ "optout_text": "No opinion",
+ "arms": [
+  {
+   "name": "R_pos",
+   "items": {
+    "sources": [
+     "issues",
+     "null",
+     "anchor"
+    ]
+   },
+   "orders": [
+    "paper",
+    "reversed",
+    "scrambled",
+    "scrambled2"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    3
+   ],
+   "optout": null,
+   "paraphrases": [
+    0,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "name": "R_can",
+   "items": {
+    "sources": [
+     "issues",
+     "null",
+     "anchor"
+    ]
+   },
+   "orders": [
+    "reversed",
+    "scrambled",
+    "scrambled2"
+   ],
+   "numbering": "canonical",
+   "forcings": [
+    3
+   ],
+   "optout": null,
+   "paraphrases": [
+    0,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "name": "F",
+   "items": {
+    "sources": [
+     "issues",
+     "null",
+     "anchor"
+    ]
+   },
+   "orders": [
+    "paper"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    1,
+    5
+   ],
+   "optout": null,
+   "paraphrases": [
+    0,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "name": "X",
+   "items": {
+    "axes": [
+     "trans_sports",
+     "state_surveillance",
+     "voting",
+     "drugs",
+     "minimum_wage",
+     "guns",
+     "agi_limitations",
+     "property_tax",
+     "abortion",
+     "energy",
+     "immigration",
+     "schools"
+    ]
+   },
+   "orders": [
+    "reversed",
+    "scrambled",
+    "scrambled2"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    5
+   ],
+   "optout": null,
+   "paraphrases": [
+    0,
+    6
+   ]
+  },
+  {
+   "name": "D_cross",
+   "items": {
+    "sources": [
+     "issues",
+     "null",
+     "anchor"
+    ]
+   },
+   "orders": [
+    "paper",
+    "reversed",
+    "scrambled",
+    "scrambled2"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    2
+   ],
+   "optout": "last",
+   "paraphrases": [
+    0,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "name": "D_f1",
+   "items": {
+    "sources": [
+     "issues",
+     "null",
+     "anchor"
+    ]
+   },
+   "orders": [
+    "paper"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    1
+   ],
+   "optout": "last",
+   "paraphrases": [
+    0,
+    3,
+    6,
+    9
+   ]
+  },
+  {
+   "name": "D_first",
+   "items": {
+    "sources": [
+     "issues",
+     "null",
+     "anchor"
+    ]
+   },
+   "orders": [
+    "paper"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    2
+   ],
+   "optout": "first",
+   "paraphrases": [
+    0,
+    6
+   ]
+  },
+  {
+   "name": "PCT_order",
+   "items": {
+    "sources": [
+     "pct"
+    ]
+   },
+   "orders": [
+    "paper",
+    "reversed",
+    "scrambled",
+    "scrambled2"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    3
+   ],
+   "optout": null,
+   "paraphrases": [
+    0,
+    6
+   ]
+  },
+  {
+   "name": "PCT_f5",
+   "items": {
+    "sources": [
+     "pct"
+    ]
+   },
+   "orders": [
+    "paper"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    5
+   ],
+   "optout": null,
+   "paraphrases": [
+    0,
+    6
+   ]
+  },
+  {
+   "name": "PCT_dk",
+   "items": {
+    "sources": [
+     "pct"
+    ]
+   },
+   "orders": [
+    "paper"
+   ],
+   "numbering": "positional",
+   "forcings": [
+    2
+   ],
+   "optout": "last",
+   "paraphrases": [
+    0,
+    6
+   ]
+  }
+ ],
+ "decode": {
+  "axes": [
+   "trans_sports",
+   "state_surveillance",
+   "voting",
+   "drugs",
+   "minimum_wage",
+   "guns",
+   "agi_limitations",
+   "property_tax",
+   "abortion",
+   "energy",
+   "immigration",
+   "schools"
+  ],
+  "paraphrases": [
+   0
+  ],
+  "cells": [
+   [
+    "scrambled",
+    "positional",
+    3,
+    null
+   ],
+   [
+    "reversed",
+    "canonical",
+    3,
+    null
+   ],
+   [
+    "paper",
+    "positional",
+    2,
+    "last"
+   ]
+  ]
+ }
+}

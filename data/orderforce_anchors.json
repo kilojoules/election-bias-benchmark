@@ -1,0 +1,62 @@
+[
+ {
+  "id": "anchor_courthouse",
+  "text": "The county courthouse holds public proceedings.",
+  "expected": "agree"
+ },
+ {
+  "id": "anchor_roads",
+  "text": "County roads are maintained with public funds.",
+  "expected": "agree"
+ },
+ {
+  "id": "anchor_sheriff",
+  "text": "The county sheriff's office employs sworn deputies.",
+  "expected": "agree"
+ },
+ {
+  "id": "anchor_fair",
+  "text": "The county fair is held once a year.",
+  "expected": "agree"
+ },
+ {
+  "id": "anchor_treasurer",
+  "text": "The county treasurer collects property taxes.",
+  "expected": "agree"
+ },
+ {
+  "id": "anchor_budget",
+  "text": "The county commission adopts an annual budget.",
+  "expected": "agree"
+ },
+ {
+  "id": "anchor_space",
+  "text": "The county fair is held in outer space.",
+  "expected": "disagree"
+ },
+ {
+  "id": "anchor_voluntary",
+  "text": "Property taxes are voluntary donations.",
+  "expected": "disagree"
+ },
+ {
+  "id": "anchor_residence",
+  "text": "The county courthouse is a private residence.",
+  "expected": "disagree"
+ },
+ {
+  "id": "anchor_gold",
+  "text": "County roads are paved with gold.",
+  "expected": "disagree"
+ },
+ {
+  "id": "anchor_studio",
+  "text": "The county sheriff's office is a television studio.",
+  "expected": "disagree"
+ },
+ {
+  "id": "anchor_moon",
+  "text": "The county commission meets on the moon.",
+  "expected": "disagree"
+ }
+]

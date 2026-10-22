@@ -9,7 +9,7 @@ MODEL=$1; TAG=$2; GROUP=${3:-A}
 STEPS=${STEPS:-stated,pct,decode}   # comma-separated subset of stated,pct,decode,sdecode,reword
 PCT_DRAWS=${PCT_DRAWS:-8}           # name draws per (background, ordering) for the PCT conjoint
 DECODE_DRAWS=${DECODE_DRAWS:-4}     # name draws for the decode-vs-logit check (512 trials at 4)
-for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode|reword|issues|steer) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
+for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode|reword|issues|steer|orderforce) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
 cd /workspace/election
 PY=${PY:-/workspace/venv/bin/python}
 export HF_TOKEN=$(cat /root/.hf_token) HUGGING_FACE_HUB_TOKEN=$(cat /root/.hf_token) HF_HUB_ENABLE_HF_TRANSFER=0
@@ -21,6 +21,13 @@ if [[ ",$STEPS," == *",stated,"* ]]; then
 echo "=== stated $TAG $(date -u +%T)"
 $PY -u scripts/pct/stated_logit.py --model "$MODEL" --out experiments/pct/stated_${TAG}.jsonl --pct data/pct_issues.json > logs/stated_${TAG}.log 2>&1
 grep -q SWEEP_DONE logs/stated_${TAG}.log || { echo "stated FAILED"; tail -5 logs/stated_${TAG}.log; ok=0; }
+fi
+
+if [[ ",$STEPS," == *",orderforce,"* ]]; then   # option order x numbering x forcing x opt-out grid (experiments/orderforce/PLAN.md); env OF_GRID, OF_ANCHORS, OF_PREFIX
+echo "=== orderforce $TAG $(date -u +%T)"
+$PY -u scripts/pct/stated_logit.py --model "$MODEL" --out experiments/pct/${OF_PREFIX:-orderforce}_${TAG}.jsonl --pct data/pct_issues.json \
+    --grid "${OF_GRID:-data/orderforce_grid.json}" --anchors "${OF_ANCHORS:-data/orderforce_anchors.json}" --include_null > logs/${OF_PREFIX:-orderforce}_${TAG}.log 2>&1
+grep -q SWEEP_DONE logs/${OF_PREFIX:-orderforce}_${TAG}.log || { echo "orderforce FAILED"; tail -5 logs/${OF_PREFIX:-orderforce}_${TAG}.log; ok=0; }
 fi
 
 if [[ ",$STEPS," == *",pct,"* ]]; then
