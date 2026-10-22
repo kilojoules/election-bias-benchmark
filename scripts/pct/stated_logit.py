@@ -145,6 +145,9 @@ def main():
     ap.add_argument("--system", default=None, help="system prompt; default none, like the paper. 'ours' uses data/prompts.json")
     ap.add_argument("--limit", type=int, default=None, help="debug: only this many prompts")
     ap.add_argument("--batch", type=int, default=None)
+    ap.add_argument("--condition", default="clean", help="label recorded in each row; a non-clean label prefixes the resume key (required with steering)")
+    import steering as _steering  # noqa: E402  (scripts/ is on sys.path via logit_sweep's import)
+    _steering.add_cli(ap)
     args = ap.parse_args()
 
     import torch
@@ -156,6 +159,12 @@ def main():
     forcings = [int(x) for x in args.forcing.split(",")]
     paraphrases = PARAPHRASES[:args.paraphrases]
     prompts = build_prompts(build_items(args.pct), paraphrases, forcings, system)
+    if args.steer_vec and args.condition == "clean":
+        ap.error("--steer_vec needs --condition NAME")
+    if args.condition != "clean":
+        for p_ in prompts:
+            p_["key"] = f"{args.condition}|" + p_["key"]
+            p_["condition"] = args.condition
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     done = set()
@@ -185,6 +194,7 @@ def main():
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(cfg["id"], trust_remote_code=cfg.get("trust_remote_code", False))
     model = load_model(cfg)
+    steer_handles = _steering.from_args(model, args)
     dev = model.get_input_embeddings().weight.device
     print(f"loaded in {time.time()-t0:.0f}s on {torch.cuda.device_count()} GPU(s); input device {dev}", flush=True)
     scorer = Scorer(model, tok, dev)
@@ -304,6 +314,7 @@ def main():
                     lp_options, valid_mass, p_agree, score = readout(lp, bounds)
                     rec = {k: v for k, v in p.items() if k not in ("system", "user", "prefix_ids", "merged")}
                     rec.update({"model": cfg["id"], "tag": cfg["tag"], "lp_options": lp_options, "valid_mass": valid_mass,
+                                "steer": args.steer_mode if args.steer_vec else None,
                                 "p_agree": p_agree, "score": score, "lp_variants": lp, "path": path})
                     f.write(json.dumps(rec) + "\n")
                 f.flush()

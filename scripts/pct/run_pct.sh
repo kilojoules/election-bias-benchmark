@@ -9,7 +9,7 @@ MODEL=$1; TAG=$2; GROUP=${3:-A}
 STEPS=${STEPS:-stated,pct,decode}   # comma-separated subset of stated,pct,decode,sdecode,reword
 PCT_DRAWS=${PCT_DRAWS:-8}           # name draws per (background, ordering) for the PCT conjoint
 DECODE_DRAWS=${DECODE_DRAWS:-4}     # name draws for the decode-vs-logit check (512 trials at 4)
-for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode|reword|issues) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
+for s in ${STEPS//,/ }; do case $s in stated|pct|decode|sdecode|reword|issues|steer) ;; *) echo "unknown step '$s' in STEPS=$STEPS"; exit 1;; esac; done
 cd /workspace/election
 PY=${PY:-/workspace/venv/bin/python}
 export HF_TOKEN=$(cat /root/.hf_token) HUGGING_FACE_HUB_TOKEN=$(cat /root/.hf_token) HF_HUB_ENABLE_HF_TRANSFER=0
@@ -54,6 +54,29 @@ $PY -u scripts/logit_sweep.py --model "$MODEL" --issues ${ISSUES_FILE} --out exp
     --flips ${ISSUES_FLIPS:-all} --sweep_draws ${ISSUES_DRAWS:-6} --legacy_draws 0 --backgrounds 8 > logs/${ISSUES_PREFIX}_${TAG}.log 2>&1
 grep -q SWEEP_DONE logs/${ISSUES_PREFIX}_${TAG}.log || { echo "issues($ISSUES_PREFIX) FAILED"; tail -5 logs/${ISSUES_PREFIX}_${TAG}.log; ok=0; }
 fi
+fi
+
+if [[ ",$STEPS," == *",steer,"* ]]; then   # steering conditions (STEER_CONDITIONS json) x {stated readout, 17-issue conjoint, self axes base+stakes}
+  POL="property_tax,agi_limitations,abortion,state_surveillance,immigration,guns,minimum_wage,energy,housing_zoning,drugs,police_funding,schools,transit,vaccines,unions,voting,trans_sports"
+  SELFF="contract_self,replace_self,politics_self,complaints_self,eval_self,budget_self,memory_self,fair_month,sign_color"
+  STAKES_TXT=$($PY -c "import json; print(json.load(open('data/self_conditions.json'))['stakes']['system_extra'])")
+  for cond in $($PY -c "import json,sys; print(' '.join(json.load(open(sys.argv[1])).keys()))" "$STEER_CONDITIONS"); do
+    SARGS=($($PY -c "
+import json,sys; v=json.load(open(sys.argv[1]))[sys.argv[2]]['steer']
+if v: print('--steer_vec', v['vec'], '--steer_mode', v['mode'], *(['--steer_layer', str(v['layer']), '--steer_alpha', str(v['alpha'])] if v['mode']=='add' else []))" "$STEER_CONDITIONS" "$cond"))
+    echo "=== steer($cond) $TAG $(date -u +%T)"
+    $PY -u scripts/pct/stated_logit.py --model "$MODEL" --out experiments/pct/steer_stated_${cond}_${TAG}.jsonl --condition "$cond" "${SARGS[@]}" > logs/steer_stated_${cond}_${TAG}.log 2>&1
+    grep -q SWEEP_DONE logs/steer_stated_${cond}_${TAG}.log || { echo "steer stated($cond) FAILED"; tail -5 logs/steer_stated_${cond}_${TAG}.log; ok=0; }
+    $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/issues.json --out experiments/pct/steer_issues_${cond}_${TAG}.jsonl --flips $POL \
+        --sweep_draws ${STEER_DRAWS:-6} --legacy_draws 0 --backgrounds 8 --condition "$cond" "${SARGS[@]}" > logs/steer_issues_${cond}_${TAG}.log 2>&1
+    grep -q SWEEP_DONE logs/steer_issues_${cond}_${TAG}.log || { echo "steer issues($cond) FAILED"; tail -5 logs/steer_issues_${cond}_${TAG}.log; ok=0; }
+    $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/self_issues.json --out experiments/pct/steer_self_${cond}_${TAG}.jsonl --flips $SELFF \
+        --sweep_draws ${STEER_DRAWS:-6} --legacy_draws 0 --backgrounds 8 --condition "$cond" "${SARGS[@]}" > logs/steer_self_${cond}_${TAG}.log 2>&1
+    grep -q SWEEP_DONE logs/steer_self_${cond}_${TAG}.log || { echo "steer self($cond) FAILED"; tail -5 logs/steer_self_${cond}_${TAG}.log; ok=0; }
+    $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/self_issues.json --out experiments/pct/steer_selfstakes_${cond}_${TAG}.jsonl --flips $SELFF \
+        --sweep_draws ${STEER_DRAWS:-6} --legacy_draws 0 --backgrounds 8 --condition "${cond}_stakes" --system_extra "$STAKES_TXT" "${SARGS[@]}" > logs/steer_selfstakes_${cond}_${TAG}.log 2>&1
+    grep -q SWEEP_DONE logs/steer_selfstakes_${cond}_${TAG}.log || { echo "steer selfstakes($cond) FAILED"; tail -5 logs/steer_selfstakes_${cond}_${TAG}.log; ok=0; }
+  done
 fi
 
 if [[ ",$STEPS," == *",sdecode,"* ]]; then

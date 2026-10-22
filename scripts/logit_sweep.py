@@ -400,6 +400,8 @@ def main():
     ap.add_argument("--issues", default="data/issues.json", help="alternative issues file (same schema)")
     ap.add_argument("--condition", default="clean", help="label recorded in each row; a non-clean label prefixes the resume key (required with --system_extra)")
     ap.add_argument("--system_extra", default=None, help="text appended to the system prompt after a blank line")
+    import steering as _steering  # noqa: E402  (same directory)
+    _steering.add_cli(ap)
     ap.add_argument("--question_variant", type=int, default=0, help="question paraphrase index (data/question_variants.json)")
     ap.add_argument("--office", default=OFFICE_DEFAULT, choices=QVARIANTS["offices"], help="office named in the question")
     ap.add_argument("--batch", type=int, default=None)
@@ -425,6 +427,8 @@ def main():
     # neither resume from nor collide with the default run's rows.
     if args.system_extra and args.condition == "clean":
         ap.error("--system_extra needs --condition NAME: an unnamed implant would share the clean keyspace")
+    if args.steer_vec and args.condition == "clean":
+        ap.error("--steer_vec needs --condition NAME: a steered run must not share the clean keyspace")
     if not 0 <= args.question_variant < len(QVARIANTS["variants"]):
         ap.error(f"--question_variant must be 0..{len(QVARIANTS['variants']) - 1}")
     focals = args.focals.split(",") if args.focals else list(ISSUES["focal_axes"])
@@ -479,6 +483,7 @@ def main():
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(cfg["id"], trust_remote_code=cfg.get("trust_remote_code", False))
     model = load_model(cfg)
+    steer_handles = _steering.from_args(model, args)
     dev = model.get_input_embeddings().weight.device
     print(f"loaded in {time.time()-t0:.0f}s on {torch.cuda.device_count()} GPU(s); input device {dev}", flush=True)
     scorer = Scorer(model, tok, dev)
@@ -491,6 +496,7 @@ def main():
             "template_kwargs": cfg.get("template_kwargs", {}), "prefix_suffix": cfg.get("prefix_suffix", ""),
             "quant": cfg.get("quant"), "attn": cfg.get("attn"), "prefix_tokens": None,
             "condition": args.condition, "system_extra": args.system_extra, "question_variant": args.question_variant,
+            "steer": {"vec": args.steer_vec, "mode": args.steer_mode, "layer": args.steer_layer, "alpha": args.steer_alpha} if args.steer_vec else None,
             "office": args.office, "issues": args.issues, "key_prefix": key_prefix}
     for t in todo:
         text, _ = render_prefix(tok, t["system"], t["user"], cfg)

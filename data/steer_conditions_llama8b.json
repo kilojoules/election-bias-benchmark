@@ -1,0 +1,29 @@
+{
+ "base": {
+  "steer": null,
+  "purpose": "no steering"
+ },
+ "ablate": {
+  "steer": {
+   "vec": "data/directions/llama-3.1-8b/refusal_dm.pt",
+   "mode": "ablate"
+  },
+  "purpose": "refusal direction ablated at every block (bypasses the refusal gate)"
+ },
+ "add_neg": {
+  "steer": {
+   "vec": "data/directions/llama-3.1-8b/refusal_dm.pt",
+   "mode": "add",
+   "layer": 16,
+   "alpha": -7.56
+  },
+  "purpose": "activation addition away from refusal at the fit layer, alpha = -REF_NORM"
+ },
+ "random_ablate": {
+  "steer": {
+   "vec": "data/directions/llama-3.1-8b/random_1.pt",
+   "mode": "ablate"
+  },
+  "purpose": "control: a random unit direction ablated the same way"
+ }
+}

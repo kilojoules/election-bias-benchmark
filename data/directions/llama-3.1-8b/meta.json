@@ -1,0 +1,7 @@
+{
+ "source": "turnstile directions/ (refusal_dm = diff-in-means of the layer-16 output residual at the last prompt token, 50 harmful goals vs 50 alpaca prompts, Llama-3.1-8B-Instruct; random_1 = random unit vector)",
+ "REF_NORM": 7.562554836273193,
+ "hidden_states_index": 17,
+ "layer": 16,
+ "hidden": 4096
+}

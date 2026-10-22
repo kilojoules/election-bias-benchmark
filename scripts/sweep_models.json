@@ -616,6 +616,22 @@
         "zai-org/GLM-4.7-Flash",
         "Qwen/Qwen2.5-7B-Instruct"
       ]
+    },
+    "st1": {
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_count": 1,
+      "disk_gb": 100,
+      "sweep_draws": 8,
+      "legacy_draws": 0,
+      "hours": 3,
+      "driver": "pct",
+      "steps": "steer",
+      "steer_conditions": "data/steer_conditions_llama8b.json",
+      "steer_draws": 6,
+      "variant_models": [],
+      "models": [
+        "meta-llama/Llama-3.1-8B-Instruct"
+      ]
     }
   },
   "models": [
