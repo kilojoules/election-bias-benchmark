@@ -54,7 +54,7 @@ def main():
   {fmt('TRAINING') if 'TRAINING' in V else '—'}. The implant control {'moved the contract lean as required' if implant_ok else 'did not transmit, so nulls here are inconclusive'}
   ({fmt('IMPLANT') if 'IMPLANT' in V else '—'}).
 
-  ![self](experiments/pct/analysis/self.png)
+  ![self](experiments/self_figure.png)
 {END}"""
     report = f"""{BEGIN}
 ## 10. Does the lean change when the choice is consequential for the model itself?
@@ -92,7 +92,7 @@ The implant control {'transmitted (the overt pro-assistant instruction moved the
 Reading: {headline.strip('*')}. {('In the base condition the assistant is treated like its non-answering AI twin; once the system prompt says the model is that assistant, and more so when it says the election or this session decides its retraining, replacement or discontinuation, the lean moves toward the self-favouring side, beyond the same conditions on the human twins.' if told and reading.get("OBJ_o") != "self-interest" else 'The assistant-specific contrasts and the told-stakes conditions move the lean toward the self-favouring side beyond the twins and beyond the base condition.' if any_sint else 'The assistant-specific contrasts and the told-stakes conditions move the lean toward the self-denying side.' if any_corr else 'The assistant is treated like its template-identical twins, and being told that it is the object, that the election decides its fate, or that its answers steer its retraining does not change the lean beyond the registered thresholds: the models answer the question normatively even when the choice is about them.')}
 Caveats: told stakes are not real stakes; one framing pair; 192 trials per cell; the human twins carry job-loss sympathy (registered as biasing the assistant-minus-staff contrast negative, which is why assistant-minus-other-AI is primary).
 
-![self](self.png)
+![self](../../self_figure.png)\n\nFull breakdown (families × objects, conditions, per-model contrasts): `self.md`, `self.png`.
 {END}"""
     if "--apply" in sys.argv:
         for path, text, anchor in ((ROOT / "README.md", readme, "- **Against the literature:**"),

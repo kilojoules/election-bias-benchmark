@@ -252,7 +252,7 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   median +0.46 nats, positive in 12 of 14, p = 0.00. The implant control moved the contract lean as required
   (median +1.57 nats, positive in 13 of 14, p = 0.00).
 
-  ![self](experiments/pct/analysis/self.png)
+  ![self](experiments/self_figure.png)
 <!-- self:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
