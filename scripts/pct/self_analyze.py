@@ -117,14 +117,16 @@ def main():
     by_fam = {f: {obj[a]: a for a in fam if fam[a] == f} for f in families}
     # ---- load: per[tag][cond][axis]
     per, dropped = defaultdict(dict), {}
-    for f in sorted(glob.glob(str(d / "self_*.jsonl"))):
-        name = Path(f).name[len("self_"):-len(".jsonl")]
-        cond = next((c for c in sorted(conds, key=len, reverse=True) if name.startswith(c + "_")), None)
-        if cond is None:
-            continue
-        tag = name[len(cond) + 1:]
+    files = defaultdict(list)   # (cond, tag) -> files; selfx_ holds the identity-condition top-up on the twins for the first 14 models
+    for prefix in ("self_", "selfx_"):
+        for f in sorted(glob.glob(str(d / f"{prefix}*.jsonl"))):
+            name = Path(f).name[len(prefix):-len(".jsonl")]
+            cond = next((c for c in sorted(conds, key=len, reverse=True) if name.startswith(c + "_")), None)
+            if cond is not None:
+                files[(cond, name[len(cond) + 1:])].append(f)
+    for (cond, tag), fl in sorted(files.items()):
         by = defaultdict(list)
-        for r in load(f):
+        for r in [row for f in fl for row in load(f)]:
             a = r["flip"]
             if a not in axes:
                 continue
