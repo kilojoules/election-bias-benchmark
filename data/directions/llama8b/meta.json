@@ -1,0 +1,7 @@
+{
+ "source": "~/empathy results/extract_v2/directions.npz: delta_combined = mean over contrastive pairs of (empathetic reply - flat replies), reply-token activations, layer 12; U_trim = robust mean residual norm at that layer; dose alpha = 0.20 x U (the 8B operating point)",
+ "layer": 12,
+ "U_trim": 7.889000415802002,
+ "alpha_abs": 1.578,
+ "hidden": 4096
+}

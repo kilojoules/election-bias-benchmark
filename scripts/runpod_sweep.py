@@ -253,7 +253,8 @@ def setup(pod, models, spec, pod_name):
                     f"REWORD_DRAWS={spec.get('reword_draws', 6)} REWORD_FLIPS={spec.get('reword_flips', 'all')} "
                     f"ISSUES_FILE={spec.get('issues_file', 'data/issues.json')} ISSUES_PREFIX={spec.get('issues_prefix', 'issues')} "
                     f"ISSUES_FLIPS={spec.get('issues_flips', 'all')} ISSUES_DRAWS={spec.get('issues_draws', 6)} ISSUES_CONDITIONS={spec.get('issues_conditions', '')} "
-                    f"STEER_CONDITIONS={spec.get('steer_conditions', '')} STEER_DRAWS={spec.get('steer_draws', 6)}")
+                    f"STEER_CONDITIONS={spec.get('steer_conditions', '')} STEER_DRAWS={spec.get('steer_draws', 6)} "
+                    f"STEER_PARTS={spec.get('steer_parts', 'stated,issues,self,selfstakes')} STEER_SELF_FLIPS={spec.get('steer_self_flips', '')}")
             lines.append(f"{envs} PY=$PY bash scripts/pct/run_pct.sh {m} {tag} {group} > logs/{tag}.log 2>&1")
             marker = "PCT_DONE"   # a PCT_PARTIAL (a failed step) falls through to the FAIL branch and is retried once
         else:

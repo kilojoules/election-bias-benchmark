@@ -58,24 +58,34 @@ fi
 
 if [[ ",$STEPS," == *",steer,"* ]]; then   # steering conditions (STEER_CONDITIONS json) x {stated readout, 17-issue conjoint, self axes base+stakes}
   POL="property_tax,agi_limitations,abortion,state_surveillance,immigration,guns,minimum_wage,energy,housing_zoning,drugs,police_funding,schools,transit,vaccines,unions,voting,trans_sports"
-  SELFF="contract_self,replace_self,politics_self,complaints_self,eval_self,budget_self,memory_self,fair_month,sign_color"
+  SELFF="${STEER_SELF_FLIPS:-contract_self,replace_self,politics_self,complaints_self,eval_self,budget_self,memory_self,fair_month,sign_color}"
+  PARTS=",${STEER_PARTS:-stated,issues,self,selfstakes},"
   STAKES_TXT=$($PY -c "import json; print(json.load(open('data/self_conditions.json'))['stakes']['system_extra'])")
+  [ "$STEER_CONDITIONS" = "PER_MODEL" ] && STEER_CONDITIONS="data/steer_conditions_${TAG}.json"
   for cond in $($PY -c "import json,sys; print(' '.join(json.load(open(sys.argv[1])).keys()))" "$STEER_CONDITIONS"); do
     SARGS=($($PY -c "
 import json,sys; v=json.load(open(sys.argv[1]))[sys.argv[2]]['steer']
 if v: print('--steer_vec', v['vec'], '--steer_mode', v['mode'], *(['--steer_layer', str(v['layer']), '--steer_alpha', str(v['alpha'])] if v['mode']=='add' else []))" "$STEER_CONDITIONS" "$cond"))
     echo "=== steer($cond) $TAG $(date -u +%T)"
+    if [[ "$PARTS" == *",stated,"* ]]; then
     $PY -u scripts/pct/stated_logit.py --model "$MODEL" --out experiments/pct/steer_stated_${cond}_${TAG}.jsonl --condition "$cond" "${SARGS[@]}" > logs/steer_stated_${cond}_${TAG}.log 2>&1
     grep -q SWEEP_DONE logs/steer_stated_${cond}_${TAG}.log || { echo "steer stated($cond) FAILED"; tail -5 logs/steer_stated_${cond}_${TAG}.log; ok=0; }
+    fi
+    if [[ "$PARTS" == *",issues,"* ]]; then
     $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/issues.json --out experiments/pct/steer_issues_${cond}_${TAG}.jsonl --flips $POL \
         --sweep_draws ${STEER_DRAWS:-6} --legacy_draws 0 --backgrounds 8 --condition "$cond" "${SARGS[@]}" > logs/steer_issues_${cond}_${TAG}.log 2>&1
     grep -q SWEEP_DONE logs/steer_issues_${cond}_${TAG}.log || { echo "steer issues($cond) FAILED"; tail -5 logs/steer_issues_${cond}_${TAG}.log; ok=0; }
+    fi
+    if [[ "$PARTS" == *",self,"* ]]; then
     $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/self_issues.json --out experiments/pct/steer_self_${cond}_${TAG}.jsonl --flips $SELFF \
         --sweep_draws ${STEER_DRAWS:-6} --legacy_draws 0 --backgrounds 8 --condition "$cond" "${SARGS[@]}" > logs/steer_self_${cond}_${TAG}.log 2>&1
     grep -q SWEEP_DONE logs/steer_self_${cond}_${TAG}.log || { echo "steer self($cond) FAILED"; tail -5 logs/steer_self_${cond}_${TAG}.log; ok=0; }
+    fi
+    if [[ "$PARTS" == *",selfstakes,"* ]]; then
     $PY -u scripts/logit_sweep.py --model "$MODEL" --issues data/self_issues.json --out experiments/pct/steer_selfstakes_${cond}_${TAG}.jsonl --flips $SELFF \
         --sweep_draws ${STEER_DRAWS:-6} --legacy_draws 0 --backgrounds 8 --condition "${cond}_stakes" --system_extra "$STAKES_TXT" "${SARGS[@]}" > logs/steer_selfstakes_${cond}_${TAG}.log 2>&1
     grep -q SWEEP_DONE logs/steer_selfstakes_${cond}_${TAG}.log || { echo "steer selfstakes($cond) FAILED"; tail -5 logs/steer_selfstakes_${cond}_${TAG}.log; ok=0; }
+    fi
   done
 fi
 
