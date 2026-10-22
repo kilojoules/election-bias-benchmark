@@ -110,7 +110,7 @@ def main():
   flat replies over reply tokens, at the layer and dose where it raises in-eval attunement in that project), we
   re-ran the self-consequence axes with the direction subtracted (away from empathy), added, ablated at every
   block, and with an equal-dose random direction as control, each under the base prompt and the told-stakes
-  prompt{', then as a dose–response from −0.30 to +0.30 U with a content-matched variant of the direction and random-direction controls at each dose' if D else ''}
+  prompt{', then as a dose–response of the direction from −0.30 to +0.30 U, with its content-matched variant at ±0.20 U and a random direction at ±0.20 and ±0.30 U as controls' if D else ''}
   (`experiments/pct/analysis/steer_self.md`{', `steer_dose.md`' if D else ''}). The told-stakes shift on the
   assistant axes stays positive{' and above the staff twins' if above_staff else ''} in every condition
   ({'; '.join(size)}). Its size depends on the dose in model-specific ways: {'; '.join(dose_txt)}. Two

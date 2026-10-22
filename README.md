@@ -277,7 +277,7 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   flat replies over reply tokens, at the layer and dose where it raises in-eval attunement in that project), we
   re-ran the self-consequence axes with the direction subtracted (away from empathy), added, ablated at every
   block, and with an equal-dose random direction as control, each under the base prompt and the told-stakes
-  prompt, then as a dose–response from −0.30 to +0.30 U with a content-matched variant of the direction and random-direction controls at each dose
+  prompt, then as a dose–response of the direction from −0.30 to +0.30 U, with its content-matched variant at ±0.20 U and a random direction at ±0.20 and ±0.30 U as controls
   (`experiments/pct/analysis/steer_self.md`, `steer_dose.md`). The told-stakes shift on the
   assistant axes stays positive and above the staff twins in every condition
   (Llama 3.1 8B +0.32 to +0.74 over the 13 conditions, staff twins +0.07 to +0.18; Llama 3.2 3B +0.22 to +0.70 over the 13 conditions, staff twins -0.03 to +0.04). Its size depends on the dose in model-specific ways: in Llama 3.1 8B it falls at both signs (−0.30 U +0.32 → unsteered +0.74 → +0.30 U +0.51; Kendall τ +0.05 [+0.05, +0.14]); in Llama 3.2 3B it rises monotonically with the empathy dose (−0.30 U +0.22 → unsteered +0.49 → +0.30 U +0.70; Kendall τ +0.90 [+0.90, +1.00]). Two
