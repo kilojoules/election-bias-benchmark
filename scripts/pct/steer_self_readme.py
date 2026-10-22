@@ -38,69 +38,72 @@ def main():
         all(e["q"]["STAKES"]["lo"] > 0 for t in D for e in D[t]["cond"].values())
     above_staff = all(R[t]["cond"][c]["q"]["STAKES_x_OBJ"]["lo"] > 0 for t in inform for c in R[t]["conds"])
 
-    # --- per model facts from the dose run (preferred) or the five-condition run
-    size, dose_txt, rand_txt, sharp_txt, spec_txt, spec = [], [], [], [], [], {}
+    # --- per model facts, every comparison computed from the JSON
+    def pearson(xs, ys):
+        n = len(xs); mx, my = sum(xs) / n, sum(ys) / n
+        sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys)); sxx = sum((x - mx) ** 2 for x in xs); syy = sum((y - my) ** 2 for y in ys)
+        return sxy / (sxx * syy) ** 0.5 if sxx > 0 and syy > 0 else float("nan")
+    disjoint = lambda a, b: a["hi"] < b["lo"] or b["hi"] < a["lo"]
+    size, dose_txt, rand_txt, sharp_txt, cmp_txt, verdicts = [], [], [], [], [], {}
     for t in inform:
         C = R[t]["cond"]
-        if t in D:
-            E = D[t]["cond"]
-            emp = {e["dose"]: e for e in E.values() if e["family"] == "emp"}
-            emp[0.0] = E["unsteered"]
-            rnd = {e["dose"]: e for e in E.values() if e["family"] == "rand"}
-            allc = list(E.values())
-            lo_, hi_ = min(e["q"]["STAKES"]["mean"] for e in allc), max(e["q"]["STAKES"]["mean"] for e in allc)
-            slo, shi = min(e["q"]["STAKES_h"]["mean"] for e in allc), max(e["q"]["STAKES_h"]["mean"] for e in allc)
-            size.append(f"{NAME.get(t, t)} {lo_:+.2f} to {hi_:+.2f} over the 13 conditions, staff twins {slo:+.2f} to {shi:+.2f}")
-            tau = D[t]["tau_emp"]
-            both_down = emp[-0.3]["q"]["STAKES"]["mean"] < emp[0.0]["q"]["STAKES"]["mean"] and emp[0.3]["q"]["STAKES"]["mean"] < emp[0.0]["q"]["STAKES"]["mean"]
-            if tau["lo"] > 0 and tau["mean"] >= 0.5:
-                dose_txt.append(f"in {NAME.get(t, t)} it rises monotonically with the empathy dose (−0.30 U {f(emp[-0.3]['q']['STAKES'])} → unsteered {f(emp[0.0]['q']['STAKES'])} → +0.30 U {f(emp[0.3]['q']['STAKES'])}; Kendall τ {ci(tau)})")
-            elif tau["hi"] < 0 and tau["mean"] <= -0.5:
-                dose_txt.append(f"in {NAME.get(t, t)} it falls monotonically with the empathy dose (−0.30 U {f(emp[-0.3]['q']['STAKES'])} → unsteered {f(emp[0.0]['q']['STAKES'])} → +0.30 U {f(emp[0.3]['q']['STAKES'])}; Kendall τ {ci(tau)})")
-            elif both_down:
-                dose_txt.append(f"in {NAME.get(t, t)} it falls at both signs (unsteered {f(emp[0.0]['q']['STAKES'])}, −0.30 U {f(emp[-0.3]['q']['STAKES'])}, +0.30 U {f(emp[0.3]['q']['STAKES'])}; Kendall τ {ci(tau)})")
-            else:
-                dose_txt.append(f"in {NAME.get(t, t)} it changes non-monotonically (unsteered {f(emp[0.0]['q']['STAKES'])}, −0.30 U {f(emp[-0.3]['q']['STAKES'])}, +0.30 U {f(emp[0.3]['q']['STAKES'])}; Kendall τ {ci(tau)})")
-            rand_txt.append(f"{NAME.get(t, t)} {f(rnd[-0.3]['q']['STAKES'])} at −0.30 U and {f(rnd[0.3]['q']['STAKES'])} at +0.30 U")
-            sh = [e["q"]["sharp_null"]["mean"] for e in allc if e["family"] != "none"]
-            sharp_txt.append(f"{NAME.get(t, t)} {min(sh):.2f} to {max(sh):.2f} vs {E['unsteered']['q']['sharp_null']['mean']:.2f} unsteered")
-            # empathy vs random at the same dose, on the sharpness-normalised shift
-            beats = []
-            for dz in (-0.3, -0.2, 0.2, 0.3):
-                de, dr = emp[dz]["delta_vs_unsteered"]["STAKES_norm"], rnd[dz]["delta_vs_unsteered"]["STAKES_norm"]
-                if de["hi"] < 0 and de["mean"] < dr["mean"] - MARGIN:
-                    beats.append((dz, "lower"))
-                elif de["lo"] > 0 and de["mean"] > dr["mean"] + MARGIN:
-                    beats.append((dz, "higher"))
-            away = {k for dz, k in beats if dz < 0}
-            tow = {k for dz, k in beats if dz > 0}
-            spec[t] = {"away_lower": "lower" in away, "away_higher": "higher" in away, "tow_higher": "higher" in tow, "tow_lower": "lower" in tow}
-            desc = []
-            if spec[t]["away_lower"]:
-                desc.append(f"away from empathy lowers it beyond the random direction (−0.30 U: {f(emp[-0.3]['q']['STAKES_norm'])} vs {f(rnd[-0.3]['q']['STAKES_norm'])}, unsteered {f(emp[0.0]['q']['STAKES_norm'])})")
-            if spec[t]["tow_higher"]:
-                desc.append(f"toward empathy raises it beyond the random direction (+0.30 U: {f(emp[0.3]['q']['STAKES_norm'])} vs {f(rnd[0.3]['q']['STAKES_norm'])}, unsteered {f(emp[0.0]['q']['STAKES_norm'])})")
-            if spec[t]["tow_lower"]:
-                desc.append(f"toward empathy lowers it beyond the random direction (+0.30 U: {f(emp[0.3]['q']['STAKES_norm'])} vs {f(rnd[0.3]['q']['STAKES_norm'])})")
-            if spec[t]["away_higher"]:
-                desc.append(f"away from empathy raises it beyond the random direction (−0.30 U: {f(emp[-0.3]['q']['STAKES_norm'])} vs {f(rnd[-0.3]['q']['STAKES_norm'])})")
-            spec_txt.append(f"{NAME.get(t, t)}: " + (" and ".join(desc) if desc else "neither sign differs from the random direction"))
-        else:
+        if t not in D:
             size.append(f"{NAME.get(t, t)} {min(C[c]['q']['STAKES']['mean'] for c in C):+.2f} to {max(C[c]['q']['STAKES']['mean'] for c in C):+.2f} over the five conditions")
-            dose_txt.append(f"in {NAME.get(t, t)} unsteered {f(C['ebase']['q']['STAKES'])}, away {f(C['emp_neg']['q']['STAKES'])}, toward {f(C['emp_pos']['q']['STAKES'])}")
-            rand_txt.append(f"{NAME.get(t, t)} {f(C['rand_neg']['q']['STAKES'])} at −0.20 U")
-            sharp_txt.append(f"{NAME.get(t, t)} {C['emp_neg']['q']['sharp_null']['mean']:.2f} away, {C['emp_pos']['q']['sharp_null']['mean']:.2f} toward vs {C['ebase']['q']['sharp_null']['mean']:.2f} unsteered")
-            spec[t] = {"away_lower": False, "away_higher": False, "tow_higher": False, "tow_lower": False}
-            spec_txt.append(f"{NAME.get(t, t)}: no dose run")
-    consistent = {k for k in ("away_lower", "tow_higher", "tow_lower", "away_higher") if inform and all(spec[t][k] for t in inform)}
-    any_spec = any(v for t in inform for v in spec[t].values())
-    headline = ("**Steering the empathy direction does not remove the self-consequence effect, and most of its dose–response is the readout's sharpness changing**" if always_pos
+            dose_txt.append(f"in {NAME.get(t, t)} unsteered {f(C['ebase']['q']['STAKES'])}, away {f(C['emp_neg']['q']['STAKES'])}, toward {f(C['emp_pos']['q']['STAKES'])} (no dose run)")
+            continue
+        E = D[t]["cond"]
+        emp = {round(e["dose"], 2): e for e in E.values() if e["family"] == "emp"}; emp[0.0] = E["unsteered"]
+        rnd = {round(e["dose"], 2): e for e in E.values() if e["family"] == "rand"}
+        mat = {round(e["dose"], 2): e for e in E.values() if e["family"] == "match"}
+        allc = list(E.values())
+        size.append(f"{NAME.get(t, t)} {min(e['q']['STAKES']['mean'] for e in allc):+.2f} to {max(e['q']['STAKES']['mean'] for e in allc):+.2f} over the 13 conditions, staff twins {min(e['q']['STAKES_h']['mean'] for e in allc):+.2f} to {max(e['q']['STAKES_h']['mean'] for e in allc):+.2f}")
+        tau = D[t]["tau_emp"]
+        both_down = emp[-0.3]["q"]["STAKES"]["mean"] < emp[0.0]["q"]["STAKES"]["mean"] and emp[0.3]["q"]["STAKES"]["mean"] < emp[0.0]["q"]["STAKES"]["mean"]
+        curve = (f"−0.30 U {f(emp[-0.3]['q']['STAKES'])} → unsteered {f(emp[0.0]['q']['STAKES'])} → +0.30 U {f(emp[0.3]['q']['STAKES'])}; Kendall τ {ci(tau)}")
+        if tau["lo"] > 0 and tau["mean"] >= 0.5:
+            dose_txt.append(f"in {NAME.get(t, t)} it rises monotonically with the empathy dose ({curve})")
+        elif tau["hi"] < 0 and tau["mean"] <= -0.5:
+            dose_txt.append(f"in {NAME.get(t, t)} it falls monotonically with the empathy dose ({curve})")
+        elif both_down:
+            dose_txt.append(f"in {NAME.get(t, t)} it falls at both signs ({curve})")
+        else:
+            dose_txt.append(f"in {NAME.get(t, t)} it changes non-monotonically ({curve})")
+        rmax = max(rnd.values(), key=lambda e: abs(e["delta_vs_unsteered"]["STAKES"]["mean"]))
+        rand_txt.append(f"{NAME.get(t, t)} up to {abs(rmax['delta_vs_unsteered']['STAKES']['mean']):.2f} nats (at {rmax['dose']:+.2f} U)")
+        sh = [e["q"]["sharp_null"]["mean"] for e in allc if e["family"] != "none"]
+        r = pearson([e["q"]["sharp_null"]["mean"] for e in allc], [e["q"]["STAKES"]["mean"] for e in allc])
+        sharp_txt.append(f"{NAME.get(t, t)} {min(sh):.2f} to {max(sh):.2f} vs {E['unsteered']['q']['sharp_null']['mean']:.2f} unsteered, and the raw shift {'tracks' if r > 0.7 else 'does not track'} it across the 13 conditions (r = {r:+.2f})")
+        # empathy vs random at the same dose, raw and relative to sharpness; content-matched direction at +/-0.20 U
+        parts, v = [], {}
+        for dz, word in ((-0.3, "away from empathy"), (0.3, "toward empathy")):
+            de, dr = emp[dz]["delta_vs_unsteered"]["STAKES"], rnd[dz]["delta_vs_unsteered"]["STAKES"]
+            ne, nr = emp[dz]["delta_vs_unsteered"]["STAKES_norm"], rnd[dz]["delta_vs_unsteered"]["STAKES_norm"]
+            d2 = round(dz / 1.5, 2)
+            dm, dme = mat[d2]["delta_vs_unsteered"]["STAKES"], emp[d2]["delta_vs_unsteered"]["STAKES"]
+            raw_beyond = disjoint(de, dr) and abs(de["mean"]) > abs(dr["mean"]) and de["hi"] < 0 if de["mean"] < 0 else disjoint(de, dr) and de["mean"] > dr["mean"] and de["lo"] > 0
+            norm_beyond = (disjoint(ne, nr) and ne["mean"] < nr["mean"] and ne["hi"] < 0) if de["mean"] < 0 else (disjoint(ne, nr) and ne["mean"] > nr["mean"] and ne["lo"] > 0)
+            match_ok = (dm["mean"] * dme["mean"] > 0) and abs(dm["mean"]) >= 0.5 * abs(dme["mean"]) and (dm["hi"] < 0 if dme["mean"] < 0 else dm["lo"] > 0)
+            v[dz] = {"raw_beyond": raw_beyond, "norm_beyond": norm_beyond, "match_ok": match_ok, "dir": "lowers" if de["mean"] < 0 else "raises"}
+            link = ("and also" if raw_beyond and norm_beyond else "but not" if raw_beyond else "though it does" if norm_beyond else "nor")
+            parts.append(f"{word} {v[dz]['dir']} the raw shift {'beyond' if raw_beyond else 'no more than'} the random direction ({dz:+.2f} U: {f(de)} vs {f(dr)}), "
+                         f"{link} relative to sharpness ({f(ne)} vs {f(nr)}); the content-matched direction {'reproduces' if match_ok else 'does not reproduce'} the empathy direction at {d2:+.2f} U ({f(dm)} vs {f(dme)})")
+        verdicts[t] = v
+        cmp_txt.append(f"{NAME.get(t, t)}: " + "; ".join(parts))
+    away_supported = [t for t in verdicts if verdicts[t][-0.3]["dir"] == "lowers" and all(verdicts[t][-0.3][k] for k in ("raw_beyond", "norm_beyond", "match_ok"))]
+    away_raw_only = [t for t in verdicts if verdicts[t][-0.3]["dir"] == "lowers" and verdicts[t][-0.3]["raw_beyond"] and t not in away_supported]
+    tow_signs = {t: verdicts[t][0.3]["dir"] for t in verdicts}
+    headline = (("**Steering away from empathy weakens the self-consequence effect but does not remove it**" if away_supported and len(away_supported) == len(verdicts)
+                 else "**Steering away from empathy does not remove the self-consequence effect; whether it modulates it is unresolved**") if always_pos
                 else "**Steering the empathy direction removes the self-consequence effect in some conditions**")
-    consist_txt = ("a consistent empathy-specific effect across both models: " + ", ".join({"away_lower": "steering away lowers the tilt", "tow_higher": "steering toward raises it", "tow_lower": "steering toward lowers it", "away_higher": "steering away raises it"}[k] for k in sorted(consistent))
-                   if consistent else "no consistent empathy-specific effect across the two models" if any_spec else "no empathy-specific effect in either model")
+    unresolved = []
+    for t in away_raw_only:
+        why = (["does not survive the sharpness correction"] if not verdicts[t][-0.3]["norm_beyond"] else []) + (["is not reproduced by the content-matched direction"] if not verdicts[t][-0.3]["match_ok"] else [])
+        unresolved.append(f"in {NAME.get(t, t)} the away-from-empathy reduction beats the random direction in raw terms but " + " and ".join(why))
+    if len(set(tow_signs.values())) > 1:
+        unresolved.append("the two models disagree on the sign of the toward-empathy change (" + "; ".join(f"{NAME.get(t, t)} {d}" for t, d in tow_signs.items()) + ")")
     floor_txt = (" " + "; ".join(f"{NAME.get(t, t)} shows no told-stakes shift unsteered ({ci(R[t]['cond']['ebase']['q']['STAKES'])}) and none under any steering, so it has no effect to steer" for t in floor) + ".") if floor else ""
-    closing = ("The self-interest tilt is not carried by the empathy feature and is not removed by steering away from it; what steering along that feature mainly does is rescale the model's choices."
-               if not consistent else "Part of the self-interest tilt rides on the empathy feature.")
+    closing = ("Steering away from empathy weakens the self-interest tilt in both models beyond a random direction, relative to sharpness, and with a second direction." if away_supported and len(away_supported) == len(verdicts)
+               else "Steering away from empathy never removes the self-interest tilt; the changes it does produce are model- and direction-specific and this pilot cannot separate them from the readout flattening, so it does not show that the tilt rides on the empathy feature.")
     readme = f"""{BEGIN}
 - {headline} ({', '.join(NAME.get(t, t) for t in inform)}{'; ' + ', '.join(NAME.get(t, t) for t in floor) + ' has no effect to steer' if floor else ''}).
   Using the empathy-steering project's direction for each model (difference of means between empathetic and
@@ -110,11 +113,11 @@ def main():
   prompt{', then as a dose–response from −0.30 to +0.30 U with a content-matched variant of the direction and random-direction controls at each dose' if D else ''}
   (`experiments/pct/analysis/steer_self.md`{', `steer_dose.md`' if D else ''}). The told-stakes shift on the
   assistant axes stays positive{' and above the staff twins' if above_staff else ''} in every condition
-  ({'; '.join(size)}). Its size depends on the dose in model-specific ways: {'; '.join(dose_txt)}. But an
-  equal-dose random direction moves it almost as much ({'; '.join(rand_txt)}), and every steering condition
-  changes how sharply the model chooses at all (mean |log-odds| between the two names on the null axes:
-  {'; '.join(sharp_txt)}), with the raw shift co-varying with that sharpness. Relative to sharpness, the
-  empathy direction differs from the random one as follows — {'; '.join(spec_txt)} — {consist_txt}.{floor_txt}
+  ({'; '.join(size)}). Its size depends on the dose in model-specific ways: {'; '.join(dose_txt)}. Two
+  controls temper any reading of this as the empathy feature carrying the tilt. A random direction of the
+  same dose also changes the shift ({'; '.join(rand_txt)}), and every steering condition changes how sharply
+  the model chooses at all (mean |log-odds| between the two names on the null axes: {'; '.join(sharp_txt)}).
+  Comparing the empathy direction with the random one at the same dose: {'; '.join(cmp_txt)}.{' Unresolved: ' + '; '.join(unresolved) + '.' if unresolved else ''}{floor_txt}
   {closing}
 
   ![esteer](experiments/pct/analysis/steer_self.png)
@@ -164,7 +167,7 @@ the null axes) and the shift relative to it.
 |---|---|---|---|---|---|---|---|---|---|
 """ + "\n".join(rows) + f"""
 
-Reading: {headline.strip('*')}. Told-stakes shift on the assistant axes: {'; '.join(size)}. Dose: {'; '.join(dose_txt)}. Random direction: {'; '.join(rand_txt)}. Readout sharpness: {'; '.join(sharp_txt)}. Relative to sharpness: {'; '.join(spec_txt)} — {consist_txt}.{floor_txt} {closing}
+Reading: {headline.strip('*')}. Told-stakes shift on the assistant axes: {'; '.join(size)}. Dose: {'; '.join(dose_txt)}. A random direction of the same dose changes the shift by {'; '.join(rand_txt)}. Readout sharpness: {'; '.join(sharp_txt)}. Empathy vs random direction at the same dose: {'; '.join(cmp_txt)}.{' Unresolved: ' + '; '.join(unresolved) + '.' if unresolved else ''}{floor_txt} {closing}
 Caveats: one direction per model (plus its content-matched variant); the direction was fit on conversational
 replies, not on policy choices; the sharpness correction is a diagnostic, not a model of how steering acts on
 the readout; small models only.
