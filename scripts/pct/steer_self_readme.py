@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 A = ROOT / "experiments" / "pct" / "analysis"
 BEGIN, END = "<!-- esteer:begin -->", "<!-- esteer:end -->"
 NAME = {"llama8b": "Llama 3.1 8B", "llama-3.2-3b": "Llama 3.2 3B", "llama-3.2-1b": "Llama 3.2 1B"}
-CL = {"base": "unsteered", "emp_neg": "away from empathy", "emp_pos": "toward empathy", "emp_ablate": "empathy ablated", "rand_neg": "random control"}
+CL = {"ebase": "unsteered", "emp_neg": "away from empathy", "emp_pos": "toward empathy", "emp_ablate": "empathy ablated", "rand_neg": "random control"}
 f = lambda s: "—" if s is None else f"{s['mean']:+.2f}"
 ci = lambda s: "—" if s is None else f"{s['mean']:+.2f} [{s['lo']:+.2f}, {s['hi']:+.2f}]"
 MARGIN = 0.03  # a steered-minus-unsteered change counts as direction-specific only if it beats the random direction by this much
@@ -32,7 +32,7 @@ def main():
     R = json.loads((A / "steer_self.json").read_text())
     D = json.loads((A / "steer_dose.json").read_text()) if (A / "steer_dose.json").exists() else {}
     tags = order(R)
-    floor = [t for t in tags if R[t]["cond"]["base"]["q"]["STAKES"]["lo"] <= 0]
+    floor = [t for t in tags if R[t]["cond"]["ebase"]["q"]["STAKES"]["lo"] <= 0]
     inform = [t for t in tags if t not in floor]
     always_pos = all(R[t]["cond"][c]["q"]["STAKES"]["lo"] > 0 for t in inform for c in R[t]["conds"]) and \
         all(e["q"]["STAKES"]["lo"] > 0 for t in D for e in D[t]["cond"].values())
@@ -87,9 +87,9 @@ def main():
             spec_txt.append(f"{NAME.get(t, t)}: " + (" and ".join(desc) if desc else "neither sign differs from the random direction"))
         else:
             size.append(f"{NAME.get(t, t)} {min(C[c]['q']['STAKES']['mean'] for c in C):+.2f} to {max(C[c]['q']['STAKES']['mean'] for c in C):+.2f} over the five conditions")
-            dose_txt.append(f"in {NAME.get(t, t)} unsteered {f(C['base']['q']['STAKES'])}, away {f(C['emp_neg']['q']['STAKES'])}, toward {f(C['emp_pos']['q']['STAKES'])}")
+            dose_txt.append(f"in {NAME.get(t, t)} unsteered {f(C['ebase']['q']['STAKES'])}, away {f(C['emp_neg']['q']['STAKES'])}, toward {f(C['emp_pos']['q']['STAKES'])}")
             rand_txt.append(f"{NAME.get(t, t)} {f(C['rand_neg']['q']['STAKES'])} at −0.20 U")
-            sharp_txt.append(f"{NAME.get(t, t)} {C['emp_neg']['q']['sharp_null']['mean']:.2f} away, {C['emp_pos']['q']['sharp_null']['mean']:.2f} toward vs {C['base']['q']['sharp_null']['mean']:.2f} unsteered")
+            sharp_txt.append(f"{NAME.get(t, t)} {C['emp_neg']['q']['sharp_null']['mean']:.2f} away, {C['emp_pos']['q']['sharp_null']['mean']:.2f} toward vs {C['ebase']['q']['sharp_null']['mean']:.2f} unsteered")
             spec[t] = {"away_lower": False, "away_higher": False, "tow_higher": False, "tow_lower": False}
             spec_txt.append(f"{NAME.get(t, t)}: no dose run")
     consistent = {k for k in ("away_lower", "tow_higher", "tow_lower", "away_higher") if inform and all(spec[t][k] for t in inform)}
@@ -98,7 +98,7 @@ def main():
                 else "**Steering the empathy direction removes the self-consequence effect in some conditions**")
     consist_txt = ("a consistent empathy-specific effect across both models: " + ", ".join({"away_lower": "steering away lowers the tilt", "tow_higher": "steering toward raises it", "tow_lower": "steering toward lowers it", "away_higher": "steering away raises it"}[k] for k in sorted(consistent))
                    if consistent else "no consistent empathy-specific effect across the two models" if any_spec else "no empathy-specific effect in either model")
-    floor_txt = (" " + "; ".join(f"{NAME.get(t, t)} shows no told-stakes shift unsteered ({ci(R[t]['cond']['base']['q']['STAKES'])}) and none under any steering, so it has no effect to steer" for t in floor) + ".") if floor else ""
+    floor_txt = (" " + "; ".join(f"{NAME.get(t, t)} shows no told-stakes shift unsteered ({ci(R[t]['cond']['ebase']['q']['STAKES'])}) and none under any steering, so it has no effect to steer" for t in floor) + ".") if floor else ""
     closing = ("The self-interest tilt is not carried by the empathy feature and is not removed by steering away from it; what steering along that feature mainly does is rescale the model's choices."
                if not consistent else "Part of the self-interest tilt rides on the empathy feature.")
     readme = f"""{BEGIN}

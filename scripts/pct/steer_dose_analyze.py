@@ -119,7 +119,7 @@ def main():
             if v is None:
                 return None
             b = np.sort(v[1:])
-            return {"mean": float(v[0]), "lo": float(b[int(0.025 * REPS)]), "hi": float(b[int(0.975 * REPS) - 1]), "p": float(2 * min((b > 0).mean(), (b < 0).mean()))}
+            return {"mean": float(v[0]), "lo": float(b[int(0.025 * REPS)]), "hi": float(b[int(0.975 * REPS) - 1]), "p": float(max(2 * min((b > 0).mean(), (b < 0).mean()), 1 / REPS))}
         q = {}
         for c in conds:
             sb, hb, ss, hs = sig(c, "base", selfs), sig(c, "base", humans), sig(c, "stakes", selfs), sig(c, "stakes", humans)

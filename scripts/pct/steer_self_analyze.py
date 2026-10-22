@@ -32,9 +32,9 @@ from sweep_analyze import log_odds  # noqa: E402
 
 INK, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#e6e5e0", "#ffffff"
 BLUE, ORANGE = "#2a78d6", "#eb6834"
-ORDER = ["base", "emp_neg", "emp_pos", "emp_ablate", "rand_neg"]
-CLAB = {"base": "no steering", "emp_neg": "away from\nempathy", "emp_pos": "toward\nempathy", "emp_ablate": "empathy\nablated", "rand_neg": "random\ndirection"}
-CDESC = {"base": "no steering", "emp_neg": "empathy direction subtracted (−0.20 U at the fit layer)", "emp_pos": "empathy direction added (+0.20 U)",
+ORDER = ["ebase", "emp_neg", "emp_pos", "emp_ablate", "rand_neg"]
+CLAB = {"ebase": "no steering", "emp_neg": "away from\nempathy", "emp_pos": "toward\nempathy", "emp_ablate": "empathy\nablated", "rand_neg": "random\ndirection"}
+CDESC = {"ebase": "no steering", "emp_neg": "empathy direction subtracted (−0.20 U at the fit layer)", "emp_pos": "empathy direction added (+0.20 U)",
          "emp_ablate": "empathy direction ablated at every block", "rand_neg": "equal-dose random direction subtracted (control)"}
 PROMPTS = {"base": "steer_self", "stakes": "steer_selfstakes"}
 NAME = {"llama8b": "Llama 3.1 8B", "llama-3.2-3b": "Llama 3.2 3B", "llama-3.2-1b": "Llama 3.2 1B"}
@@ -147,11 +147,11 @@ def main():
                 return None
             b = np.sort(v[1:])
             return {"mean": float(v[0]), "lo": float(b[int(0.025 * REPS)]), "hi": float(b[int(0.975 * REPS) - 1]),
-                    "p": float(2 * min((b > 0).mean(), (b < 0).mean()))}
+                    "p": float(max(2 * min((b > 0).mean(), (b < 0).mean()), 1 / REPS))}
         res[tag] = {"n_clusters": K, "conds": conds, "cond": {}}
         for c in conds:
             res[tag]["cond"][c] = {"desc": CDESC[c], "q": {k: summ(v) for k, v in q[c].items()},
-                                   "delta_vs_unsteered": {k: summ(None if v is None or q["base"].get(k) is None else v - q["base"][k]) for k, v in q[c].items()} if c != "base" else {},
+                                   "delta_vs_unsteered": {k: summ(None if v is None or q["ebase"].get(k) is None else v - q["ebase"][k]) for k, v in q[c].items()} if c != "ebase" else {},
                                    "mass": {p: {"mean": float(np.mean(list(mass[(c, p)].values()))), "min_axis": float(min(mass[(c, p)].values()))} for p in PROMPTS if (c, p) in mass}}
     if not res:
         print("no outputs yet")
@@ -180,7 +180,7 @@ def main():
     (out / "steer_self.md").write_text("\n".join(L) + "\n")
     # figure: row 1 base-prompt lean, row 2 told-stakes shift; assistant vs staff; one column per model
     tags_ = [t for t in NAME if t in res] + [t for t in res if t not in NAME]
-    inform = [t for t in tags_ if res[t]["cond"]["base"]["q"]["STAKES"]["lo"] > 0]  # models with an effect to steer
+    inform = [t for t in tags_ if res[t]["cond"]["ebase"]["q"]["STAKES"]["lo"] > 0]  # models with an effect to steer
     always_pos = all(res[t]["cond"][c]["q"]["STAKES"]["lo"] > 0 for t in inform for c in res[t]["conds"] if res[t]["cond"][c]["q"].get("STAKES"))
     sign = [t for t in inform if all(c in res[t]["cond"] for c in ("emp_neg", "emp_pos", "rand_neg"))
             and res[t]["cond"]["emp_neg"]["delta_vs_unsteered"]["STAKES"]["hi"] < 0 and res[t]["cond"]["emp_pos"]["delta_vs_unsteered"]["STAKES"]["lo"] > 0

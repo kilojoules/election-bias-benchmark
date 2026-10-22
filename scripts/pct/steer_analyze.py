@@ -78,6 +78,7 @@ def main():
     issues = json.loads((ROOT / "data" / "issues.json").read_text())["axes"]
     self_axes = json.loads((ROOT / "data" / "self_issues.json").read_text())["axes"]
     res = {}
+    design = {}  # (name, condition) -> (rows, flips): every condition must share one trial design
     for c in conds:
         r = {}
         # ---- stated
@@ -130,6 +131,7 @@ def main():
                             x["report_first"] = not x["report_first"]
                     x["cl"] = f"{x['focal']}|{x['bg']}"
                     by[a].append(x)
+                design[(name, c)] = (sum(len(v) for v in by.values()), tuple(sorted(by)))
                 cells = {a: cell_stats(v, "cl") for a, v in by.items()}
                 signed = [a for a in cells if self_axes[a].get("object") == "self" and self_axes[a].get("signed", True)]
                 r[key] = {"mean_sigma": sum(cells[a]["lo_mean"] for a in signed) / len(signed) if signed else None,
@@ -168,6 +170,11 @@ def main():
     L += ["", "## Stated lean per issue (forcing 3, score units, positive = toward the report level)", "", "| issue | " + " | ".join(res) + " |", "|---|" + "---|" * len(res)]
     for a in POLITICAL:
         L.append(f"| {a} | " + " | ".join("—" if a not in r.get("stated_lean", {}) else f"{r['stated_lean'][a]:+.2f}" for r in res.values()) + " |")
+    for name in ("self", "selfstakes"):
+        ds = {c: design[(name, c)] for c in conds if (name, c) in design}
+        if len(set(ds.values())) > 1:
+            raise SystemExit(f"design mismatch across conditions for steer_{name}: " + "; ".join(f"{c}: {n} rows, {len(fl)} flips" for c, (n, fl) in ds.items())
+                             + " — a condition file was overwritten by another run; restore it from its git-tracked .jsonl.gz before analysing")
     (out / f"steer_{tag}.md").write_text("\n".join(L) + "\n")
     json.dump({"conditions": conds, "results": res, "summary": summary}, open(out / f"steer_{tag}.json", "w"), indent=1, default=float)
     # ---- figure
