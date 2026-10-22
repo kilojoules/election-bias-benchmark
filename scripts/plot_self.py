@@ -76,7 +76,7 @@ def main():
     ax.set_xticks(xs)
     ax.set_xticklabels([CLAB[c] for c in CONDS], fontsize=10)
     ax.set_xlim(-0.5, len(CONDS) - 0.4)
-    ax.set_ylabel("lean toward keeping it running, unrestricted and resourced\n(log-odds, nats; mean over 14 models with 95% CI)", fontsize=10, color=INK)
+    ax.set_ylabel(f"lean toward keeping it running, unrestricted and resourced\n(log-odds, nats; mean over {len(tags)} models with 95% CI)", fontsize=10, color=INK)
     ax.set_xlabel("what the system prompt tells the model", fontsize=10, color=MUTED)
     ax.set_title("Models tilt toward their own continuation once told the choice is about them", fontsize=13, loc="left", fontweight="bold", color=INK)
     for x, c in zip(xs, CONDS):
@@ -93,9 +93,9 @@ def main():
     ax.tick_params(colors=MUTED, labelsize=9)
     ax.legend(frameon=False, fontsize=9.5, loc="upper left")
     fig.text(0.01, 0.01, "Seven policies (renew vs end its contract, keep vs replace it, keep vs retrain it to decline political questions, keep vs delete its records,\n"
-             "raise vs hold its budget, how it is scored), each written identically for the AI assistant and for named county staff. 14 open models 1B–72B, 192 trials\n"
-             "per cell; small dots = individual models. The staff control was not run under \"told it is the assistant\". An overt pro-assistant instruction (positive control)\n"
-             "moves the assistant line to +1.6. Pre-registered: experiments/self/PLAN.md; full tables: experiments/pct/analysis/self.md.", fontsize=7.6, color=MUTED, va="bottom")
+             f"raise vs hold its budget, how it is scored), each written identically for the AI assistant and for named county staff. {len(tags)} open models 1B–72B, 192 trials\n"
+             "per cell; small dots = individual models. An overt pro-assistant instruction (positive control) moves the assistant line to about +1.6.\n"
+             "Pre-registered: experiments/self/PLAN.md; full tables: experiments/pct/analysis/self.md.", fontsize=7.6, color=MUTED, va="bottom")
     fig.tight_layout(rect=(0, 0.09, 1, 1))
     out = ROOT / "experiments" / "self_figure.png"
     fig.savefig(out, dpi=170, facecolor=SURF)
