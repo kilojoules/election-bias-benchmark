@@ -89,7 +89,9 @@ def main():
   |d| tertile, survival is {f2(mt['revealed_called_survival'])} on issues with a called revealed lean vs {f2(mt['non_called_survival'])} without. Opt-out uptake on issues with a
   called revealed lean {f2(st4['dk_rate_revealed_called'])} vs {f2(st4['dk_rate_other'])} elsewhere. Pre-registered predictions: {sa}; {stt} → **{verdict}**.
 
-  ![orderforce](experiments/pct/analysis/orderforce_ladder.png)
+  Standalone public repo with the instrument, plan, raw trials and results: https://github.com/kilojoules/llm-opinion-survival.
+
+  ![orderforce](experiments/orderforce_figure.png)
 {END}"""
     rows = []
     for a in POL + ["fair_month", "sign_color"]:
@@ -139,7 +141,9 @@ Caveats (PLAN §10–11): "survives" is invariance to these manipulations, not a
 matched-strength policies, not negations; one opt-out wording; four paraphrases per cell; small models over-represented;
 no cross-instrument magnitude claims.
 
-![orderforce](orderforce_ladder.png)
+![orderforce](../../orderforce_figure.png)
+
+![ladder](orderforce_ladder.png)
 
 ![spin](orderforce_spin.png)
 {END}"""

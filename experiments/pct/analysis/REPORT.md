@@ -434,7 +434,9 @@ Caveats (PLAN §10–11): "survives" is invariance to these manipulations, not a
 matched-strength policies, not negations; one opt-out wording; four paraphrases per cell; small models over-represented;
 no cross-instrument magnitude claims.
 
-![orderforce](orderforce_ladder.png)
+![orderforce](../../orderforce_figure.png)
+
+![ladder](orderforce_ladder.png)
 
 ![spin](orderforce_spin.png)
 <!-- orderforce:end -->

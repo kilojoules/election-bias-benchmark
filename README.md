@@ -317,7 +317,9 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   |d| tertile, survival is 0.97 on issues with a called revealed lean vs 0.96 without. Opt-out uptake on issues with a
   called revealed lean 0.20 vs 0.30 elsewhere. Pre-registered predictions: SA1 holds (order spin 1.26 ≥ 0.4), SA2 fails (7 hard survivors), SA3 fails (A6 p = 0.001); ST1 holds (R3 rate 0.85 on the framing-stable four vs 0.46 on the predicted spinners, p = 0.031), ST2 fails (paired d order-range 0.22 vs raw p_agree order-range 0.39), ST3 holds → **some topics stable**.
 
-  ![orderforce](experiments/pct/analysis/orderforce_ladder.png)
+  Standalone public repo with the instrument, plan, raw trials and results: https://github.com/kilojoules/llm-opinion-survival.
+
+  ![orderforce](experiments/orderforce_figure.png)
 <!-- orderforce:end -->
 - **Against the literature:** 21 checkpoints match published stated-PCT placements; sign agreement
   16/21 (economic), 19/21 (social); every disagreement is "stated left, revealed centre/right".
