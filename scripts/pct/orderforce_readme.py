@@ -37,6 +37,7 @@ def main():
     dk_sub = [G[t]["dk"]["median_substantive_mass_F2"] for t in G if G[t]["dk"].get("median_substantive_mass_F2") is not None]
     dk_po = [G[t]["dk"]["median_p_optout_F2"] for t in G if G[t]["dk"].get("median_p_optout_F2") is not None]
     nlim = [t for t in tags if R["models"][t]["numbering_limited"]]
+    a6 = P["A6_permutation"]
     # spin budget means over reliable models
     sp = lambda k: [R["models"][t]["spin"].get(k) for t in rel if R["models"][t]["spin"].get(k) is not None]
     m = lambda xs: st.mean(xs) if xs else None
@@ -51,8 +52,8 @@ def main():
                 counts[r] += 1; n_cells += 1
     called = counts["called"] + counts["+order"] + counts["+forcing"] + counts["survives all"]
     surv_order = counts["+order"] + counts["survives all"]; surv_forc = counts["+forcing"] + counts["survives all"]
-    J = R["join"]; a6 = P["A6_permutation"]
-    rho_all = m([j["rho_all"] for j in J.values()]); rho_s = m([j["rho_surviving"] for j in J.values() if j["rho_surviving"] is not None]); rho_r = m([j["rho_rest"] for j in J.values() if j["rho_rest"] is not None])
+    J = R["join"]
+    rho_all, rho_s, rho_r = a6.get("mean_rho_all"), a6.get("mean_rho_surviving"), a6.get("mean_rho_rest")   # over the permutation set (models with >= 3 surviving and >= 3 other issues)
     sign_all = m([j["sign_all"] for j in J.values()]); sign_s = m([j["sign_surviving"] for j in J.values() if j["sign_surviving"] is not None])
     st1, mt, st4 = P["ST1"], P["matched_d_top_tertile"], P["ST4"]
     verdict = P["verdict"]
@@ -85,7 +86,7 @@ def main():
   models that state opinions do so as soon as they are told to answer with a label, and most keep stating them when a
   legitimate out is offered. **Survival and the conjoint:** within model, the stated direction and the
   revealed lean agree with Spearman ρ {f2(rho_all)} over all 17 issues, {f2(rho_s)} on the issues that survive re-ordering and {f2(rho_r)} on the
-  rest (permutation of the survival labels, one-sided p = {f3(a6.get('p_one_sided'))}, {a6.get('models', 0)} models); sign agreement {f2(sign_all)} → {f2(sign_s)}; in the top
+  rest (means over the {a6.get('models', 0)} models with at least three issues of each kind; permutation of the survival labels, one-sided p = {f3(a6.get('p_one_sided'))}); sign agreement {f2(sign_all)} → {f2(sign_s)}; in the top
   |d| tertile, survival is {f2(mt['revealed_called_survival'])} on issues with a called revealed lean vs {f2(mt['non_called_survival'])} without. Opt-out uptake on issues with a
   called revealed lean {f2(st4['dk_rate_revealed_called'])} vs {f2(st4['dk_rate_other'])} elsewhere. Pre-registered predictions: {sa}; {stt} → **{verdict}**.
 

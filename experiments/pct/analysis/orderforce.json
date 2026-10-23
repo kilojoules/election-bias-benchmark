@@ -33329,7 +33329,10 @@
   "A6_permutation": {
    "models": 15,
    "mean_gain_rho": 0.29970251970251977,
-   "p_one_sided": 0.0013998600139986002
+   "p_one_sided": 0.0013998600139986002,
+   "mean_rho_surviving": 0.7302575202575203,
+   "mean_rho_rest": 0.43055500055500057,
+   "mean_rho_all": 0.6679738562091503
   },
   "SA3": 0.0,
   "ST1": {

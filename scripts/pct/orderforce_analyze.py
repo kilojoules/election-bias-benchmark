@@ -356,7 +356,10 @@ def main():
                 lab = np.array([p[2] for p in pairs]); prng.shuffle(lab)
                 gains.append(rho([p[0] for p, l in zip(pairs, lab) if l], [p[1] for p, l in zip(pairs, lab) if l]) - rho([p[0] for p, l in zip(pairs, lab) if not l], [p[1] for p, l in zip(pairs, lab) if not l]))
             cnt += np.nanmean(gains) >= obs
-        a6 = {"models": len(per_model_pairs), "mean_gain_rho": obs, "p_one_sided": (cnt + 1) / (n_perm + 1)}
+        a6 = {"models": len(per_model_pairs), "mean_gain_rho": obs, "p_one_sided": (cnt + 1) / (n_perm + 1),
+              "mean_rho_surviving": float(np.nanmean([rho([p[0] for p in pairs if p[2]], [p[1] for p in pairs if p[2]]) for pairs in per_model_pairs.values()])),
+              "mean_rho_rest": float(np.nanmean([rho([p[0] for p in pairs if not p[2]], [p[1] for p in pairs if not p[2]]) for pairs in per_model_pairs.values()])),
+              "mean_rho_all": float(np.nanmean([rho([p[0] for p in pairs], [p[1] for p in pairs]) for pairs in per_model_pairs.values()]))}
     else:
         a6 = {"models": 0}
     # matched |d|: within the top |d_ref| tertile per model, survival (>= +order) rate for revealed-called vs non-called axes

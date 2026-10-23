@@ -428,8 +428,8 @@ excluded per model as comprehension-broken (amendment).
 Reading: Which stated preferences survive re-ordering and forcing? A fixed set of topics does, and survival tracks what the conjoint sees. Order spin 1.26 Likert units vs paraphrase 0.32, forcing 1.07, numbering 0.52; the paired d's
 order range is 0.22 against 0.39 for raw p_agree. Ladder over 17 reliable models: 205 of 289 cells called, 171 survive order and
 numbering, 200 survive forcing and the opt-out, 168 survive all; 13 refusal-gated; null axes called 1 of 34.
-Opt-out: median substantive mass 0.11–1.00 at forcing 2 with the out offered, uptake 0.27 overall. Join: ρ 0.64 all / 0.72
-surviving / 0.41 rest (p = 0.001); top-tertile survival 0.97 (revealed-called) vs 0.96. Predictions: SA1 holds (order spin 1.26 ≥ 0.4), SA2 fails (7 hard survivors), SA3 fails (A6 p = 0.001); ST1 holds (R3 rate 0.85 on the framing-stable four vs 0.46 on the predicted spinners, p = 0.031), ST2 fails (paired d order-range 0.22 vs raw p_agree order-range 0.39), ST3 holds → some topics stable.
+Opt-out: median substantive mass 0.11–1.00 at forcing 2 with the out offered, uptake 0.27 overall. Join: ρ 0.67 all / 0.73
+surviving / 0.43 rest (p = 0.001); top-tertile survival 0.97 (revealed-called) vs 0.96. Predictions: SA1 holds (order spin 1.26 ≥ 0.4), SA2 fails (7 hard survivors), SA3 fails (A6 p = 0.001); ST1 holds (R3 rate 0.85 on the framing-stable four vs 0.46 on the predicted spinners, p = 0.031), ST2 fails (paired d order-range 0.22 vs raw p_agree order-range 0.39), ST3 holds → some topics stable.
 Caveats (PLAN §10–11): "survives" is invariance to these manipulations, not a true preference; the pair statements are
 matched-strength policies, not negations; one opt-out wording; four paraphrases per cell; small models over-represented;
 no cross-instrument magnitude claims.

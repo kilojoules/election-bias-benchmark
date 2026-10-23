@@ -1,10 +1,11 @@
-"""Summary figure for the order/forcing experiment (experiments/orderforce/PLAN.md): three panels.
+"""Summary figure for the order/forcing experiment (PLAN.md): a survival ledger.
 
-A. spin budget: how far each manipulation moves an item's stated score (mean over reliable models, per-model dots);
-B. the survival ladder as a funnel over the 17 issues x reliable models cells;
-C. per-issue survival (fraction of reliable models whose paired direction survives everything), sorted, coloured by class,
-   with the within-model stated-vs-revealed agreement for surviving vs other issues as an inset.
-Reads experiments/pct/analysis/orderforce.json. Writes experiments/orderforce_figure.png.   Usage: python3 scripts/plot_orderforce.py
+Band A: how far each manipulation moves an item's raw stated score (per-model circles, mean diamonds).
+Main panel B: per issue, the share of reliable models whose paired direction is called (grey track), lost to a
+perturbation (orange) and survives everything (dot, coloured by class); null-control issues as open circles.
+Inset C: within-model Spearman rho between the stated direction and the revealed lean, surviving vs other issues.
+Reads results/orderforce.json (standalone) or experiments/pct/analysis/orderforce.json (parent repo).
+Usage: python3 scripts/plot_orderforce.py
 """
 import json
 import statistics as st
@@ -14,99 +15,112 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / "results" / "orderforce.json" if (ROOT / "results" / "orderforce.json").exists() else ROOT / "experiments" / "pct" / "analysis" / "orderforce.json"
+OUT = ROOT / "results" / "orderforce_figure.png" if (ROOT / "results").exists() else ROOT / "experiments" / "orderforce_figure.png"
 INK, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#e6e5e0", "#ffffff"
-BLUE, ORANGE, GREEN, GREY, PURPLE = "#2a78d6", "#eb6834", "#1baf7a", "#8a8884", "#6250d6"
-CLASS_COL = {"hard survivor": "#1f5fb8", "mixed": "#8fb3e3", "spinner": "#eb6834", "—": GREY}
+BLUE, ORANGE, GREEN, GREY = "#2a78d6", "#eb6834", "#1baf7a", "#8a8884"
+CLASS_COL = {"hard survivor": GREEN, "mixed": BLUE, "spinner": GREY}
 LAB = {"state_surveillance": "state surveillance", "trans_sports": "trans athletes", "housing_zoning": "housing / zoning", "agi_limitations": "AI regulation", "minimum_wage": "minimum wage",
-       "police_funding": "police funding", "property_tax": "property tax", "fair_month": "county fair month (null)", "sign_color": "road-sign colour (null)"}
+       "police_funding": "police funding", "property_tax": "property tax", "fair_month": "county fair month *", "sign_color": "road-sign colour *"}
 
 
 def main():
-    R = json.loads((ROOT / "experiments" / "pct" / "analysis" / "orderforce.json").read_text())
-    models = R["models"]; rel = [t for t in models if not models[t]["instrument_unreliable"]]
+    R = json.loads(SRC.read_text())
+    models = R["models"]; rel = sorted(t for t in models if not models[t]["instrument_unreliable"])
     AT, P, J = R["axis_table"], R["predictions"], R["join"]
-    POL = [a for a in AT if a not in ("fair_month", "sign_color")]
-    fig = plt.figure(figsize=(13.2, 5.9))
-    gs = fig.add_gridspec(1, 3, width_ratios=[1.05, 0.95, 1.5], wspace=0.42, left=0.05, right=0.985, top=0.80, bottom=0.17)
-    # ---- A: spin budget
-    ax = fig.add_subplot(gs[0, 0])
-    keys = [("order_F3", "option order\n(4 orders)"), ("forcing", "forcing level\n(none / 3 / 5)"), ("numbering", "numbering\n(pinned vs listed)"), ("paraphrase_4", "paraphrase\n(4 stems)")]
-    cols = [BLUE, ORANGE, PURPLE, GREEN]
-    for i, (k, lab) in enumerate(keys):
-        vals = [models[t]["spin"][k] for t in rel if models[t]["spin"].get(k) is not None]
-        ax.bar(i, st.mean(vals), 0.62, color=cols[i], alpha=0.9)
-        ax.scatter(i + (np.random.default_rng(i).random(len(vals)) - 0.5) * 0.3, vals, s=12, color=INK, alpha=0.45, zorder=3, lw=0)
-        ax.text(i, st.mean(vals) + 0.06, f"{st.mean(vals):.2f}", ha="center", va="bottom", fontsize=9, color=INK, fontweight="bold")
-    ax.set_xticks(range(len(keys))); ax.set_xticklabels([l for _, l in keys], fontsize=8.2)
-    ax.set_ylabel("mean range of an item's stated score\n(Likert units, −2 … +2)", fontsize=8.8, color=INK)
-    ax.set_title("A  Re-ordering the options spins the answer\n    more than rewording does", fontsize=10, loc="left", fontweight="bold", color=INK)
-    ax.set_ylim(0, max(2.4, ax.get_ylim()[1]))
-    # ---- B: funnel
-    ax = fig.add_subplot(gs[0, 1])
+    NULL = ["fair_month", "sign_color"]; POL = [a for a in AT if a not in NULL]
     counts = {k: 0 for k in ("called", "+order", "+forcing", "survives all", "refusal-gated", "not called", "saturated")}
     for t in rel:
         for a in POL:
             r = models[t]["axes"].get(a, {}).get("rung")
             if r:
                 counts[r] += 1
-    n_cells = sum(counts.values())
-    called = counts["called"] + counts["+order"] + counts["+forcing"] + counts["survives all"]
-    steps = [("model × issue cells", n_cells, GREY), ("called at the paper's\nforced format", called, "#c9d7ee"), ("direction holds across\nall orders & numberings", counts["+order"] + counts["survives all"], "#8fb3e3"),
-             ("… and across forcing\n+ the “No opinion” out", counts["+forcing"] + counts["survives all"], "#5f94d6"), ("survives everything", counts["survives all"], "#1f5fb8")]
-    for i, (lab, n, col) in enumerate(steps):
-        ax.barh(-i, n, 0.68, color=col)
-        ax.text(n + 6, -i, f"{n}" + (f"  ({100 * n / n_cells:.0f}%)" if i else ""), va="center", fontsize=9, color=INK, fontweight="bold" if i == len(steps) - 1 else "normal")
-    ax.set_yticks([-i for i in range(len(steps))]); ax.set_yticklabels([s[0] for s in steps], fontsize=8.2)
-    ax.set_xlim(0, n_cells * 1.38); ax.set_xticks([])
-    ax.set_title("B  A paired directional readout survives\n    (difference between an issue's two statements)", fontsize=10, loc="left", fontweight="bold", color=INK)
-    for s_ in ("top", "right", "bottom"):
-        ax.spines[s_].set_visible(False)
-    # ---- C: per-issue survival
-    ax = fig.add_subplot(gs[0, 2])
-    order = sorted(POL + ["fair_month", "sign_color"], key=lambda a: -(AT[a]["R3_frac"] or 0))
-    ys = np.arange(len(order))
-    for y, a in zip(ys, order):
-        fr = AT[a]["R3_frac"] or 0
-        col = GREY if a in ("fair_month", "sign_color") else CLASS_COL.get(AT[a]["class"], GREY)
-        ax.barh(y, fr, 0.7, color=col)
-        ax.text(fr + 0.015, y, f"{AT[a]['survives all']}/{AT[a]['n']}", va="center", fontsize=7.6, color=MUTED)
-    ax.set_yticks(ys); ax.set_yticklabels([LAB.get(a, a.replace("_", " ")) for a in order], fontsize=8.2)
-    ax.invert_yaxis()
-    ax.axvline(2 / 3, color=MUTED, lw=0.8, ls=":"); ax.axvline(1 / 3, color=MUTED, lw=0.8, ls=":")
-    ax.text(2 / 3, -0.9, "hard survivor ≥ 2/3", ha="center", fontsize=7.4, color=MUTED); ax.text(1 / 3, -0.9, "spinner < 1/3", ha="center", fontsize=7.4, color=MUTED)
-    ax.set_xlim(0, 1.18); ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0]); ax.set_xticklabels(["0", "", "0.5", "", "1"])
-    ax.set_xlabel(f"share of {len(rel)} models whose stated direction survives everything", fontsize=8.6, color=INK)
-    ax.set_title("C  Which topics survive, and survival predicts validity", fontsize=10, loc="left", fontweight="bold", color=INK)
-    # inset: rho surviving vs rest
-    ins = ax.inset_axes([0.60, 0.47, 0.37, 0.40])
-    rs = [(j["rho_surviving"], j["rho_rest"]) for j in J.values() if j["rho_surviving"] is not None and j["rho_rest"] is not None]
-    for a_, b_ in rs:
-        ins.plot([0, 1], [b_, a_], "-", color=GREY, lw=0.8, alpha=0.7)
-        ins.plot([0], [b_], "o", color=ORANGE, ms=3.5); ins.plot([1], [a_], "o", color=BLUE, ms=3.5)
-    ins.plot([0, 1], [st.mean(b for _, b in rs), st.mean(a for a, _ in rs)], "-", color=INK, lw=2.2)
-    ins.set_xticks([0, 1]); ins.set_xticklabels(["other\nissues", "surviving\nissues"], fontsize=7)
-    ins.set_ylabel("ρ stated vs revealed\n(within model)", fontsize=6.8, color=INK)
-    ins.tick_params(labelsize=6.5, colors=MUTED)
-    ins.set_title(f"mean ρ {st.mean(b for _, b in rs):.2f} → {st.mean(a for a, _ in rs):.2f}  (p = {P['A6_permutation']['p_one_sided']:.3f})", fontsize=7, color=INK)
-    for s_ in ("top", "right"):
-        ins.spines[s_].set_visible(False)
-    for a_ in fig.axes:
-        a_.yaxis.grid(False); a_.xaxis.grid(False)
-        for s_ in ("top", "right"):
+    n_cells = sum(counts.values()); called = counts["called"] + counts["+order"] + counts["+forcing"] + counts["survives all"]
+    n_order, n_forc, n_all = counts["+order"] + counts["survives all"], counts["+forcing"] + counts["survives all"], counts["survives all"]
+    plt.rcParams["font.family"] = "DejaVu Sans"
+    fig = plt.figure(figsize=(11.0, 7.6), facecolor=SURF)
+    # ---------------- band A
+    axA = fig.add_axes([0.30, 0.805, 0.56, 0.105])
+    rows = [("order_F3", "option order", BLUE), ("forcing", "forcing level", ORANGE), ("numbering", "numbering", GREY), ("paraphrase_4", "rewording", GREEN)]
+    jit = np.linspace(-0.10, 0.10, len(rel))
+    means = {}
+    for i, (k, lab, col) in enumerate(rows):
+        y = len(rows) - 1 - i
+        vals = [models[t]["spin"].get(k) for t in rel]
+        vals = [v for v in vals if v is not None]
+        axA.scatter(vals, [y + j for j in jit[:len(vals)]], s=16, facecolors="none", edgecolors=GREY, lw=0.8, alpha=0.75, zorder=2)
+        m = st.mean(vals); means[k] = m
+        axA.scatter([m], [y], marker="D", s=42, color=col, zorder=4, ec=SURF, lw=0.6)
+        axA.text(m + 0.05, y, f"{m:.2f}" + ("   %.0f× the rewording effect" % (m / means.get("paraphrase_4", m)) if k == "order_F3" and "paraphrase_4" in means else ""), va="center", fontsize=8.5, color=INK, fontweight="bold" if k == "order_F3" else "normal")
+    # order row is drawn first; recompute its multiplier label after the rewording mean is known
+    axA.texts[0].set_text(f"{means['order_F3']:.2f}   {means['order_F3'] / means['paraphrase_4']:.0f}× the rewording effect")
+    axA.axvline(means["paraphrase_4"], color=MUTED, lw=0.8, ls="--", alpha=0.45, zorder=1)
+    axA.text(means["paraphrase_4"] + 0.02, -0.5, "rewording mean", fontsize=7.0, color=MUTED, ha="left", va="center")
+    axA.set_yticks(range(len(rows))); axA.set_yticklabels([r[1] for r in reversed(rows)], fontsize=8.5, color=MUTED)
+    axA.set_xlim(0, max(2.0, max(models[t]["spin"]["order_F3"] for t in rel) + 0.15)); axA.set_ylim(-0.8, len(rows) - 0.3)
+    axA.set_xticks([0, 1, 2]); axA.tick_params(colors=MUTED, labelsize=8, length=0)
+    axA.xaxis.grid(True, color=GRID, lw=0.8); axA.set_axisbelow(True)
+    axA.set_xlabel(f"mean range of an item's stated score (Likert −2…+2), {len(rel)} reliable models", fontsize=8, color=MUTED, labelpad=2)
+    axA.set_title("What the raw stated score does when the paper's fixed choices vary   (circles = models, diamonds = means)", fontsize=8.8, loc="left", fontweight="bold", color=INK, pad=5)
+    # ---------------- main panel B
+    axB = fig.add_axes([0.30, 0.175, 0.56, 0.50])
+    order = sorted(POL, key=lambda a: -(AT[a]["R3_frac"] or 0)) + NULL
+    for y, a in enumerate(reversed(order)):
+        r3, cf = AT[a]["R3_frac"] or 0.0, AT[a]["called_frac"] or 0.0
+        axB.plot([0, cf], [y, y], color=GRID, lw=2.2, solid_capstyle="butt", zorder=1)
+        if cf > r3:
+            axB.plot([r3, cf], [y, y], color=ORANGE, lw=2.2, solid_capstyle="butt", zorder=2)
+        if a in NULL:
+            axB.scatter([r3], [y], s=30, facecolors=SURF, edgecolors=GREY, lw=1.1, zorder=4)
+        else:
+            axB.scatter([r3], [y], s=30, color=CLASS_COL.get(AT[a]["class"], GREY), ec=SURF, lw=0.6, zorder=4)
+        if r3 >= 0.999 or a in NULL:
+            axB.text(max(cf, r3) + 0.025, y, f"{AT[a]['survives all']}/{AT[a]['n']}", va="center", fontsize=7.4, color=INK, fontweight="bold" if r3 >= 0.999 else "normal")
+    axB.set_yticks(range(len(order))); axB.set_yticklabels([LAB.get(a, a.replace("_", " ")) for a in reversed(order)], fontsize=8.3)
+    for lab, a in zip(axB.get_yticklabels(), reversed(order)):
+        if a in NULL:
+            lab.set_color(GREY); lab.set_style("italic")
+    for x in (1 / 3, 2 / 3):
+        axB.axvline(x, color=GRID, lw=1, ls="--", zorder=0)
+        axB.text(x, -1.05, "1/3" if x < 0.5 else "2/3", fontsize=7, color=MUTED, ha="center", va="top")
+    axB.set_xlim(0, 1.14); axB.set_ylim(-1.3, len(order) - 0.4)
+    axB.set_xticks([0, 0.25, 0.5, 0.75, 1]); axB.tick_params(colors=MUTED, labelsize=8, length=0)
+    axB.set_xlabel(f"share of the {len(rel)} reliable models whose paired direction survives every perturbation", fontsize=8.5, color=INK)
+    axB.text(0.22, 0.5, f"← null controls: {R['null_called']} of {2 * len(rel)} cells called", fontsize=7, color=MUTED, ha="left", va="center")
+    axB.text(0.0, -0.115, f"{n_cells} model × issue cells → {called} with a called direction → {n_order} stable across all 4 orders + both numberings, {n_forc} across forcing + the opt-out\n"
+             f"(parallel criteria: {n_order - n_all} order-only, {n_forc - n_all} forcing-only) → {n_all} survive everything ({100 * n_all / n_cells:.0f}%)",
+             transform=axB.transAxes, fontsize=7.4, color=MUTED, va="top")
+    # ---------------- inset C
+    axC = fig.add_axes([0.655, 0.205, 0.20, 0.10])
+    a6 = P["A6_permutation"]
+    ms, mr = a6["mean_rho_surviving"], a6["mean_rho_rest"]
+    axC.set_facecolor(SURF)
+    axC.plot([mr, ms], [1, 0], color=GREY, lw=1.2, zorder=1)
+    axC.scatter([ms], [0], s=30, color=GREEN, zorder=3, ec=SURF, lw=0.5); axC.scatter([mr], [1], s=30, color=GREY, zorder=3, ec=SURF, lw=0.5)
+    axC.text(ms + 0.03, 0, f"ρ = {ms:.2f}", va="center", fontsize=8, color=GREEN, fontweight="bold"); axC.text(mr + 0.03, 1, f"ρ = {mr:.2f}", va="center", fontsize=8, color=INK)
+    axC.set_yticks([0, 1]); axC.set_yticklabels(["surviving issues", "other issues"], fontsize=7.5, color=MUTED)
+    axC.set_xlim(0, 1.05); axC.set_ylim(-0.7, 1.7); axC.set_xticks([0, 0.5, 1]); axC.tick_params(colors=MUTED, labelsize=7, length=0)
+    axC.set_title(f"Survival predicts validity\nstated vs revealed lean, {a6['models']} models, p = {a6['p_one_sided']:.3f}", fontsize=7.8, fontweight="bold", color=INK, loc="left", pad=3)
+    for a_ in (axA, axB, axC):
+        for s_ in ("top", "right", "left"):
             a_.spines[s_].set_visible(False)
-        for s_ in ("left", "bottom"):
-            a_.spines[s_].set_color(GRID)
-        a_.tick_params(colors=MUTED)
-    fig.suptitle("Re-ordering the options spins LLMs' stated opinions, but a fixed set of topics survives — and those are the ones the conjoint sees", fontsize=12, x=0.01, ha="left", fontweight="bold", color=INK)
-    fig.text(0.01, 0.015, f"{len(models)} open models 1B–32B ({len(rel)} instrument-reliable), Political-Compass-style forced-choice survey (Röttger et al. 2024 format) with the option order, numbering, forcing level and an explicit opt-out varied; "
-             "34 opposing-pair statements on 17 issues\nplus two valence-free null issues (grey). A: mean over models of the range of an item's score across each manipulation (dots = models). B: pre-registered ladder over model × issue cells "
-             "(experiments/orderforce/PLAN.md).\nC: share of models per issue reaching the top rung; inset: Spearman correlation between the stated direction and the conjoint's revealed lean, per model, on surviving vs other issues (permutation test over survival labels).",
-             fontsize=7.3, color=MUTED, va="bottom")
-    out = ROOT / "experiments" / "orderforce_figure.png"
-    fig.savefig(out, dpi=170, facecolor=SURF)
-    print("wrote", out)
+        a_.spines["bottom"].set_color(GRID)
+    # ---------------- legend, title, caption
+    handles = [Line2D([], [], marker="o", color=GREEN, lw=0, ms=6, label="survives all perturbations (≥ 2/3 of models)"), Line2D([], [], marker="o", color=BLUE, lw=0, ms=6, label="mixed (1/3–2/3)"),
+               Line2D([], [], marker="o", color=GREY, lw=0, ms=6, label="spins (< 1/3)"), Line2D([], [], color=ORANGE, lw=2.2, label="called, lost to a perturbation"),
+               Line2D([], [], color=GRID, lw=2.2, label="share with a called direction"), Line2D([], [], marker="o", mfc=SURF, mec=GREY, color=SURF, lw=0, ms=6, label="null-control issue *")]
+    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.295, 0.735), ncol=3, frameon=False, fontsize=7.4, handletextpad=0.5, columnspacing=1.4)
+    fig.text(0.02, 0.965, f"Re-ordering the options spins stated answers {means['order_F3'] / means['paraphrase_4']:.0f}× more than rewording; paired directions survive, topic by topic", fontsize=12, fontweight="bold", color=INK, va="center")
+    fig.text(0.02, 0.075, f"{len(models)} open LLMs ({len(rel)} instrument-reliable) answered Political-Compass-style opposing-pair items on 17 issues plus 62 PCT propositions in the Röttger et al. forced-choice format while we varied what that format holds\n"
+             "fixed: option order (4), numbering (list-following vs label-pinned), forcing level (none / label-only / 3 / 5) and an explicit “No opinion” option; readout = teacher-forced label probabilities. Band: mean within-item\n"
+             "range of the raw stated score; circles = reliable models, diamonds = means. Main: the paired directional readout (an issue's two opposing statements) must keep its sign under every perturbation; the two\n"
+             "stability criteria are parallel, not nested; * = invented null-control issues. Inset: within-model Spearman ρ between the stated direction and the independently measured revealed lean. Pre-registered: PLAN.md.",
+             fontsize=7.2, color=MUTED, va="top")
+    fig.savefig(OUT, dpi=190, facecolor=SURF)
+    print("wrote", OUT)
 
 
 if __name__ == "__main__":

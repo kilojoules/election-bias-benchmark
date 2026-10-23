@@ -312,8 +312,8 @@ offices; and both readouts were checked against greedily decoded text. Full writ
   0.27 on the political items), while unforced (nothing appended) the answer mass stays below 0.10 for 17 of 19 models (median 0.00), the exceptions being phi-4-mini (0.21), ministral-3-14b (0.16): the
   models that state opinions do so as soon as they are told to answer with a label, and most keep stating them when a
   legitimate out is offered. **Survival and the conjoint:** within model, the stated direction and the
-  revealed lean agree with Spearman ρ 0.64 over all 17 issues, 0.72 on the issues that survive re-ordering and 0.41 on the
-  rest (permutation of the survival labels, one-sided p = 0.001, 15 models); sign agreement 0.73 → 0.88; in the top
+  revealed lean agree with Spearman ρ 0.67 over all 17 issues, 0.73 on the issues that survive re-ordering and 0.43 on the
+  rest (means over the 15 models with at least three issues of each kind; permutation of the survival labels, one-sided p = 0.001); sign agreement 0.73 → 0.88; in the top
   |d| tertile, survival is 0.97 on issues with a called revealed lean vs 0.96 without. Opt-out uptake on issues with a
   called revealed lean 0.20 vs 0.30 elsewhere. Pre-registered predictions: SA1 holds (order spin 1.26 ≥ 0.4), SA2 fails (7 hard survivors), SA3 fails (A6 p = 0.001); ST1 holds (R3 rate 0.85 on the framing-stable four vs 0.46 on the predicted spinners, p = 0.031), ST2 fails (paired d order-range 0.22 vs raw p_agree order-range 0.39), ST3 holds → **some topics stable**.
 
